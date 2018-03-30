@@ -28,7 +28,7 @@ The initial commit for this project is based off a vue.js / Google Firebase tutu
 
 ## Installing the Ethereum components to the local environment
 
-```
+``` bash
 # Install truffle, the Ethereum development framework from Consensys
 npm install -g truffle
 truffle version, to check installed 
