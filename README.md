@@ -4,7 +4,12 @@
 * [Main Project](https://eagleeye.atlassian.net/wiki/spaces/blockchain/overview)
 * [Prototyping](https://eagleeye.atlassian.net/wiki/spaces/blockchain/pages/301203733/Blockchain+Prototyping)
 
-
+## Todo
+- [x] Create a vue.js front end with user authentication via firebase.
+- [ ] Install the Truffle eco-system for smart contract development, compiling, deployment to blockchain and migrations to new version of contracts. Requires learning time...
+- [ ] Install Web3.js in as npm package to interact with Smart Contracts from the front-end
+- [ ] Create a test smart contract, with front-end funtionality to allow a user to create an ethereum address on the local blockchain. The Ethereum address will be linked to their user login details.  Provide front-end functions to send and receive funds and to query balances and transactions.
+- [ ] The above will provide the foundations for doing EE specific prototyping. 
 
 ## Build Setup
 
@@ -37,9 +42,4 @@ truffle version, to check installed
 See downloads at http://truffleframework.com/ganache/
 ```
 
-### Todo
-- [x] Create a vue.js front end with user authentication via firebase.
-- [] Install the Truffle eco-system for smart contract development, compiling, deployment to blockchain and migrations to new version of contracts. Requires learning time...
-- [] Install Web3.js in as npm package to interact with Smart Contracts from the front-end
-- [] Create a test smart contract, with front-end funtionality to allow a user to create an ethereum address on the local blockchain. The Ethereum address will be linked to their user login details.  Provide front-end functions to send and receive funds and to query balances and transactions.
-- [] The above will provide the foundations for doing EE specific prototyping. 
+
