@@ -33,6 +33,7 @@ The initial commit for this project is based off a vue.js / Google Firebase tutu
 
 ## Installing the Ethereum components to the local environment
 
+
 ``` bash
 # Install truffle, the Ethereum development framework from Consensys
 npm install -g truffle
@@ -42,4 +43,23 @@ truffle version, to check installed
 See downloads at http://truffleframework.com/ganache/
 ```
 
+## Web3js Troubleshooting on Windows
+helped by https://github.com/ethereum/web3.js/issues/1066 
 
+``` bash
+## Resolving node-gyp problems during npm install of web3
+
+# Firstly install node-gyp
+$ npm install -g node-gyp
+
+# Install all the required tools and configurations using Microsoft's windows-build-tools from an elevated PowerShell or CMD.exe (run as Administrator).
+npm install --global --production windows-build-tools 
+
+# configure node-gyp
+node-gyp configure --msvs_version=2015
+
+# Set path to python executable:
+npm config set python $(which python)
+
+Note: I also restarted my PC but don't know if that is necessary.  I checked location of Python.exe and found at C:\Users\John\.windows-build-tools\python27
+```
