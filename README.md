@@ -41,6 +41,11 @@ truffle version, to check installed
 
 # install ganache as a local test Ethereum blockchain
 See downloads at http://truffleframework.com/ganache/
+or npm install -g ganache-cli  
+See https://github.com/trufflesuite/ganache-cli
+
+# Run an instance of ganache-cli as per below, ganache will then listen on localhost:8545
+$ ganache-cli
 ```
 
 ## Web3js Troubleshooting on Windows
