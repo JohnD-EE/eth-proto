@@ -8,8 +8,6 @@
 - [x] Create a vue.js front end with user authentication via firebase.
 - [x] Install the Truffle eco-system for smart contract development, compiling, deployment to blockchain and migrations to new version of contracts. Requires learning time...
 - [x] Install Web3.js in as npm package to interact with Smart Contracts from the front-end
-- [ ] Create a test smart contract, with front-end funtionality to allow a user to create an ethereum address on the local blockchain. The Ethereum address will be linked to their user login details.  Provide front-end functions to send and receive funds and to query balances and transactions.
-- [ ] The above will provide the foundations for doing EE specific prototyping. 
 
 ## Build Setup
 
@@ -37,7 +35,7 @@ The initial commit for this project is based off a vue.js / Google Firebase tutu
 ``` bash
 # Install truffle, the Ethereum development framework from Consensys
 npm install -g truffle
-truffle version, to check installed 
+truffle version, to check installed
 
 # install ganache as a local test Ethereum blockchain
 See downloads at http://truffleframework.com/ganache/
@@ -48,8 +46,8 @@ See https://github.com/trufflesuite/ganache-cli
 $ ganache-cli
 ```
 
-## Web3js Troubleshooting on Windows
-Helped by https://github.com/ethereum/web3.js/issues/1066 
+## Web3js Install Troubleshooting on Windows
+Helped by https://github.com/ethereum/web3.js/issues/1066
 
 ``` bash
 ## Resolving node-gyp problems during npm install of web3
@@ -58,7 +56,7 @@ Helped by https://github.com/ethereum/web3.js/issues/1066
 $ npm install -g node-gyp
 
 # Install all the required tools and configurations using Microsoft's windows-build-tools from an elevated PowerShell or CMD.exe (run as Administrator).
-npm install --global --production windows-build-tools 
+npm install --global --production windows-build-tools
 
 # configure node-gyp
 node-gyp configure --msvs_version=2015
@@ -66,5 +64,18 @@ node-gyp configure --msvs_version=2015
 # Set path to python executable:
 npm config set python $(which python)
 
-Note: I also restarted my PC but don't know if that is necessary.  I checked location of Python.exe and found at C:\Users\John\.windows-build-tools\python27
+Note: I also restarted my PC but I am not sure if that is necessary.  I checked location of Python.exe and found at C:\Users\John\.windows-build-tools\python27
+```
+
+The Web3 instance will be available via the browser config on
+```
+window.web3
+```
+
+John D's Test Firebase configuration - insert into config/dev.js:
+```
+apiKey: '"AIzaSyC8AkQkt2QNt7OaJhBtsb1udrrVD7Fj0nU"',
+authDomain: '"fir-app-a3ad6.firebaseapp.com"',
+databaseURL: '"https://fir-app-a3ad6.firebaseio.com"',
+projectId: '"fir-app-a3ad6"'
 ```
