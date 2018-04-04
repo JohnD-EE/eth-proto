@@ -8,6 +8,7 @@
 - [x] Create a vue.js front end with user authentication via firebase.
 - [x] Install the Truffle eco-system for smart contract development, compiling, deployment to blockchain and migrations to new version of contracts. Requires learning time...
 - [x] Install Web3.js in as npm package to interact with Smart Contracts from the front-end
+- [ ] Consider importing some the these useful ethereumjs projects, especially ethereum-tx
 
 ## Build Setup
 
