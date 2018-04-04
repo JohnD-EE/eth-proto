@@ -37,10 +37,10 @@ const unsubscribe = firebase.auth()
         // Create a web3 instance.
         if (process.env.web3.injectedProvider === true && typeof web3 !== 'undefined') {
           window.web3 = new Web3(window.web3.currentProvider)
-          console.log('Web3: Injected (e.g. from Metamask)')
+          console.log(`Web3 Injected Provider: ${window.web3.currentProvider.constructor.name}`)
         } else {
           window.web3 = new Web3(new Web3.providers.HttpProvider(process.env.web3.localProviderUrl))
-          console.log('Web3: Local (Not using injected web3 such as Metamask)')
+          console.log(`Web3 HTTP Provider: ${window.web3._provider.host} (Not using injected web3 such as Metamask)`)
         }
         if (firebaseUser) {
           store.dispatch('autoSignIn', firebaseUser)
