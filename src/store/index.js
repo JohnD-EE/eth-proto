@@ -10,7 +10,15 @@ export const store = new Vuex.Store({
     appTitle: 'EE Blockchain Prototype',
     user: null,
     error: null,
-    loading: false
+    loading: false,
+    web3: {
+      host: null,
+      coinbase: null,
+      networkId: null,
+      networkType: null,
+      currentProvider: null,
+      latestBlock: {}
+    }
   },
   mutations: {
     setUser (state, payload) {
@@ -21,6 +29,11 @@ export const store = new Vuex.Store({
     },
     setLoading (state, payload) {
       state.loading = payload
+    },
+    setWeb3 (state, payload) {
+      for (var key in payload) {
+        state.web3[key] = payload[key]
+      }
     }
   },
   actions: {
@@ -58,6 +71,37 @@ export const store = new Vuex.Store({
       firebase.auth().signOut()
       commit('setUser', null)
       router.push('/')
+    },
+    registerWeb3 ({commit}, payload) {
+      // register the current provider
+      commit('setWeb3', {currentProvider: payload.eth.currentProvider.constructor.name})
+
+      // register the host address
+      commit('setWeb3', {host: window.web3._provider.host})
+
+      // register the coinbase
+      payload.eth.getCoinbase()
+      .then(res => {
+        commit('setWeb3', {coinbase: res})
+      })
+
+      // register the latest block details
+      payload.eth.getBlock('latest')
+      .then(res => {
+        commit('setWeb3', {latestBlock: res})
+      })
+
+      // register network ID
+      payload.eth.net.getId()
+      .then(res => {
+        commit('setWeb3', {networkId: res})
+      })
+
+      // register network type
+      payload.eth.net.getNetworkType()
+      .then(res => {
+        commit('setWeb3', {networkType: res})
+      })
     }
   },
   getters: {

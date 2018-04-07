@@ -42,6 +42,8 @@ const unsubscribe = firebase.auth()
           window.web3 = new Web3(new Web3.providers.HttpProvider(process.env.web3.localProviderUrl))
           console.log(`Web3 HTTP Provider: ${window.web3._provider.host} (Not using injected web3 such as Metamask)`)
         }
+        // store.dispatch('registerCoinbase', window.web3)
+        store.dispatch('registerWeb3', window.web3)
         if (firebaseUser) {
           store.dispatch('autoSignIn', firebaseUser)
         }
