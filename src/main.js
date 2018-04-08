@@ -11,7 +11,11 @@ import {
 import firebase from 'firebase'
 import Web3 from 'web3'
 
+import 'firebase/firestore'
+
 Vue.use(Vuetify)
+
+console.log(process.env.initUsers.userAccounts)
 
 // create a firebase account  (including Auth )at https://firebase.google.com/
 // and set config details below
@@ -22,6 +26,8 @@ firebase.initializeApp({
   databaseURL: process.env.firebase.databaseURL,
   projectId: process.env.firebase.projectId
 })
+
+export const db = firebase.firestore()
 
 Vue.config.productionTip = false
 
@@ -42,6 +48,8 @@ const unsubscribe = firebase.auth()
           window.web3 = new Web3(new Web3.providers.HttpProvider(process.env.web3.localProviderUrl))
           console.log(`Web3 HTTP Provider: ${window.web3._provider.host} (Not using injected web3 such as Metamask)`)
         }
+        // store.dispatch('registerCoinbase', window.web3)
+        store.dispatch('registerWeb3', window.web3)
         if (firebaseUser) {
           store.dispatch('autoSignIn', firebaseUser)
         }

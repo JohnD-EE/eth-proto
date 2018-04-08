@@ -76,7 +76,8 @@
         } else {
           return [
             { title: 'Sign Up', path: '/signup', icon: 'face' },
-            { title: 'Sign In', path: '/signin', icon: 'lock_open' }
+            { title: 'Sign In', path: '/signin', icon: 'lock_open' },
+            { title: 'System', path: '/system', icon: 'settings' }
           ]
         }
       }
