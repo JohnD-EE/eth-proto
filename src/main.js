@@ -11,6 +11,8 @@ import {
 import firebase from 'firebase'
 import Web3 from 'web3'
 
+import 'firebase/firestore'
+
 Vue.use(Vuetify)
 
 console.log(process.env.initUsers.userAccounts)
@@ -24,6 +26,8 @@ firebase.initializeApp({
   databaseURL: process.env.firebase.databaseURL,
   projectId: process.env.firebase.projectId
 })
+
+export const db = firebase.firestore()
 
 Vue.config.productionTip = false
 

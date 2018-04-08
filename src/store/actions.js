@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 import router from '@/router'
+import { db } from '../main'
 
 export default {
   userSignUp ({commit}, payload) {
@@ -8,6 +9,19 @@ export default {
     .then(firebaseUser => {
       commit('setUser', {email: firebaseUser.email})
       commit('setLoading', false)
+      firebaseUser.updateProfile({
+        displayName: payload.name
+      }).then(res => {
+        let ethCreate = window.web3.eth.accounts.create()
+        // todo check ethCreate is valid object
+        let ethAddress = ethCreate.address
+        let docData = {
+          ethAccount: ethAddress
+        }
+        db.collection('users').doc(firebaseUser.uid).set(docData).then(res => {
+          //
+        })
+      })
       router.push('/home')
     })
     .catch(error => {
