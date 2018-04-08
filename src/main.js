@@ -13,6 +13,8 @@ import Web3 from 'web3'
 
 Vue.use(Vuetify)
 
+console.log(process.env.initUsers.userAccounts)
+
 // create a firebase account  (including Auth )at https://firebase.google.com/
 // and set config details below
 // configs are set in config folder

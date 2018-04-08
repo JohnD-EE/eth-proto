@@ -18,8 +18,70 @@ module.exports = merge(prodEnv, {
   },
 
   web3: {
-    injectedProvider: false, // default to an injected provider (e.g. Metamask) if available
-    localProviderUrl: '"http://localhost:8545"' // use ganach-cli as a dev ethereum blockchain
-  }
+    // default to an injected provider (e.g. Metamask) if available
+    injectedProvider: false,
+    // use ganach-cli as a dev ethereum blockchain
+    localProviderUrl: '"http://localhost:8545"'
+  },
 
+  // settings for the ganache-cli test ethereum networks
+  // use these settings to start ganache with a consistent set of accounts
+  ganache: {
+    // option to seed accounts/mnemonic - ganache-cli -s "MyArbitrarySeed"
+    seed: '"EagleEye"',
+    // mnemonic option (also used in Metamask) - ganache-cli -m "... ... ..."
+    mnemonic: '"blur until matter salad soup cake cruel middle knee skin various example"',
+    // the number of accounts to create - ganache-cli -a 10
+    initAccounts: '10'
+  },
+
+  // Users to be initialised upon request and assigned an ethereum address
+  initUsers: {
+    // Admin
+    userAccounts: [{
+        id: '1',
+        name: '"Admin"',
+        type: '"admin"',
+        email: '"admin@ee.proto"'
+      },
+      // Contract owners - Ethereum addresses used to launch contracts
+      {
+        id: '2',
+        name: '"Contract1"',
+        type: '"contactOwner"',
+        email: '"contract1@ee.proto"'
+      },
+      {
+        id: '3',
+        name: '"Contract2"',
+        type: '"contactOwner"',
+        email: '"contract2@ee.proto"'
+      },
+      // Users - a List of initial users
+      {
+        id: '4',
+        name: '"Homer"',
+        type: '"user"',
+        email: '"homer@ee.proto"'
+      },
+      {
+        id: '5',
+        name: '"Marge"',
+        type: '"user"',
+        email: '"marge@ee.proto"'
+      },
+      {
+        id: '6',
+        name: '"Bart"',
+        type: '"user"',
+        email: '"bart@ee.proto"'
+      },
+      {
+        id: '7',
+        name: '"Lisa"',
+        type: '"user"',
+        email: '"lisa@ee.proto"'
+      }
+    ]
+  }
 })
