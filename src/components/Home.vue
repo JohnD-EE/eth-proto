@@ -2,15 +2,34 @@
   <v-container fluid>
     <v-layout row wrap>
       <v-flex xs12 class="text-xs-center" mt-5>
-        <h1>Home page</h1>
+        <h1>Hello {{ displayName }}</h1>
       </v-flex>
       <v-flex xs12 class="text-xs-center" mt-3>
-        <p>This is a user's home page</p>
+        <p>Email: {{ email }}</p>
+        <p>Ethereum Account: {{ ethAccount }}</p>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      //
+    }
+  },
+  computed: {
+    displayName () {
+      return this.$store.state.userDetails.displayName
+      // return this.$store.state.user.displayName
+    },
+    email () {
+      return this.$store.state.user.email
+    },
+    ethAccount () {
+      return this.$store.state.userDetails.ethAccount
+    }
+  }
+}
 </script>

@@ -1,6 +1,10 @@
 export default {
   appTitle: 'EE Blockchain Prototype',
   user: null,
+  userDetails: {
+    displayName: null,
+    ethAccount: null
+    },
   error: null,
   loading: false,
   web3: {

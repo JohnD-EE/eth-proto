@@ -2,6 +2,12 @@ export default {
   setUser (state, payload) {
     state.user = payload
   },
+  setUserDetails (state, payload) {
+    // state.user = payload
+    for (var key in payload) {
+      state.userDetails[key] = payload[key]
+    }
+  },
   setError (state, payload) {
     state.error = payload
   },
