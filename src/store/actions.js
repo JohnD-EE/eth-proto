@@ -1,8 +1,11 @@
 import firebase from 'firebase'
 import router from '@/router'
 import { db } from '../main'
+import userAccountsHelper from '../helpers/userAccounts'
 
 export default {
+
+  // Sign up and user account creation
   userSignUp ({commit}, payload) {
     commit('setLoading', true)
     firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
@@ -14,17 +17,21 @@ export default {
         commit('setUserDetails', {
           displayName: firebaseUser.displayName
         })
-        let ethCreate = window.web3.eth.accounts.create()
-        // todo check ethCreate is valid object
-        let ethAddress = ethCreate.address
+        let ethAddress = userAccountsHelper.getUnusedEthAddress()
         let docData = {
-          ethAccount: ethAddress
+          ethAccount: ethAddress,
+          displayName: firebaseUser.displayName,
+          createdAt: Date.now()
         }
         db.collection('users').doc(firebaseUser.uid).set(docData)
         .then(res => {
           db.collection('users').doc(firebaseUser.uid).get()
           .then(doc => {
-            commit('setUserDetails', {ethAccount: doc.data().ethAccount})
+            let ethAccount = doc.data().ethAccount
+            commit('setUserDetails', {ethAccount: ethAccount})
+            window.web3.eth.getBalance(ethAccount).then(
+              res => commit('setUserDetails', {ethBalance: res})
+            )
           })
           .catch(error => console.log('Error retrieving document: ', error))
         })
@@ -37,6 +44,8 @@ export default {
       commit('setLoading', false)
     })
   },
+
+  // Sign in
   userSignIn ({commit}, payload) {
     commit('setLoading', true)
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
@@ -47,7 +56,11 @@ export default {
         })
         db.collection('users').doc(firebaseUser.uid).get()
         .then(doc => {
-          commit('setUserDetails', {ethAccount: doc.data().ethAccount})
+          let ethAccount = doc.data().ethAccount
+          commit('setUserDetails', {ethAccount: ethAccount})
+          window.web3.eth.getBalance(ethAccount).then(
+            res => commit('setUserDetails', {ethBalance: res})
+          )
         })
         .catch(error => console.log('Error retrieving document: ', error))
         commit('setLoading', false)
@@ -59,21 +72,30 @@ export default {
         commit('setLoading', false)
       })
   },
+
+  // sign in upon browser refresh
   autoSignIn ({commit}, firebaseUser) {
     commit('setUser', {email: firebaseUser.email, displayName: firebaseUser.displayName})
-    commit('setUserDetails', {displayName: firebaseUser.displayName})
     db.collection('users').doc(firebaseUser.uid).get()
     .then(doc => {
-      commit('setUserDetails', {ethAccount: doc.data().ethAccount})
+      let ethAccount = doc.data().ethAccount
+      commit('setUserDetails', {ethAccount: ethAccount})
+      window.web3.eth.getBalance(ethAccount).then(
+        res => commit('setUserDetails', {ethBalance: res})
+      )
     })
     .catch(error => console.log('Error retrieving document: ', error))
   },
+
+  // reset user stores upon signout
   userSignOut ({commit}) {
     firebase.auth().signOut()
-    commit('setUser', null)
-    commit('setUserDetails', null)
+    commit('setUser', {displayName: null, email: null})
+    commit('setUserDetails', {displayName: null, ethAddress: null, ethBalance: null})
     router.push('/')
   },
+
+  // register all details relating to the web3 API
   registerWeb3 ({commit}, payload) {
     // register the current provider
     commit('setWeb3', {currentProvider: payload.eth.currentProvider.constructor.name})
@@ -103,6 +125,28 @@ export default {
     payload.eth.net.getNetworkType()
     .then(res => {
       commit('setWeb3', {networkType: res})
+    })
+  },
+
+  // create an array of all the ethereum accounts created by ganache initiaion
+  registerGanacheAccounts ({commit}) {
+    window.web3.eth.getAccounts().then(res => {
+      commit('setGanacheAccounts', res)
+    })
+  },
+
+  // get documents for all users from firbase and store in an array
+  registerAllUsers ({commit}) {
+    db.collection('users').get().then(res => {
+      let allUsers = []
+      res.docs.forEach(doc => {
+        let ethAccount = doc.data().ethAccount
+        let displayName = doc.data().displayName
+        allUsers.push({ethAccount: ethAccount, displayName: displayName})
+        if (allUsers.length === res.docs.length) {
+          commit('setAllUsers', allUsers) // use a promise instead
+        }
+      })
     })
   }
 }

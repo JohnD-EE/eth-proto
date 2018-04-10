@@ -1,12 +1,16 @@
 export default {
   appTitle: 'EE Blockchain Prototype',
-  user: null,
-  userDetails: {
-    displayName: null,
-    ethAccount: null
-  },
   error: null,
   loading: false,
+  user: {
+    displayName: null,
+    email: null
+  },
+  userDetails: {
+    displayName: null,
+    ethAccount: null,
+    ethBalance: null
+  },
   web3: {
     host: null,
     coinbase: null,
@@ -14,5 +18,7 @@ export default {
     networkType: null,
     currentProvider: null,
     latestBlock: {}
-  }
+  },
+  ganacheAccounts: [],
+  allUsers: []
 }

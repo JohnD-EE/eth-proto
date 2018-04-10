@@ -10,10 +10,9 @@
     <v-expansion-panel focusable>
       <v-expansion-panel-content>
         <div slot="header">Blockchain</div>
+
         <v-card>
           <v-card-text class="grey lighten-3">
-
-
             <v-list two-line subheader>
               <v-subheader>Ethereum Blockchain Connections</v-subheader>
               <v-list-tile avatar>
@@ -68,9 +67,49 @@
       </v-expansion-panel-content>
       <v-expansion-panel-content>
         <div slot="header">Accounts</div>
+
         <v-card>
-          <v-card-text class="grey lighten-3">{{ accountsStatus }}</v-card-text>
+          <v-card-text class="grey lighten-3">
+
+            <v-list>
+              <v-subheader>Accounts Status</v-subheader>
+              <v-list-tile avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title>Ganache Accounts:</v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+
+            <v-container fluid>
+              <v-layout row wrap>
+                <v-flex xs12 ml-3>
+                  <ul>
+                    <li v-for="item in accountsStatus" :key="item.id">
+                      {{ item }}
+                    </li>
+                  </ul>
+                </v-flex>
+              </v-layout>
+            </v-container>
+            </v-list>
+            <v-divider></v-divider>
+            <v-list two-line subheader>
+              <v-subheader>Actions</v-subheader>
+              <v-list-tile avatar>
+                <v-list-tile-content>
+                  <v-btn color="success" @click="refreshAccountsnData">
+                    <v-icon left>refresh</v-icon>
+                    This Button Doesn't Do Anything Yet
+                  </v-btn>
+                </v-list-tile-content>
+                <v-list-tile-action>
+                  <v-progress-circular indeterminate color="green" v-show="accountsLoading"></v-progress-circular>
+                </v-list-tile-action>
+              </v-list-tile>
+            </v-list>
+
+          </v-card-text>
         </v-card>
+
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-flex>
@@ -81,7 +120,8 @@
 export default {
   data () {
     return {
-      blockchainLoading: false
+      blockchainLoading: false,
+      accountsLoading: false
     }
   },
   methods: {
@@ -90,6 +130,9 @@ export default {
       this.$store.dispatch('registerWeb3', window.web3)
         .then(
           setTimeout(() => { this.blockchainLoading = false }, 400))
+    },
+    refreshAccointsData () {
+      //
     }
   },
   computed: {
@@ -127,7 +170,7 @@ export default {
       return 'CONNECTED'
     },
     accountsStatus () {
-      return 'EMPTY'
+      return this.$store.state.ganacheAccounts || 'No accounts have been set'
     }
   }
 }
