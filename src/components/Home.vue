@@ -21,11 +21,10 @@ export default {
   },
   computed: {
     displayName () {
-      return this.$store.state.userDetails.displayName
-      // return this.$store.state.user.displayName
+      return this.$store.state.user.displayName || 'Name not set'
     },
     email () {
-      return this.$store.state.user.email
+      return this.$store.state.user.email || 'Email not set'
     },
     ethAccount () {
       return this.$store.state.userDetails.ethAccount

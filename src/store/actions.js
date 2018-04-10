@@ -2,53 +2,34 @@ import firebase from 'firebase'
 import router from '@/router'
 import { db } from '../main'
 
-var getUserMetaData = function (firebaseUser) {
-    let docRef = db.collection('users').doc(firebaseUser)
-    docRef.get().then(function(doc) {
-      if (doc.exists) {
-        console.log("Document data:", doc.data())
-        return doc.data()
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }).catch(function(error) {
-    console.log("Error getting document:", error);
-  })
-}
-
 export default {
   userSignUp ({commit}, payload) {
     commit('setLoading', true)
     firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
     .then(firebaseUser => {
-      commit('setUser', {email: firebaseUser.email})
-      commit('setLoading', false)
       firebaseUser.updateProfile({
         displayName: payload.name
       }).then(res => {
-    commit('setUserDetails', {
-      displayName: firebaseUser.displayName
-    })
-    let ethCreate = window.web3.eth.accounts.create()
-    // todo check ethCreate is valid object
-    let ethAddress = ethCreate.address
-    let docData = {
-      ethAccount: ethAddress
-    }
-    db.collection('users').doc(firebaseUser.uid).set(docData).then(res => {
-      let docRef = db.collection('users').doc(firebaseUser.uid)
-      docRef.get().then(function(doc) {
-        if (doc.exists) {
-          commit('setUserDetails', {ethAccount: doc.data().ethAccount})
-        } else {
-          console.log("No such document!");
+        commit('setUser', {email: firebaseUser.email, displayName: firebaseUser.displayName})
+        commit('setUserDetails', {
+          displayName: firebaseUser.displayName
+        })
+        let ethCreate = window.web3.eth.accounts.create()
+        // todo check ethCreate is valid object
+        let ethAddress = ethCreate.address
+        let docData = {
+          ethAccount: ethAddress
         }
-      }).catch(function(error) {
-        console.log("Error getting document:", error);
+        db.collection('users').doc(firebaseUser.uid).set(docData)
+        .then(res => {
+          db.collection('users').doc(firebaseUser.uid).get()
+          .then(doc => {
+            commit('setUserDetails', {ethAccount: doc.data().ethAccount})
+          })
+          .catch(error => console.log('Error retrieving document: ', error))
+        })
       })
-    })
-  })
+      commit('setLoading', false)
       router.push('/home')
     })
     .catch(error => {
@@ -60,7 +41,15 @@ export default {
     commit('setLoading', true)
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(firebaseUser => {
-        commit('setUser', {email: firebaseUser.email})
+        commit('setUser', {email: firebaseUser.email, displayName: firebaseUser.displayName})
+        commit('setUserDetails', {
+          displayName: firebaseUser.displayName
+        })
+        db.collection('users').doc(firebaseUser.uid).get()
+        .then(doc => {
+          commit('setUserDetails', {ethAccount: doc.data().ethAccount})
+        })
+        .catch(error => console.log('Error retrieving document: ', error))
         commit('setLoading', false)
         commit('setError', null)
         router.push('/home')
@@ -70,12 +59,19 @@ export default {
         commit('setLoading', false)
       })
   },
-  autoSignIn ({commit}, payload) {
-    commit('setUser', {email: payload.email})
+  autoSignIn ({commit}, firebaseUser) {
+    commit('setUser', {email: firebaseUser.email, displayName: firebaseUser.displayName})
+    commit('setUserDetails', {displayName: firebaseUser.displayName})
+    db.collection('users').doc(firebaseUser.uid).get()
+    .then(doc => {
+      commit('setUserDetails', {ethAccount: doc.data().ethAccount})
+    })
+    .catch(error => console.log('Error retrieving document: ', error))
   },
   userSignOut ({commit}) {
     firebase.auth().signOut()
     commit('setUser', null)
+    commit('setUserDetails', null)
     router.push('/')
   },
   registerWeb3 ({commit}, payload) {

@@ -4,7 +4,7 @@ export default {
   userDetails: {
     displayName: null,
     ethAccount: null
-    },
+  },
   error: null,
   loading: false,
   web3: {
