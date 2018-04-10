@@ -15,8 +15,6 @@ import 'firebase/firestore'
 
 Vue.use(Vuetify)
 
-console.log(process.env.initUsers.userAccounts)
-
 // create a firebase account  (including Auth )at https://firebase.google.com/
 // and set config details below
 // configs are set in config folder
@@ -50,6 +48,8 @@ const unsubscribe = firebase.auth()
         }
         // store.dispatch('registerCoinbase', window.web3)
         store.dispatch('registerWeb3', window.web3)
+        store.dispatch('registerGanacheAccounts')
+        store.dispatch('registerAllUsers')
         if (firebaseUser) {
           store.dispatch('autoSignIn', firebaseUser)
         }

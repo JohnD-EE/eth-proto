@@ -18,5 +18,11 @@ export default {
     for (var key in payload) {
       state.web3[key] = payload[key]
     }
+  },
+  setGanacheAccounts (state, payload) {
+    state.ganacheAccounts = payload
+  },
+  setAllUsers (state, payload) {
+    state.allUsers = payload
   }
 }
