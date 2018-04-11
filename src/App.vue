@@ -13,7 +13,6 @@
     </v-list-tile>
     <v-list-tile v-if="isAuthenticated" @click="userSignOut">
       <v-list-tile-action>
-        <v-icon>exit_to_app</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>Sign Out</v-list-tile-content>
     </v-list-tile>
@@ -37,11 +36,9 @@
     v-for="item in menuItems"
     :key="item.title"
     :to="item.path">
-    <v-icon left dark>{{ item.icon }}</v-icon>
     {{ item.title }}
   </v-btn>
   <v-btn flat v-if="isAuthenticated" @click="userSignOut">
-    <v-icon left>exit_to_app</v-icon>
     Sign Out
   </v-btn>
 </v-toolbar-items>
@@ -75,7 +72,7 @@
           ]
         } else {
           return [
-            { title: 'Sign Up', path: '/signup', icon: 'face' },
+            { title: 'Sign Up', path: '/signup', icon: 'account_circle' },
             { title: 'Sign In', path: '/signin', icon: 'lock_open' },
             { title: 'System', path: '/system', icon: 'settings' }
           ]

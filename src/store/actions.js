@@ -13,7 +13,7 @@ export default {
       firebaseUser.updateProfile({
         displayName: payload.name
       }).then(res => {
-        commit('setUser', {email: firebaseUser.email, displayName: firebaseUser.displayName})
+        commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
         commit('setUserDetails', {
           displayName: firebaseUser.displayName
         })
@@ -50,7 +50,7 @@ export default {
     commit('setLoading', true)
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(firebaseUser => {
-        commit('setUser', {email: firebaseUser.email, displayName: firebaseUser.displayName})
+        commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
         commit('setUserDetails', {
           displayName: firebaseUser.displayName
         })
@@ -75,7 +75,7 @@ export default {
 
   // sign in upon browser refresh
   autoSignIn ({commit}, firebaseUser) {
-    commit('setUser', {email: firebaseUser.email, displayName: firebaseUser.displayName})
+    commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
     db.collection('users').doc(firebaseUser.uid).get()
     .then(doc => {
       let ethAccount = doc.data().ethAccount
@@ -90,7 +90,7 @@ export default {
   // reset user stores upon signout
   userSignOut ({commit}) {
     firebase.auth().signOut()
-    commit('setUser', {displayName: null, email: null})
+    commit('setUser', {loggedIn: false, displayName: null, email: null})
     commit('setUserDetails', {displayName: null, ethAddress: null, ethBalance: null})
     router.push('/')
   },

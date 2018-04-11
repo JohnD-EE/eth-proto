@@ -6,7 +6,7 @@
       </v-flex>
       <v-flex xs12 class="text-xs-center" mt-3>
         <p><v-icon left>email</v-icon>
-          {{ user.email || ''}}
+          {{ user.email || '' }}
         </p>
         <p>Ethereum Account: {{ userDetails.ethAccount || '' }}</p>
         <p>Current Balance: {{ userDetails.ethBalance || '' }}</p>

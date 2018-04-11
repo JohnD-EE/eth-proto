@@ -3,6 +3,7 @@ export default {
   error: null,
   loading: false,
   user: {
+    loggedIn: false,
     displayName: null,
     email: null
   },
