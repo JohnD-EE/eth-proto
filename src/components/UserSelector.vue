@@ -17,7 +17,8 @@
             <v-list-tile-avatar>
             <v-icon large>account_circle</v-icon>
           </v-list-tile-avatar>
-            {{ data.item.name }}
+            {{ data.item.name }} - {{ data.item.account.substring(0,10) + '.......' +
+            data.item.account.substr(data.item.account.length - 5) }}
           </template>
           <template slot="item" slot-scope="data">
             <template v-if="typeof data.item !== 'object'">
@@ -29,7 +30,7 @@
               </v-list-tile-avatar>
               <v-list-tile-content>
                 <v-list-tile-title v-html="data.item.name"></v-list-tile-title>
-                <v-list-tile-sub-title v-html="data.item.group"></v-list-tile-sub-title>
+                <v-list-tile-sub-title v-html="data.item.account"></v-list-tile-sub-title>
               </v-list-tile-content>
             </template>
           </template>
@@ -43,18 +44,18 @@
   export default {
     data () {
       return {
-        userSelctor: [],
-        people: [
-          { header: 'Select Recipient' },
-          { name: 'Sandra Adams', group: 'Group 1', avatar: 'n/a' },
-          { name: 'Ali Connors', group: 'Group 1', avatar: 'n/a' },
-          { name: 'Trevor Hansen', group: 'Group 1', avatar: 'n/a' },
-          { name: 'Tucker Smith', group: 'Group 1', avatar: 'n/a' },
-          { name: 'Britta Holt', group: 'Group 2', avatar: 'n/a' },
-          { name: 'Jane Smith ', group: 'Group 2', avatar: 'n/a' },
-          { name: 'John Smith', group: 'Group 2', avatar: 'n/a' },
-          { name: 'Sandra Williams', group: 'Group 2', avatar: 'n/a' }
+        userSelctor: []
+      }
+    },
+    computed: {
+      people () {
+        let selections = [
+          { header: 'Select Recipient' }
         ]
+        this.$store.state.allUsers.forEach(res => {
+          selections.push({name: res.displayName, account: res.ethAccount})
+        })
+        return selections
       }
     }
   }
