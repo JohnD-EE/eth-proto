@@ -96,7 +96,7 @@
               <v-subheader>Actions</v-subheader>
               <v-list-tile avatar>
                 <v-list-tile-content>
-                  <v-btn color="success" @click="refreshAccountsnData">
+                  <v-btn color="success" @click="refreshAccountsData">
                     <v-icon left>refresh</v-icon>
                     This Button Doesn't Do Anything Yet
                   </v-btn>
@@ -131,7 +131,7 @@ export default {
         .then(
           setTimeout(() => { this.blockchainLoading = false }, 400))
     },
-    refreshAccointsData () {
+    refreshAccountsData () {
       //
     }
   },
