@@ -9,7 +9,7 @@
           {{ user.email || '' }}
         </p>
         <p>Ethereum Account: {{ userDetails.ethAccount || '' }}</p>
-        <p>Current Balance: {{ userDetails.ethBalance || '' }}</p>
+        <p>Current Balance: {{ balanceToEther || '' }}</p>
       </v-flex>
     </v-layout>
     <app-transaction-send></app-transaction-send>
@@ -33,6 +33,9 @@ export default {
     },
     userDetails () {
       return this.$store.state.userDetails
+    },
+    balanceToEther () {
+      return this.$store.getters.balanceToEther
     }
   }
 }
