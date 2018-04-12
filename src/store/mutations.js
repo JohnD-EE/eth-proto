@@ -24,5 +24,8 @@ export default {
   },
   setAllUsers (state, payload) {
     state.allUsers = payload
+  },
+  setTxComposer (state, payload) {
+    state.txComposer = payload
   }
 }

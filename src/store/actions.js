@@ -148,5 +148,19 @@ export default {
         }
       })
     })
+  },
+
+  // Compose Transactions
+  composeTransaction ({commit}, payload) {
+    commit('setTxComposer', payload)
+  },
+
+  // Update Eth Account e.g. after a transaction
+  updateAccount ({commit}) {
+    let ethAccount = this.state.userDetails.ethAccount
+    console.log(ethAccount)
+    window.web3.eth.getBalance(ethAccount).then(
+      res => commit('setUserDetails', {ethBalance: res})
+    )
   }
 }
