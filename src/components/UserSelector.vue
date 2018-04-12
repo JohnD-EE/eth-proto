@@ -52,7 +52,7 @@
         let selections = [
           { header: 'Select Recipient' }
         ]
-        this.$store.state.allUsers.forEach(res => {
+        this.$store.getters.allUsers(true).forEach(res => {
           selections.push({name: res.displayName, account: res.ethAccount})
         })
         return selections
