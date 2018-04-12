@@ -21,5 +21,6 @@ export default {
     latestBlock: {}
   },
   ganacheAccounts: [],
-  allUsers: []
+  allUsers: [],
+  txComposer: []
 }

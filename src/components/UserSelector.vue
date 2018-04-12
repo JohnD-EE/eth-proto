@@ -4,10 +4,10 @@
       <v-flex xs12 sm6>
         <v-select
           label="Select"
-          :items="people"
-          v-model="userSelctor"
-          item-text="name"
-          item-value="name"
+          :items="users"
+          v-model="userSelector"
+          item-text="account"
+          item-value="[account, name]"
           max-height="auto"
           autocomplete
           clearable
@@ -17,8 +17,8 @@
             <v-list-tile-avatar>
             <v-icon large>account_circle</v-icon>
           </v-list-tile-avatar>
-            {{ data.item.name }} - {{ data.item.account.substring(0,10) + '.......' +
-            data.item.account.substr(data.item.account.length - 5) }}
+            {{ data.item.name }}, [{{ data.item.account.substring(0,10) + '........' +
+            data.item.account.substr(data.item.account.length - 5) }}]
           </template>
           <template slot="item" slot-scope="data">
             <template v-if="typeof data.item !== 'object'">
@@ -44,11 +44,11 @@
   export default {
     data () {
       return {
-        userSelctor: []
+        userSelector: []
       }
     },
     computed: {
-      people () {
+      users () {
         let selections = [
           { header: 'Select Recipient' }
         ]
@@ -56,6 +56,21 @@
           selections.push({name: res.displayName, account: res.ethAccount})
         })
         return selections
+      }
+    },
+    watch: {
+      userSelector (value) {
+        // todo this watcher now makes the component specific and not generic
+        // perhaps better to use an event emitter to pass data back from child compenent to parent?
+        if (value) {
+          this.$store.dispatch('composeTransaction', {
+            toAccount: value.account, toName: value.name
+          })
+        } else {
+          this.$store.dispatch('composeTransaction', {
+            toAccount: null, toName: null
+          })
+        }
       }
     }
   }

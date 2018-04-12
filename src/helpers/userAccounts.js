@@ -2,8 +2,6 @@ import {
   store
 } from './../store'
 
-// let user = store.getters.user;
-
 export default {
   getUnusedEthAddress () {
     // get array of ganache accounts
@@ -18,6 +16,6 @@ export default {
 
     // return a random account from the unused list
     let unusedGanache = ganacheAccounts.filter(x => !allUsersEthAccounts.includes(x))
-    return unusedGanache[Math.floor(Math.random() * unusedGanache.length)] || 'no eth address available'
+    return unusedGanache[Math.floor(Math.random() * unusedGanache.length)] || 'No eth address available'
   }
 }
