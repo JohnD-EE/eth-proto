@@ -36,6 +36,7 @@ export default {
           .catch(error => console.log('Error retrieving document: ', error))
         })
       })
+      commit('setAllUsers')
       commit('setLoading', false)
       router.push('/home')
     })
@@ -137,17 +138,7 @@ export default {
 
   // get documents for all users from firbase and store in an array
   registerAllUsers ({commit}) {
-    db.collection('users').get().then(res => {
-      let allUsers = []
-      res.docs.forEach(doc => {
-        let ethAccount = doc.data().ethAccount
-        let displayName = doc.data().displayName
-        allUsers.push({ethAccount: ethAccount, displayName: displayName})
-        if (allUsers.length === res.docs.length) {
-          commit('setAllUsers', allUsers) // use a promise instead
-        }
-      })
-    })
+    commit('setAllUsers')
   },
 
   // Compose Transactions
@@ -158,7 +149,6 @@ export default {
   // Update Eth Account e.g. after a transaction
   updateAccount ({commit}) {
     let ethAccount = this.state.userDetails.ethAccount
-    console.log(ethAccount)
     window.web3.eth.getBalance(ethAccount).then(
       res => commit('setUserDetails', {ethBalance: res})
     )

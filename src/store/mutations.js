@@ -1,3 +1,5 @@
+import { db } from '../main'
+
 export default {
   setUser (state, payload) {
     state.user = payload
@@ -22,8 +24,19 @@ export default {
   setGanacheAccounts (state, payload) {
     state.ganacheAccounts = payload
   },
-  setAllUsers (state, payload) {
-    state.allUsers = payload
+  setAllUsers (state) {
+    state.allUsers = []
+    db.collection('users').get().then(res => {
+      let allUsers = []
+      res.docs.forEach(doc => {
+        let ethAccount = doc.data().ethAccount
+        let displayName = doc.data().displayName
+        allUsers.push({ethAccount: ethAccount, displayName: displayName})
+        if (allUsers.length === res.docs.length) {
+          state.allUsers = allUsers
+        }
+      })
+    })
   },
   setTxComposer (state, payload) {
     state.txComposer = payload
