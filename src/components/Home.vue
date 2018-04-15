@@ -21,12 +21,14 @@
       </v-flex>
     </v-layout>
     <app-transaction-send></app-transaction-send>
+    <app-transactions-view></app-transactions-view>
   </v-container>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import TransactionSend from './TransactionSend.vue'
+import TransactionsView from './TransactionsView.vue'
 export default {
   data () {
     return {
@@ -36,7 +38,8 @@ export default {
     }
   },
   components: {
-    'app-transaction-send': TransactionSend
+    'app-transaction-send': TransactionSend,
+    'app-transactions-view': TransactionsView
   },
   computed: {
     ...mapGetters({
