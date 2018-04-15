@@ -1,9 +1,11 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="dialog" :fullscreen="fullScreen" transition="dialog-bottom-transition" :overlay="false">
-      <v-btn color="primary" dark slot="activator" @click="clickSend">Send Transaction</v-btn>
+      <v-btn color="success" dark slot="activator" @click="clickSend">
+        <v-icon left>add</v-icon>New Transaction
+      </v-btn>
       <v-card>
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="success">
           <v-btn icon @click.native="clickClose" dark>
             <v-icon>close</v-icon>
           </v-btn>
@@ -86,7 +88,7 @@ export default {
     return {
       dialog: false,
       notifications: false,
-      fullScreen: false, // todo detect screen size here and make true for sm screens
+      fullScreen: true, // todo detect screen size here and make true for sm screens
       valid: true,
       balance: 0,
       txAmountRules: [

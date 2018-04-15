@@ -152,5 +152,33 @@ export default {
     window.web3.eth.getBalance(ethAccount).then(
       res => commit('setUserDetails', {ethBalance: res})
     )
+  },
+  userTxs ({commit}) {
+    // @todo - Iiterating through the blockchain is OK for a prototype but in real
+    // dApps we would require transaction history to be stored more efficiently
+    // perhaps as a separate service
+    let ethAccount = this.state.userDetails.ethAccount
+    window.web3.eth.getBlockNumber()
+    .then(n => {
+      let txs = []
+      for (let bl = 0; bl < n; bl++) {
+        window.web3.eth.getBlock(bl, true)
+        .then(block => {
+          for (let tx = 0; tx < block.transactions.length; tx++) {
+            let blockTx = block.transactions[tx]
+            if (blockTx.to === ethAccount || blockTx.from === ethAccount) {
+              window.web3.eth.getBalance(ethAccount, blockTx.blockNumber)
+              .then(balance => {
+                blockTx.balance = balance
+                txs.push(blockTx)
+              })
+            }
+          }
+        })
+        if (bl === (n - 1)) {
+          commit('setUserTxs', txs)
+        }
+      }
+    })
   }
 }

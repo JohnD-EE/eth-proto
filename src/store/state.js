@@ -22,5 +22,6 @@ export default {
   },
   ganacheAccounts: [],
   allUsers: [],
-  txComposer: []
+  txComposer: [],
+  userTxs: []
 }

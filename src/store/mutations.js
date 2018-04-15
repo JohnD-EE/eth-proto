@@ -40,5 +40,8 @@ export default {
   },
   setTxComposer (state, payload) {
     state.txComposer = payload
+  },
+  setUserTxs (state, payload) {
+    state.userTxs = payload
   }
 }
