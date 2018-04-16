@@ -21,12 +21,6 @@ export default {
       usersByAccount[res.ethAccount] = res
     })
 
-    function add (...number) {
-      return number.reduce(function (prev, current) {
-        return prev + current
-      })
-    }
-
     let userTxs = []
     let ethAccount = state.userDetails.ethAccount
     state.userTxs.forEach(tx => {
@@ -38,7 +32,7 @@ export default {
       if (tx.from === ethAccount) {
         fees = -window.web3.utils.fromWei((tx.gas * Number(tx.gasPrice)).toString(), 'ether')
       }
-      // console.log('allusers', state.allUsers)
+
       userTxs.push({
         value: false,
         name: usersByAccount[tx.from === ethAccount ? tx.to : tx.from].displayName,
@@ -49,9 +43,8 @@ export default {
         blockHash: tx.blockHash,
         txHash: tx.hash,
         confirmations: '#conf',
-        balance: add(parseFloat(window.web3.utils.fromWei(tx.balance, 'ether')), amount, fees)
+        balance: window.web3.utils.fromWei(tx.balance, 'ether')
       })
-      // console.log('userTxs', userTxs)
     })
     return userTxs.reverse()
   }

@@ -19,8 +19,8 @@
     >
       <template slot="items" slot-scope="props">
         <td>{{ props.item.name }}<br/>{{ props.item.address.substring(0,11) + '...' || '' }}</td>
-        <td class="text-xs-left" v-bind:class="{ 'red--text': props.item.amount < 0 }">{{ props.item.amount }}</td>
-        <td class="text-xs-left">{{ props.item.fees }}</td>
+        <td class="text-xs-left" v-bind:class="{ 'red--text': props.item.amount < 0 }">{{ props.item.amount > 0 ? ' +' : '' }}{{ props.item.amount }}</td>
+        <td class="text-xs-left" v-bind:class="{ 'red--text': props.item.fees < 0 }">{{ props.item.fees }}</td>
         <td class="text-xs-left">{{ props.item.block }}</td>
         <td class="text-xs-left">{{ props.item.txHash.substring(0,11) + '...' }}</td>
         <td class="text-xs-left">{{ props.item.confirmations }}</td>
