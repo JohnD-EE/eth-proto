@@ -40,12 +40,7 @@ export default {
     return {
       search: '',
       headers: [
-        {
-          text: 'Name',
-          align: 'left',
-          sortable: false,
-          value: 'name'
-        },
+        { text: 'Name', value: 'name', sortable: false, align: 'left' },
         { text: 'Amount', value: 'amount', sortable: false },
         { text: 'Fees', value: 'fees', sortable: false },
         { text: 'Block', value: 'block', sortable: false },

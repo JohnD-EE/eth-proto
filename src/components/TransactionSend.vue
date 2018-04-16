@@ -46,34 +46,36 @@
           </v-list-tile>
         </v-list>
         <v-divider></v-divider>
-        <v-list two-line subheader>
-          <v-subheader>To Account Details</v-subheader>
-          <v-list-tile>
-            <v-list-tile-content>
-              <app-user-selector></app-user-selector>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile >
-            <v-list-tile-content>
-              <template>
-                <v-container fluid>
-                  <v-layout row wrap>
-                    <v-flex xs12 sm6>
-                <v-form v-model="valid" ref="form" lazy-validation>
-                  <v-text-field
-                    label="Amount"
-                    v-model="txAmount"
-                    :rules="txAmountRules"
-                    required
-                  ></v-text-field>
-                </v-form>
-              </v-flex>
-              </v-layout>
-              </v-container>
-              </template>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
+          <v-form v-model="valid" ref="form" lazy-validation>
+            <v-list two-line subheader>
+              <v-subheader>To Account Details</v-subheader>
+              <v-list-tile>
+                <v-list-tile-content>
+
+                  <app-user-selector></app-user-selector>
+
+                </v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile >
+                <v-list-tile-content>
+                  <template>
+                    <v-container fluid>
+                      <v-layout row wrap>
+                        <v-flex xs12 sm6>
+                          <v-text-field
+                          label="Amount"
+                          v-model="txAmount"
+                          :rules="txAmountRules"
+                          required
+                          ></v-text-field>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </template>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+        </v-form>
       </v-card>
     </v-dialog>
   </v-layout>
@@ -141,8 +143,7 @@ export default {
           amount: weiAmount
         })
         this.txComposer = this.$store.state.txComposer
-        let sendTx = transactionsHelper.sendTransaction(this.txComposer)
-        console.log(sendTx)
+        transactionsHelper.sendTransaction(this.txComposer)
         // show notification
 
         // clear screen

@@ -176,7 +176,7 @@ export default {
             }
           }
         })
-        if (bl === (n )) {
+        if (bl === (n)) {
           commit('setUserTxs', txs)
         }
       }

@@ -44,6 +44,7 @@
   export default {
     data () {
       return {
+        valid: '',
         userSelector: []
       }
     },
