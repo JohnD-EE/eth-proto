@@ -66,6 +66,7 @@ export default {
         .catch(error => console.log('Error retrieving document: ', error))
         commit('setLoading', false)
         commit('setError', null)
+        commit('setAllUsers')
         router.push('/home')
       })
       .catch(error => {
@@ -86,6 +87,7 @@ export default {
       )
     })
     .catch(error => console.log('Error retrieving document: ', error))
+    commit('setAllUsers')
   },
 
   // reset user stores upon signout

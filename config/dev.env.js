@@ -38,49 +38,61 @@ module.exports = merge(prodEnv, {
   // Users to be initialised upon request and assigned an ethereum address
   initUsers: {
     // Admin
-    userAccounts: [{
-        id: '1',
+    seedAccounts: [{
+        id: '0',
         name: '"Admin"',
         type: '"admin"',
         email: '"admin@ee.proto"'
       },
       // Contract owners - Ethereum addresses used to launch contracts
       {
-        id: '2',
+        id: '1',
         name: '"Contract1"',
-        type: '"contactOwner"',
+        type: '"contractOwner"',
         email: '"contract1@ee.proto"'
       },
       {
-        id: '3',
+        id: '2',
         name: '"Contract2"',
-        type: '"contactOwner"',
+        type: '"contractOwner"',
         email: '"contract2@ee.proto"'
+      },
+      {
+        id: '3',
+        name: '"Contract3"',
+        type: '"contractOwner"',
+        email: '"contract3@ee.proto"'
       },
       // Users - a List of initial users
       {
         id: '4',
-        name: '"Homer"',
+        name: '"Homer Simpson"',
         type: '"user"',
         email: '"homer@ee.proto"'
       },
       {
         id: '5',
-        name: '"Marge"',
+        name: '"Donald Trump"',
         type: '"user"',
-        email: '"marge@ee.proto"'
+        email: '"donald@ee.proto"'
       },
       {
         id: '6',
-        name: '"Bart"',
+        name: '"Vladimir Putin"',
         type: '"user"',
-        email: '"bart@ee.proto"'
+        email: '"vladimir@ee.proto"'
       },
       {
         id: '7',
-        name: '"Lisa"',
+        name: '"Charlie Chaplin"',
         type: '"user"',
-        email: '"lisa@ee.proto"'
+        email: '"charlie@ee.proto"'
+      },
+      {
+        id: '8',
+        name: '"Kim Kardashian"',
+        type: '"user"',
+        email: '"kim@ee.proto"'
       }
     ]
   }

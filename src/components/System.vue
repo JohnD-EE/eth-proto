@@ -71,34 +71,57 @@
         <v-card>
           <v-card-text class="grey lighten-3">
 
-            <v-list>
+            <v-list two-line subheader>
               <v-subheader>Accounts Status</v-subheader>
               <v-list-tile avatar>
                 <v-list-tile-content>
                   <v-list-tile-title>Ganache Accounts:</v-list-tile-title>
+                  <v-list-tile-sub-title v-for="item in accountsStatus" :key="item.id">
+                    {{ item.account }}: {{ item.user }}
+                  </v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
 
-            <v-container fluid>
-              <v-layout row wrap>
-                <v-flex xs12 ml-3>
-                  <ul>
-                    <li v-for="item in accountsStatus" :key="item.id">
-                      {{ item }}
-                    </li>
-                  </ul>
-                </v-flex>
-              </v-layout>
-            </v-container>
+
+
+
+                            <span v-for="item in accountsStatus" :key="item.id">
+                              <v-flex xs12>
+                                <v-card>
+                                <v-card-text>
+                                  {{ item.account }}
+                                  </v-card-text>
+                                  </v-card>
+                              </v-flex>
+                              <v-flex xs12>
+                                <v-card>
+                                <v-card-text>
+                                 {{item.user}}
+
+                                 </v-card-text>
+                               </v-card>
+                                </v-flex>
+                                <v-divider></v-divider>
+                              </span>
+
+
             </v-list>
             <v-divider></v-divider>
             <v-list two-line subheader>
               <v-subheader>Actions</v-subheader>
               <v-list-tile avatar>
                 <v-list-tile-content>
-                  <v-btn color="success" @click="refreshAccountsData">
+                  <v-btn color="warning" @click="deleteUserAccountsData">
                     <v-icon left>refresh</v-icon>
-                    This Button Doesn't Do Anything Yet
+                    Delete User Accounts Data
+                  </v-btn>
+                  </v-list-tile-content>
+                </v-list-tile>
+                <v-list-tile avatar>
+                  <v-list-tile-content>
+                  <v-btn color="success" @click="seedUserAccountsData">
+                    <v-icon left>refresh</v-icon>
+                    Seed User Accounts Data
                   </v-btn>
                 </v-list-tile-content>
                 <v-list-tile-action>
@@ -117,6 +140,7 @@
 </template>
 
 <script>
+import userAccounts from '../helpers/userAccounts'
 export default {
   data () {
     return {
@@ -131,8 +155,11 @@ export default {
         .then(
           setTimeout(() => { this.blockchainLoading = false }, 400))
     },
-    refreshAccountsData () {
-      //
+    deleteUserAccountsData () {
+      userAccounts.deleteAllUserDetails()
+    },
+    seedUserAccountsData () {
+      userAccounts.createUsersDetailsFromConfig()
     }
   },
   computed: {
@@ -170,7 +197,18 @@ export default {
       return 'CONNECTED'
     },
     accountsStatus () {
-      return this.$store.state.ganacheAccounts || 'No accounts have been set'
+      let usersByAccount = []
+      let ganacheAccounts = []
+      this.$store.getters.allUsers(false).forEach(res => {
+        usersByAccount[res.ethAccount] = res.displayName
+      })
+      this.$store.state.ganacheAccounts.forEach(res => {
+        ganacheAccounts.push({
+            account: res,
+            user: usersByAccount[res] ? usersByAccount[res] : ''
+        })
+      })
+      return ganacheAccounts
     }
   }
 }

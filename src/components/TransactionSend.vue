@@ -5,18 +5,12 @@
         <v-icon left>add</v-icon>New Transaction
       </v-btn>
       <v-card>
-        <v-toolbar dark color="success">
+        <v-toolbar dark color="success" @click.native="clickClose">
           <v-btn icon @click.native="clickClose" dark>
             <v-icon>close</v-icon>
           </v-btn>
-          <v-toolbar-title>Send Transaction</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-toolbar-items>
-            <v-btn dark flat @click.native="submit">
-              <v-icon large left>send</v-icon>
-              Send
-            </v-btn>
-          </v-toolbar-items>
+          <v-toolbar-title>New Transaction</v-toolbar-title>
+
         </v-toolbar>
         <v-list two-line subheader>
           <v-subheader>From Account Details</v-subheader>
@@ -46,6 +40,7 @@
           </v-list-tile>
         </v-list>
         <v-divider></v-divider>
+
           <v-form v-model="valid" ref="form" lazy-validation>
             <v-list two-line subheader>
               <v-subheader>To Account Details</v-subheader>
@@ -56,6 +51,7 @@
 
                 </v-list-tile-content>
               </v-list-tile>
+
               <v-list-tile >
                 <v-list-tile-content>
                   <template>
@@ -74,7 +70,18 @@
                   </template>
                 </v-list-tile-content>
               </v-list-tile>
+
+              <v-list-tile >
+                <v-list-tile-content>
+                  <v-btn color="success" dark  @click.native="submit">
+                    Send Transaction
+                    <v-icon right>send</v-icon>
+                  </v-btn>
+                </v-list-tile-content>
+              </v-list-tile >
+
             </v-list>
+
         </v-form>
       </v-card>
     </v-dialog>
