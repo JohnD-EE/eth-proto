@@ -41,7 +41,7 @@
           <v-list-tile avatar>
             <v-list-tile-content>
               <v-list-tile-title>Current Balance</v-list-tile-title>
-              <v-list-tile-sub-title>{{balanceToEther}}</v-list-tile-sub-title>
+              <v-list-tile-sub-title>{{balanceToEther}} {{currency.symbol}}</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -92,11 +92,10 @@ export default {
       notifications: false,
       fullScreen: true, // todo detect screen size here and make true for sm screens
       valid: true,
-      balance: 0,
       txAmountRules: [
         v => !!v || 'Amount is required',
         v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
-        v => v <= this.balance || 'Insufficent funds'
+        v => v <= this.balanceToEther || 'Insufficent funds'
       ],
       txAmount: null,
       txComposer: null,
@@ -114,8 +113,10 @@ export default {
       return this.$store.state.userDetails
     },
     balanceToEther () {
-      this.balance = this.$store.getters.balanceToEther
       return this.$store.getters.balanceToEther
+    },
+    currency () {
+      return this.$store.state.currency
     }
   },
   methods: {

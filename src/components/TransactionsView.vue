@@ -41,7 +41,7 @@ export default {
       return this.$store.state.userDetails
     },
     balanceToEther () {
-      this.balance = this.$store.getters.balanceToEther
+      // this.balance = this.$store.getters.balanceToEther
       return this.$store.getters.balanceToEther
     }
   },

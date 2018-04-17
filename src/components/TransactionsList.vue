@@ -1,7 +1,8 @@
 <template>
   <v-card>
     <v-card-title>
-      {{user.displayName}}<br/>{{userDetails.ethAccount}}
+      {{user.displayName}} </br>
+      {{userDetails.ethAccount}}
 
       <v-spacer></v-spacer>
       <v-text-field
@@ -19,12 +20,12 @@
     >
       <template slot="items" slot-scope="props">
         <td>{{ props.item.name }}<br/>{{ props.item.address.substring(0,11) + '...' || '' }}</td>
-        <td class="text-xs-left" v-bind:class="{ 'red--text': props.item.amount < 0 }">{{ props.item.amount > 0 ? ' +' : '' }}{{ props.item.amount }}</td>
-        <td class="text-xs-left" v-bind:class="{ 'red--text': props.item.fees < 0 }">{{ props.item.fees }}</td>
+        <td class="text-xs-left" v-bind:class="{ 'red--text': props.item.amount < 0 }">{{ props.item.amount }} {{ currency.symbol }}</td>
+        <td class="text-xs-left">{{ props.item.fees }} {{ currency.symbol }}</td>
         <td class="text-xs-left">{{ props.item.block }}</td>
         <td class="text-xs-left">{{ props.item.txHash.substring(0,11) + '...' }}</td>
         <td class="text-xs-left">{{ props.item.confirmations }}</td>
-        <td class="text-xs-left">{{ props.item.balance }}</td>
+        <td class="text-xs-left">{{ props.item.balance }} {{ currency.symbol }}</td>
       </template>
       <v-alert slot="no-results" :value="true" color="error" icon="warning">
         Your search for "{{ search }}" found no results.
@@ -40,7 +41,12 @@ export default {
     return {
       search: '',
       headers: [
-        { text: 'Name', value: 'name', sortable: false, align: 'left' },
+        {
+          text: 'Name',
+          align: 'left',
+          sortable: false,
+          value: 'name'
+        },
         { text: 'Amount', value: 'amount', sortable: false },
         { text: 'Fees', value: 'fees', sortable: false },
         { text: 'Block', value: 'block', sortable: false },
@@ -59,6 +65,9 @@ export default {
     },
     items () {
       return this.$store.getters.userTxs
+    },
+    currency () {
+      return this.$store.state.currency
     }
   }
 }

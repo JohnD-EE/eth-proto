@@ -1,27 +1,51 @@
 <template>
   <v-container fluid>
-    <v-layout row wrap>
-      <v-flex xs12 class="text-xs-center" mt-5>
-        <h1>Hello {{ user.displayName || ''}}</h1>
-      </v-flex>
-      <v-flex xs12 class="text-xs-center" mt-3>
-        <p><v-icon left>email</v-icon>
-          {{ user.email || '' }}
-        </p>
-        <p>Ethereum Account: {{ userDetails.ethAccount || '' }}
-        </p>
-        <p>Current Balance:
-          <span v-show="fetchingBalance">
-            <v-progress-circular indeterminate :size="16" color="green"></v-progress-circular>
-          </span>
-          <span v-show="!fetchingBalance">
-            {{ balanceToEther }}
-          </span>
-        </p>
-      </v-flex>
-    </v-layout>
-    <app-transaction-send></app-transaction-send>
-    <app-transactions-view></app-transactions-view>
+    <template>
+      <v-container fluid>
+        <v-layout ro wrap>
+          <v-flex xs12 sm8 md6 offset-sm2 offset-md3>
+            <v-card>
+              <v-container fluid>
+
+              <v-flex xs12>
+                  <v-card color="blue-grey darken-2" class="white--text">
+                    <v-card-title primary-title>
+                      <div class="headline">{{ user.displayName || ''}}</div>
+                    </v-card-title>
+
+                    <v-card-text>
+                      <span><v-icon left dark>email</v-icon>
+                        {{ user.email || '' }}
+                      </span>
+                    </br>
+                      <span>Account: {{ userDetails.ethAccount || '' }}</span>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              <v-card-text>
+
+                <span>
+                  <h2>Current Balance:
+                    <span v-show="fetchingBalance">
+                      <v-progress-circular indeterminate :size="16" color="green"></v-progress-circular>
+                    </span>
+                    <span v-show="!fetchingBalance">
+                      <strong>{{ balanceToEther }} {{ currency.symbol }}</strong>
+                    </span>
+                  </h2>
+                </span>
+
+                </v-card-text>
+              <v-card-text>
+                <app-transaction-send></app-transaction-send>
+                <app-transactions-view></app-transactions-view>
+              </v-card-text>
+            </v-container>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+    </template>
   </v-container>
 </template>
 
@@ -34,7 +58,8 @@ export default {
     return {
       balance: null,
       fetchingEthAccount: true,
-      fetchingBalance: true
+      fetchingBalance: true,
+      gradient: 'to top right, rgba(63,81,181, .7), rgba(25,32,72, .7)'
     }
   },
   components: {
@@ -50,6 +75,9 @@ export default {
     },
     userDetails () {
       return this.$store.state.userDetails
+    },
+    currency () {
+      return this.$store.state.currency
     }
   },
   watch: {

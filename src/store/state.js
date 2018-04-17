@@ -1,5 +1,9 @@
 export default {
   appTitle: 'EE Blockchain Prototype',
+  currency: {
+    name: 'Ethereum',
+    symbol: 'ETH'
+  },
   error: null,
   loading: false,
   user: {
