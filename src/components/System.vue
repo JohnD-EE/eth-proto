@@ -6,7 +6,7 @@
     </v-flex>
   </v-layout>
 
-  <v-flex mt-3>
+  <v-flex mt-3 xs12 sm10 offset-sm1 md8 offset-md2>
     <v-expansion-panel focusable>
       <v-expansion-panel-content>
         <div slot="header">Blockchain</div>
@@ -41,7 +41,7 @@
               </v-list-tile>
             </v-list>
             <v-divider></v-divider>
-            <v-list two-line subheader>
+            <v-list one-line subheader>
               <v-subheader>Actions</v-subheader>
               <v-list-tile avatar>
                 <v-list-tile-content>
@@ -67,49 +67,29 @@
       </v-expansion-panel-content>
       <v-expansion-panel-content>
         <div slot="header">Accounts</div>
-
         <v-card>
           <v-card-text class="grey lighten-3">
 
             <v-list two-line subheader>
-              <v-subheader>Accounts Status</v-subheader>
-              <v-list-tile avatar>
+              <v-subheader>Accounts Created and Assigned</v-subheader>
+              <v-list-tile v-for="item in accountsStatus" :key="item.id">
                 <v-list-tile-content>
-                  <v-list-tile-title>Ganache Accounts:</v-list-tile-title>
-                  <v-list-tile-sub-title v-for="item in accountsStatus" :key="item.id">
-                    {{ item.account }}: {{ item.user }}
+                  <v-list-tile-title>{{ item.account }}</v-list-tile-title>
+                  <v-list-tile-sub-title v-if="item.user" class="deep-purple--text">
+                     {{ item.user }}
+                  </v-list-tile-sub-title>
+                  <v-list-tile-sub-title v-else>
+                     unassigned
                   </v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
-
-
-
-
-                            <span v-for="item in accountsStatus" :key="item.id">
-                              <v-flex xs12>
-                                <v-card>
-                                <v-card-text>
-                                  {{ item.account }}
-                                  </v-card-text>
-                                  </v-card>
-                              </v-flex>
-                              <v-flex xs12>
-                                <v-card>
-                                <v-card-text>
-                                 {{item.user}}
-
-                                 </v-card-text>
-                               </v-card>
-                                </v-flex>
-                                <v-divider></v-divider>
-                              </span>
-
-
             </v-list>
+
             <v-divider></v-divider>
-            <v-list two-line subheader>
+
+            <v-list one-line subheader>
               <v-subheader>Actions</v-subheader>
-              <v-list-tile avatar>
+              <v-list-tile>
                 <v-list-tile-content>
                   <v-btn color="warning" @click="deleteUserAccountsData">
                     <v-icon left>refresh</v-icon>
@@ -117,7 +97,7 @@
                   </v-btn>
                   </v-list-tile-content>
                 </v-list-tile>
-                <v-list-tile avatar>
+                <v-list-tile>
                   <v-list-tile-content>
                   <v-btn color="success" @click="seedUserAccountsData">
                     <v-icon left>refresh</v-icon>
@@ -129,10 +109,8 @@
                 </v-list-tile-action>
               </v-list-tile>
             </v-list>
-
           </v-card-text>
         </v-card>
-
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-flex>
@@ -153,7 +131,7 @@ export default {
       this.blockchainLoading = true
       this.$store.dispatch('registerWeb3', window.web3)
         .then(
-          setTimeout(() => { this.blockchainLoading = false }, 400))
+          setTimeout(() => { this.blockchainLoading = false }, 750))
     },
     deleteUserAccountsData () {
       userAccounts.deleteAllUserDetails()

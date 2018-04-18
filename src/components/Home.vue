@@ -8,7 +8,7 @@
               <v-container fluid>
 
               <v-flex xs12>
-                  <v-card color="blue-grey darken-2" class="white--text">
+                  <v-card color="primary" class="white--text">
                     <v-card-title primary-title>
                       <div class="headline">{{ user.displayName || ''}}</div>
                     </v-card-title>
@@ -25,7 +25,7 @@
               <v-card-text>
 
                 <span>
-                  <h2>Current Balance:
+                  <h2  class="text-xs-center">Current Balance:
                     <span v-show="fetchingBalance">
                       <v-progress-circular indeterminate :size="16" color="green"></v-progress-circular>
                     </span>

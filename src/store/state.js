@@ -1,5 +1,5 @@
 export default {
-  appTitle: 'EE Blockchain Prototype',
+  appTitle: 'Blockchain Prototype',
   currency: {
     name: 'Ethereum',
     symbol: 'ETH'

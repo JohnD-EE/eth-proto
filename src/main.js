@@ -13,7 +13,13 @@ import Web3 from 'web3'
 
 import 'firebase/firestore'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  theme: {
+    primary: '#461d57',
+    secondary: '#72328b',
+    toolbar__content: '#461d57'
+  }
+})
 
 // create a firebase account  (including Auth )at https://firebase.google.com/
 // and set config details below

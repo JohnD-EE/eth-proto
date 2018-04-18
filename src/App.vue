@@ -18,14 +18,20 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar app>
+    <v-toolbar app dark>
       <span class="hidden-sm-and-up">
         <v-toolbar-side-icon @click="sidebar = !sidebar">
         </v-toolbar-side-icon>
+
       </span>
       <v-toolbar-title>
         <router-link to="/" tag="span" style="cursor: pointer">
-          {{ appTitle }}
+          <v-toolbar-items>
+          <img src="./assets/eeLogo.png" height="36" class="pr-2">
+          <span>
+           {{ appTitle }}
+          </span>
+           </v-toolbar-items>
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -45,6 +51,10 @@
     <v-content>
       <router-view></router-view>
     </v-content>
+    <v-footer class="pa-3">
+    <v-spacer></v-spacer>
+    <div><span class="primary--text"><h3>#PurpleInnovation</h3></span></div>
+  </v-footer>
   </v-app>
 </template>
 
