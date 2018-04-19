@@ -84,16 +84,22 @@ module.exports = merge(prodEnv, {
       },
       {
         id: '7',
-        name: '"Charlie Chaplin"',
+        name: '"Victoria Beckham"',
         type: '"user"',
-        email: '"charlie@ee.proto"'
+        email: '"victoria@ee.proto"'
       },
       {
         id: '8',
         name: '"Kim Kardashian"',
         type: '"user"',
         email: '"kim@ee.proto"'
-      }
+      },
+      {
+        id: '9',
+        name: '"Charlie Chaplin"',
+        type: '"user"',
+        email: '"charlie@ee.proto"'
+      },
     ]
   }
 })

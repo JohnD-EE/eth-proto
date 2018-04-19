@@ -157,6 +157,9 @@ export default {
   // Update Eth Account e.g. after a transaction
   updateAccount ({commit}) {
     let ethAccount = this.state.userDetails.ethAccount
+    if (!window.web3.utils.isAddress(ethAccount)) {
+      return false
+    }
     window.web3.eth.getBalance(ethAccount).then(
       res => commit('setUserDetails', {ethBalance: res})
     )
