@@ -29,6 +29,9 @@
                       {{ item.title }}: {{ item.value }}
                     </v-list-tile-sub-title>
                   </v-list-tile-content>
+                  <v-list-tile-action>
+                    <v-progress-circular indeterminate color="green" v-show="blockchainLoading"></v-progress-circular>
+                  </v-list-tile-action>
                 </v-list-tile>
                 <v-list-tile avatar>
                   <v-list-tile-content>
@@ -37,21 +40,6 @@
                       {{ item.title }}: {{ item.value }}
                     </v-list-tile-sub-title>
                   </v-list-tile-content>
-                </v-list-tile>
-              </v-list>
-              <v-divider></v-divider>
-              <v-list one-line subheader>
-                <v-subheader>Actions</v-subheader>
-                <v-list-tile avatar>
-                  <v-list-tile-content>
-                    <v-btn color="success" @click="refreshBlockchainData">
-                      <v-icon left>refresh</v-icon>
-                      Refresh Data
-                    </v-btn>
-                  </v-list-tile-content>
-                  <v-list-tile-action>
-                    <v-progress-circular indeterminate color="green" v-show="blockchainLoading"></v-progress-circular>
-                  </v-list-tile-action>
                 </v-list-tile>
               </v-list>
             </v-card-text>
@@ -126,7 +114,7 @@ export default {
       this.blockchainLoading = true
       this.$store.dispatch('registerWeb3', window.web3)
         .then(
-          setTimeout(() => { this.blockchainLoading = false }, 750))
+          setTimeout(() => { this.blockchainLoading = false }, 850))
     },
     deleteUserAccountsData () {
       userAccounts.deleteAllUserDetails()
@@ -186,6 +174,13 @@ export default {
     accountSeedingLoading () {
       return this.$store.state.accountSeedingLoading
     }
+  },
+  mounted: function () {
+    //check for balance updates every few seconds as blocks are mined
+    this.refreshBlockchainData()
+    setInterval(function () {
+      this.refreshBlockchainData()
+    }.bind(this), 3000)
   }
 }
 </script>
