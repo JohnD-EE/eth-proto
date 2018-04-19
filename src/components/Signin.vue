@@ -1,14 +1,12 @@
-<template>
-  <v-container fluid>
     <template>
       <v-container fluid>
-        <v-layout ro wrap>
+        <v-layout row wrap>
           <v-flex xs12 sm8 md6 offset-sm2 offset-md3>
             <v-card>
               <v-container fluid>
               <v-flex xs12>
                   <v-card color="primary" class="white--text">
-                    <v-card-title primary-title>
+                    <v-card-title>
                       <div class="headline">User sign in...</div>
                     </v-card-title>
                   </v-card>
@@ -52,9 +50,8 @@
         </v-flex>
       </v-layout>
     </v-container>
-    </template>
-  </v-container>
-</template>
+  </template>
+
 
 <script>
 export default {

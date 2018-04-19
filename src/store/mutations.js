@@ -16,6 +16,9 @@ export default {
   setLoading (state, payload) {
     state.loading = payload
   },
+  setAccountSeedingLoading (state, payload) {
+    state.accountSeedingLoading = payload
+  },
   setWeb3 (state, payload) {
     for (var key in payload) {
       state.web3[key] = payload[key]
@@ -25,18 +28,21 @@ export default {
     state.ganacheAccounts = payload
   },
   setAllUsers (state) {
-    state.allUsers = []
     db.collection('users').get().then(res => {
       let allUsers = []
       res.docs.forEach(doc => {
         let ethAccount = doc.data().ethAccount
         let displayName = doc.data().displayName
-        allUsers.push({ethAccount: ethAccount, displayName: displayName})
+        let type = doc.data().type
+        allUsers.push({ethAccount: ethAccount, displayName: displayName, type: type})
         if (allUsers.length === res.docs.length) {
           state.allUsers = allUsers
         }
       })
     })
+  },
+  resetAllUsers (state) {
+    state.allUsers = []
   },
   setTxComposer (state, payload) {
     state.txComposer = payload

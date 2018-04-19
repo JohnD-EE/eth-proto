@@ -8,14 +8,12 @@ export default {
   getUnusedEthAddress () {
     // get array of ganache accounts
     let ganacheAccounts = store.state.ganacheAccounts
-
     // get array of used ganache accounts
-    let allUsers = store.state.allUsers
+    let allUsers = store.getters.allUsers(false)
     let allUsersEthAccounts = []
     allUsers.forEach(res => {
       allUsersEthAccounts.push(res.ethAccount)
     })
-
     // return a random account from the unused list
     let unusedGanache = ganacheAccounts.filter(x => !allUsersEthAccounts.includes(x))
     return unusedGanache[Math.floor(Math.random() * unusedGanache.length)] || 'No eth address available'
@@ -25,18 +23,19 @@ export default {
     db.collection('users').get().then(res => {
       res.docs.forEach(doc => {
         db.collection('users').doc(doc.id).delete().then(del => {
+          store.dispatch('updateAllUsers')
           console.log('Document ' + doc.id + ' successfully deleted')
         }).catch(err => {
           console.error('Error removing document: ' + doc.id, err)
         })
       })
     })
-    store.dispatch('registerAllUsers')
   },
 
   // note: unsecure, for prototyping only
   createUsersDetailsFromConfig () {
     // Iterate through seed accounts list and add them to users
+    store.dispatch('accountSeeding', true)
     let seedAccounts = process.env.initUsers.seedAccounts
     let size = Object.keys(seedAccounts).length
     let ganacheAccounts = store.state.ganacheAccounts
@@ -74,12 +73,15 @@ export default {
               .then(res => {
                 // Done
                 console.log('User details created for: ', email)
+                store.dispatch('registerAllUsers')
               })
             })
           })
         }
         if (++count <= (size - 1)) {
           loopSeedAccounts(count)
+        } else {
+          store.dispatch('accountSeeding', false)
         }
       }, 5000)
     }

@@ -1,52 +1,54 @@
 <template>
-  <v-container fluid>
-    <template>
-      <v-container fluid>
-        <v-layout ro wrap>
-          <v-flex xs12 sm8 md6 offset-sm2 offset-md3>
-            <v-card>
-              <v-container fluid>
-
-              <v-flex xs12>
-                  <v-card color="primary" class="white--text">
-                    <v-card-title primary-title>
-                      <div class="headline">{{ user.displayName || ''}}</div>
-                    </v-card-title>
-
-                    <v-card-text>
-                      <span><v-icon left dark>email</v-icon>
-                        {{ user.email || '' }}
-                      </span>
-                    </br>
-                      <span>Account: {{ userDetails.ethAccount || '' }}</span>
-                    </v-card-text>
-                  </v-card>
-                </v-flex>
-              <v-card-text>
-
-                <span>
-                  <h2  class="text-xs-center">Current Balance:
+<v-container fluid>
+  <v-layout row wrap>
+    <v-flex xs12 sm8 md6 offset-sm2 offset-md3>
+      <v-card>
+        <v-card-media class="primary white--text" height="120px">
+          <v-container fill-height fluid>
+            <v-layout fill-height>
+              <v-flex xs12 sm6 align-end flexbox>
+                <span class="headline">{{ user.displayName || ''}}</span>
+              </v-flex>
+              <v-flex xs12 sm6 align-end flexbox>
+                <p class="text-xs-right">
+                  <v-icon left dark>email</v-icon>
+                  {{ user.email || '' }}
+                </p>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-media>
+        <v-container fluid>
+          <v-card-text>
+            <span>
+                <p class="text-xs-center"><strong>Account:</strong> {{ userDetails.ethAccount || '' }}</p>
+                  <h3 class="text-xs-center">Balance:
                     <span v-show="fetchingBalance">
                       <v-progress-circular indeterminate :size="16" color="green"></v-progress-circular>
                     </span>
                     <span v-show="!fetchingBalance">
                       <strong>{{ balanceToEther }} {{ currency.symbol }}</strong>
                     </span>
-                  </h2>
-                </span>
-
-                </v-card-text>
-              <v-card-text>
-                <app-transaction-send></app-transaction-send>
-                <app-transactions-view></app-transactions-view>
-              </v-card-text>
+                  </h3>
+            </span>
+          </v-card-text>
+          <v-card-text>
+            <v-container>
+              <v-layout row wrap>
+                <v-flex sm12 md6 align-end flexbox>
+                  <app-transaction-send></app-transaction-send>
+                </v-flex>
+                <v-flex sm12 md6 align-end flexbox>
+                  <app-transactions-view></app-transactions-view>
+                </v-flex>
+              </v-layout>
             </v-container>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
-    </template>
-  </v-container>
+          </v-card-text>
+        </v-container>
+      </v-card>
+    </v-flex>
+  </v-layout>
+</v-container>
 </template>
 
 <script>
@@ -58,8 +60,7 @@ export default {
     return {
       balance: null,
       fetchingEthAccount: true,
-      fetchingBalance: true,
-      gradient: 'to top right, rgba(63,81,181, .7), rgba(25,32,72, .7)'
+      fetchingBalance: true
     }
   },
   components: {

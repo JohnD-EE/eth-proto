@@ -14,6 +14,7 @@ export default {
         displayName: payload.name
       }).then(res => {
         commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
+        commit('setAllUsers')
         commit('setUserDetails', {
           displayName: firebaseUser.displayName
         })
@@ -21,6 +22,7 @@ export default {
         let docData = {
           ethAccount: ethAddress,
           displayName: firebaseUser.displayName,
+          type: 'user',
           createdAt: Date.now()
         }
         db.collection('users').doc(firebaseUser.uid).set(docData)
@@ -36,7 +38,6 @@ export default {
           .catch(error => console.log('Error retrieving document: ', error))
         })
       })
-      commit('setAllUsers')
       commit('setLoading', false)
       router.push('/home')
     })
@@ -143,6 +144,11 @@ export default {
     commit('setAllUsers')
   },
 
+  updateAllUsers ({commit}) {
+    commit('resetAllUsers')
+    commit('setAllUsers')
+  },
+
   // Compose Transactions
   composeTransaction ({commit}, payload) {
     commit('setTxComposer', payload)
@@ -154,6 +160,10 @@ export default {
     window.web3.eth.getBalance(ethAccount).then(
       res => commit('setUserDetails', {ethBalance: res})
     )
+  },
+
+  accountSeeding ({commit}, payload) {
+    commit('setAccountSeedingLoading', payload)
   },
 
   userTxs ({commit}) {

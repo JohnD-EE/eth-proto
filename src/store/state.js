@@ -6,6 +6,7 @@ export default {
   },
   error: null,
   loading: false,
+  accountSeedingLoading: false,
   user: {
     loggedIn: false,
     displayName: null,

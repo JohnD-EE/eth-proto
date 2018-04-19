@@ -16,8 +16,7 @@ import 'firebase/firestore'
 Vue.use(Vuetify, {
   theme: {
     primary: '#461d57',
-    secondary: '#72328b',
-    toolbar__content: '#461d57'
+    secondary: '#72328b'
   }
 })
 

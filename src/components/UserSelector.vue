@@ -54,7 +54,9 @@
           { header: 'Select Recipient' }
         ]
         this.$store.getters.allUsers(true).forEach(res => {
-          selections.push({name: res.displayName, account: res.ethAccount})
+          if (res.type === 'user') {
+            selections.push({name: res.displayName, account: res.ethAccount})
+          }
         })
         return selections
       }
