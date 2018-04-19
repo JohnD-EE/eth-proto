@@ -5,7 +5,10 @@ export default {
     state.user.loggedIn !== false
   },
   balanceToEther: state => {
-    return parseFloat(state.userDetails.ethBalance === null ? '' : window.web3.utils.fromWei(state.userDetails.ethBalance.toString(), 'ether'))
+    if (state.userDetails.ethBalance === null) {
+      return null
+    }
+    return parseFloat(window.web3.utils.fromWei(state.userDetails.ethBalance.toString(), 'ether'))
   },
   allUsers: (state) => (excludeLoggedinUser = false) => {
     let allUsers = state.allUsers

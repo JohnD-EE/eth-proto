@@ -86,7 +86,7 @@ export default {
       if (!this.fetchingBalance) {
         // balance has updated so show spinner
         this.fetchingBalance = true
-        setTimeout(this.balanceUpdated, 1000)
+        setTimeout(this.balanceUpdated, 800)
         return
       }
       if (value !== null) {
@@ -105,7 +105,7 @@ export default {
     }
   },
   mounted: function () {
-    //check for balance updates every few seconds as blocks are mined
+    // check for balance updates every few seconds as blocks are mined
     this.checkBalance()
     setInterval(function () {
       this.checkBalance()

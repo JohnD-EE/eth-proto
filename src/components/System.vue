@@ -180,7 +180,7 @@ export default {
     this.refreshBlockchainData()
     setInterval(function () {
       this.refreshBlockchainData()
-    }.bind(this), 3000)
+    }.bind(this), 5000)
   }
 }
 </script>

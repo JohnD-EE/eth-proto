@@ -8,6 +8,7 @@ export default {
   // Sign up and user account creation
   userSignUp ({commit}, payload) {
     commit('setLoading', true)
+    commit('setUserTxs', [])
     firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
     .then(firebaseUser => {
       firebaseUser.updateProfile({
@@ -50,6 +51,7 @@ export default {
   // Sign in
   userSignIn ({commit}, payload) {
     commit('setLoading', true)
+    commit('setUserTxs', [])
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(firebaseUser => {
         commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
@@ -78,6 +80,7 @@ export default {
 
   // sign in upon browser refresh
   autoSignIn ({commit}, firebaseUser) {
+    commit('setUserTxs', [])
     commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
     db.collection('users').doc(firebaseUser.uid).get()
     .then(doc => {
@@ -95,7 +98,8 @@ export default {
   userSignOut ({commit}) {
     firebase.auth().signOut()
     commit('setUser', {loggedIn: false, displayName: null, email: null})
-    commit('setUserDetails', {displayName: null, ethAddress: null, ethBalance: null})
+    commit('setUserDetails', {displayName: null, ethAccount: null, ethBalance: null})
+    commit('setUserTxs', [])
     router.push('/')
   },
 
@@ -187,13 +191,13 @@ export default {
               .then(balance => {
                 blockTx.balance = balance
                 txs.push(blockTx)
+                if (txs.length > this.state.userTxs.length) {
+                  commit('setUserTxs', txs)
+                }
               })
             }
           }
         })
-        if (bl === (n)) {
-          commit('setUserTxs', txs)
-        }
       }
     })
   }
