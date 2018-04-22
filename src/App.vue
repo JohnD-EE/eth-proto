@@ -15,6 +15,26 @@
           <v-list-tile-action><v-icon>exit_to_app</v-icon></v-list-tile-action>
           <v-list-tile-content>Sign Out</v-list-tile-content>
         </v-list-tile>
+        <v-list-group v-if="isAuthenticated"
+          sub-group
+          no-action
+        >
+          <v-list-tile slot="activator">
+            <v-list-tile-title>Demo Scenarios</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile
+            v-for="demo in demos"
+            :key="demo.title"
+            :to="demo.path"
+            @click=""
+          >
+          <v-list-tile-action>
+            <v-icon v-text=" demo.icon"></v-icon>
+          </v-list-tile-action>
+            <v-list-tile-title v-text=" demo.title"></v-list-tile-title>
+
+          </v-list-tile>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -36,6 +56,16 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
+        <v-menu v-if="isAuthenticated">
+          <v-btn flat  dark slot="activator">Demo Scenarios
+            <v-icon dark>arrow_drop_down</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile v-for="demo in demos" :key="demo.title" :to="demo.path" @click="">
+              <v-list-tile-title><v-icon left>{{ demo.icon }}</v-icon> {{ demo.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
   <v-btn
     flat
     v-for="item in menuItems"
@@ -51,10 +81,11 @@
     <v-content>
       <router-view></router-view>
     </v-content>
-    <v-footer class="mt-4 pa-3" fixed>
-    <v-spacer></v-spacer>
-    <div><span class="primary--text"><h3>#PurpleInnovation</h3></span></div>
-  </v-footer>
+      <v-footer class="mt-4 pa-3" fixed>
+      EE Blockchain Prototypes
+      <v-spacer></v-spacer>
+      <div><span class="primary--text"><h3>#PurpleInnovation</h3></span></div>
+    </v-footer>
   </v-app>
 </template>
 
@@ -62,7 +93,15 @@
   export default {
     data () {
       return {
-        sidebar: false
+        sidebar: false,
+        demos: [
+          { title: 'Blind Auction', path: '/auction', icon: 'gavel' },
+          { title: 'Escrow', path: '/morescenarios', icon: 'account_balance' },
+          { title: 'Coupon', path: '/morescenarios', icon: 'redeem' },
+          { title: 'Voucher', path: '/morescenarios', icon: 'redeem' },
+          { title: 'Loyalty', path: '/morescenarios', icon: 'loyalty' },
+          { title: 'Branded Currency', path: '/morescenarios', icon: 'payment' }
+        ]
       }
     },
     computed: {
@@ -75,7 +114,7 @@
       menuItems () {
         if (this.isAuthenticated) {
           return [
-              { title: 'Home', path: '/home', icon: 'home' }
+              { title: 'Wallet', path: '/wallet', icon: 'wallet' }
           ]
         } else {
           return [
