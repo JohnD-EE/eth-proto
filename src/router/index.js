@@ -6,9 +6,12 @@ const routerOptions = [
   { path: '/', component: 'Landing' },
   { path: '/signin', component: 'Signin' },
   { path: '/signup', component: 'Signup' },
-  { path: '/home', component: 'Home', meta: { requiresAuth: true } },
+  { path: '/wallet', component: 'Wallet', meta: { requiresAuth: true } },
+  { path: '/home', redirect: '/wallet' },
   { path: '/system', component: 'System' },
-  { path: '*', component: 'NotFound' }
+  { path: '*', component: 'NotFound' },
+  { path: '/auction', component: 'demoScenarios/Auction', meta: { requiresAuth: true } },
+  { path: '/morescenarios', component: 'demoScenarios/MoreScenarios', meta: { requiresAuth: true } }
 ]
 
 const routes = routerOptions.map(route => {
