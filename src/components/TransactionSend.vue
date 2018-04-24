@@ -73,12 +73,12 @@
 
               <v-list-tile >
                 <v-list-tile-content>
-                  <v-btn color="success" dark  @click.native="submit">
+                  <v-btn color="success" @click.native="submit">
                     Send Transaction
                     <v-icon right>send</v-icon>
                   </v-btn>
                 </v-list-tile-content>
-              </v-list-tile >
+              </v-list-tile>
 
             </v-list>
 

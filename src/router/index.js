@@ -10,7 +10,7 @@ const routerOptions = [
   { path: '/home', redirect: '/wallet' },
   { path: '/system', component: 'System' },
   { path: '*', component: 'NotFound' },
-  { path: '/auction', component: 'demoScenarios/Auction', meta: { requiresAuth: true } },
+  { path: '/auction', component: 'demoAuction/Auction', meta: { requiresAuth: true } },
   { path: '/morescenarios', component: 'demoScenarios/MoreScenarios', meta: { requiresAuth: true } }
 ]
 

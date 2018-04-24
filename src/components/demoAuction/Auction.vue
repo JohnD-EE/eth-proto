@@ -43,9 +43,7 @@
                   <app-create-auction></app-create-auction>
                 </v-flex>
                 <v-flex sm12 md6 align-end flexbox>
-                  <v-btn color="info" dark slot="activator" @click="clickView">
-                    <v-icon left>visibility</v-icon>View Auctions
-                  </v-btn>
+                  <app-view-auctions></app-view-auctions>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -60,6 +58,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import CreateAuction from './CreateAuction.vue'
+import ViewAuctions from './ViewAuctions.vue'
 
 export default {
   data () {
@@ -68,7 +67,8 @@ export default {
     }
   },
   components: {
-    'app-create-auction': CreateAuction
+    'app-create-auction': CreateAuction,
+    'app-view-auctions': ViewAuctions
   },
   computed: {
     ...mapGetters({
