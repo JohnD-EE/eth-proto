@@ -2,9 +2,10 @@ import firebase from 'firebase'
 import router from '@/router'
 import { db } from '../main'
 import userAccountsHelper from '../helpers/userAccounts'
+import AuctionJSON from '../../build/contracts/Auction.json'
+import AuctionFactoryJSON from '../../build/contracts/AuctionFactory.json'
 
 export default {
-
   // Sign up and user account creation
   userSignUp ({commit}, payload) {
     commit('setLoading', true)
@@ -199,6 +200,29 @@ export default {
           }
         })
       }
+    })
+  },
+
+  // create an array of all the ethereum accounts created by ganache initiaion
+  registerContracts ({commit}) {
+    commit('setContracts', [])
+    let abi = []
+    abi['Auction'] = AuctionJSON.abi
+    abi['AuctionFactory'] = AuctionFactoryJSON.abi
+    let defaultContractAddresses = this.state.defaultContractAddresses
+    defaultContractAddresses.forEach(res => {
+      let contract = new window.web3.eth.Contract(abi[res.instance], res.address)
+      window.web3.eth.getCode(res.address)
+      .then(code => {
+        if (code.length > 3) {
+          let contracts = this.state.contracts
+          contracts[res.instance] = contract
+          console.log('Contract Registration: ' + res.name, contract)
+          commit('setContracts', contracts)
+        } else {
+          console.log('FAILED Contract Registration: ' + res.name)
+        }
+      })
     })
   }
 }
