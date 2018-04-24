@@ -28,5 +28,10 @@ export default {
   ganacheAccounts: [],
   allUsers: [],
   txComposer: [],
-  userTxs: []
+  userTxs: [],
+  defaultContractAddresses: [
+    { instance: 'Auction', name: 'Auction', address: '0xc1352B657DFB3cA9a8780F0dC1faFe462a3d5AeA' },
+    { instance: 'AuctionFactory', name: 'Auction Factory', address: '0x782A2a5109718F1B9cE2aEcBb6900Cd30Eba2832' }
+  ],
+  contracts: []
 }

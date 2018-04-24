@@ -48,7 +48,11 @@
         <v-expansion-panel-content>
           <div slot="header">Firebase</div>
           <v-card>
-            <v-card-text class="grey lighten-3">{{ firebaseStatus }}</v-card-text>
+            <v-card-text class="grey lighten-3">
+              <v-list two-line subheader>
+                <v-subheader>{{ firebaseStatus }}</v-subheader>
+              </v-list>
+            </v-card-text>
           </v-card>
         </v-expansion-panel-content>
         <v-expansion-panel-content>
@@ -61,7 +65,7 @@
                   <v-list-tile-content>
                     <v-list-tile-title>{{ item.account }}</v-list-tile-title>
                     <v-list-tile-sub-title v-if="item.user" class="deep-purple--text">
-                      {{ item.user }}
+                      <v-icon class="green--text">check</v-icon> {{ item.user }}
                     </v-list-tile-sub-title>
                     <v-list-tile-sub-title v-else>
                       unassigned
@@ -90,6 +94,26 @@
                   <v-list-tile-action>
                     <v-progress-circular indeterminate color="green" v-show="accountSeedingLoading"></v-progress-circular>
                   </v-list-tile-action>
+                </v-list-tile>
+              </v-list>
+            </v-card-text>
+          </v-card>
+        </v-expansion-panel-content>
+        <v-expansion-panel-content>
+          <div slot="header">Contracts</div>
+          <v-card>
+            <v-card-text class="grey lighten-3">
+              <v-list two-line subheader>
+                <v-subheader>Contracts Deployed</v-subheader>
+                <v-list-tile v-for="item in contracts" :key="item.id">
+                  <v-list-tile-content>
+                    <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+                    <v-list-tile-sub-title class="deep-purple--text">
+                      <v-icon v-if="item.deployed" class="green--text">check</v-icon>
+                      <v-icon v-else class="red--text">warning</v-icon>
+                      {{ item.address }}
+                    </v-list-tile-sub-title>
+                  </v-list-tile-content>
                 </v-list-tile>
               </v-list>
             </v-card-text>
@@ -173,6 +197,16 @@ export default {
     },
     accountSeedingLoading () {
       return this.$store.state.accountSeedingLoading
+    },
+    contracts () {
+      let contractsDeployed = []
+      let contracts = this.$store.state.contracts
+      let defaultContractAddresses = this.$store.state.defaultContractAddresses
+      defaultContractAddresses.forEach(res => {
+        res.deployed = res.instance in contracts
+        contractsDeployed.push(res)
+      })
+      return contractsDeployed
     }
   },
   mounted: function () {

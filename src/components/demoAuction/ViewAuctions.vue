@@ -86,7 +86,7 @@ export default {
     },
     items () {
       return [
-        { saleItem: "My Item", status: "ACTIVE", startBlock: 3, endBlock: 20, bidIncrement: 10, myBids: 'bid', highestBid: 32, actions: "Actions" }
+        { saleItem: 'My Item', status: 'ACTIVE', startBlock: 3, endBlock: 20, bidIncrement: 10, myBids: 'bid', highestBid: 32, actions: 'Actions' }
       ]
     },
     currency () {

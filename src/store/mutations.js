@@ -49,5 +49,8 @@ export default {
   },
   setUserTxs (state, payload) {
     state.userTxs = payload
+  },
+  setContracts (state, payload) {
+    state.contracts = payload
   }
 }
