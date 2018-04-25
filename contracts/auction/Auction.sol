@@ -1,4 +1,4 @@
-pragma solidity ^0.4.8;
+pragma solidity ^0.4.21;
 
 contract Auction {
     // static
@@ -8,7 +8,7 @@ contract Auction {
     uint public endBlock;
     string public ipfsHash;
 
-    // state
+    // states
     bool public canceled;
     uint public highestBindingBid;
     address public highestBidder;
@@ -19,10 +19,10 @@ contract Auction {
     event LogWithdrawal(address withdrawer, address withdrawalAccount, uint amount);
     event LogCanceled();
 
-    function Auction(address _owner, uint _bidIncrement, uint _startBlock, uint _endBlock, string _ipfsHash) {
-        if (_startBlock >= _endBlock) throw;
-        if (_startBlock < block.number) throw;
-        if (_owner == 0) throw;
+    function Auction (address _owner, uint _bidIncrement, uint _startBlock, uint _endBlock, string _ipfsHash) public {
+        if (_startBlock >= _endBlock) revert();
+        if (_startBlock < block.number) revert();
+        if (_owner == 0) revert();
 
         owner = _owner;
         bidIncrement = _bidIncrement;
@@ -32,6 +32,7 @@ contract Auction {
     }
 
     function getHighestBid()
+        public
         constant
         returns (uint)
     {
@@ -39,6 +40,7 @@ contract Auction {
     }
 
     function placeBid()
+        public
         payable
         onlyAfterStart
         onlyBeforeEnd
@@ -47,7 +49,7 @@ contract Auction {
         returns (bool success)
     {
         // reject payments of 0 ETH
-        if (msg.value == 0) throw;
+        if (msg.value == 0) revert();
 
         // calculate the user's total bid based on the current amount they've sent to the contract
         // plus whatever has been sent with this transaction
@@ -55,7 +57,7 @@ contract Auction {
 
         // if the user isn't even willing to overbid the highest binding bid, there's nothing for us
         // to do except revert the transaction.
-        if (newBid <= highestBindingBid) throw;
+        if (newBid <= highestBindingBid) revert();
 
         // grab the previous highest bid (before updating fundsByBidder, in case msg.sender is the
         // highestBidder and is just increasing their maximum bid).
@@ -85,31 +87,31 @@ contract Auction {
             highestBid = newBid;
         }
 
-        LogBid(msg.sender, newBid, highestBidder, highestBid, highestBindingBid);
+        emit LogBid(msg.sender, newBid, highestBidder, highestBid, highestBindingBid);
         return true;
     }
 
     function min(uint a, uint b)
+        pure
         private
-        constant
         returns (uint)
     {
         if (a < b) return a;
         return b;
     }
 
-    function cancelAuction()
+    function cancelAuction() public
         onlyOwner
         onlyBeforeEnd
         onlyNotCanceled
         returns (bool success)
     {
         canceled = true;
-        LogCanceled();
+        emit LogCanceled();
         return true;
     }
 
-    function withdraw()
+    function withdraw() public
         onlyEndedOrCanceled
         returns (bool success)
     {
@@ -148,45 +150,45 @@ contract Auction {
             }
         }
 
-        if (withdrawalAmount == 0) throw;
+        if (withdrawalAmount == 0) revert();
 
         fundsByBidder[withdrawalAccount] -= withdrawalAmount;
 
         // send the funds
-        if (!msg.sender.send(withdrawalAmount)) throw;
+        if (!msg.sender.send(withdrawalAmount)) revert();
 
-        LogWithdrawal(msg.sender, withdrawalAccount, withdrawalAmount);
+        emit LogWithdrawal(msg.sender, withdrawalAccount, withdrawalAmount);
 
         return true;
     }
 
     modifier onlyOwner {
-        if (msg.sender != owner) throw;
+        if (msg.sender != owner) revert();
         _;
     }
 
     modifier onlyNotOwner {
-        if (msg.sender == owner) throw;
+        if (msg.sender == owner) revert();
         _;
     }
 
     modifier onlyAfterStart {
-        if (block.number < startBlock) throw;
+        if (block.number < startBlock) revert();
         _;
     }
 
     modifier onlyBeforeEnd {
-        if (block.number > endBlock) throw;
+        if (block.number > endBlock) revert();
         _;
     }
 
     modifier onlyNotCanceled {
-        if (canceled) throw;
+        if (canceled) revert();
         _;
     }
 
     modifier onlyEndedOrCanceled {
-        if (block.number < endBlock && !canceled) throw;
+        if (block.number < endBlock && !canceled) revert();
         _;
     }
 }

@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import auctionHelper from '../../helpers/demoAuction/auction'
+
 export default {
   data () {
     return {
@@ -98,7 +100,8 @@ export default {
       this.dialog = false
     },
     viewAuctions () {
-      //
+      console.log('Calling: getAllAuctions')
+      auctionHelper.getAllAuctions()
     }
   }
 }
