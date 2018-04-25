@@ -36,10 +36,16 @@ export default {
         fees = -window.web3.utils.fromWei((tx.gas * Number(tx.gasPrice)).toString(), 'ether')
       }
 
+      let name = 'N/A'
+      let otherParty = (tx.from === ethAccount ? tx.to : tx.from)
+      if (otherParty in usersByAccount) {
+         name = usersByAccount[otherParty].displayName
+      }
+
       userTxs.push({
         value: false,
-        name: usersByAccount[tx.from === ethAccount ? tx.to : tx.from].displayName,
-        address: (tx.from === ethAccount ? tx.to : tx.from),
+        name: name,
+        address: otherParty,
         amount: amount,
         fees: fees,
         block: tx.blockNumber,
