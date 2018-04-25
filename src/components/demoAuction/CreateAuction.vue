@@ -107,7 +107,8 @@ export default {
             saleItem: this.saleItem,
             startBlock: this.startBlock,
             endBlock: this.endBlock,
-            bidIncrement: this.bidIncrement
+            bidIncrement: this.bidIncrement,
+            hostAddress: this.$store.state.userDetails.ethAccount
           }
         )
         // clear screen
