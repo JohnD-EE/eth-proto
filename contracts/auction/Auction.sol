@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.8;
 
 contract Auction {
     // static
@@ -87,7 +87,7 @@ contract Auction {
             highestBid = newBid;
         }
 
-        emit LogBid(msg.sender, newBid, highestBidder, highestBid, highestBindingBid);
+        LogBid(msg.sender, newBid, highestBidder, highestBid, highestBindingBid);
         return true;
     }
 
@@ -107,7 +107,7 @@ contract Auction {
         returns (bool success)
     {
         canceled = true;
-        emit LogCanceled();
+        LogCanceled();
         return true;
     }
 
@@ -157,7 +157,7 @@ contract Auction {
         // send the funds
         if (!msg.sender.send(withdrawalAmount)) revert();
 
-        emit LogWithdrawal(msg.sender, withdrawalAccount, withdrawalAmount);
+        LogWithdrawal(msg.sender, withdrawalAccount, withdrawalAmount);
 
         return true;
     }

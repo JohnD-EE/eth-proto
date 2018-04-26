@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.8;
 
 import { Auction } from './Auction.sol';
 
@@ -14,7 +14,7 @@ contract AuctionFactory {
         Auction newAuction = new Auction(msg.sender, bidIncrement, startBlock, endBlock, ipfsHash);
         auctions.push(newAuction);
 
-        emit AuctionCreated(newAuction, msg.sender, auctions.length, auctions);
+        AuctionCreated(newAuction, msg.sender, auctions.length, auctions);
     }
 
     function allAuctions() public constant returns (address[]) {
