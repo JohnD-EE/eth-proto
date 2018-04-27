@@ -17,7 +17,7 @@
                 label="Seller"
                 hint="The seller hex address"
                 v-model="sellerAddress"
-                :rules="sellerRules"
+                :rules="sellerAddressRules"
                 required>
               </v-text-field>
               </v-flex>
@@ -26,7 +26,7 @@
                 label="Buyer"
                 hint="The buyer hex address"
                 v-model="buyerAddress"
-                :rules="buyerRules"
+                :rules="buyerAddressRules"
                 required>
               </v-text-field>
               </v-flex>
@@ -43,7 +43,7 @@
                 <v-select
                   label="Transaction Fee"
                   required
-                  :items="['1%', '2%', '3%', '4%', '5%', '6%', '7%', '8%', '9%', '10%']"
+                  :items="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
                   hint="Set your fee as the Escrow agent"
                   v-model="feePercent"
                   :rules="feePercentRules"
@@ -86,7 +86,7 @@ export default {
       v => !!v || 'Buyer address is required'
     ],
     feePercent: null,
-      feePercent: [
+    feePercentRules: [
       v => !!v || 'Transaction fee is required'
     ],
     valid: true,
@@ -104,7 +104,8 @@ export default {
             sellerAddress: this.sellerAddress,
             buyerAddress: this.buyerAddress,
             feePercent: this.feePercent,
-            escrowProviderAddress: this.$store.state.userDetails.ethAccount
+            saleItem: this.saleItem,
+            escrowServiceAddress: this.$store.state.userDetails.ethAccount
           }
         )
         // clear screen

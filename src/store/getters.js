@@ -27,7 +27,6 @@ export default {
     let userTxs = []
     let ethAccount = state.userDetails.ethAccount
     state.userTxs.forEach(tx => {
-
       let amount = window.web3.utils.fromWei(tx.value, 'ether')
       if (tx.from === ethAccount) {
         amount = -amount
@@ -57,7 +56,6 @@ export default {
         confirmations: '#conf',
         balance: window.web3.utils.fromWei(tx.balance, 'ether')
       })
-      
     })
     return userTxs.reverse()
   }
