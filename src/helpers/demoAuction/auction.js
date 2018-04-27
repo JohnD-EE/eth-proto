@@ -1,4 +1,5 @@
 import {store} from './../../store'
+import AuctionJSON from '../../../build/contracts/Auction.json'
 
 export default {
   createAuction (payload) {
@@ -27,6 +28,32 @@ export default {
     AuctionFactory.methods.allAuctions().call({from: store.state.userDetails.ethAccount})
     .then(res => {
       console.log('All Auctions: ', res)
+      return res
+    })
+  },
+
+  getAuctionData () {
+    // let allAuctions = this.getAllAuctions()
+    // console.log(allAuctions)
+    let auctionAbi = AuctionJSON.abi
+    //allAuctions.forEach(contractAddress => {
+    const AuctionFactory = store.state.contracts['AuctionFactory']
+    AuctionFactory.methods.allAuctions().call({from: store.state.userDetails.ethAccount})
+    .then(res => {
+      console.log(res)
+      res.forEach(contractAddress => {
+        console.log('processing address:', contractAddress )
+      // create an instance of the Auction based on the reference
+      let contract = new window.web3.eth.Contract(auctionAbi, contractAddress)
+      window.web3.eth.getCode(contractAddress)
+      .then(code => {
+        if (code.length > 3) {
+          console.log('Auction Contract: ', contract)
+        } else {
+          console.log('FAILED to get Auction Contract')
+        }
+      })
+    })
     })
   },
 
