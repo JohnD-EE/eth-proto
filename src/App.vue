@@ -96,7 +96,7 @@
         sidebar: false,
         demos: [
           { title: 'Auction', path: '/auction', icon: 'gavel' },
-          { title: 'Escrow', path: '/morescenarios', icon: 'account_balance' },
+          { title: 'Escrow', path: '/escrow', icon: 'account_balance' },
           { title: 'Coupon', path: '/morescenarios', icon: 'redeem' },
           { title: 'Voucher', path: '/morescenarios', icon: 'redeem' },
           { title: 'Loyalty', path: '/morescenarios', icon: 'loyalty' },

@@ -2,8 +2,8 @@ import firebase from 'firebase'
 import router from '@/router'
 import { db } from '../main'
 import userAccountsHelper from '../helpers/userAccounts'
-import AuctionJSON from '../../build/contracts/Auction.json'
 import AuctionFactoryJSON from '../../build/contracts/AuctionFactory.json'
+import EscrowFactoryJSON from '../../build/contracts/EscrowFactory.json'
 
 export default {
   // Sign up and user account creation
@@ -207,8 +207,9 @@ export default {
   registerContracts ({commit}) {
     commit('setContracts', [])
     let abi = []
-    abi['Auction'] = AuctionJSON.abi
+
     abi['AuctionFactory'] = AuctionFactoryJSON.abi
+    abi['EscrowFactory'] = EscrowFactoryJSON.abi
     let defaultContractAddresses = this.state.defaultContractAddresses
     defaultContractAddresses.forEach(res => {
       let contract = new window.web3.eth.Contract(abi[res.instance], res.address)

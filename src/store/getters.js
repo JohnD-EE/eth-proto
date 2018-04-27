@@ -31,15 +31,17 @@ export default {
       if (tx.from === ethAccount) {
         amount = -amount
       }
+
       let fees = 0
       if (tx.from === ethAccount) {
         fees = -window.web3.utils.fromWei((tx.gas * Number(tx.gasPrice)).toString(), 'ether')
       }
 
+      // If the transaction is with a contract, it won't relate to a user name
       let name = 'N/A'
       let otherParty = (tx.from === ethAccount ? tx.to : tx.from)
       if (otherParty in usersByAccount) {
-         name = usersByAccount[otherParty].displayName
+        name = usersByAccount[otherParty].displayName
       }
 
       userTxs.push({

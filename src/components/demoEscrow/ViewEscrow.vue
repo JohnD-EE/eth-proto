@@ -1,15 +1,15 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="dialog" :fullscreen="fullScreen" transition="dialog-bottom-transition" :overlay="false">
-      <v-btn color="info" dark slot="activator" @click.native="viewAuctions">
-        <v-icon left>visibility</v-icon>View Auctions
+      <v-btn color="info" dark slot="activator" @click.native="viewEscrowContracts">
+        <v-icon left>visibility</v-icon>View Escrow Contracts
       </v-btn>
       <v-card>
         <v-toolbar dark color="info" @click.native="clickClose">
           <v-btn icon @click.native="clickClose" dark>
             <v-icon>close</v-icon>
           </v-btn>
-          <v-toolbar-title>View Auctions</v-toolbar-title>
+          <v-toolbar-title>View Escrow Contracts</v-toolbar-title>
         </v-toolbar>
 
         <template>
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import auctionHelper from '../../helpers/demoAuction/auction'
+import escrowHelper from '../../helpers/demoEscrow/escrow'
 
 export default {
   data () {
@@ -99,9 +99,9 @@ export default {
     clickClose () {
       this.dialog = false
     },
-    viewAuctions () {
+    viewEscrowContracts () {
       console.log('Calling: getAllAuctions')
-      auctionHelper.getAllAuctions()
+      escrowHelper.getAllEscrowContracts()
     }
   }
 }

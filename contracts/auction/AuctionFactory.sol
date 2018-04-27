@@ -7,17 +7,17 @@ contract AuctionFactory {
 
     event AuctionCreated(address auctionContract, address owner, uint numAuctions, address[] allAuctions);
 
-    function AuctionFactory() {
+    function AuctionFactory () public {
     }
 
-    function createAuction(uint bidIncrement, uint startBlock, uint endBlock, string ipfsHash) {
+    function createAuction(uint bidIncrement, uint startBlock, uint endBlock, string ipfsHash) public {
         Auction newAuction = new Auction(msg.sender, bidIncrement, startBlock, endBlock, ipfsHash);
         auctions.push(newAuction);
 
         AuctionCreated(newAuction, msg.sender, auctions.length, auctions);
     }
 
-    function allAuctions() constant returns (address[]) {
+    function allAuctions() public constant returns (address[]) {
         return auctions;
     }
 }

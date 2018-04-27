@@ -7,7 +7,7 @@
           <v-container fill-height fluid>
             <v-layout row wrap>
               <v-flex xs12 sm6 align-end flexbox>
-                <span class="headline"><v-icon dark left>gavel</v-icon> Auction</span>
+                <span class="headline"><v-icon dark left>account_balance</v-icon> Escrow</span>
               </v-flex>
               <v-flex xs12 sm6 align-end flexbox>
                 <div class="text-xs-right">
@@ -16,34 +16,40 @@
                 </div>
               </v-flex>
               <v-flex xs12 align-end flexbox>
-              <div>The 'Auction' scenario demonstrates the capability of Smart Contracts to control the functions of an Auction</div>
+              <div>The 'Escrow' scenario demonstrates the Smart Contract control of an Escrow agreement,
+                 placing funds in custody of a 3rd party until conditions are met.</div>
             </v-flex>
             </v-layout>
           </v-container>
         </v-card-media>
         <v-container fluid>
           <v-card-text>
-            <h3>As an Auction Host:</h3>
+            <h3>As an Escrow Agent:</h3>
               <ul class="py-2 ml-5">
-                <li>I can create an auction for a specified item</li>
-                <li>I can specify the auction start and end dates/times</li>
-                <li>I can receive funds from the highest bidder when the Auction ends</li>
-                <li>I can cancel the Auction at any time prior to the specified end date</li>
+                <li>I can create an Escrow service for two parties</li>
+                <li>I can specify a fee, as a percentage of the transaction value, for my services</li>
               </ul>
-            <h3>As an Auction Bidder:</h3>
+            <h3>As a Seller in an Escrow contract:</h3>
             <ul class="py-2 ml-5">
-              <li>I can place bids on an item</li>
-              <li>I can withdraw any unused funds when the auction is over</li>
+              <li>I can confirm that I have supplied the goods/services by approving the deal</li>
+              <li>I can void the contract (requires other party to also void the contract)</li>
+              <li>I receive payment (after fees are deducted) once all parties have approved the contract</li>
+            </ul>
+            <h3>As a Buyer in an Escrow contract:</h3>
+            <ul class="py-2 ml-5">
+              <li>I can confirm that I am happy with the goods/services provided by approving the deal</li>
+              <li>I can void the contract (requires other party to also void the contract)</li>
+              <li>I can deposit the required funds onto the contract</li>
             </ul>
           </v-card-text>
           <v-card-text>
             <v-container>
               <v-layout row wrap>
                 <v-flex sm12 md6 align-end flexbox>
-                  <app-create-auction></app-create-auction>
+                  <app-create-escrow></app-create-escrow>
                 </v-flex>
                 <v-flex sm12 md6 align-end flexbox>
-                  <app-view-auctions></app-view-auctions>
+                  <app-view-escrow></app-view-escrow>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -57,8 +63,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import CreateAuction from './CreateAuction.vue'
-import ViewAuctions from './ViewAuctions.vue'
+import CreateEscrow from './CreateEscrow.vue'
+import ViewEscrow from './ViewEscrow.vue'
 
 export default {
   data () {
@@ -67,8 +73,8 @@ export default {
     }
   },
   components: {
-    'app-create-auction': CreateAuction,
-    'app-view-auctions': ViewAuctions
+    'app-create-escrow': CreateEscrow,
+    'app-view-escrow': ViewEscrow
   },
   computed: {
     ...mapGetters({

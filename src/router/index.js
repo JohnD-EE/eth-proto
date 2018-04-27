@@ -11,6 +11,7 @@ const routerOptions = [
   { path: '/system', component: 'System' },
   { path: '*', component: 'NotFound' },
   { path: '/auction', component: 'demoAuction/Auction', meta: { requiresAuth: true } },
+  { path: '/escrow', component: 'demoEscrow/Escrow', meta: { requiresAuth: true } },
   { path: '/morescenarios', component: 'demoScenarios/MoreScenarios', meta: { requiresAuth: true } }
 ]
 
