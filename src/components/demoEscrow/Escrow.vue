@@ -1,7 +1,7 @@
 <template>
 <v-container fluid>
   <v-layout row wrap>
-    <v-flex xs12 sm8 md6 offset-sm2 offset-md3>
+    <v-flex xs12 sm8 offset-sm2>
       <v-card>
         <v-card-media class="primary white--text" height="120px">
           <v-container fill-height fluid>
@@ -49,7 +49,7 @@
                   <app-create-escrow></app-create-escrow>
                 </v-flex>
                 <v-flex sm12 md6 align-end flexbox>
-                  My Auctions
+                  <app-view-escrow></app-view-escrow>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -64,7 +64,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import CreateEscrow from './CreateEscrow.vue'
-// import ViewAuctions from './ViewAuctions.vue'
+import ViewEscrow from './ViewEscrow.vue'
 
 export default {
   data () {
@@ -73,8 +73,8 @@ export default {
     }
   },
   components: {
-    'app-create-escrow': CreateEscrow
-    // 'app-view-auctions': ViewAuctions
+    'app-create-escrow': CreateEscrow,
+    'app-view-escrow': ViewEscrow
   },
   computed: {
     ...mapGetters({
