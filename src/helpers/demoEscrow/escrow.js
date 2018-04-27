@@ -7,7 +7,7 @@ export default {
     const e = payload
     const EscrowFactory = store.state.contracts['EscrowFactory']
     EscrowFactory.methods.createEscrow(e.sellerAddress, e.buyerAddress, e.feePercent, e.saleItem)
-    .send({from: e.escrowServiceAddress})
+    .send({from: e.escrowServiceAddress, gas: 3000000})
     .on('transactionHash', function (hash) {
       console.log('TransactionHash: ', hash)
     })

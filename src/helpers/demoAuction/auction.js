@@ -6,7 +6,7 @@ export default {
 
     const AuctionFactory = store.state.contracts['AuctionFactory']
     AuctionFactory.methods.createAuction(payload.bidIncrement, payload.startBlock, payload.endBlock, payload.saleItem)
-    .send({from: payload.hostAddress})
+    .send({from: payload.hostAddress, gas: 3000000})
     .on('transactionHash', function (hash) {
       console.log('TransactionHash: ', hash)
     })
