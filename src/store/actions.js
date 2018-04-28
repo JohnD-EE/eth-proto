@@ -2,6 +2,7 @@ import firebase from 'firebase'
 import router from '@/router'
 import { db } from '../main'
 import userAccountsHelper from '../helpers/userAccounts'
+import auctionHelper from '../helpers/demoAuction/auction'
 import AuctionFactoryJSON from '../../build/contracts/AuctionFactory.json'
 import EscrowFactoryJSON from '../../build/contracts/EscrowFactory.json'
 
@@ -207,7 +208,6 @@ export default {
   registerContracts ({commit}) {
     commit('setContracts', [])
     let abi = []
-
     abi['AuctionFactory'] = AuctionFactoryJSON.abi
     abi['EscrowFactory'] = EscrowFactoryJSON.abi
     let defaultContractAddresses = this.state.defaultContractAddresses
@@ -225,5 +225,15 @@ export default {
         }
       })
     })
+  },
+
+  resetAuctionContracts({commit}) {
+    commit('resetAuctionContracts')
+  },
+
+  registerAuctionContract({commit}, payload) {
+    let auctionContracts = this.state.auctionContracts
+    auctionContracts.push(payload)
+    commit('setAuctionContracts', auctionContracts)
   }
 }

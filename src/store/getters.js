@@ -58,5 +58,28 @@ export default {
       })
     })
     return userTxs.reverse()
+  },
+
+  allAuctionContracts: state => {
+    let auctionItems = []
+    console.log('getter deployed auction contracts: ', state.auctionContracts)
+
+    state.auctionContracts.forEach( res => {
+      auctionItems.push(
+        {
+        saleItem: res.info.item,
+        status: 'ACTIVE',
+        startBlock: res.info.startBlock,
+        endBlock: res.info.endBlock,
+        bidIncrement: res.info.bidIncrement,
+        myBids: 'bid',
+        highestBid: res.info.highestBid,
+        actions: 'Actions'
+      }
+    )
+    console.log('Getter: ', auctionItems)
+    })
+    console.log('Getter Return: ', auctionItems)
+    return auctionItems
   }
 }

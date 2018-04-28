@@ -52,5 +52,13 @@ export default {
   },
   setContracts (state, payload) {
     state.contracts = payload
+  },
+  resetAuctionContracts (state) {
+    state.auctionContracts = []
+  },
+  setAuctionContracts (state, payload) {
+    console.log('Set Deployed Contracts: ', payload)
+    // state.auctionContracts[payload.contractAddress] = {contract: payload.contract, info: payload.info}
+    console.log('deployed auction contracts: ', state.auctionContracts)
   }
 }

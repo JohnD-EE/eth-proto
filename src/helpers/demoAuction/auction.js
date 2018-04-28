@@ -33,10 +33,7 @@ export default {
   },
 
   getAuctionData () {
-    // let allAuctions = this.getAllAuctions()
-    // console.log(allAuctions)
     let auctionAbi = AuctionJSON.abi
-    //allAuctions.forEach(contractAddress => {
     const AuctionFactory = store.state.contracts['AuctionFactory']
     AuctionFactory.methods.allAuctions().call({from: store.state.userDetails.ethAccount})
     .then(res => {
@@ -48,13 +45,51 @@ export default {
       window.web3.eth.getCode(contractAddress)
       .then(code => {
         if (code.length > 3) {
-          console.log('Auction Contract: ', contract)
-        } else {
+          let info = {}
+          contract.methods.bidIncrement().call({from: store.state.userDetails.ethAccount})
+          .then(bidIncrement => {
+            console.log('BidIncrement: ', bidIncrement)
+            info.bidIncrement = bidIncrement
+            contract.methods.startBlock().call({from: store.state.userDetails.ethAccount})
+            .then(startBlock => {
+              console.log('startBlock: ', startBlock)
+              info.startBlock = startBlock
+              contract.methods.endBlock().call({from: store.state.userDetails.ethAccount})
+              .then(endBlock => {
+                console.log('endBlock: ', endBlock)
+                info.endBlock = endBlock
+                contract.methods.saleItem().call({from: store.state.userDetails.ethAccount})
+                .then(saleItem => {
+                  console.log('Item: ', saleItem)
+                  info.item = saleItem
+                  contract.methods.getHighestBid().call({from: store.state.userDetails.ethAccount})
+                  .then(highestBid => {
+                    console.log('HighestBid: ', highestBid)
+                    info.highestBid = highestBid
+
+                  //store states
+                  store.dispatch('registerAuctionContract', {
+                    contractAddress: contractAddress,
+                    contract: contract,
+                    info: info
+                  })
+                  })
+                })
+              })
+            })
+          })
+          } else {
           console.log('FAILED to get Auction Contract')
         }
       })
     })
     })
+  },
+
+  getAuctionInformation(auctionContract) {
+    // call the contract and get info
+    //get bidIncrement
+
   },
 
   getAllAuctionsPromise () {

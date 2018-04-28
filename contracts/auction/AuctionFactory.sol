@@ -10,8 +10,8 @@ contract AuctionFactory {
     function AuctionFactory () public {
     }
 
-    function createAuction(uint bidIncrement, uint startBlock, uint endBlock, string ipfsHash) public {
-        Auction newAuction = new Auction(msg.sender, bidIncrement, startBlock, endBlock, ipfsHash);
+    function createAuction(uint bidIncrement, uint startBlock, uint endBlock, string saleItem) public {
+        Auction newAuction = new Auction(msg.sender, bidIncrement, startBlock, endBlock, saleItem);
         auctions.push(newAuction);
 
         AuctionCreated(newAuction, msg.sender, auctions.length, auctions);

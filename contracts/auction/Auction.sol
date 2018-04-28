@@ -6,7 +6,7 @@ contract Auction {
     uint public bidIncrement;
     uint public startBlock;
     uint public endBlock;
-    string public ipfsHash;
+    string public saleItem;
 
     // states
     bool public canceled;
@@ -19,7 +19,7 @@ contract Auction {
     event LogWithdrawal(address withdrawer, address withdrawalAccount, uint amount);
     event LogCanceled();
 
-    function Auction (address _owner, uint _bidIncrement, uint _startBlock, uint _endBlock, string _ipfsHash) public {
+    function Auction (address _owner, uint _bidIncrement, uint _startBlock, uint _endBlock, string _saleItem) public {
         if (_startBlock >= _endBlock) revert();
         if (_startBlock < block.number) revert();
         if (_owner == 0) revert();
@@ -28,7 +28,7 @@ contract Auction {
         bidIncrement = _bidIncrement;
         startBlock = _startBlock;
         endBlock = _endBlock;
-        ipfsHash = _ipfsHash;
+        saleItem = _saleItem;
     }
 
     function getHighestBid()

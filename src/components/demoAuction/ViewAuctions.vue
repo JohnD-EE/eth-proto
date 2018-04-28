@@ -87,10 +87,7 @@ export default {
       return this.$store.getters.balanceToEther
     },
     items () {
-
-      return [
-        { saleItem: 'My Item', status: 'ACTIVE', startBlock: 3, endBlock: 20, bidIncrement: 10, myBids: 'bid', highestBid: 32, actions: 'Actions' }
-      ]
+      return this.$store.getters.allAuctionContracts
     },
     currency () {
       return this.$store.state.currency
@@ -102,6 +99,7 @@ export default {
     },
     viewAuctions () {
       console.log('Calling: getAllAuctions')
+      this.$store.dispatch('resetAuctionContracts')
       auctionHelper.getAuctionData()
     }
   }
