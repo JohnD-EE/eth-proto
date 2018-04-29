@@ -86,5 +86,13 @@ export default {
       }, 5000)
     }
     loopSeedAccounts(0)
+  },
+
+  getUsersByAddress() {
+    let allUsersEthAccounts = []
+    store.state.allUsers.forEach(res => {
+      allUsersEthAccounts[res.ethAccount] = res
+    })
+    return allUsersEthAccounts
   }
 }

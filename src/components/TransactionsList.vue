@@ -24,7 +24,6 @@
         <td class="text-xs-left">{{ props.item.fees }} {{ currency.symbol }}</td>
         <td class="text-xs-left">{{ props.item.block }}</td>
         <td class="text-xs-left">{{ props.item.txHash.substring(0,11) + '...' }}</td>
-        <td class="text-xs-left">{{ props.item.confirmations }}</td>
         <td class="text-xs-left">{{ props.item.balance }} {{ currency.symbol }}</td>
       </template>
       <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -51,8 +50,7 @@ export default {
         { text: 'Fees', value: 'fees', sortable: false },
         { text: 'Block', value: 'block', sortable: false },
         { text: 'Tx Hash', value: 'txHash', sortable: false },
-        { text: 'Confirmations', value: 'confirmations', sortable: false },
-        { text: 'Balance', value: 'balance', sortable: false }
+        { text: 'Block Balance', value: 'balance', sortable: false }
       ]
     }
   },

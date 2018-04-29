@@ -1,3 +1,5 @@
+import helperUsers from '../helpers/userAccounts'
+
 export default {
   isAuthenticated: state => {
     return state.user.loggedIn !== null &&
@@ -34,7 +36,7 @@ export default {
 
       let fees = 0
       if (tx.from === ethAccount) {
-        fees = -window.web3.utils.fromWei((tx.gas * Number(tx.gasPrice)).toString(), 'ether')
+        fees = -window.web3.utils.fromWei((tx.gasUsed * Number(tx.gasPrice)).toString(), 'ether')
       }
 
       // If the transaction is with a contract, it won't relate to a user name
@@ -53,7 +55,6 @@ export default {
         block: tx.blockNumber,
         blockHash: tx.blockHash,
         txHash: tx.hash,
-        confirmations: '#conf',
         balance: window.web3.utils.fromWei(tx.balance, 'ether')
       })
     })
@@ -62,24 +63,24 @@ export default {
 
   allAuctionContracts: state => {
     let auctionItems = []
-    console.log('getter deployed auction contracts: ', state.auctionContracts)
-
+    let allUsersByEthAccount = helperUsers.getUsersByAddress()
     state.auctionContracts.forEach( res => {
       auctionItems.push(
         {
+        contractAddress: res.contractAddress,
         saleItem: res.info.item,
+        ownerAddress: res.info.owner,
+        host: res.info.owner === state.userDetails.ethAccount ? state.user.displayName : allUsersByEthAccount[res.info.owner].displayName || 'N/A',
+        userIsHost: res.info.owner === state.userDetails.ethAccount,
         status: 'ACTIVE',
         startBlock: res.info.startBlock,
         endBlock: res.info.endBlock,
         bidIncrement: res.info.bidIncrement,
         myBids: 'bid',
-        highestBid: res.info.highestBid,
-        actions: 'Actions'
+        highestBid: res.info.highestBid
       }
     )
-    console.log('Getter: ', auctionItems)
     })
-    console.log('Getter Return: ', auctionItems)
     return auctionItems
   }
 }

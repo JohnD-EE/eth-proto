@@ -192,10 +192,15 @@ export default {
               window.web3.eth.getBalance(ethAccount, blockTx.blockNumber)
               .then(balance => {
                 blockTx.balance = balance
-                txs.push(blockTx)
-                if (txs.length > this.state.userTxs.length) {
-                  commit('setUserTxs', txs)
-                }
+                window.web3.eth.getTransactionReceipt(blockTx.hash)
+                .then(receipt => {
+                  blockTx.gasUsed = receipt.gasUsed
+                  txs.push(blockTx)
+                  if (txs.length > this.state.userTxs.length) {
+                    commit('setUserTxs', txs)
+                  }
+                })
+
               })
             }
           }

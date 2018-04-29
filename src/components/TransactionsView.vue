@@ -55,7 +55,6 @@ export default {
     },
     updateTxs () {
       if (this.dialog) {
-        console.log('checking transactions')
         this.$store.dispatch('userTxs')
       }
     }
