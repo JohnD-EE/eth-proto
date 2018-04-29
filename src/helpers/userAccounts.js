@@ -88,7 +88,7 @@ export default {
     loopSeedAccounts(0)
   },
 
-  getUsersByAddress() {
+  getUsersByAddress () {
     let allUsersEthAccounts = []
     store.state.allUsers.forEach(res => {
       allUsersEthAccounts[res.ethAccount] = res

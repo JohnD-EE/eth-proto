@@ -64,9 +64,8 @@ export default {
   allAuctionContracts: state => {
     let auctionItems = []
     let allUsersByEthAccount = helperUsers.getUsersByAddress()
-    state.auctionContracts.forEach( res => {
-      auctionItems.push(
-        {
+    state.auctionContracts.forEach(res => {
+      auctionItems.push({
         contractAddress: res.contractAddress,
         saleItem: res.info.item,
         ownerAddress: res.info.owner,
@@ -78,8 +77,7 @@ export default {
         bidIncrement: res.info.bidIncrement,
         myBids: 'bid',
         highestBid: res.info.highestBid
-      }
-    )
+      })
     })
     return auctionItems
   }

@@ -121,7 +121,7 @@ export default {
       search: '',
       headers: [
         { text: 'Sale Item', value: 'saleItem', sortable: false, align: 'left' },
-        { text: 'Host', value: 'host', sortable: false},
+        { text: 'Host', value: 'host', sortable: false },
         { text: 'Status', value: 'status', sortable: false },
         { text: 'Start Block', value: 'startBlock', sortable: false },
         { text: 'End Block', value: 'endBlock', sortable: false },
