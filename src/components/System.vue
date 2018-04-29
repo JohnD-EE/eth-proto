@@ -29,9 +29,6 @@
                       {{ item.title }}: {{ item.value }}
                     </v-list-tile-sub-title>
                   </v-list-tile-content>
-                  <v-list-tile-action>
-                    <v-progress-circular indeterminate color="green" v-show="blockchainLoading"></v-progress-circular>
-                  </v-list-tile-action>
                 </v-list-tile>
                 <v-list-tile avatar>
                   <v-list-tile-content>
@@ -130,16 +127,10 @@ import userAccounts from '../helpers/userAccounts'
 export default {
   data () {
     return {
-      blockchainLoading: false
+      //
     }
   },
   methods: {
-    refreshBlockchainData () {
-      this.blockchainLoading = true
-      this.$store.dispatch('registerWeb3', window.web3)
-        .then(
-          setTimeout(() => { this.blockchainLoading = false }, 850))
-    },
     deleteUserAccountsData () {
       userAccounts.deleteAllUserDetails()
     },
@@ -208,13 +199,6 @@ export default {
       })
       return contractsDeployed
     }
-  },
-  mounted: function () {
-    // check for balance updates every few seconds as blocks are mined
-    this.refreshBlockchainData()
-    setInterval(function () {
-      this.refreshBlockchainData()
-    }.bind(this), 5000)
   }
 }
 </script>
