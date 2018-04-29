@@ -17,7 +17,8 @@
             <v-card-title>
               {{user.displayName}} </br>
               {{userDetails.ethAccount}}</br>
-              Balance: {{balanceToEther}} {{ currency.symbol }}
+              Balance: {{balanceToEther}} {{ currency.symbol }}</br>
+              Latest Block: {{latestBlockNumber}}
               <v-spacer></v-spacer>
               <v-text-field
                 append-icon="search"
@@ -35,18 +36,33 @@
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.saleItem }}</td>
                 <td>{{ props.item.host }}</td>
-                <td class="text-xs-left">{{ props.item.status }}</td>
+                <td class="text-xs-center">
+                  <span v-if="latestBlockNumber >= props.item.startBlock && latestBlockNumber <= props.item.endBlock">
+                    <v-chip small color="green" text-color="white">Active</v-chip>
+                  </span>
+                  <span v-if="latestBlockNumber > props.item.endBlock">
+                    <v-chip small color="orange" text-color="white">Ended</v-chip>
+                  </span>
+                  <span v-if="latestBlockNumber < props.item.startBlock">
+                    <v-chip small color="light-blue" text-color="white">Pending</v-chip>
+                  </span>
+                </td>
                 <td class="text-xs-left">{{ props.item.startBlock }}</td>
                 <td class="text-xs-left">{{ props.item.endBlock }}</td>
                 <td class="text-xs-left">{{ props.item.bidIncrement }} {{ currency.symbol }}</td>
                 <td class="text-xs-left">{{ props.item.myBids }}</td>
                 <td class="text-xs-left">{{ props.item.highestBid }} {{ currency.symbol }}</td>
                 <td class="text-xs-left">
-                  <div class="text-xs-center" v-if="props.item.userIsHost">
+                  <div class="text-xs-center" v-if="props.item.userIsHost &&
+                  (latestBlockNumber <= props.item.endBlock)">
                     <v-btn small round color="warning" dark @click="cancelAuction">Cancel</v-btn>
                   </div>
-                  <div class="text-xs-center" v-else>
-
+                  <div class="text-xs-center" v-if="props.item.userIsHost &&
+                  (latestBlockNumber > props.item.endBlock)">
+                    <v-btn small round color="green" dark @click="withdrawFunds">Withdraw Funds</v-btn>
+                  </div>
+                  <div class="text-xs-center" v-if="!props.item.userIsHost &&
+                  (latestBlockNumber >= props.item.startBlock && latestBlockNumber <= props.item.endBlock)">
                     <template>
                       <v-layout row justify-center>
                         <v-dialog v-model="bidDialog" persistent max-width="500px">
@@ -88,6 +104,10 @@
 
 
                   </div>
+                  <div class="text-xs-center" v-if="!props.item.userIsHost &&
+                  (latestBlockNumber > props.item.endBlock)">
+                    <v-btn small round color="green" dark @click="withdrawFunds">Withdraw Funds</v-btn>
+                  </div>
                 </td>
               </template>
               <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -122,11 +142,11 @@ export default {
       headers: [
         { text: 'Sale Item', value: 'saleItem', sortable: false, align: 'left' },
         { text: 'Host', value: 'host', sortable: false },
-        { text: 'Status', value: 'status', sortable: false },
-        { text: 'Start Block', value: 'startBlock', sortable: false },
-        { text: 'End Block', value: 'endBlock', sortable: false },
+        { text: 'Status', value: 'status', sortable: false, align: 'center' },
+        { text: 'Start Block', value: 'startBlock', sortable: true },
+        { text: 'End Block', value: 'endBlock', sortable: true },
         { text: 'Bid Increment', value: 'bidIncrement', sortable: false },
-        { text: 'My Bids', value: 'myBids', sortable: false },
+        { text: 'My Bids', value: 'myBids', sortable: true },
         { text: 'Highest Bid', value: 'highestBid', sortable: false },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }
       ]
@@ -147,6 +167,12 @@ export default {
     },
     currency () {
       return this.$store.state.currency
+    },
+    latestBlockNumber () {
+      return this.$store.state.web3.latestBlock.number
+    },
+    withdrawFunds () {
+      console.log('Withdraw Funds')
     }
   },
   methods: {
