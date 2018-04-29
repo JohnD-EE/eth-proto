@@ -162,7 +162,7 @@ export default {
         auctionHelper.placeBid(contractAddress, this.bidValue)
         this.$store.dispatch('resetAuctionContracts')
         auctionHelper.getAuctionData()
-        // clear screen
+        // clear screen - todo: this is a bit dirty
         this.bidDialog = false
       } else {
         console.log('validation failed')

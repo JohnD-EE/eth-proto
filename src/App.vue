@@ -82,7 +82,9 @@
       <router-view></router-view>
     </v-content>
       <v-footer class="mt-4 pa-3" fixed>
-      EE Blockchain Prototypes
+          <span class="pr-1">Latest Block: </span><span v-show="!blockchainLoading" >{{ latestBlock }}</span>
+        <v-progress-circular class="pl-2" size="14" indeterminate color="green" v-show="blockchainLoading"></v-progress-circular>
+        <span class="pl-2 caption grey--text" v-show="blockchainLoading"> Polling Blockcain</span>
       <v-spacer></v-spacer>
       <div><span class="primary--text"><h3>#PurpleInnovation</h3></span></div>
     </v-footer>
@@ -93,6 +95,7 @@
   export default {
     data () {
       return {
+        blockchainLoading: false,
         sidebar: false,
         demos: [
           { title: 'Auction', path: '/auction', icon: 'gavel' },
@@ -123,12 +126,28 @@
             { title: 'System', path: '/system', icon: 'settings' }
           ]
         }
+      },
+      latestBlock () {
+        return this.$store.state.web3.latestBlock.number
       }
     },
     methods: {
       userSignOut () {
         this.$store.dispatch('userSignOut')
+      },
+      refreshBlockchainData () {
+        this.blockchainLoading = true
+        this.$store.dispatch('registerWeb3', window.web3)
+          .then(
+            setTimeout(() => { this.blockchainLoading = false }, 1200))
       }
+    },
+    mounted: function () {
+      // check for balance updates every few seconds as blocks are mined
+      this.refreshBlockchainData()
+      setInterval(function () {
+        this.refreshBlockchainData()
+      }.bind(this), 8000)
     }
   }
 </script>
