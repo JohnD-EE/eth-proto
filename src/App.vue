@@ -143,7 +143,7 @@
       }
     },
     mounted: function () {
-      // check for balance updates every few seconds as blocks are mined
+      // Poll blockchain for latest block
       this.refreshBlockchainData()
       setInterval(function () {
         this.refreshBlockchainData()

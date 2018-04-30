@@ -96,7 +96,9 @@ export default {
     rules: false
   }),
   computed: {
-    //
+    latestBlock() {
+      return this.$store.state.web3.latestBlock.number
+    },
   },
   methods: {
     submit () {

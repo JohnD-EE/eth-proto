@@ -10,7 +10,7 @@ export default {
     if (state.userDetails.ethBalance === null) {
       return null
     }
-    return parseFloat(window.web3.utils.fromWei(state.userDetails.ethBalance.toString(), 'ether'))
+    return Number(window.web3.utils.fromWei(state.userDetails.ethBalance.toString(), 'ether'))
   },
   allUsers: (state) => (excludeLoggedinUser = false) => {
     let allUsers = state.allUsers
@@ -50,12 +50,12 @@ export default {
         value: false,
         name: name,
         address: otherParty,
-        amount: amount,
-        fees: fees,
+        amount: Number(amount),
+        fees: Number(fees),
         block: tx.blockNumber,
         blockHash: tx.blockHash,
         txHash: tx.hash,
-        balance: window.web3.utils.fromWei(tx.balance, 'ether')
+        balance: Number(window.web3.utils.fromWei(tx.balance, 'ether'))
       })
     })
     return userTxs.reverse()
@@ -74,11 +74,15 @@ export default {
         status: 'ACTIVE',
         startBlock: res.info.startBlock,
         endBlock: res.info.endBlock,
-        bidIncrement: res.info.bidIncrement,
-        myBids: 'bid',
-        highestBid: res.info.highestBid
+        bidIncrement: Number(res.info.bidIncrement),
+        myBid: Number(res.info.myBid),
+        highestBid: Number(res.info.highestBid),
+        highestBidder: res.info.highestBidder,
+        minQualifyingBid: Number(res.info.highestBid) + Number(res.info.bidIncrement),
+        cancelled: res.info.cancelled,
+        createdBlock: 1 // todo get this info
       })
     })
-    return auctionItems
+    return auctionItems.reverse()
   }
 }
