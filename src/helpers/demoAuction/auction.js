@@ -73,7 +73,7 @@ export default {
                               info.highestBindingBid = window.web3.utils.fromWei(highestBindingBid, 'ether')
                               contract.methods.cancelled().call()
                               .then(cancelled => {
-                                info.cancelled = cancelled,
+                                info.cancelled = cancelled
                                 contract.methods.ownerHasWithdrawn().call()
                                 .then(ownerHasWithdrawn => {
                                   info.ownerHasWithdrawn = ownerHasWithdrawn
@@ -113,10 +113,10 @@ export default {
       from: store.state.userDetails.ethAccount,
       value: window.web3.utils.toWei(bidValue.toString(), 'ether'),
       gas: 3000000
-     })
-     .on('error', error =>{
-       console.log('Place Bid Error:', error)
-      })
+    })
+    .on('error', error => {
+      console.log('Place Bid Error:', error)
+    })
     .then(res => {
       console.log('Placed Bid Result', res)
     })
@@ -128,9 +128,9 @@ export default {
       from: store.state.userDetails.ethAccount,
       gas: 3000000
     })
-    .on('error', error =>{
+    .on('error', error => {
       console.log('Cancel Error:', error)
-     })
+    })
     .then(res => {
       // Auction is cancelled
       console.log('Auction is Cancelled: ', res)
@@ -142,9 +142,9 @@ export default {
     contract.methods.withdraw().send({
       from: store.state.userDetails.ethAccount,
       gas: 6000000
-    }).on('error', error =>{
+    }).on('error', error => {
       console.log('Error, Fund Withdrawal:', error)
-     })
+    })
     .then(res => {
       console.log('Withdraw Funds Result: ', res)
     })

@@ -137,10 +137,9 @@
       },
       refreshBlockchainData () {
         this.blockchainLoading = true
-        
         this.$store.dispatch('registerWeb3', window.web3)
-          .then(
-            setTimeout(() => { this.blockchainLoading = false }, 1200))
+        .then(
+          setTimeout(() => { this.blockchainLoading = false }, 1200))
       }
     },
     mounted: function () {

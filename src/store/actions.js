@@ -250,9 +250,9 @@ export default {
       }
     })
     if (!matchFound) {
-    auctionContracts.push(payload)
-    // We have a new auction item
-    commit('setAuctionContracts', auctionContracts)
+      auctionContracts.push(payload)
+      // We have a new auction item
+      commit('setAuctionContracts', auctionContracts)
     } else {
       // We have a change
       auctionContracts.splice(index, 1, payload)
