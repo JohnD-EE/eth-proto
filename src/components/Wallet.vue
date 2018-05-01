@@ -60,7 +60,7 @@ export default {
     return {
       balance: null,
       fetchingEthAccount: true,
-      fetchingBalance: true
+      fetchingBalance: false
     }
   },
   components: {

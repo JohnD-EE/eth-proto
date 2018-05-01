@@ -74,7 +74,7 @@
                         <v-chip small color="primary" text-color="white"><v-avatar>
                       <v-icon>check_circle</v-icon>
                       </v-avatar>
-                      Winning Bid!
+                      Winner!
                     </v-chip>
                   </div>
                   <div v-else>
@@ -104,12 +104,18 @@
                     <v-btn small round color="green" dark @click="withdrawFunds(props.item.contractAddress)">Withdraw Payment</v-btn>
                   </div>
                   <div class="text-xs-center" v-if="
-                      !props.item.userIsHost &&
-                      latestBlockNumber > props.item.endBlock &&
-                      props.item.myBid > 0 &&
-                      !((props.item.highestBidder === userDetails.ethAccount) && props.item.myBid > props.item.highestBindingBid)
+                      (
+                        !props.item.userIsHost &&
+                        latestBlockNumber > props.item.endBlock &&
+                        props.item.myBid > 0
+                      ) ||
+                      (
+                        props.item.highestBidder === userDetails.ethAccount &&
+                        props.item.myBid > props.item.highestBindingBid &&
+                        latestBlockNumber > props.item.endBlock
+                      )
                     ">
-                    <v-btn small round color="green" dark @click="withdrawFunds(props.item.contractAddress)">Withdraw Unused Funds</v-btn>
+                    <v-btn small round color="green" dark @click="withdrawFunds(props.item.contractAddress)">Withdraw Funds</v-btn>
                   </div>
                   <div class="text-xs-center" v-if="
                       !props.item.userIsHost &&

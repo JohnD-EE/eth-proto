@@ -6,6 +6,11 @@ import AuctionFactoryJSON from '../../build/contracts/AuctionFactory.json'
 import EscrowFactoryJSON from '../../build/contracts/EscrowFactory.json'
 
 export default {
+  newNotification ({commit}, payload) {
+    let notifications = this.state.notificationsQueue
+    notifications.push(payload)
+    commit('setNotification', notifications)
+  },
   // Sign up and user account creation
   userSignUp ({commit}, payload) {
     commit('setLoading', true)

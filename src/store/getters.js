@@ -1,6 +1,14 @@
 import helperUsers from '../helpers/userAccounts'
 
 export default {
+  getNotification: state => {
+    let notificationsQueue = state.notificationsQueue
+    console.log('Queue: ', notificationsQueue)
+    if (notificationsQueue.length > 0 ) {
+      return notificationsQueue.shift()
+    }
+    return false
+  },
   isAuthenticated: state => {
     return state.user.loggedIn !== null &&
     state.user.loggedIn !== undefined &&

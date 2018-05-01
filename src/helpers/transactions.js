@@ -38,6 +38,10 @@ export default {
     return this._postTransactionToBlockchain(ethTx)
   },
   _postTransactionToBlockchain (ethTx) {
+    store.dispatch('newNotification', {
+      title: 'New Transaction posted',
+      type: 'success'
+    })
     window.web3.eth.sendTransaction({
       from: ethTx.from,
       to: ethTx.to,
@@ -45,15 +49,31 @@ export default {
     })
     .on('transactionHash', hash => {
       console.log('hash', hash)
+      store.dispatch('newNotification', {
+        title: 'New transaction to process',
+        text: hash,
+        type: 'success'
+      })
       store.dispatch('updateAccount')
+
     })
     .on('receipt', receipt => {
       console.log('reciept', receipt)
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
     })
     .on('confirmation', (confirmationNumber, receipt) => {
       console.log('confirmation Number:', confirmationNumber)
       console.log('reciept', receipt)
     })
-    .on('error', console.error) // If a out of gas error, the second parameter is the receipt.
+    .on('error', errorr => {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed',
+        text: error,
+        type: 'error'
+      })
+    }) // If a out of gas error, the second parameter is the receipt.
   }
 }

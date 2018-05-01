@@ -10,9 +10,18 @@ export default {
       from: payload.hostAddress,
       gas: 3000000})
     .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Create Auction - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
       console.log('TransactionHash: ', hash)
     })
     .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
       console.log('Receipt: ', receipt)
     })
     .on('confirmation', function (confirmationNumber, receipt) {
@@ -20,6 +29,11 @@ export default {
       console.log('Receipt: ', receipt)
     })
     .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed',
+        text: error,
+        type: 'error'
+      })
       console.log(error)
     })
   },
@@ -103,22 +117,38 @@ export default {
   },
 
   placeBid (contractAddress, bidValue) {
-    console.log('placeBid on:', contractAddress)
-    console.log('Bid Value: ', bidValue)
-    console.log('bid contract:', store.state.auctionContracts)
     let contract = ContractsHelper.getContractFromAddress(store.state.auctionContracts, contractAddress)
-    console.log('returned contract', contract)
     // let contract = store.state.auctionContracts[contractAddress].contract
     contract.methods.placeBid().send({
       from: store.state.userDetails.ethAccount,
       value: window.web3.utils.toWei(bidValue.toString(), 'ether'),
       gas: 3000000
     })
-    .on('error', error => {
-      console.log('Place Bid Error:', error)
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Place Bid - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
+      console.log('TransactionHash: ', hash)
     })
-    .then(res => {
-      console.log('Placed Bid Result', res)
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed - Bid was not placed',
+        text: error,
+        type: 'error'
+      })
+      console.log(error)
     })
   },
 
@@ -128,12 +158,31 @@ export default {
       from: store.state.userDetails.ethAccount,
       gas: 3000000
     })
-    .on('error', error => {
-      console.log('Cancel Error:', error)
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Request to cancel auction - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
+      console.log('TransactionHash: ', hash)
     })
-    .then(res => {
-      // Auction is cancelled
-      console.log('Auction is Cancelled: ', res)
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed',
+        text: error,
+        type: 'error'
+      })
+      console.log(error)
     })
   },
 
@@ -142,22 +191,43 @@ export default {
     contract.methods.withdraw().send({
       from: store.state.userDetails.ethAccount,
       gas: 6000000
-    }).on('error', error => {
-      console.log('Error, Fund Withdrawal:', error)
-    })
-    .then(res => {
-      console.log('Withdraw Funds Result: ', res)
-    })
-  },
-
-  getAllAuctionsPromise () {
-    const AuctionFactory = store.state.contracts['AuctionFactory']
-    return new Promise((resolve, reject) => {
-      return AuctionFactory.methods.allAuctions().call().then(result => {
-        return Promise.all(result.map(auctionAddr => this.getAuction(auctionAddr)))
-      }).then(auctions => {
-        console.log(auctions, resolve)
       })
-    })
-  }
+      .on('transactionHash', function (hash) {
+        store.dispatch('newNotification', {
+          title: 'Fund Withdrawal - New transaction to process',
+          text: hash,
+          type: 'success'
+        })
+        console.log('TransactionHash: ', hash)
+      })
+      .on('receipt', function (receipt) {
+        store.dispatch('newNotification', {
+          title: 'Transaction completed',
+          type: 'success'
+        })
+        console.log('Receipt: ', receipt)
+      })
+      .on('confirmation', function (confirmationNumber, receipt) {
+        //
+      })
+      .on('error', function (error) {
+        store.dispatch('newNotification', {
+          title: 'Transaction Failed',
+          text: error,
+          type: 'error'
+        })
+        console.log(error)
+      })
+    }
+
+  // getAllAuctionsPromise () {
+  // const AuctionFactory = store.state.contracts['AuctionFactory']
+  // return new Promise((resolve, reject) => {
+    //  return AuctionFactory.methods.allAuctions().call().then(result => {
+      //  return Promise.all(result.map(auctionAddr => this.getAuction(auctionAddr)))
+    //  }).then(auctions => {
+      //  console.log(auctions, resolve)
+    //  })
+  //  })
+// }
 }
