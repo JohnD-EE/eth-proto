@@ -1,6 +1,9 @@
 import { db } from '../main'
 
 export default {
+  setNotification (state, payload) {
+    state.notificationsQueue = payload
+  },
   setUser (state, payload) {
     state.user = payload
   },

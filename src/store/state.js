@@ -34,5 +34,6 @@ export default {
     { instance: 'EscrowFactory', name: 'Escrow Factory', address: '0xB8ADA7A5c2bB51D0270518F515b00Fd050Ad1850' }
   ],
   contracts: [],
-  auctionContracts: []
+  auctionContracts: [],
+  notificationsQueue: []
 }

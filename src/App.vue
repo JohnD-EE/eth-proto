@@ -88,6 +88,23 @@
       <v-spacer></v-spacer>
       <div><span class="primary--text"><h3>#PurpleInnovation</h3></span></div>
     </v-footer>
+
+    <template>
+      <v-card>
+        <v-snackbar
+          :snackbar="notifications.length > 0"
+          :timeout="6000"
+          :bottom="true"
+          :vertical="true"
+          :value="notifications"
+          >
+        {{ notifications.title }}: </br>
+        {{ notifications.text }}
+      <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+    </v-snackbar>
+  </v-card>
+</template>
+
   </v-app>
 </template>
 
@@ -95,6 +112,7 @@
   export default {
     data () {
       return {
+        snackbar: false,
         blockchainLoading: false,
         sidebar: false,
         demos: [
@@ -129,6 +147,17 @@
       },
       latestBlock () {
         return this.$store.state.web3.latestBlock.number
+      },
+      notifications () {
+        let notification = this.$store.getters.getNotification
+        if (notification) {
+          return {
+            title: notification.title,
+            text: notification.text,
+            type: notification.type
+          }
+        }
+        return false
       }
     },
     methods: {
