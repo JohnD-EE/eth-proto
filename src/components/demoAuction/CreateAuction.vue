@@ -43,7 +43,7 @@
                 <v-select
                   label="Bid increment"
                   required
-                  :items="['1', '2', '3', '4', '5', '10', '15', '20']"
+                  :items="['0.5', '1', '2', '3', '4', '5', '10', '15', '20']"
                   hint="Set the increase for a new bid to beat the previously highest bid"
                   v-model="bidIncrement"
                   :rules="bidIncrementRules"
@@ -109,7 +109,7 @@ export default {
             saleItem: this.saleItem,
             startBlock: this.startBlock,
             endBlock: this.endBlock,
-            bidIncrement: this.bidIncrement,
+            bidIncrement: window.web3.utils.toWei(this.bidIncrement, 'ether'),
             hostAddress: this.$store.state.userDetails.ethAccount
           }
         )

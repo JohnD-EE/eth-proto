@@ -65,11 +65,17 @@ export default {
     let auctionItems = []
     let allUsersByEthAccount = helperUsers.getUsersByAddress()
     state.auctionContracts.forEach(res => {
+      let host = 'N/A'
+      if (res.info.owner === state.userDetails.ethAccount) {
+        host = state.user.displayName
+      } else {
+        host = res.info.owner in allUsersByEthAccount ? allUsersByEthAccount[res.info.owner].displayName : 'N/A'
+      }
       auctionItems.push({
         contractAddress: res.contractAddress,
         saleItem: res.info.item,
         ownerAddress: res.info.owner,
-        host: res.info.owner === state.userDetails.ethAccount ? state.user.displayName : allUsersByEthAccount[res.info.owner].displayName || 'N/A',
+        host: host,
         userIsHost: res.info.owner === state.userDetails.ethAccount,
         status: 'ACTIVE',
         startBlock: res.info.startBlock,
@@ -78,8 +84,9 @@ export default {
         myBid: Number(res.info.myBid),
         highestBid: Number(res.info.highestBid),
         highestBidder: res.info.highestBidder,
-        minQualifyingBid: Number(res.info.highestBid) + Number(res.info.bidIncrement),
+        highestBindingBid: Number(res.info.highestBindingBid),
         cancelled: res.info.cancelled,
+        ownerHasWithdrawn: res.info.ownerHasWithdrawn,
         createdBlock: 1 // todo get this info
       })
     })

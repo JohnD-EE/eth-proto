@@ -9,15 +9,15 @@ contract Auction {
     string public saleItem;
 
     // states
-    bool public canceled;
+    bool public cancelled;
     uint public highestBindingBid;
     address public highestBidder;
     mapping(address => uint256) public fundsByBidder;
-    bool ownerHasWithdrawn;
+    bool public ownerHasWithdrawn;
 
     event LogBid(address bidder, uint bid, address highestBidder, uint highestBid, uint highestBindingBid);
     event LogWithdrawal(address withdrawer, address withdrawalAccount, uint amount);
-    event LogCanceled();
+    event LogCancelled();
 
     function Auction (address _owner, uint _bidIncrement, uint _startBlock, uint _endBlock, string _saleItem) public {
         if (_startBlock >= _endBlock) revert();
@@ -44,7 +44,7 @@ contract Auction {
         payable
         onlyAfterStart
         onlyBeforeEnd
-        onlyNotCanceled
+        onlyNotCancelled
         onlyNotOwner
         returns (bool success)
     {
@@ -103,28 +103,28 @@ contract Auction {
     function cancelAuction() public
         onlyOwner
         onlyBeforeEnd
-        onlyNotCanceled
+        onlyNotCancelled
         returns (bool success)
     {
-        canceled = true;
-        LogCanceled();
+        cancelled = true;
+        LogCancelled();
         return true;
     }
 
     function withdraw() public
-        onlyEndedOrCanceled
+        onlyEndedOrCancelled
         returns (bool success)
     {
         address withdrawalAccount;
         uint withdrawalAmount;
 
-        if (canceled) {
-            // if the auction was canceled, everyone should simply be allowed to withdraw their funds
+        if (cancelled) {
+            // if the auction was cancelled, everyone should simply be allowed to withdraw their funds
             withdrawalAccount = msg.sender;
             withdrawalAmount = fundsByBidder[withdrawalAccount];
 
         } else {
-            // the auction finished without being canceled
+            // the auction finished without being cancelled
 
             if (msg.sender == owner) {
                 // the auction's owner should be allowed to withdraw the highestBindingBid
@@ -155,7 +155,7 @@ contract Auction {
         fundsByBidder[withdrawalAccount] -= withdrawalAmount;
 
         // send the funds
-        if (!msg.sender.send(withdrawalAmount)) revert();
+        msg.sender.transfer(withdrawalAmount);
 
         LogWithdrawal(msg.sender, withdrawalAccount, withdrawalAmount);
 
@@ -182,13 +182,13 @@ contract Auction {
         _;
     }
 
-    modifier onlyNotCanceled {
-        if (canceled) revert();
+    modifier onlyNotCancelled {
+        if (cancelled) revert();
         _;
     }
 
-    modifier onlyEndedOrCanceled {
-        if (block.number < endBlock && !canceled) revert();
+    modifier onlyEndedOrCancelled {
+        if (block.number < endBlock && !cancelled) revert();
         _;
     }
 }

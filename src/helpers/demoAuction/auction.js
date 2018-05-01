@@ -6,7 +6,9 @@ export default {
   createAuction (payload) {
     const AuctionFactory = store.state.contracts['AuctionFactory']
     AuctionFactory.methods.createAuction(payload.bidIncrement, payload.startBlock, payload.endBlock, payload.saleItem)
-    .send({from: payload.hostAddress, gas: 3000000})
+    .send({
+      from: payload.hostAddress,
+      gas: 3000000})
     .on('transactionHash', function (hash) {
       console.log('TransactionHash: ', hash)
     })
@@ -44,7 +46,7 @@ export default {
             let info = {}
             contract.methods.bidIncrement().call()
             .then(bidIncrement => {
-              info.bidIncrement = bidIncrement
+              info.bidIncrement = window.web3.utils.fromWei(bidIncrement, 'ether')
               contract.methods.startBlock().call()
               .then(startBlock => {
                 info.startBlock = startBlock
@@ -69,14 +71,18 @@ export default {
                             contract.methods.highestBindingBid().call()
                             .then(highestBindingBid => {
                               info.highestBindingBid = window.web3.utils.fromWei(highestBindingBid, 'ether')
-                              contract.methods.canceled().call()
+                              contract.methods.cancelled().call()
                               .then(cancelled => {
-                                info.cancelled = cancelled
-                                // store states
-                                store.dispatch('registerAuctionContract', {
-                                  contractAddress: contractAddress,
-                                  contract: contract,
-                                  info: info
+                                info.cancelled = cancelled,
+                                contract.methods.ownerHasWithdrawn().call()
+                                .then(ownerHasWithdrawn => {
+                                  info.ownerHasWithdrawn = ownerHasWithdrawn
+                                  // store states
+                                  store.dispatch('registerAuctionContract', {
+                                    contractAddress: contractAddress,
+                                    contract: contract,
+                                    info: info
+                                  })
                                 })
                               })
                             })
@@ -98,6 +104,7 @@ export default {
 
   placeBid (contractAddress, bidValue) {
     console.log('placeBid on:', contractAddress)
+    console.log('Bid Value: ', bidValue)
     console.log('bid contract:', store.state.auctionContracts)
     let contract = ContractsHelper.getContractFromAddress(store.state.auctionContracts, contractAddress)
     console.log('returned contract', contract)
@@ -111,19 +118,22 @@ export default {
        console.log('Place Bid Error:', error)
       })
     .then(res => {
-      console.log(res)
+      console.log('Placed Bid Result', res)
     })
-
   },
 
   cancelAuction (contractAddress) {
     let contract = ContractsHelper.getContractFromAddress(store.state.auctionContracts, contractAddress)
-    contract.methods.cancelAuction().call({
-      from: store.state.userDetails.ethAccount
+    contract.methods.cancelAuction().send({
+      from: store.state.userDetails.ethAccount,
+      gas: 3000000
     })
+    .on('error', error =>{
+      console.log('Cancel Error:', error)
+     })
     .then(res => {
       // Auction is cancelled
-      console.log('Auction is Cancelled')
+      console.log('Auction is Cancelled: ', res)
     })
   },
 
@@ -131,13 +141,12 @@ export default {
     let contract = ContractsHelper.getContractFromAddress(store.state.auctionContracts, contractAddress)
     contract.methods.withdraw().send({
       from: store.state.userDetails.ethAccount,
-      gas: 3000000
-    })
-    .on('error', error =>{
-      console.log('Place Bid Error:', error)
+      gas: 6000000
+    }).on('error', error =>{
+      console.log('Error, Fund Withdrawal:', error)
      })
     .then(res => {
-      console.log('Withdraw Funds Res:', res)
+      console.log('Withdraw Funds Result: ', res)
     })
   },
 

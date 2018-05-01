@@ -10,6 +10,7 @@ export default {
   userSignUp ({commit}, payload) {
     commit('setLoading', true)
     commit('setUserTxs', [])
+    commit('resetAuctionContracts')
     firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
     .then(firebaseUser => {
       firebaseUser.updateProfile({
@@ -53,6 +54,7 @@ export default {
   userSignIn ({commit}, payload) {
     commit('setLoading', true)
     commit('setUserTxs', [])
+    commit('resetAuctionContracts')
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(firebaseUser => {
         commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
@@ -82,6 +84,7 @@ export default {
   // sign in upon browser refresh
   autoSignIn ({commit}, firebaseUser) {
     commit('setUserTxs', [])
+    commit('resetAuctionContracts')
     commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
     db.collection('users').doc(firebaseUser.uid).get()
     .then(doc => {
@@ -101,6 +104,7 @@ export default {
     commit('setUser', {loggedIn: false, displayName: null, email: null})
     commit('setUserDetails', {displayName: null, ethAccount: null, ethBalance: null})
     commit('setUserTxs', [])
+    commit('resetAuctionContracts')
     router.push('/')
   },
 
@@ -236,7 +240,23 @@ export default {
 
   registerAuctionContract ({commit}, payload) {
     let auctionContracts = this.state.auctionContracts
+    // see if auction address already exists
+    let index = false
+    let matchFound = false
+    auctionContracts.forEach(function (res, i) {
+      if (res.contractAddress === payload.contractAddress) {
+        index = i
+        matchFound = true
+      }
+    })
+    if (!matchFound) {
     auctionContracts.push(payload)
+    // We have a new auction item
     commit('setAuctionContracts', auctionContracts)
+    } else {
+      // We have a change
+      auctionContracts.splice(index, 1, payload)
+      commit('setAuctionContracts', auctionContracts)
+    }
   }
 }

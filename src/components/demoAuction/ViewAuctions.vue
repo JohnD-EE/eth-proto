@@ -50,16 +50,43 @@
                     <v-chip small color="light-blue" text-color="white">Pending</v-chip>
                   </span>
                 </td>
-                <td class="text-xs-left">{{ props.item.startBlock }}</td>
-                <td class="text-xs-left">{{ props.item.endBlock }}</td>
-                <td class="text-xs-left">{{ props.item.bidIncrement }} {{ currency.symbol }}</td>
-                <td class="text-xs-left" v-bind:class="{
+                <td class="text-xs-center">{{ props.item.startBlock }}</td>
+                <td class="text-xs-center">{{ props.item.endBlock }}</td>
+                <td class="text-xs-center">{{ props.item.bidIncrement }} {{ currency.symbol }}</td>
+                <td class="text-xs-center" v-bind:class="{
                   'green--text': props.item.highestBidder === userDetails.ethAccount,
                   'orange--text': props.item.myBid > 0 && props.item.highestBidder !== userDetails.ethAccount
-                  }">{{ props.item.myBid }} {{ currency.symbol }}</td>
-                <td class="text-xs-left" v-bind:class="{
-                  'green--text': props.item.highestBidder === userDetails.ethAccount}">{{ props.item.highestBid }} {{ currency.symbol }}</td>
-                <td class="text-xs-left">
+                  }">
+                  <div v-if="!props.item.userIsHost">
+                    {{ props.item.myBid }} {{ currency.symbol }}
+                  </div>
+                  <div v-else>
+                    N/A
+                  </div>
+                </td>
+                <td class="text-xs-center" v-bind:class="{
+                  'green--text': props.item.highestBidder === userDetails.ethAccount}">
+                  <div class="text-xs-center" v-if="
+                      !props.item.userIsHost &&
+                      (latestBlockNumber > props.item.endBlock &&
+                      props.item.highestBidder === userDetails.ethAccount)
+                      ">
+                        <v-chip small color="primary" text-color="white"><v-avatar>
+                      <v-icon>check_circle</v-icon>
+                      </v-avatar>
+                      Winning Bid!
+                    </v-chip>
+                  </div>
+                  <div v-else>
+                    {{ props.item.highestBid }} {{ currency.symbol }}
+                  </div>
+
+                </td>
+                <td class="text-xs-center" v-bind:class="{
+                  'green--text': props.item.highestBidder === userDetails.ethAccount}">{{ props.item.highestBindingBid }} {{ currency.symbol }}
+                </td>
+                <td class="text-xs-center">
+
                   <div class="text-xs-center" v-if="
                     props.item.userIsHost &&
                     !props.item.cancelled &&
@@ -68,8 +95,27 @@
                     <v-btn small round color="warning" dark @click="cancelAuction(props.item.contractAddress)">Cancel</v-btn>
                   </div>
 
-                  <div class="text-xs-center" v-if="!props.item.userIsHost &&
-                  (latestBlockNumber >= props.item.startBlock && latestBlockNumber <= props.item.endBlock)">
+                  <div class="text-xs-center" v-if="
+                      props.item.userIsHost &&
+                      !props.item.cancelled &&
+                      !props.item.ownerHasWithdrawn &&
+                      (latestBlockNumber > props.item.endBlock)
+                    ">
+                    <v-btn small round color="green" dark @click="withdrawFunds(props.item.contractAddress)">Withdraw Payment</v-btn>
+                  </div>
+                  <div class="text-xs-center" v-if="
+                      !props.item.userIsHost &&
+                      latestBlockNumber > props.item.endBlock &&
+                      props.item.myBid > 0 &&
+                      !((props.item.highestBidder === userDetails.ethAccount) && props.item.myBid > props.item.highestBindingBid)
+                    ">
+                    <v-btn small round color="green" dark @click="withdrawFunds(props.item.contractAddress)">Withdraw Unused Funds</v-btn>
+                  </div>
+                  <div class="text-xs-center" v-if="
+                      !props.item.userIsHost &&
+                      !props.item.cancelled &&
+                      (latestBlockNumber >= props.item.startBlock && latestBlockNumber <= props.item.endBlock)
+                    ">
                     <template>
                       <v-layout row justify-center>
                         <v-dialog v-model="bidDialog" persistent max-width="500px">
@@ -83,10 +129,9 @@
                               <v-container grid-list-md>
                                 <v-layout row wrap>
                                   <v-flex xs12>
-                                    Your current bid is: {{ props.item.myBid }} {{ currency.symbol }}</br>
-                                    The highest bid is: {{ props.item.highestBid }} {{ currency.symbol }}</br>
-                                    You are <span v-show="!props.item.highestBidder === userDetails.ethAccount">not</span> currently the highest bidder</br>
-                                    Your bid must be a minimum of {{ props.item.minQualifyingBid }} {{ currency.symbol }} to become the new highest bid.
+                                    Your current bid fund is: {{ props.item.myBid }} {{ currency.symbol }}</br>
+                                    The highest binding bid is: {{ props.item.highestBindingBid }} {{ currency.symbol }}</br>
+                                    You are <span v-show="props.item.highestBidder !== userDetails.ethAccount">not</span> currently the highest bidder</br>
                                   </v-flex>
                                   <v-flex xs12 sm6>
                                     <v-text-field
@@ -110,30 +155,11 @@
                             </v-card-actions>
                             </v-form>
                           </v-card>
-
                         </v-dialog>
                       </v-layout>
                     </template>
                   </div>
-                  <div class="text-xs-center" v-if="props.item.userIsHost &&
-                  !props.item.cancelled &&
-                  (latestBlockNumber > props.item.endBlock)">
-                    <v-btn small round color="green" dark @click="withdrawFunds(props.item.contractAddress)">Withdraw Payment</v-btn>
-                  </div>
-                  <div class="text-xs-center" v-if="!props.item.userIsHost &&
-                    (latestBlockNumber > props.item.endBlock &&
-                    props.item.myBid > 0 &&
-                    !(props.item.highestBidder === userDetails.ethAccount))">
-                    <v-btn small round color="green" dark @click="withdrawFunds(props.item.contractAddress)">Withdraw Funds</v-btn>
-                  </div>
-                  <div class="text-xs-center" v-if="!props.item.userIsHost &&
-                  (latestBlockNumber > props.item.endBlock && props.item.highestBidder === userDetails.ethAccount)">
-                    <v-chip small color="primary" text-color="white"><v-avatar>
-                      <v-icon>check_circle</v-icon>
-                      </v-avatar>
-                      Winning Bid!
-                    </v-chip>
-                  </div>
+
                 </td>
               </template>
               <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -169,11 +195,12 @@ export default {
         { text: 'Sale Item', value: 'saleItem', sortable: false, align: 'left' },
         { text: 'Host', value: 'host', sortable: false },
         { text: 'Status', value: 'status', sortable: false, align: 'center' },
-        { text: 'Start Block', value: 'startBlock', sortable: true },
-        { text: 'End Block', value: 'endBlock', sortable: true },
-        { text: 'Bid Increment', value: 'bidIncrement', sortable: false },
-        { text: 'My Bid', value: 'myBid', sortable: true },
-        { text: 'Highest Bid', value: 'highestBid', sortable: false },
+        { text: 'Start Block', value: 'startBlock', sortable: true, align: 'center' },
+        { text: 'End Block', value: 'endBlock', sortable: true, align: 'center' },
+        { text: 'Bid Increment', value: 'bidIncrement', sortable: false, align: 'center' },
+        { text: 'My Bid Funds', value: 'myBid', sortable: true, align: 'center' },
+        { text: 'Highest Bid', value: 'highestBid', sortable: false, align: 'center' },
+        { text: 'Highest Binding Bid', value: 'highestBindingBid', sortable: false, align: 'center' },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }
       ]
     }
@@ -206,12 +233,12 @@ export default {
       this.$store.dispatch('resetAuctionContracts')
       auctionHelper.getAuctionData()
     },
+    refreshAuctionData () {
+      auctionHelper.getAuctionData()
+    },
     placeBid (contractAddress, myBid, bidIncrement) {
       if (this.$refs.form.validate()) {
         auctionHelper.placeBid(contractAddress, this.bidValue - myBid)
-        this.$store.dispatch('resetAuctionContracts')
-        auctionHelper.getAuctionData()
-        // clear screen - todo: this is a bit dirty
         this.bidDialog = false
       } else {
         console.log('validation failed')
@@ -224,6 +251,13 @@ export default {
       console.log('Withdrawing Funds')
       auctionHelper.withdrawFunds(contractAddress)
     }
+  },
+  mounted: function () {
+    // Poll blockchain for latest block
+    this.refreshAuctionData()
+    setInterval(function () {
+      this.refreshAuctionData()
+    }.bind(this), 2000)
   }
 }
 </script>

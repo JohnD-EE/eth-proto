@@ -53,6 +53,7 @@ const unsubscribe = firebase.auth()
         }
         // store.dispatch('registerCoinbase', window.web3)
         store.dispatch('registerWeb3', window.web3)
+        store.dispatch('resetAuctionContracts')
         store.dispatch('registerGanacheAccounts')
         store.dispatch('registerAllUsers')
         if (firebaseUser) {
