@@ -7,7 +7,7 @@
           <v-container fill-height fluid>
             <v-layout row wrap>
               <v-flex xs12 sm6 align-end flexbox>
-                <span class="headline"><v-icon dark left>gavel</v-icon> Auction</span>
+                <span class="headline"><v-icon dark left large>gavel</v-icon> Auction</span>
               </v-flex>
               <v-flex xs12 sm6 align-end flexbox>
                 <div class="text-xs-right">
@@ -16,7 +16,6 @@
                 </div>
               </v-flex>
               <v-flex xs12 align-end flexbox>
-              <div>The 'Auction' scenario demonstrates the capability of Smart Contracts to control the functions of an Auction</div>
             </v-flex>
             </v-layout>
           </v-container>

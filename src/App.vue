@@ -45,7 +45,7 @@
 
       </span>
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">
+        <router-link to="/home" tag="span" style="cursor: pointer">
           <v-toolbar-items>
           <img src="./assets/eeLogo.png" height="36" class="pr-2">
           <span>
@@ -66,23 +66,40 @@
             </v-list-tile>
           </v-list>
         </v-menu>
-  <v-btn
+        
+  <v-btn v-if="!isAuthenticated"
     flat
     v-for="item in menuItems"
     :key="item.title"
     :to="item.path">
     {{ item.title }}
   </v-btn>
-  <v-btn flat v-if="isAuthenticated" @click="userSignOut">
-    Sign Out
-  </v-btn>
+
+  <v-menu v-if="isAuthenticated">
+    <v-btn flat dark slot="activator">
+      <v-icon left>account_circle</v-icon>
+      {{ user.displayName || ''}}
+      <v-icon dark>arrow_drop_down</v-icon>
+    </v-btn>
+    <v-list>
+      <v-list-tile :to="'/wallet'" @click="">
+        <v-list-tile-title><v-icon left>account_balance_wallet</v-icon> Wallet</v-list-tile-title>
+      </v-list-tile>
+      <v-list-tile @click="userSignOut">
+        <v-list-tile-title><v-icon left>exit_to_app</v-icon> Sign Out</v-list-tile-title>
+      </v-list-tile>
+    </v-list>
+  </v-menu>
+
 </v-toolbar-items>
     </v-toolbar>
     <v-content>
       <router-view></router-view>
     </v-content>
       <v-footer class="mt-4 pa-3" fixed>
-          <span class="pr-1">Latest Block: </span><span v-show="!blockchainLoading" >{{ latestBlock }}</span>
+          <span class="pr-1">Latest Block: </span><span v-show="!blockchainLoading" >
+            <v-chip label outline color="primary" small>{{ latestBlock }}</v-chip>
+          </span>
         <v-progress-circular class="pl-2" size="14" indeterminate color="green" v-show="blockchainLoading"></v-progress-circular>
         <span class="pl-2 caption grey--text" v-show="blockchainLoading"> Polling Blockcain</span>
       <v-spacer></v-spacer>
@@ -135,7 +152,7 @@
       menuItems () {
         if (this.isAuthenticated) {
           return [
-              { title: 'Wallet', path: '/wallet', icon: 'wallet' }
+              { title: 'Wallet', path: '/wallet', icon: 'account_balance_wallet' }
           ]
         } else {
           return [
@@ -158,6 +175,12 @@
           }
         }
         return false
+      },
+      user () {
+        return this.$store.state.user
+      },
+      userDetails () {
+        return this.$store.state.userDetails
       }
     },
     methods: {
@@ -165,10 +188,17 @@
         this.$store.dispatch('userSignOut')
       },
       refreshBlockchainData () {
-        this.blockchainLoading = true
         this.$store.dispatch('registerWeb3', window.web3)
         .then(
-          setTimeout(() => { this.blockchainLoading = false }, 1200))
+         //
+        )
+      }
+    },
+    watch: {
+      latestBlock: function(val) {
+        this.blockchainLoading = true
+        setTimeout(function ()
+        { this.blockchainLoading = false }.bind(this), 1200)
       }
     },
     mounted: function () {
@@ -176,7 +206,7 @@
       this.refreshBlockchainData()
       setInterval(function () {
         this.refreshBlockchainData()
-      }.bind(this), 8000)
+      }.bind(this), 1200)
     }
   }
 </script>

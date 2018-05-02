@@ -7,13 +7,13 @@
           <v-container fill-height fluid>
             <v-layout fill-height>
               <v-flex xs12 sm6 align-end flexbox>
-                <span class="headline">{{ user.displayName || ''}}</span>
+                <span class="headline"><v-icon dark left large>account_balance_wallet</v-icon> Wallet</span>
               </v-flex>
               <v-flex xs12 sm6 align-end flexbox>
-                <p class="text-xs-right">
-                  <v-icon left dark>email</v-icon>
-                  {{ user.email || '' }}
-                </p>
+                <div class="text-xs-right">
+                  <v-icon left dark>person</v-icon>
+                  {{ user.displayName }}
+                </div>
               </v-flex>
             </v-layout>
           </v-container>
