@@ -35,11 +35,11 @@
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.saleItem }}</td>
                 <td class="text-xs-left">{{ props.item.status }}</td>
-                <td class="text-xs-left">{{ props.item.startBlock }}</td>
-                <td class="text-xs-left">{{ props.item.endBlock }}</td>
-                <td class="text-xs-left">{{ props.item.bidIncrement }} {{ currency.symbol }}</td>
-                <td class="text-xs-left">{{ props.item.myBids }}</td>
-                <td class="text-xs-left">{{ props.item.highestBid }} {{ currency.symbol }}</td>
+                <td class="text-xs-left">{{ props.item.agent }}</td>
+                <td class="text-xs-left">{{ props.item.seller }}</td>
+                <td class="text-xs-left">{{ props.item.buyer }}</td>
+                <td class="text-xs-left">{{ props.item.vaule }} {{ currency.symbol }}</td>
+                <td class="text-xs-left">{{ props.item.feePercent }}%</td>
                 <td class="text-xs-left">{{ props.item.actions }}</td>
               </template>
               <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -67,11 +67,11 @@ export default {
       headers: [
         { text: 'Sale Item', value: 'saleItem', sortable: false, align: 'left' },
         { text: 'Status', value: 'status', sortable: false },
-        { text: 'Start Block', value: 'startBlock', sortable: false },
-        { text: 'End Block', value: 'endBlock', sortable: false },
-        { text: 'Bid Increment', value: 'bidIncrement', sortable: false },
-        { text: 'My Bids', value: 'myBids', sortable: false },
-        { text: 'Highest Bid', value: 'highestBid', sortable: false },
+        { text: 'Agent', value: 'agent', sortable: false },
+        { text: 'Buyer', value: 'buyer', sortable: false },
+        { text: 'Seller', value: 'seller', sortable: false },
+        { text: 'Contract Value', value: 'value', sortable: false },
+        { text: 'Agency Fees', value: 'feePercent', sortable: false },
         { text: 'Actions', value: 'actions', sortable: false }
       ]
     }
@@ -87,9 +87,7 @@ export default {
       return this.$store.getters.balanceToEther
     },
     items () {
-      return [
-        { saleItem: 'My Item', status: 'ACTIVE', startBlock: 3, endBlock: 20, bidIncrement: 10, myBids: 'bid', highestBid: 32, actions: 'Actions' }
-      ]
+      return this.$store.getters.allEscrowContracts
     },
     currency () {
       return this.$store.state.currency
@@ -99,9 +97,14 @@ export default {
     clickClose () {
       this.dialog = false
     },
+    viewAuctions () {
+      this.$store.dispatch('resetAuctionContracts')
+      escrowHelper.updateEscrowData()
+    },
     viewEscrowContracts () {
-      console.log('Calling: getAllAuctions')
-      escrowHelper.getAllEscrowContracts()
+      console.log('Calling: getAllEscrowContracts')
+      this.$store.dispatch('resetEscrowContracts')
+      escrowHelper.updateEscrowData()
     }
   }
 }

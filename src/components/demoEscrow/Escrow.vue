@@ -7,7 +7,7 @@
           <v-container fill-height fluid>
             <v-layout row wrap>
               <v-flex xs12 sm6 align-end flexbox>
-                <span class="headline"><v-icon dark left>account_balance</v-icon> Escrow</span>
+                <span class="headline"><v-icon dark left large>account_balance</v-icon> Escrow</span>
               </v-flex>
               <v-flex xs12 sm6 align-end flexbox>
                 <div class="text-xs-right">
@@ -15,15 +15,13 @@
                   {{ user.displayName }}
                 </div>
               </v-flex>
-              <v-flex xs12 align-end flexbox>
-              <div>The 'Escrow' scenario demonstrates the Smart Contract control of an Escrow agreement,
-                 placing funds in custody of a 3rd party until conditions are met.</div>
-            </v-flex>
             </v-layout>
           </v-container>
         </v-card-media>
         <v-container fluid>
           <v-card-text>
+            <p>The 'Escrow' scenario demonstrates the Smart Contract control of an Escrow agreement,
+               placing funds in custody of a 3rd party until conditions are met.</p>
             <h3>As an Escrow Agent:</h3>
               <ul class="py-2 ml-5">
                 <li>I can create an Escrow service for two parties</li>

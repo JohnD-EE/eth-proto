@@ -263,5 +263,29 @@ export default {
       auctionContracts.splice(index, 1, payload)
       commit('setAuctionContracts', auctionContracts)
     }
-  }
+  },
+  resetEscrowContracts ({commit}) {
+    commit('resetEscrowContracts')
+  },
+  registerEscrowContract ({commit}, payload) {
+    let escrowContracts = this.state.escrowContracts
+    // see if escrow address already exists
+    let index = false
+    let matchFound = false
+    escrowContracts.forEach(function (res, i) {
+      if (res.contractAddress === payload.contractAddress) {
+        index = i
+        matchFound = true
+      }
+    })
+    if (!matchFound) {
+      escrowContracts.push(payload)
+      // We have a new escrow item
+      commit('setEscrowContracts', escrowContracts)
+    } else {
+      // We have a change
+      escrowContracts.splice(index, 1, payload)
+      commit('setEscrowContracts', escrowContracts)
+    }
+  },
 }

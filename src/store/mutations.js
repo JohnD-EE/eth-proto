@@ -60,10 +60,12 @@ export default {
     state.auctionContracts = []
   },
   setAuctionContracts (state, payload) {
-    //  state.auctionContracts = state.auctionContracts.concat(payload)
     state.auctionContracts = payload
-    // console.log('Set Deployed Contracts: ', payload)
-    // state.auctionContracts[payload.contractAddress] = {contract: payload.contract, info: payload.info}
-    // console.log('deployed auction contracts: ', state.auctionContracts)
+  },
+  resetEscrowContracts (state) {
+    state.escrowContracts = []
+  },
+  setEscrowContracts (state, payload) {
+    state.escrowContracts = payload
   }
 }

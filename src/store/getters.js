@@ -68,7 +68,6 @@ export default {
     })
     return userTxs.reverse()
   },
-
   allAuctionContracts: state => {
     let auctionItems = []
     let allUsersByEthAccount = helperUsers.getUsersByAddress()
@@ -99,5 +98,47 @@ export default {
       })
     })
     return auctionItems.reverse()
+  },
+  allEscrowContracts: state => {
+    let escrowItems = []
+    let allUsersByEthAccount = helperUsers.getUsersByAddress()
+    state.escrowContracts.forEach(res => {
+      let agent = 'N/A'
+      let seller = 'N/A'
+      let buyer = 'N/A'
+      if (res.info.owner === state.userDetails.ethAccount) {
+        agent = state.user.displayName
+      } else {
+        agent = res.info.owner in allUsersByEthAccount ? allUsersByEthAccount[res.info.owner].displayName : 'N/A'
+      }
+      if (res.info.sellerAddress === state.userDetails.ethAccount) {
+        seller = state.user.displayName
+      } else {
+        seller = res.info.sellerAddress in allUsersByEthAccount ? allUsersByEthAccount[res.info.sellerAddress].displayName : 'N/A'
+      }
+      if (res.info.buyer === state.userDetails.ethAccount) {
+        buyer = state.user.displayName
+      } else {
+        buyer = res.info.buyerAddress in allUsersByEthAccount ? allUsersByEthAccount[res.info.buyerAddress].displayName : 'N/A'
+      }
+      escrowItems.push({
+        contractAddress: res.contractAddress,
+        saleItem: res.info.saleItem,
+        ownerAddress: res.info.owner,
+        sellerAddress: res.info.sellerAddress,
+        buyerAddress: res.info.buyerAddress,
+        agent: agent,
+        seller: seller,
+        buyer: buyer,
+        userIsAgent: res.info.owner === state.userDetails.ethAccount,
+        userIsSeller: res.info.seller === state.userDetails.ethAccount,
+        userIsBuyer: res.info.buyer === state.userDetails.ethAccount,
+        feePercent: res.info.feePercent,
+        sellerApprove: res.info.sellerApprove,
+        buyerApprove: res.info.buyerApprove,
+        escrowComplete: res.info.escrowComplete
+      })
+    })
+    return escrowItems.reverse()
   }
 }
