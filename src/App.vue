@@ -128,94 +128,95 @@
 <script>
 import auctionHelper from './helpers/demoAuction/auction'
 
-  export default {
-    data () {
-      return {
-        snackbar: false,
-        blockchainLoading: false,
-        sidebar: false,
-        demos: [
-          { title: 'Auction', path: '/auction', icon: 'gavel' },
-          { title: 'Escrow', path: '/escrow', icon: 'account_balance' },
-          { title: 'Coupon', path: '/morescenarios', icon: 'redeem' },
-          { title: 'Voucher', path: '/morescenarios', icon: 'redeem' },
-          { title: 'Loyalty', path: '/morescenarios', icon: 'loyalty' },
-          { title: 'Branded Currency', path: '/morescenarios', icon: 'payment' }
+export default {
+  data () {
+    return {
+      snackbar: false,
+      blockchainLoading: false,
+      sidebar: false,
+      demos: [
+        { title: 'Auction', path: '/auction', icon: 'gavel' },
+        { title: 'Escrow', path: '/escrow', icon: 'account_balance' },
+        { title: 'Coupon', path: '/morescenarios', icon: 'redeem' },
+        { title: 'Voucher', path: '/morescenarios', icon: 'redeem' },
+        { title: 'Loyalty', path: '/morescenarios', icon: 'loyalty' },
+        { title: 'Branded Currency', path: '/morescenarios', icon: 'payment' }
+      ]
+    }
+  },
+  computed: {
+    appTitle () {
+      return this.$store.state.appTitle
+    },
+    isAuthenticated () {
+      return this.$store.getters.isAuthenticated
+    },
+    menuItems () {
+      if (this.isAuthenticated) {
+        return [
+            { title: 'Wallet', path: '/wallet', icon: 'account_balance_wallet' }
+        ]
+      } else {
+        return [
+          { title: 'Sign Up', path: '/signup', icon: 'account_circle' },
+          { title: 'Sign In', path: '/signin', icon: 'lock_open' },
+          { title: 'System', path: '/system', icon: 'settings' }
         ]
       }
     },
-    computed: {
-      appTitle () {
-        return this.$store.state.appTitle
-      },
-      isAuthenticated () {
-        return this.$store.getters.isAuthenticated
-      },
-      menuItems () {
-        if (this.isAuthenticated) {
-          return [
-              { title: 'Wallet', path: '/wallet', icon: 'account_balance_wallet' }
-          ]
-        } else {
-          return [
-            { title: 'Sign Up', path: '/signup', icon: 'account_circle' },
-            { title: 'Sign In', path: '/signin', icon: 'lock_open' },
-            { title: 'System', path: '/system', icon: 'settings' }
-          ]
-        }
-      },
-      latestBlock () {
-        return this.$store.state.web3.latestBlock.number
-      },
-      notifications () {
-        let notification = this.$store.getters.getNotification
-        if (notification) {
-          return {
-            title: notification.title,
-            text: notification.text,
-            type: notification.type
-          }
-        }
-        return false
-      },
-      user () {
-        return this.$store.state.user
-      },
-      userDetails () {
-        return this.$store.state.userDetails
-      }
+    latestBlock () {
+      return this.$store.state.web3.latestBlock.number
     },
-    methods: {
-      userSignOut () {
-        this.$store.dispatch('userSignOut')
-      },
-      refreshBlockchainData () {
-        this.$store.dispatch('registerWeb3', window.web3)
-        .then(
-         //
-        )
-      }
-    },
-    watch: {
-      latestBlock: function(val) {
-        this.blockchainLoading = true
-        if (this.isAuthenticated) {
-          this.$store.dispatch('updateAccount')
-          this.$store.dispatch('userTxs')
-          if (this.$route.path === '/auction') {
-            auctionHelper.updateAuctionData()
-          }
+    notifications () {
+      let notification = this.$store.getters.getNotification
+      if (notification) {
+        return {
+          title: notification.title,
+          text: notification.text,
+          type: notification.type
         }
-        setTimeout(function ()
-        { this.blockchainLoading = false }.bind(this), 1200)
       }
+      return false
     },
-    mounted: function () {
-      // Poll blockchain for latest block
-      this.refreshBlockchainData()
-      setInterval(function () {
-        this.refreshBlockchainData()
+    user () {
+      return this.$store.state.user
+    },
+    userDetails () {
+      return this.$store.state.userDetails
+    }
+  },
+  methods: {
+    userSignOut () {
+      this.$store.dispatch('userSignOut')
+    },
+    refreshBlockchainData () {
+      this.$store.dispatch('registerWeb3', window.web3)
+      .then(
+       //
+      )
+    }
+  },
+  watch: {
+    latestBlock: function (val) {
+      this.blockchainLoading = true
+      if (this.isAuthenticated) {
+        this.$store.dispatch('userTxs')
+        this.$store.dispatch('updateAccount')
+        if (this.$route.path === '/auction') {
+          auctionHelper.updateAuctionData()
+        }
+      }
+      setTimeout(function () {
+        this.blockchainLoading = false
       }.bind(this), 1200)
     }
+  },
+  mounted: function () {
+    // Poll blockchain for latest block
+    this.refreshBlockchainData()
+    setInterval(function () {
+      this.refreshBlockchainData()
+    }.bind(this), 1200)
   }
+}
 </script>

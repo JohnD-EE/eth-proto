@@ -55,7 +55,6 @@ export default {
         type: 'success'
       })
       store.dispatch('updateAccount')
-
     })
     .on('receipt', receipt => {
       console.log('reciept', receipt)
@@ -68,7 +67,7 @@ export default {
       console.log('confirmation Number:', confirmationNumber)
       console.log('reciept', receipt)
     })
-    .on('error', errorr => {
+    .on('error', error => {
       store.dispatch('newNotification', {
         title: 'Transaction Failed',
         text: error,

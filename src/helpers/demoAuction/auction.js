@@ -191,34 +191,34 @@ export default {
     contract.methods.withdraw().send({
       from: store.state.userDetails.ethAccount,
       gas: 6000000
+    })
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Fund Withdrawal - New transaction to process',
+        text: hash,
+        type: 'success'
       })
-      .on('transactionHash', function (hash) {
-        store.dispatch('newNotification', {
-          title: 'Fund Withdrawal - New transaction to process',
-          text: hash,
-          type: 'success'
-        })
-        console.log('TransactionHash: ', hash)
+      console.log('TransactionHash: ', hash)
+    })
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
       })
-      .on('receipt', function (receipt) {
-        store.dispatch('newNotification', {
-          title: 'Transaction completed',
-          type: 'success'
-        })
-        console.log('Receipt: ', receipt)
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed',
+        text: error,
+        type: 'error'
       })
-      .on('confirmation', function (confirmationNumber, receipt) {
-        //
-      })
-      .on('error', function (error) {
-        store.dispatch('newNotification', {
-          title: 'Transaction Failed',
-          text: error,
-          type: 'error'
-        })
-        console.log(error)
-      })
-    }
+      console.log(error)
+    })
+  }
 
   // getAllAuctionsPromise () {
   // const AuctionFactory = store.state.contracts['AuctionFactory']

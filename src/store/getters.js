@@ -4,7 +4,7 @@ export default {
   getNotification: state => {
     let notificationsQueue = state.notificationsQueue
     console.log('Queue: ', notificationsQueue)
-    if (notificationsQueue.length > 0 ) {
+    if (notificationsQueue.length > 0) {
       return notificationsQueue.shift()
     }
     return false
