@@ -41,7 +41,6 @@ export default {
       return this.$store.state.userDetails
     },
     balanceToEther () {
-      // this.balance = this.$store.getters.balanceToEther
       return this.$store.getters.balanceToEther
     }
   },
@@ -52,19 +51,7 @@ export default {
     },
     viewTxs () {
       this.$store.dispatch('userTxs')
-    },
-    updateTxs () {
-      if (this.dialog) {
-        this.$store.dispatch('userTxs')
-      }
     }
-  },
-  mounted: function () {
-    // check for transaction updates every few seconds as blocks are mined
-    this.updateTxs()
-    setInterval(function () {
-      this.updateTxs()
-    }.bind(this), 10000)
   }
 }
 </script>

@@ -46,7 +46,7 @@ export default {
     })
   },
 
-  getAuctionData () {
+  updateAuctionData () {
     let auctionAbi = AuctionJSON.abi
     const AuctionFactory = store.state.contracts['AuctionFactory']
     AuctionFactory.methods.allAuctions().call()

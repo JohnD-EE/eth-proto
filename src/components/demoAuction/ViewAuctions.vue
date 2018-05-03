@@ -40,8 +40,11 @@
                   <span v-if="props.item.cancelled">
                     <v-chip small color="black" text-color="white">Cancelled</v-chip>
                   </span>
-                  <span v-else-if="latestBlockNumber >= props.item.startBlock && latestBlockNumber <= props.item.endBlock">
+                  <span v-else-if="latestBlockNumber >= props.item.startBlock && latestBlockNumber < props.item.endBlock">
                     <v-chip small color="green" text-color="white">Active</v-chip>
+                  </span>
+                  <span v-else-if="latestBlockNumber == props.item.endBlock">
+                    <v-chip small color="red" text-color="white">No More Bids</v-chip>
                   </span>
                   <span v-else-if="latestBlockNumber > props.item.endBlock">
                     <v-chip small color="orange" text-color="white">Ended</v-chip>
@@ -64,33 +67,49 @@
                     N/A
                   </div>
                 </td>
+                <td class="text-xs-center">
+                  <div v-if="latestBlockNumber < props.item.endBlock">
+                    {{ props.item.highestBid }} {{ currency.symbol }}
+                  </div>
+                  <div v-else>
+                    N/A
+                  </div>
+                </td>
                 <td class="text-xs-center" v-bind:class="{
                   'green--text': props.item.highestBidder === userDetails.ethAccount}">
                   <div class="text-xs-center" v-if="
-                      !props.item.userIsHost &&
                       (latestBlockNumber > props.item.endBlock &&
-                      props.item.highestBidder === userDetails.ethAccount)
+                      props.item.highestBindingBid > 0 &&
+                      props.item.highestBidder !== userDetails.ethAccount)
                       ">
-                        <v-chip small color="primary" text-color="white"><v-avatar>
-                      <v-icon>check_circle</v-icon>
-                      </v-avatar>
-                      Winner!
-                    </v-chip>
-                  </div>
-                  <div v-else>
-                    {{ props.item.highestBid }} {{ currency.symbol }}
-                  </div>
-
-                </td>
-                <td class="text-xs-center" v-bind:class="{
-                  'green--text': props.item.highestBidder === userDetails.ethAccount}">{{ props.item.highestBindingBid }} {{ currency.symbol }}
+                  <v-chip small color="green" text-color="white">
+                {{ props.item.highestBindingBid }} {{ currency.symbol }}
+              </v-chip>
+            </div>
+            <div class="text-xs-center" v-else-if="
+                !props.item.userIsHost &&
+                (latestBlockNumber > props.item.endBlock &&
+                props.item.highestBidder === userDetails.ethAccount &&
+                !props.item.cancelled
+                )
+                ">
+                  <v-chip small color="primary" text-color="white">
+                    <v-avatar>
+                    <v-icon>check_circle</v-icon>
+                    </v-avatar>
+                {{ props.item.highestBindingBid }} {{ currency.symbol }} - You Win
+              </v-chip>
+            </div>
+            <div v-else>
+              {{ props.item.highestBindingBid }} {{ currency.symbol }}
+            </div>
                 </td>
                 <td class="text-xs-center">
 
                   <div class="text-xs-center" v-if="
                     props.item.userIsHost &&
                     !props.item.cancelled &&
-                    (latestBlockNumber <= props.item.endBlock)
+                    (latestBlockNumber < props.item.endBlock)
                   ">
                     <v-btn small round color="warning" dark @click="cancelAuction(props.item.contractAddress)">Cancel</v-btn>
                   </div>
@@ -99,12 +118,14 @@
                       props.item.userIsHost &&
                       !props.item.cancelled &&
                       !props.item.ownerHasWithdrawn &&
-                      (latestBlockNumber > props.item.endBlock)
+                      (latestBlockNumber > props.item.endBlock) &&
+                      props.item.highestBindingBid > 0
                     ">
                     <v-btn small round color="green" dark @click="withdrawFunds(props.item.contractAddress)">Withdraw Payment</v-btn>
                   </div>
                   <div class="text-xs-center" v-if="
                       (
+                        props.item.highestBidder !== userDetails.ethAccount &&
                         !props.item.userIsHost &&
                         latestBlockNumber > props.item.endBlock &&
                         props.item.myBid > 0
@@ -120,7 +141,7 @@
                   <div class="text-xs-center" v-if="
                       !props.item.userIsHost &&
                       !props.item.cancelled &&
-                      (latestBlockNumber >= props.item.startBlock && latestBlockNumber <= props.item.endBlock)
+                      (latestBlockNumber >= props.item.startBlock && latestBlockNumber < props.item.endBlock)
                     ">
                     <template>
                       <v-layout row justify-center>
@@ -237,10 +258,10 @@ export default {
     },
     viewAuctions () {
       this.$store.dispatch('resetAuctionContracts')
-      auctionHelper.getAuctionData()
+      auctionHelper.updateAuctionData()
     },
     refreshAuctionData () {
-      auctionHelper.getAuctionData()
+      // auctionHelper.updateAuctionData()
     },
     placeBid (contractAddress, myBid, bidIncrement) {
       if (this.$refs.form.validate()) {
@@ -257,13 +278,13 @@ export default {
       console.log('Withdrawing Funds')
       auctionHelper.withdrawFunds(contractAddress)
     }
-  },
-  mounted: function () {
-    // Poll blockchain for latest block
-    this.refreshAuctionData()
-    setInterval(function () {
-      this.refreshAuctionData()
-    }.bind(this), 2000)
   }
+  // mounted: function () {
+    // Poll blockchain for latest block
+    // this.refreshAuctionData()
+    // setInterval(function () {
+    //  this.refreshAuctionData()
+    // }.bind(this), 2000)
+  // }
 }
 </script>

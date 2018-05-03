@@ -105,11 +105,7 @@ export default {
     }
   },
   mounted: function () {
-    // check for balance updates every few seconds as blocks are mined
     this.checkBalance()
-    setInterval(function () {
-      this.checkBalance()
-    }.bind(this), 3000)
   }
 }
 </script>

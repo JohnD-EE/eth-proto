@@ -66,7 +66,7 @@
             </v-list-tile>
           </v-list>
         </v-menu>
-        
+
   <v-btn v-if="!isAuthenticated"
     flat
     v-for="item in menuItems"
@@ -126,6 +126,8 @@
 </template>
 
 <script>
+import auctionHelper from './helpers/demoAuction/auction'
+
   export default {
     data () {
       return {
@@ -197,6 +199,13 @@
     watch: {
       latestBlock: function(val) {
         this.blockchainLoading = true
+        if (this.isAuthenticated) {
+          this.$store.dispatch('updateAccount')
+          this.$store.dispatch('userTxs')
+          if (this.$route.path === '/auction') {
+            auctionHelper.updateAuctionData()
+          }
+        }
         setTimeout(function ()
         { this.blockchainLoading = false }.bind(this), 1200)
       }

@@ -41,10 +41,10 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select
-                  label="Bid increment"
+                  label="Binding bid increment"
                   required
                   :items="['0.5', '1', '2', '3', '4', '5', '10', '15', '20']"
-                  hint="Set the increase for a new bid to beat the previously highest bid"
+                  hint="A bidder adds thier maximum bid but only pays the previous highest bid plus this increment"
                   v-model="bidIncrement"
                   :rules="bidIncrementRules"
                   persistent-hint
