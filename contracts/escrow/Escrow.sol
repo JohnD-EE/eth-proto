@@ -3,7 +3,7 @@ pragma solidity ^0.4.8;
 contract Escrow {
 
   // Store balances
-  mapping (address => uint) balances;
+  mapping (address => uint) public balances;
 
   // Static
   address public owner;
@@ -14,9 +14,9 @@ contract Escrow {
   string public saleItem;
 
   // State
-  bool sellerApprove;
-  bool buyerApprove;
-  bool escrowComplete = false;
+  bool public sellerApprove;
+  bool public buyerApprove;
+  bool public escrowComplete = false;
 
   // Constructor
   function Escrow(address _owner, address _sellerAddress, address _buyerAddress, uint _feePercent, string _saleItem) public {
