@@ -46,9 +46,15 @@
               <v-subheader>To Account Details</v-subheader>
               <v-list-tile>
                 <v-list-tile-content>
-
-                  <app-user-selector></app-user-selector>
-
+                  <template>
+                    <v-container fluid>
+                      <v-layout row wrap>
+                        <v-flex xs12 sm6>
+                          <app-user-selector @selected="onUserSelect" selectLabel="Select Recipient"></app-user-selector>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </template>
                 </v-list-tile-content>
               </v-list-tile>
 
@@ -89,7 +95,7 @@
 </template>
 
 <script>
-import UserSelector from './UserSelector.vue'
+import UserSelector from './sharedComponents/UserSelector.vue'
 import transactionsHelper from '../helpers/transactions'
 
 export default {
@@ -127,6 +133,17 @@ export default {
     }
   },
   methods: {
+    onUserSelect (value) {
+      if (value) {
+        this.$store.dispatch('composeTransaction', {
+          toAccount: value.account, toName: value.name
+        })
+      } else {
+        this.$store.dispatch('composeTransaction', {
+          toAccount: null, toName: null
+        })
+      }
+    },
     clickSend () {
       // clear any pre-existing composed transactions
       this.$store.dispatch('composeTransaction', {})

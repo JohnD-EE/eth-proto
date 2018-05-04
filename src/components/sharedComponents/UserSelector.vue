@@ -1,9 +1,7 @@
 <template>
-  <v-container fluid>
-    <v-layout row wrap>
-      <v-flex xs12 sm6>
+
         <v-select
-          label="Select"
+          :label="selectLabel"
           :items="users"
           v-model="userSelector"
           item-text="account"
@@ -35,9 +33,7 @@
             </template>
           </template>
         </v-select>
-      </v-flex>
-    </v-layout>
-  </v-container>
+      
 </template>
 
 <script>
@@ -48,10 +44,13 @@
         userSelector: []
       }
     },
+    props: [
+    'selectLabel'
+    ],
     computed: {
       users () {
         let selections = [
-          { header: 'Select Recipient' }
+          { header: 'Select User Account' }
         ]
         this.$store.getters.allUsers(true).forEach(res => {
           if (res.type === 'user') {
@@ -66,13 +65,9 @@
         // todo this watcher now makes the component specific and not generic
         // perhaps better to use an event emitter to pass data back from child compenent to parent?
         if (value) {
-          this.$store.dispatch('composeTransaction', {
-            toAccount: value.account, toName: value.name
-          })
+            this.$emit('selected', {account: value.account, name: value.name})
         } else {
-          this.$store.dispatch('composeTransaction', {
-            toAccount: null, toName: null
-          })
+            //
         }
       }
     }
