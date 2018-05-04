@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs12 sm6>
         <v-select
-          label="Select"
+          :label="selectLabel"
           :items="users"
           v-model="userSelector"
           item-text="account"
@@ -48,10 +48,13 @@
         userSelector: []
       }
     },
+    props: [
+    'selectLabel'
+    ],
     computed: {
       users () {
         let selections = [
-          { header: 'Select Recipient' }
+          { header: 'Select User Account' }
         ]
         this.$store.getters.allUsers(true).forEach(res => {
           if (res.type === 'user') {
@@ -68,7 +71,7 @@
         if (value) {
             this.$emit('selected', {account: value.account, name: value.name})
         } else {
-            // 
+            //
         }
       }
     }

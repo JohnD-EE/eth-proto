@@ -11,8 +11,8 @@
         </v-card-title>
         <v-card-text>
 
-<app-seller-selection @selected="onSellerSelect"></app-seller-selection>
-<app-buyer-selection @selected="onBuyerSelect"></app-buyer-selection>
+<app-seller-selector @selected="onSellerSelect" selectLabel="Select Seller"></app-seller-selector>
+<app-buyer-selector @selected="onBuyerSelect" selectLabel="Select Buyer"></app-buyer-selector>
 
           <v-container grid-list-md>
             <v-layout row wrap>
@@ -72,7 +72,7 @@
 
 <script>
 import escrowHelper from '../../helpers/demoEscrow/escrow'
-import UserSelection from '../sharedComponents/UserSelection.vue'
+import UserSelector from '../sharedComponents/UserSelector.vue'
 
 export default {
   data: () => ({
@@ -101,8 +101,8 @@ export default {
     //
   },
   components: {
-    'app-seller-selection': UserSelection,
-    'app-buyer-selection': UserSelection
+    'app-seller-selector': UserSelector,
+    'app-buyer-selector': UserSelector
   },
   methods: {
     onSellerSelect (val) {

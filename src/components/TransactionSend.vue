@@ -47,7 +47,7 @@
               <v-list-tile>
                 <v-list-tile-content>
 
-                  <app-user-selector></app-user-selector>
+                  <app-user-selector @selected="onUserSelect" selectLabel="Select Recipient"></app-user-selector>
 
                 </v-list-tile-content>
               </v-list-tile>
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import UserSelector from './UserSelector.vue'
+import UserSelector from './sharedComponents/UserSelector.vue'
 import transactionsHelper from '../helpers/transactions'
 
 export default {
@@ -127,6 +127,17 @@ export default {
     }
   },
   methods: {
+    onUserSelect (value) {
+      if (value) {
+        this.$store.dispatch('composeTransaction', {
+          toAccount: value.account, toName: value.name
+        })
+      } else {
+        this.$store.dispatch('composeTransaction', {
+          toAccount: null, toName: null
+        })
+      }
+    },
     clickSend () {
       // clear any pre-existing composed transactions
       this.$store.dispatch('composeTransaction', {})

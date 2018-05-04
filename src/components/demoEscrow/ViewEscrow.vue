@@ -38,7 +38,7 @@
                 <td class="text-xs-left">{{ props.item.agent }}</td>
                 <td class="text-xs-left">{{ props.item.seller }}</td>
                 <td class="text-xs-left">{{ props.item.buyer }}</td>
-                <td class="text-xs-left">{{ props.item.vaule }} {{ currency.symbol }}</td>
+                <td class="text-xs-left">{{ props.item.value }} {{ currency.symbol }}</td>
                 <td class="text-xs-left">{{ props.item.feePercent }}%</td>
                 <td class="text-xs-left">{{ props.item.actions }}</td>
               </template>
