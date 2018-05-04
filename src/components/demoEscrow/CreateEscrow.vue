@@ -10,6 +10,10 @@
           <span class="headline">Become an Escrow Agent</span>
         </v-card-title>
         <v-card-text>
+
+<app-seller-selection @selected="onSellerSelect"></app-seller-selection>
+<app-buyer-selection @selected="onBuyerSelect"></app-buyer-selection>
+
           <v-container grid-list-md>
             <v-layout row wrap>
               <v-flex xs12>
@@ -68,6 +72,7 @@
 
 <script>
 import escrowHelper from '../../helpers/demoEscrow/escrow'
+import UserSelection from '../sharedComponents/UserSelection.vue'
 
 export default {
   data: () => ({
@@ -95,7 +100,17 @@ export default {
   computed: {
     //
   },
+  components: {
+    'app-seller-selection': UserSelection,
+    'app-buyer-selection': UserSelection
+  },
   methods: {
+    onSellerSelect (val) {
+      console.log ('Seller Selection', val)
+    },
+    onBuyerSelect (val) {
+      console.log ('Buyer Selection', val)
+    },
     submit () {
       if (this.$refs.form.validate()) {
         // create the auction
