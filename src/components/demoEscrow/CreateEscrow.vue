@@ -11,29 +11,13 @@
         </v-card-title>
         <v-card-text>
 
-<app-seller-selector @selected="onSellerSelect" selectLabel="Select Seller"></app-seller-selector>
-<app-buyer-selector @selected="onBuyerSelect" selectLabel="Select Buyer"></app-buyer-selector>
-
           <v-container grid-list-md>
             <v-layout row wrap>
               <v-flex xs12>
-                <v-text-field
-                label="Seller"
-                hint="The seller hex address"
-                v-model="sellerAddress"
-                :rules="sellerAddressRules"
-                required>
-              </v-text-field>
+                <app-seller-selector @selected="onSellerSelect" selectLabel="Select Seller"></app-seller-selector>
               </v-flex>
               <v-flex xs12>
-                <v-text-field
-                label="Buyer"
-                hint="The buyer hex address"
-                v-model="buyerAddress"
-                :rules="buyerAddressRules"
-                required>
-              </v-text-field>
-              </v-flex>
+                <app-buyer-selector @selected="onBuyerSelect" selectLabel="Select Buyer"></app-buyer-selector>
               </v-flex>
               <v-flex xs12>
                 <v-text-field
@@ -60,7 +44,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary darken-1" flat @click.native="dialog = false">Close</v-btn>
+          <v-btn color="primary darken-1" flat @click.native="close">Close</v-btn>
           <v-btn color="primary darken-1" flat @click.native="submit">Save</v-btn>
         </v-card-actions>
         </v-form>
@@ -106,10 +90,19 @@ export default {
   },
   methods: {
     onSellerSelect (val) {
-      console.log ('Seller Selection', val)
+      if (val.account) {
+        this.sellerAddress = val.account
+      } else {
+        this.sellerAddress = null
+      }
     },
     onBuyerSelect (val) {
-      console.log ('Buyer Selection', val)
+      if (val.account) {
+        this.buyerAddress = val.account
+      } else {
+        this.buyerAddress = null
+      }
+      console.log(this.buyerAddress)
     },
     submit () {
       if (this.$refs.form.validate()) {
@@ -123,11 +116,17 @@ export default {
             escrowServiceAddress: this.$store.state.userDetails.ethAccount
           }
         )
-        // clear screen
-        this.dialog = false
+        this.close()
       } else {
         console.log('validation failed')
       }
+    },
+    close () {
+      this.clear()
+      this.dialog = false
+    },
+    clear () {
+      this.$refs.form.reset()
     }
   }
 }

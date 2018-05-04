@@ -1,7 +1,5 @@
 <template>
-  <v-container fluid>
-    <v-layout row wrap>
-      <v-flex xs12 sm6>
+
         <v-select
           :label="selectLabel"
           :items="users"
@@ -35,9 +33,7 @@
             </template>
           </template>
         </v-select>
-      </v-flex>
-    </v-layout>
-  </v-container>
+      
 </template>
 
 <script>
