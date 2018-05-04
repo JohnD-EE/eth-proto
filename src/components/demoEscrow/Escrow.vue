@@ -20,7 +20,7 @@
         </v-card-media>
         <v-container fluid>
           <v-card-text>
-            <p>The 'Escrow' scenario demonstrates the Smart Contract control of an Escrow agreement,
+            <p>This scenario demonstrates the Smart Contract control of an Escrow agreement,
                placing funds in custody of a 3rd party until conditions are met.</p>
             <h3>As an Escrow Agent:</h3>
               <ul class="py-2 ml-5">
@@ -30,14 +30,14 @@
             <h3>As a Seller in an Escrow contract:</h3>
             <ul class="py-2 ml-5">
               <li>I can confirm that I have supplied the goods/services by approving the deal</li>
-              <li>I can void the contract (requires other party to also void the contract)</li>
-              <li>I receive payment (after fees are deducted) once all parties have approved the contract</li>
+              <li>I can void the contract (requires the Buyer to also void)</li>
+              <li>I receive payment (after fees are deducted) once Buyer and Seller have approved the contract</li>
             </ul>
             <h3>As a Buyer in an Escrow contract:</h3>
             <ul class="py-2 ml-5">
-              <li>I can confirm that I am happy with the goods/services provided by approving the deal</li>
-              <li>I can void the contract (requires other party to also void the contract)</li>
               <li>I can deposit the required funds onto the contract</li>
+              <li>I can confirm that I'm happy with the goods/services provided by approving the deal</li>
+              <li>I can void the contract and have my depsit refunded (requires the Seller to also void)</li>
             </ul>
           </v-card-text>
           <v-card-text>

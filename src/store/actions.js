@@ -287,5 +287,5 @@ export default {
       escrowContracts.splice(index, 1, payload)
       commit('setEscrowContracts', escrowContracts)
     }
-  },
+  }
 }
