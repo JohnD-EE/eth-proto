@@ -121,8 +121,37 @@ export default {
       } else {
         buyer = res.info.buyerAddress in allUsersByEthAccount ? allUsersByEthAccount[res.info.buyerAddress].displayName : 'N/A'
       }
+
+      let status = {text: '', color: ''}
+      if (res.info.buyerApprove && !res.info.sellerApprove) {
+        status.text = 'Pending Seller Approval'
+        status. color = 'info'
+      }
+      else if (!res.info.buyerApprove && res.info.sellerApprove) {
+        status.text = 'Pending Buyer Approval'
+        status. color = 'info'
+      }
+      else if (res.info.escrowComplete) {
+        status.text = 'Escrow Complete'
+        status. color = 'primary'
+      }
+      else if (Number(res.info.balance) === 0) {
+        status.text = 'Pending Fund Deposit'
+        status. color = 'info'
+      }
+      else if (Number(res.info.balance) > 0) {
+        status.text = 'Buyer Deposited'
+        status. color = 'green'
+      }
+      else if (res.info.owner = 0) {
+        // contract has self destructed
+        status.text = 'Void'
+        status. color = 'black'
+      }
+
       escrowItems.push({
         contractAddress: res.contractAddress,
+        status: status,
         saleItem: res.info.saleItem,
         ownerAddress: res.info.owner,
         sellerAddress: res.info.sellerAddress,
@@ -130,13 +159,14 @@ export default {
         agent: agent,
         seller: seller,
         buyer: buyer,
-        userIsAgent: res.info.owner === state.userDetails.ethAccount,
-        userIsSeller: res.info.seller === state.userDetails.ethAccount,
-        userIsBuyer: res.info.buyer === state.userDetails.ethAccount,
-        feePercent: res.info.feePercent,
+        userIsAgent: res.info.ownerAddress === state.userDetails.ethAccount,
+        userIsSeller: res.info.sellerAddress === state.userDetails.ethAccount,
+        userIsBuyer: res.info.buyerAddress === state.userDetails.ethAccount,
+        feePercent: Number(res.info.feePercent),
         sellerApprove: res.info.sellerApprove,
         buyerApprove: res.info.buyerApprove,
-        escrowComplete: res.info.escrowComplete
+        escrowComplete: res.info.escrowComplete,
+        balance: Number(res.info.balance)
       })
     })
     return escrowItems.reverse()

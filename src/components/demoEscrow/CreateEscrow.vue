@@ -21,7 +21,7 @@
               </v-flex>
               <v-flex xs12>
                 <v-text-field
-                label="Item for sale"
+                label="Description / Ref"
                 v-model="saleItem"
                 :rules="saleItemRules"
                 required>
@@ -90,23 +90,14 @@ export default {
   },
   methods: {
     onSellerSelect (val) {
-      if (val.account) {
-        this.sellerAddress = val.account
-      } else {
-        this.sellerAddress = null
-      }
+      this.sellerAddress = val.account ? val.account : null
     },
     onBuyerSelect (val) {
-      if (val.account) {
-        this.buyerAddress = val.account
-      } else {
-        this.buyerAddress = null
-      }
-      console.log(this.buyerAddress)
+      this.buyerAddress = val.account ? val.account : null
     },
     submit () {
       if (this.$refs.form.validate()) {
-        // create the auction
+        // create the escrow contract
         escrowHelper.createEscrow(
           {
             sellerAddress: this.sellerAddress,

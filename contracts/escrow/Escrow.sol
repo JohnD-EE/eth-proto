@@ -10,7 +10,6 @@ contract Escrow {
   address public sellerAddress;
   address public buyerAddress;
   uint public feePercent;
-  address public escrowProviderAddress;
   string public saleItem;
 
   // State
@@ -23,7 +22,7 @@ contract Escrow {
         if (_feePercent < 0 || _feePercent > 25) {
           revert();
         }
-        escrowProviderAddress = msg.sender;
+        owner = msg.sender;
         sellerAddress = _sellerAddress;
         buyerAddress = _buyerAddress;
         feePercent = _feePercent;
@@ -59,7 +58,7 @@ contract Escrow {
     }
   }
 
-  // About the contract if buyer and seller agree
+  // Abort the contract if buyer and seller agree
   function voidContract() public {
       if (msg.sender == buyerAddress) {
         buyerApprove = false;
@@ -87,7 +86,7 @@ contract Escrow {
 
   // Pay fee to escrow service
   function payFee() internal {
-      escrowProviderAddress.transfer(address(this).balance * feePercent / 100 ); //% fee
+      owner.transfer(address(this).balance * feePercent / 100 ); //% fee
   }
 
 }
