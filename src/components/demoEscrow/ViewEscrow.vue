@@ -17,7 +17,8 @@
             <v-card-title>
               {{user.displayName}} </br>
               {{userDetails.ethAccount}}</br>
-              Balance: {{balanceToEther}} {{ currency.symbol }}
+              Balance: {{balanceToEther}} {{ currency.symbol }}<br/>
+              Latest Block: {{latestBlockNumber}}
               <v-spacer></v-spacer>
               <v-text-field
                 append-icon="search"
@@ -34,13 +35,38 @@
             >
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.saleItem }}</td>
-                <td class="text-xs-left">{{ props.item.status }}</td>
-                <td class="text-xs-left">{{ props.item.agent }}</td>
-                <td class="text-xs-left">{{ props.item.seller }}</td>
-                <td class="text-xs-left">{{ props.item.buyer }}</td>
-                <td class="text-xs-left">{{ props.item.value }} {{ currency.symbol }}</td>
-                <td class="text-xs-left">{{ props.item.feePercent }}%</td>
-                <td class="text-xs-left">{{ props.item.actions }}</td>
+                <td class="text-xs-center">
+                  <v-chip small :color="props.item.status.color" text-color="white">{{props.item.status.text}}</v-chip>
+                </td>
+                <td class="text-xs-center">{{ props.item.agent }}</td>
+                <td class="text-xs-center">{{ props.item.buyer }}</td>
+                <td class="text-xs-center">{{ props.item.seller }}</td>
+                <td class="text-xs-center">
+                  <v-btn v-if="props.item.userIsBuyer && props.item.balance === 0" small round color="green" dark @click="depositBuyerFunds(props.item.contractAddress)">Deposit</v-btn>
+                  <div v-else>
+                    {{ props.item.balance }} {{ currency.symbol }}
+                  </div>
+                </td>
+                <td class="text-xs-center">{{ props.item.feePercent }}%</td>
+                <td class="text-xs-center">
+                  <v-btn v-if="
+                    (props.item.balance > 0 &&
+                      (props.item.userIsSeller || props.item.userIsBuyer)) &&
+                      ((props.item.userIsBuyer && !props.item.buyerApprove) ||
+                      (props.item.userIsSeller && !props.item.sellerApprove))
+                    " small round color="green" dark @click="approveContract(props.item.contractAddress)">Approve</v-btn>
+                  <v-chip v-else-if="
+                      (props.item.balance > 0 &&
+                      (props.item.userIsSeller || props.item.userIsBuyer))
+                    " small color="primary" text-color="white">
+                    <v-avatar>
+                      <v-icon>check_circle</v-icon>
+                    </v-avatar>
+                    You Approve</v-chip>
+                </td>
+                <td class="text-xs-center">
+                  <v-btn v-if="!props.item.escrowComplete && (props.item.userIsSeller || props.item.userIsBuyer)" small round color="orange" dark @click="voidContract(props.item.contractAddress)">Void</v-btn>
+                </td>
               </template>
               <v-alert slot="no-results" :value="true" color="error" icon="warning">
                 Your search for "{{ search }}" found no results.
@@ -65,14 +91,15 @@ export default {
       fullScreen: true, // todo detect screen size here and make true for sm screens
       search: '',
       headers: [
-        { text: 'Sale Item', value: 'saleItem', sortable: false, align: 'left' },
-        { text: 'Status', value: 'status', sortable: false },
-        { text: 'Agent', value: 'agent', sortable: false },
-        { text: 'Buyer', value: 'buyer', sortable: false },
-        { text: 'Seller', value: 'seller', sortable: false },
-        { text: 'Contract Value', value: 'value', sortable: false },
-        { text: 'Agency Fees', value: 'feePercent', sortable: false },
-        { text: 'Actions', value: 'actions', sortable: false }
+        { text: 'Description/Ref', value: 'saleItem', sortable: false, align: 'left' },
+        { text: 'Status', value: 'status', sortable: false, align: 'center' },
+        { text: 'Agent', value: 'agent', sortable: false, align: 'center' },
+        { text: 'Buyer', value: 'buyer', sortable: false, align: 'center' },
+        { text: 'Seller', value: 'seller', sortable: false, align: 'center' },
+        { text: 'Contract Value', value: 'value', sortable: false, align: 'center' },
+        { text: 'Agency Fees', value: 'feePercent', sortable: false, align: 'center' },
+        { text: 'Approval', value: 'approval', sortable: false, align: 'center' },
+        { text: 'Void', value: 'void', sortable: false, align: 'center' },
       ]
     }
   },
@@ -91,6 +118,9 @@ export default {
     },
     currency () {
       return this.$store.state.currency
+    },
+    latestBlockNumber () {
+      return this.$store.state.web3.latestBlock.number
     }
   },
   methods: {
@@ -105,6 +135,21 @@ export default {
       console.log('Calling: getAllEscrowContracts')
       this.$store.dispatch('resetEscrowContracts')
       escrowHelper.updateEscrowData()
+    },
+    depositBuyerFunds (contractAddress) {
+      // seller can deposit to the contract
+      console.log('deposit')
+      escrowHelper.depositBuyerFunds(contractAddress, '2')
+    },
+    voidContract (contractAddress) {
+      // seller or buyer can void the contract
+      console.log('void')
+      escrowHelper.voidContract(contractAddress)
+    },
+    approveContract (contractAddress) {
+      // seller or buyer can agree the deal
+      console.log('agree')
+      escrowHelper.approveContract(contractAddress)
     }
   }
 }

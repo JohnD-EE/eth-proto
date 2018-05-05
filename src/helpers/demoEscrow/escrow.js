@@ -1,5 +1,6 @@
 import {store} from './../../store'
 import EscrowJSON from '../../../build/contracts/Escrow.json'
+import ContractsHelper from '../contracts'
 
 export default {
 
@@ -10,9 +11,18 @@ export default {
     EscrowFactory.methods.createEscrow(e.sellerAddress, e.buyerAddress, e.feePercent, e.saleItem)
     .send({from: e.escrowServiceAddress, gas: 3000000})
     .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Create Escrow - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
       console.log('TransactionHash: ', hash)
     })
     .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
       console.log('Receipt: ', receipt)
     })
     .on('confirmation', function (confirmationNumber, receipt) {
@@ -20,6 +30,11 @@ export default {
       console.log('Receipt: ', receipt)
     })
     .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed',
+        text: error,
+        type: 'error'
+      })
       console.log(error)
     })
   },
@@ -57,21 +72,21 @@ export default {
                   contract.methods.feePercent().call()
                   .then(feePercent => {
                     info.feePercent = feePercent
-                    contract.methods.escrowProviderAddress().call()
-                    .then(escrowProviderAddress => {
-                      info.escrowProviderAddress = escrowProviderAddress
-                      contract.methods.saleItem().call()
-                      .then(saleItem => {
-                        info.saleItem = saleItem
-                        contract.methods.sellerApprove().call()
-                        .then(sellerApprove => {
-                          info.sellerApprove = sellerApprove
-                          contract.methods.buyerApprove().call()
-                          .then(buyerApprove => {
-                            info.buyerApprove = buyerApprove
-                            contract.methods.escrowComplete().call()
-                            .then(escrowComplete => {
-                              info.escrowComplete = escrowComplete
+                    contract.methods.saleItem().call()
+                    .then(saleItem => {
+                      info.saleItem = saleItem
+                      contract.methods.sellerApprove().call()
+                      .then(sellerApprove => {
+                        info.sellerApprove = sellerApprove
+                        contract.methods.buyerApprove().call()
+                        .then(buyerApprove => {
+                          info.buyerApprove = buyerApprove
+                          contract.methods.escrowComplete().call()
+                          .then(escrowComplete => {
+                            info.escrowComplete = escrowComplete
+                            contract.methods.balances(buyerAddress).call()
+                            .then(balance => {
+                              info.balance = window.web3.utils.fromWei(balance, 'ether')
                               console.log('escrow complete: ', info)
                               // store states
                               store.dispatch('registerEscrowContract', {
@@ -96,22 +111,107 @@ export default {
     })
   },
 
-  depositBuyerFunds () {
-
-    //
-
+  depositBuyerFunds (contractAddress, depositValue) {
+    let contract = ContractsHelper.getContractFromAddress(store.state.escrowContracts, contractAddress)
+    contract.methods.depositBuyerFunds().send({
+      from: store.state.userDetails.ethAccount,
+      value: window.web3.utils.toWei(depositValue.toString(), 'ether'),
+      gas: 3000000
+    })
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Deposit Funds - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
+      console.log('TransactionHash: ', hash)
+    })
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed - Bid was not placed',
+        text: error,
+        type: 'error'
+      })
+      console.log(error)
+    })
   },
 
-  approve () {
-
-    //
-
+  approveContract (contractAddress) {
+    let contract = ContractsHelper.getContractFromAddress(store.state.escrowContracts, contractAddress)
+    contract.methods.approve().send({
+      from: store.state.userDetails.ethAccount,
+      gas: 3000000
+    })
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Request to approve Escrow contract - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
+      console.log('TransactionHash: ', hash)
+    })
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed',
+        text: error,
+        type: 'error'
+      })
+      console.log(error)
+    })
   },
 
-  voidContract () {
-
-    //
-
-  }
+  voidContract (contractAddress) {
+    let contract = ContractsHelper.getContractFromAddress(store.state.escrowContracts, contractAddress)
+    contract.methods.voidContract().send({
+      from: store.state.userDetails.ethAccount,
+      gas: 3000000
+    })
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Request to void the Escrow contract - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
+      console.log('TransactionHash: ', hash)
+    })
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed',
+        text: error,
+        type: 'error'
+      })
+      console.log(error)
+    })
+  },
 
 }

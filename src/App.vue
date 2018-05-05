@@ -127,6 +127,7 @@
 
 <script>
 import auctionHelper from './helpers/demoAuction/auction'
+import escrowHelper from './helpers/demoEscrow/escrow'
 
 export default {
   data () {
@@ -204,6 +205,9 @@ export default {
         this.$store.dispatch('updateAccount')
         if (this.$route.path === '/auction') {
           auctionHelper.updateAuctionData()
+        }
+        if (this.$route.path === '/escrow') {
+          escrowHelper.updateEscrowData()
         }
       }
       setTimeout(function () {
