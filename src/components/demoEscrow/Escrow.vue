@@ -3,7 +3,7 @@
   <v-layout row wrap>
     <v-flex xs12 sm8 offset-sm2>
       <v-card>
-        <v-card-media class="primary white--text" height="120px">
+        <v-card-media class="primary lighten-2 white--text" height="120px">
           <v-container fill-height fluid>
             <v-layout row wrap>
               <v-flex xs12 sm6 align-end flexbox>
@@ -20,8 +20,7 @@
         </v-card-media>
         <v-container fluid>
           <v-card-text>
-            <p>This scenario demonstrates the Smart Contract control of an Escrow agreement,
-               placing funds in custody of a 3rd party until conditions are met.</p>
+            <p>Funds into the custody of a smart contract and released when conditions are met.</p>
             <h3>As an Escrow Agent:</h3>
               <ul class="py-2 ml-5">
                 <li>I can create an Escrow service for two parties</li>
@@ -30,14 +29,14 @@
             <h3>As a Seller in an Escrow contract:</h3>
             <ul class="py-2 ml-5">
               <li>I can confirm that I have supplied the goods/services by approving the deal</li>
-              <li>I can void the contract (requires the Buyer to also void)</li>
-              <li>I receive payment (after fees are deducted) once Buyer and Seller have approved the contract</li>
+              <li>I can void the contract</li>
+              <li>I receive payment once Buyer and Seller have approved the deal</li>
             </ul>
             <h3>As a Buyer in an Escrow contract:</h3>
             <ul class="py-2 ml-5">
-              <li>I can deposit the required funds onto the contract</li>
-              <li>I can confirm that I'm happy with the goods/services provided by approving the deal</li>
-              <li>I can void the contract and have my depsit refunded (requires the Seller to also void)</li>
+              <li>I can deposit funds into the custody of the contract</li>
+              <li>I can confirm that I'm happy with the goods/services by approving the deal</li>
+              <li>I can void the contract and have my depsit refunded</li>
             </ul>
           </v-card-text>
           <v-card-text>

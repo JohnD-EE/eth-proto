@@ -267,6 +267,25 @@ export default {
   resetEscrowContracts ({commit}) {
     commit('resetEscrowContracts')
   },
+  removeEscrowContract ({commit}, contractAddress) {
+    console.log('try to remove', contractAddress)
+    let escrowContracts = this.state.escrowContracts
+    // see if escrow address already exists
+    let index = false
+    let matchFound = false
+    escrowContracts.forEach(function (res, i) {
+      if (res.contractAddress === contractAddress) {
+        index = i
+        matchFound = true
+      }
+    })
+    if (matchFound) {
+      // delete the contract (e.g. if void)
+      escrowContracts.splice(index, 1)
+      console.log('Removing contract:', contractAddress)
+      commit('setEscrowContracts', escrowContracts)
+    }
+  },
   registerEscrowContract ({commit}, payload) {
     let escrowContracts = this.state.escrowContracts
     // see if escrow address already exists

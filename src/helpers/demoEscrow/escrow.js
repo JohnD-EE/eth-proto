@@ -104,7 +104,7 @@ export default {
               })
             })
           } else {
-            console.log('FAILED to get Escrow Contract')
+            console.log('FAILED to get Escrow Contract (E.g. could be voided)', contractAddress)
           }
         })
       })
@@ -199,6 +199,8 @@ export default {
         title: 'Transaction completed',
         type: 'success'
       })
+      // update Escrow state by removing this contract
+      store.dispatch('removeEscrowContract', contractAddress)
       console.log('Receipt: ', receipt)
     })
     .on('confirmation', function (confirmationNumber, receipt) {

@@ -3,7 +3,7 @@
   <v-layout row wrap>
     <v-flex xs12 sm8 offset-sm2>
       <v-card>
-        <v-card-media class="primary white--text" height="120px">
+        <v-card-media class="primary lighten-2 white--text" height="120px">
           <v-container fill-height fluid>
             <v-layout row wrap>
               <v-flex xs12 sm6 align-end flexbox>
