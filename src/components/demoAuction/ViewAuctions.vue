@@ -67,14 +67,6 @@
                     N/A
                   </div>
                 </td>
-                <td class="text-xs-center">
-                  <div v-if="latestBlockNumber < props.item.endBlock">
-                    {{ props.item.highestBid }} {{ currency.symbol }}
-                  </div>
-                  <div v-else>
-                    N/A
-                  </div>
-                </td>
                 <td class="text-xs-center" v-bind:class="{
                   'green--text': props.item.highestBidder === userDetails.ethAccount}">
                   <div class="text-xs-center" v-if="
@@ -226,7 +218,6 @@ export default {
         { text: 'End Block', value: 'endBlock', sortable: true, align: 'center' },
         { text: 'Bid Increment', value: 'bidIncrement', sortable: false, align: 'center' },
         { text: 'My Bid Funds', value: 'myBid', sortable: true, align: 'center' },
-        { text: 'Highest Bid', value: 'highestBid', sortable: false, align: 'center' },
         { text: 'Highest Binding Bid', value: 'highestBindingBid', sortable: false, align: 'center' },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }
       ]
