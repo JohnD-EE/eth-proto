@@ -33,7 +33,7 @@
             </template>
           </template>
         </v-select>
-      
+
 </template>
 
 <script>
@@ -44,9 +44,7 @@
         userSelector: []
       }
     },
-    props: [
-    'selectLabel'
-    ],
+    props: ['selectLabel'],
     computed: {
       users () {
         let selections = [
@@ -65,7 +63,7 @@
         // todo this watcher now makes the component specific and not generic
         // perhaps better to use an event emitter to pass data back from child compenent to parent?
         if (value) {
-            this.$emit('selected', {account: value.account, name: value.name})
+          this.$emit('selected', {account: value.account, name: value.name})
         } else {
             //
         }

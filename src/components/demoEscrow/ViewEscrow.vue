@@ -99,7 +99,7 @@ export default {
         { text: 'Contract Value', value: 'value', sortable: false, align: 'center' },
         { text: 'Agency Fees', value: 'feePercent', sortable: false, align: 'center' },
         { text: 'Approval', value: 'approval', sortable: false, align: 'center' },
-        { text: 'Void', value: 'void', sortable: false, align: 'center' },
+        { text: 'Void', value: 'void', sortable: false, align: 'center' }
       ]
     }
   },
