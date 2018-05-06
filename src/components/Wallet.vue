@@ -11,8 +11,9 @@
               </v-flex>
               <v-flex xs12 sm6 align-end flexbox>
                 <div class="text-xs-right">
-                  <v-icon left dark>person</v-icon>
-                  {{ user.displayName }}
+                  <v-avatar size="86px">
+                    <img :src="profileImage" onerror="this.src='../../static/profile/noImage.jpg'">
+                  </v-avatar>
                 </div>
               </v-flex>
             </v-layout>
@@ -21,15 +22,15 @@
         <v-container fluid>
           <v-card-text>
             <span>
-                <p class="text-xs-center"><strong>Account:</strong> {{ userDetails.ethAccount || '' }}</p>
-                  <h3 class="text-xs-center">Balance:
-                    <span v-show="fetchingBalance">
-                      <v-progress-circular indeterminate :size="16" color="green"></v-progress-circular>
-                    </span>
-                    <span v-show="!fetchingBalance">
-                      <strong>{{ balanceToEther }} {{ currency.symbol }}</strong>
-                    </span>
-                  </h3>
+              <p class="text-xs-center"><strong>Account:</strong> {{ userDetails.ethAccount || '' }}</p>
+                <h3 class="text-xs-center">Balance:
+                  <span v-show="fetchingBalance">
+                    <v-progress-circular indeterminate :size="16" color="green"></v-progress-circular>
+                  </span>
+                  <span v-show="!fetchingBalance">
+                    <strong>{{ balanceToEther }} {{ currency.symbol }}</strong>
+                  </span>
+                </h3>
             </span>
           </v-card-text>
           <v-card-text>
@@ -79,6 +80,14 @@ export default {
     },
     currency () {
       return this.$store.state.currency
+    },
+    profileImage () {
+      let path = '../../static/profile/'
+      let filename = this.$store.state.user.displayName
+      filename = filename.split(' ').join('')
+      let fileType = '.jpg'
+      console.log(path + filename + fileType)
+      return path + filename + fileType
     }
   },
   watch: {

@@ -11,8 +11,9 @@
               </v-flex>
               <v-flex xs12 sm6 align-end flexbox>
                 <div class="text-xs-right">
-                  <v-icon left dark>person</v-icon>
-                  {{ user.displayName }}
+                  <v-avatar size="86px">
+                    <img :src="profileImage" onerror="this.src='../../../static/profile/noImage.jpg'">
+                  </v-avatar>
                 </div>
               </v-flex>
               <v-flex xs12 align-end flexbox>
@@ -81,6 +82,13 @@ export default {
     },
     currency () {
       return this.$store.state.currency
+    },
+    profileImage () {
+      let path = '../../../static/profile/'
+      let filename = this.$store.state.user.displayName
+      filename = filename.split(' ').join('')
+      let fileType = '.jpg'
+      return path + filename + fileType
     }
   },
   watch: {

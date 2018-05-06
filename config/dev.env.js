@@ -53,15 +53,15 @@ module.exports = merge(prodEnv, {
       },
       {
         id: '2',
-        name: '"Contract2"',
-        type: '"contractOwner"',
-        email: '"contract2@ee.proto"'
+        name: '"RolaCola"',
+        type: '"user"',
+        email: '"rolacola@ee.proto"'
       },
       {
         id: '3',
-        name: '"Contract3"',
-        type: '"contractOwner"',
-        email: '"contract3@ee.proto"'
+        name: '"BettaBuys"',
+        type: '"user"',
+        email: '"bettabuys@ee.proto"'
       },
       // Users - a List of initial users
       {
