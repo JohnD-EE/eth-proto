@@ -13,8 +13,8 @@
         >
           <template slot="selection" slot-scope="data">
             <v-list-tile-avatar>
-            <v-icon large>account_circle</v-icon>
-          </v-list-tile-avatar>
+              <img :src="data.item.profileImage" onerror="this.src='../../../static/profile/noImage.jpg'">
+            </v-list-tile-avatar>
             {{ data.item.name }}, [{{ data.item.account.substring(0,10) + '........' +
             data.item.account.substr(data.item.account.length - 5) }}]
           </template>
@@ -24,7 +24,7 @@
             </template>
             <template v-else>
               <v-list-tile-avatar>
-                <v-icon large>account_circle</v-icon>
+                <img :src="data.item.profileImage" onerror="this.src='../../../static/profile/noImage.jpg'">
               </v-list-tile-avatar>
               <v-list-tile-content>
                 <v-list-tile-title v-html="data.item.name"></v-list-tile-title>
@@ -52,7 +52,12 @@
         ]
         this.$store.getters.allUsers(true).forEach(res => {
           if (res.type === 'user') {
-            selections.push({name: res.displayName, account: res.ethAccount})
+            let path ='../../static/profile/'
+            let filename = res.displayName
+            filename = filename.split(' ').join('')
+            let fileType = '.jpg'
+            let profileImage = path + filename + fileType
+            selections.push({name: res.displayName, account: res.ethAccount, profileImage: profileImage})
           }
         })
         return selections
