@@ -9,38 +9,52 @@
           <v-icon>search</v-icon>
         </v-btn>
       </v-toolbar>
+
       <v-card>
         <v-container fluid grid-list-md>
           <v-layout row wrap>
-            <v-flex xs12 sm6 md4
+            <v-flex xs12 sm6 md6
               v-for="card in cards"
               :key="card.title"
             >
-              <v-card>
-                <v-card-media
+              <v-card class="mb-4">
+                <div class="grey lighten-2">
+                <v-card-title primary-title >
+                  <v-flex xs12>
+                  <h3 class="headline mb-0">{{card.title}}</h3>
+                </v-flex>
+                <v-flex xs12>
+                  <p class="h2 black--text" v-text="card.description"></p>
+                </v-flex>
+                </v-card-title>
+              </div>
 
-                  height="200px"
-                >
-                  <v-container fill-height fluid>
-                    <v-layout fill-height>
-                      <v-flex xs12 align-end flexbox>
-                        <span class="headline black--text" v-text="card.title"></span>
-                        <span class="subheader black--text" v-text="card.description"></span>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-card-media>
-                <v-card-actions>
+                <v-divider></v-divider>
+                <v-card-text>
+                  <v-flex xs12>
+                  <ul class="pl-3">
+                    <li
+                    v-for="bullet in card.bullets"
+                    :key="application">
+                    {{bullet}}
+                    </li>
+                  </ul>
+                </v-flex>
+                </v-card-text>
+
+                <v-divider></v-divider>
+                <v-card-text>
+                  <v-chip
+                  v-for="application in card.applications"
+                  :key="application"
+                  label color="pink" text-color="white" small>
+                    {{application}}
+                  </v-chip>
+                </v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn icon>
-                    <v-icon>favorite</v-icon>
-                  </v-btn>
-                  <v-btn icon>
-                    <v-icon>bookmark</v-icon>
-                  </v-btn>
-                  <v-btn icon>
-                    <v-icon>share</v-icon>
-                  </v-btn>
+                  <star-rating v-bind:star-size="24"></star-rating>
                 </v-card-actions>
               </v-card>
             </v-flex>
@@ -52,11 +66,15 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
   export default {
     computed: {
       cards () {
         return this.$store.state.opportunityAnalysis
       }
+    },
+    components: {
+      'star-rating': StarRating
     }
   }
 </script>

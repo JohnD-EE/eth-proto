@@ -64,7 +64,7 @@ export default {
         'Managing many autonomous, accountable, entities',
         'Scrutinisable activities'
       ],
-      applications: ['Government departments', 'Trade', 'ICOs', 'Corporate voting', 'Open/Transparent platorms', 'Accountable organisation', 'Employee empowerment']
+      applications: ['Govt depts', 'Trade', 'Crowdfunding/ICOs', 'Corporate voting', 'Transparency', 'Accountable org', 'Employee empowerment']
     },
     {
       key: 'tech-savvy-millenials',
@@ -80,11 +80,12 @@ export default {
     },
     {
       key: 'cumbersome-markets',
-      title: 'Cumbersome, Clunky Markets',
+      title: 'Cumbersome Markets',
       description: 'Opportunities to remove friction from markets',
       bullets: [
         'Broken markets',
-        'Slow, painful, annoying, old markets with many moving parts'
+        'Slow, clunky, painful, annoying, old markets with many moving parts',
+        'Delays and lots of human intervention required'
       ],
       applications: ['Housing market / real estate', 'Supply chain', 'Remittences']
     },
@@ -112,6 +113,54 @@ export default {
         'Cryptographically secured data'
       ],
       applications: ['Medical Records', 'Privacy', 'Social Media', 'Data Mining', 'ID']
+    },
+    {
+      key: 'micropayments',
+      title: 'Micropayments',
+      description: 'A high volume of small transactions',
+      bullets: [
+        'Realtime Streaming of payments',
+        'Payments too small for Visa/Paypal',
+        '',
+        ''
+      ],
+      applications: ['IoT', 'Loyalty Points', 'Tipping', 'Energy Markets']
+    },
+    {
+      key: 'tokenization',
+      title: 'Tokenization',
+      description: 'Ownership and control of any asset via tokens',
+      bullets: [
+        'Utility tokens for applications, fuelling an economic system',
+        'Creating new markets with own economic system',
+        'Share holdings of an asset (e.g. Gold holdings represented by tokens)',
+        'All money is a token (e.g. Bio Survival Tokens)'
+      ],
+      applications: ['Share holdings', 'Utility tokens', 'Attention (advertising)', 'Bandwidth']
+    },
+    {
+      key: '',
+      title: '',
+      description: '',
+      bullets: [
+        '',
+        '',
+        '',
+        ''
+      ],
+      applications: ['', '', '', '']
+    },
+    {
+      key: '',
+      title: '',
+      description: '',
+      bullets: [
+        '',
+        '',
+        '',
+        ''
+      ],
+      applications: ['', '', '', '']
     },
     {
       key: '',
@@ -149,6 +198,7 @@ export default {
       ],
       applications: ['', '', '', '']
     }
+
 
   ]
 }
