@@ -15,6 +15,7 @@
           <v-list-tile-action><v-icon>exit_to_app</v-icon></v-list-tile-action>
           <v-list-tile-content>Sign Out</v-list-tile-content>
         </v-list-tile>
+
         <v-list-group v-if="isAuthenticated"
           sub-group
           no-action
@@ -32,9 +33,29 @@
             <v-icon v-text=" demo.icon"></v-icon>
           </v-list-tile-action>
             <v-list-tile-title v-text=" demo.title"></v-list-tile-title>
-
           </v-list-tile>
         </v-list-group>
+
+        <v-list-group v-if="isAuthenticated"
+          sub-group
+          no-action
+        >
+          <v-list-tile slot="activator">
+            <v-list-tile-title>Tools</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile
+            v-for="tool in tools"
+            :key="tool.title"
+            :to="tool.path"
+            @click=""
+          >
+          <v-list-tile-action>
+            <v-icon v-text=" tool.icon"></v-icon>
+          </v-list-tile-action>
+            <v-list-tile-title v-text=" tool.title"></v-list-tile-title>
+          </v-list-tile>
+        </v-list-group>
+
       </v-list>
     </v-navigation-drawer>
 
@@ -63,6 +84,17 @@
           <v-list>
             <v-list-tile v-for="demo in demos" :key="demo.title" :to="demo.path" @click="">
               <v-list-tile-title><v-icon left>{{ demo.icon }}</v-icon> {{ demo.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+
+        <v-menu v-if="isAuthenticated">
+          <v-btn flat  dark slot="activator">Tools
+            <v-icon dark>arrow_drop_down</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile v-for="tool in tools" :key="tool.title" :to="tool.path" @click="">
+              <v-list-tile-title><v-icon left>{{ tool.icon }}</v-icon> {{ tool.title }}</v-list-tile-title>
             </v-list-tile>
           </v-list>
         </v-menu>
@@ -135,6 +167,9 @@ export default {
       snackbar: false,
       blockchainLoading: false,
       sidebar: false,
+      tools: [
+        { title: 'Opportunity Analysis', path: '/opportunityAnalysis', icon: 'lightbulb_outline' },
+      ],
       demos: [
         { title: 'Auction', path: '/auction', icon: 'gavel' },
         { title: 'Escrow', path: '/escrow', icon: 'account_balance' },

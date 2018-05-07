@@ -36,5 +36,119 @@ export default {
   contracts: [],
   auctionContracts: [],
   escrowContracts: [],
-  notificationsQueue: []
+  notificationsQueue: [],
+  opportunityAnalysis: [
+    {
+      key: 'registration',
+      title: 'Registration',
+      description: 'Formal registration of something, perhaps an asset, or property',
+      bullets: [
+        'Formal registration, e.g. government',
+        'Identification, e.g. an official recognition of a person\'s identity',
+        'Proof of ownership, or proof of rights',
+        'Licensing, proof of authority, or proof of permission'
+      ],
+      applications: ['Voting', 'ID', 'Passports', 'Driver\'s license', 'Membership']
+    },
+    {
+      key: 'governance',
+      title: 'Governance',
+      description: 'Distributed, Autonomous Organisations',
+      bullets: [
+        'Administration heavy environments, removing bureaucracy',
+        'Accountability of decision making',
+        'Consistent application of rules',
+        'Rules without rulers',
+        'Regulatory compliance',
+        'Enforced responsibility',
+        'Managing many autonomous, accountable, entities',
+        'Scrutinisable activities'
+      ],
+      applications: ['Government departments', 'Trade', 'ICOs', 'Corporate voting', 'Open/Transparent platorms', 'Accountable organisation', 'Employee empowerment']
+    },
+    {
+      key: 'tech-savvy-millenials',
+      title: 'Tech Savvy Millenials',
+      description: 'Markets for the tech savvy. digitally minded, millenials',
+      bullets: [
+        'Millenials embrace digital tech, they grew up with the Internet',
+        'Millenials are more pro-cryptocurrencies',
+        'Young people rejecting big financial institutions, failed by the system',
+        'Lives are lived plugged in and always online'
+      ],
+      applications: ['Mobile Apps', 'Alternative Finance', 'Youth Industries', 'Education']
+    },
+    {
+      key: 'cumbersome-markets',
+      title: 'Cumbersome, Clunky Markets',
+      description: 'Opportunities to remove friction from markets',
+      bullets: [
+        'Broken markets',
+        'Slow, painful, annoying, old markets with many moving parts'
+      ],
+      applications: ['Housing market / real estate', 'Supply chain', 'Remittences']
+    },
+    {
+      key: 'disintermediation',
+      title: 'Disintermediation',
+      description: 'Many intermediaries, opportunities to remove 3rd parties',
+      bullets: [
+        'Over reliance on 3rd party services',
+        'Reliance on banks, payments services, lawyers, accountants',
+        'Parisitic 3rd parties',
+        'Reduce wait time, speed up end to end process without 3rd parties'
+      ],
+      applications: ['Retail', 'Transactions', 'Accounting', 'Legal']
+    },
+    {
+      key: 'sovereignty',
+      title: 'Sovereignty of Data',
+      description: 'Giving people sovereign ownership and contole of their data',
+      bullets: [
+        'Privacy in the hands of the person',
+        'Contol who can access your data',
+        'Control how your data is used',
+        'Traceability of data usage',
+        'Cryptographically secured data'
+      ],
+      applications: ['Medical Records', 'Privacy', 'Social Media', 'Data Mining', 'ID']
+    },
+    {
+      key: '',
+      title: '',
+      description: '',
+      bullets: [
+        '',
+        '',
+        '',
+        ''
+      ],
+      applications: ['', '', '', '']
+    },
+    {
+      key: '',
+      title: '',
+      description: '',
+      bullets: [
+        '',
+        '',
+        '',
+        ''
+      ],
+      applications: ['', '', '', '']
+    },
+    {
+      key: '',
+      title: '',
+      description: '',
+      bullets: [
+        '',
+        '',
+        '',
+        ''
+      ],
+      applications: ['', '', '', '']
+    }
+
+  ]
 }
