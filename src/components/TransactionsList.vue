@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      {{user.displayName}} </br>
+      {{user.displayName}} <br/>
       {{userDetails.ethAccount}}
 
       <v-spacer></v-spacer>

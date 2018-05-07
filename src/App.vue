@@ -115,7 +115,7 @@
           :vertical="true"
           :value="notifications"
           >
-        {{ notifications.title }}: </br>
+        {{ notifications.title }}: <br/>
         {{ notifications.text }}
       <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
     </v-snackbar>

@@ -15,9 +15,9 @@
         <template>
           <v-card>
             <v-card-title>
-              {{user.displayName}} </br>
-              {{userDetails.ethAccount}}</br>
-              Balance: {{balanceToEther}} {{ currency.symbol }}</br>
+              {{user.displayName}} <br/>
+              {{userDetails.ethAccount}}<br/>
+              Balance: {{balanceToEther}} {{ currency.symbol }}<br/>
               Latest Block: {{latestBlockNumber}}
               <v-spacer></v-spacer>
               <v-text-field
@@ -148,9 +148,9 @@
                               <v-container grid-list-md>
                                 <v-layout row wrap>
                                   <v-flex xs12>
-                                    Your current bid fund is: {{ props.item.myBid }} {{ currency.symbol }}</br>
-                                    The highest binding bid is: {{ props.item.highestBindingBid }} {{ currency.symbol }}</br>
-                                    You are <span v-show="props.item.highestBidder !== userDetails.ethAccount">not</span> currently the highest bidder</br>
+                                    Your current bid fund is: {{ props.item.myBid }} {{ currency.symbol }}<br/>
+                                    The highest binding bid is: {{ props.item.highestBindingBid }} {{ currency.symbol }}<br/>
+                                    You are <span v-show="props.item.highestBidder !== userDetails.ethAccount">not</span> currently the highest bidder<br/>
                                   </v-flex>
                                   <v-flex xs12 sm6>
                                     <v-text-field

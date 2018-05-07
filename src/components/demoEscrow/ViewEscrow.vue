@@ -15,8 +15,8 @@
         <template>
           <v-card>
             <v-card-title>
-              {{user.displayName}} </br>
-              {{userDetails.ethAccount}}</br>
+              {{user.displayName}} <br/>
+              {{userDetails.ethAccount}}<br/>
               Balance: {{balanceToEther}} {{ currency.symbol }}<br/>
               Latest Block: {{latestBlockNumber}}
               <v-spacer></v-spacer>
@@ -42,7 +42,49 @@
                 <td class="text-xs-center">{{ props.item.buyer }}</td>
                 <td class="text-xs-center">{{ props.item.seller }}</td>
                 <td class="text-xs-center">
-                  <v-btn v-if="props.item.userIsBuyer && props.item.balance === 0" small round color="green" dark @click="depositBuyerFunds(props.item.contractAddress)">Deposit</v-btn>
+
+                  <template v-if="props.item.userIsBuyer && props.item.balance === 0">
+                    <v-layout row justify-center>
+                      <v-dialog v-model="depositDialog" persistent max-width="500px">
+                        <v-btn small round color="green" slot="activator" dark @click="">Deposit</v-btn>
+                        <v-card>
+                          <v-form v-model="depositValid.valid" ref="form" lazy-validation>
+                          <v-card-title>
+                            <span class="headline">Deposit Funds</span>
+                          </v-card-title>
+                          <v-card-text>
+                            <v-container grid-list-md>
+                              <v-layout row wrap>
+                                <v-flex xs12>
+                                  As the buyer, you are required to deposit funds onto the contract.<br/>
+                                  Your funds are transferred to the Seller when both parties approve the contract<br/>
+                                  You may void the contract and withdraw you funds at any time prior to approval.
+                                </v-flex>
+                                <v-flex xs12 sm6>
+                                  <v-text-field
+                                    name="deposit-amount"
+                                    label="Your Deposit"
+                                    hint="Provide the total amount you wish to deposit"
+                                    required
+                                    v-model="depositValue"
+                                    :rules="depositRules"
+                                    persistent-hint
+                                  ></v-text-field>
+                                </v-flex>
+                              </v-layout>
+                            </v-container>
+                            <small>*required fields</small>
+                          </v-card-text>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="primary darken-1" flat @click.native="closeDeposit">Close</v-btn>
+                            <v-btn color="primary darken-1" flat @click.native="depositBuyerFunds(props.item.contractAddress)">Submit Deposit</v-btn>
+                          </v-card-actions>
+                          </v-form>
+                        </v-card>
+                      </v-dialog>
+                    </v-layout>
+                  </template>
                   <div v-else>
                     {{ props.item.balance }} {{ currency.symbol }}
                   </div>
@@ -87,6 +129,16 @@ export default {
   data () {
     return {
       dialog: false,
+      depositDialog: false,
+      depositValue: null,
+      depositRules: [
+        v => !!v || 'A deposit amount is required',
+        v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
+        v => v <= this.balanceToEther || 'Insufficent funds'
+      ],
+      depositValid: [],
+      rules: false,
+      depositValueRules: false,
       notifications: false,
       fullScreen: true, // todo detect screen size here and make true for sm screens
       search: '',
@@ -124,6 +176,10 @@ export default {
     }
   },
   methods: {
+    closeDeposit () {
+      this.depositDialog = false
+      this.clear()
+    },
     clickClose () {
       this.dialog = false
     },
@@ -137,9 +193,15 @@ export default {
       escrowHelper.updateEscrowData()
     },
     depositBuyerFunds (contractAddress) {
-      // seller can deposit to the contract
-      console.log('deposit')
-      escrowHelper.depositBuyerFunds(contractAddress, '2')
+      // buyer can deposit to the contract
+      console.log('deposit', {address: contractAddress, val: this.depositValue})
+      if (this.$refs.form.validate()) {
+        escrowHelper.depositBuyerFunds(contractAddress, this.depositValue)
+        this.depositDialog = false
+        this.clear()
+      } else {
+        console.log('validation failed')
+      }
     },
     voidContract (contractAddress) {
       // seller or buyer can void the contract
@@ -150,6 +212,9 @@ export default {
       // seller or buyer can agree the deal
       console.log('agree')
       escrowHelper.approveContract(contractAddress)
+    },
+    clear () {
+      this.$refs.form.reset()
     }
   }
 }
