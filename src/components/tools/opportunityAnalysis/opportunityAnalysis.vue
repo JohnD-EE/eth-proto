@@ -4,6 +4,47 @@
       <v-toolbar color="primary lighten-2" dark>
         <v-toolbar-title>Opportunity Analysis</v-toolbar-title>
         <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-dialog v-model="opportunityDialog" persistent max-width="500px">
+            <v-btn round flat large slot="activator" dark @click="" class="mt-4">New</v-btn>
+              <v-card>
+                <v-form v-model="opportunityValid" ref="form" lazy-validation>
+                <v-card-title>
+                  <span class="headline">Add new opportunity</span>
+                </v-card-title>
+                <v-card-text>
+                  <v-container grid-list-md>
+                    <v-layout row wrap>
+                      <v-flex xs12>
+                        <ul class="py-2 ml-3">
+                          <li>Add a title for your new blockchain opportunity</li>
+                      </ul>
+                      </v-flex>
+                      <v-flex xs12>
+                        <v-text-field
+                          name="opportunity"
+                          label="Opportunity Title"
+                          hint="Provide a title for the opportunity you wish to study"
+                          required
+                          v-model="opportunityTitle"
+                          :rules="opportunityRules"
+                          persistent-hint
+                        ></v-text-field>
+                      </v-flex>
+                    </v-layout>
+                  </v-container>
+                  <small>*required fields</small>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary darken-1" flat @click.native="closeOpportunity">Close</v-btn>
+                  <v-btn color="primary darken-1" flat @click.native="addNewOpportunity">Submit</v-btn>
+                </v-card-actions>
+                </v-form>
+              </v-card>
+            </v-dialog>
+      </v-toolbar-items>
+
         <v-menu bottom>
             <v-btn slot="activator" icon dark>
               <v-icon>more_vert</v-icon>
@@ -61,11 +102,9 @@
                 </v-card-text>
                   <v-divider></v-divider>
                 </div>
-
                   <v-card-actions class="bottom-right">
                   <star-rating v-bind:star-size="24"></star-rating>
                 </v-card-actions>
-
               </v-card>
             </v-flex>
           </v-layout>
@@ -91,11 +130,20 @@
 
 <script>
 import StarRating from 'vue-star-rating'
+import OpportunityAnalysisHelper from '../../../helpers/tools/opportunityAnalysis'
+
 export default {
   data () {
     return {
       showBullets: false,
-      showApplicationTags: false
+      showApplicationTags: false,
+      opportunityDialog: false,
+      opportunityTitle: '',
+      opportunityValid: true,
+      opportunityRules: [
+        v => !!v || 'Title is required'
+      ],
+      rules: false
     }
   },
   computed: {
@@ -107,7 +155,14 @@ export default {
     'star-rating': StarRating
   },
   methods: {
-    //
+    closeOpportunity () {
+      this.opportunityDialog = false
+    },
+    addNewOpportunity () {
+      OpportunityAnalysisHelper.createOpportunity(this.opportunityTitle)
+      this.opportunityDialog = false
+      console.log('submit')
+    }
   }
 }
 </script>
