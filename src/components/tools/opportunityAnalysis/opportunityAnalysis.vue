@@ -91,23 +91,23 @@
 
 <script>
 import StarRating from 'vue-star-rating'
-  export default {
-    data () {
-      return {
-        showBullets: false,
-        showApplicationTags: false
-      }
-    },
-    computed: {
-      cards () {
-        return this.$store.state.opportunityAnalysis
-      }
-    },
-    components: {
-      'star-rating': StarRating
-    },
-    methods: {
-      //
+export default {
+  data () {
+    return {
+      showBullets: false,
+      showApplicationTags: false
     }
+  },
+  computed: {
+    cards () {
+      return this.$store.state.opportunityAnalysis
+    }
+  },
+  components: {
+    'star-rating': StarRating
+  },
+  methods: {
+    //
   }
+}
 </script>
