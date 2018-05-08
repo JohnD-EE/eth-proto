@@ -31,11 +31,13 @@ export default {
   userTxs: [],
   defaultContractAddresses: [
     { instance: 'AuctionFactory', name: 'Auction Factory', address: '0x782A2a5109718F1B9cE2aEcBb6900Cd30Eba2832' },
-    { instance: 'EscrowFactory', name: 'Escrow Factory', address: '0xB8ADA7A5c2bB51D0270518F515b00Fd050Ad1850' }
+    { instance: 'EscrowFactory', name: 'Escrow Factory', address: '0xB8ADA7A5c2bB51D0270518F515b00Fd050Ad1850' },
+    { instance: 'BrandFundedFactory', name: 'Brand Funded Factory', address: '0xF6d5D1eF4E262C7Cf0ec648B6a170954b70c6957' }
   ],
   contracts: [],
   auctionContracts: [],
   escrowContracts: [],
+  brandFundedContracts: [],
   notificationsQueue: [],
   opportunityAnalysis: [
     {
@@ -46,9 +48,10 @@ export default {
         'Formal registration, e.g. government',
         'Identification, e.g. an official recognition of a person\'s identity',
         'Proof of ownership, or proof of rights',
-        'Licensing, proof of authority, or proof of permission'
+        'Licensing, proof of authority, or proof of permission',
+        'Autheniticating'
       ],
-      applications: ['Voting', 'ID', 'Passports', 'Driver\'s License', 'Membership']
+      applications: ['Voting', 'ID', 'Passports', 'Driver\'s License', 'Membership', 'Authenicity']
     },
     {
       key: 'governance',
@@ -72,10 +75,11 @@ export default {
       title: 'Tech-Savvy Millennials',
       description: 'Markets for tech-savvy, digitally minded, millennials',
       bullets: [
-        'Millenials embrace digital tech, they grew up with the Internet',
-        'Millenials are more pro-cryptocurrencies',
+        'Millennials embrace digital tech, they grew up with the Internet',
+        'Millennials are more pro-cryptocurrencies',
         'Young people rejecting big financial institutions, failed by the system, open to alternatives',
-        'Lives are lived plugged in and always online'
+        'Lives are lived plugged in and always online',
+        'Kickstarting a venture with new users is difficult, pitch to the most willing'
       ],
       applications: ['Mobile Apps', 'Alternative Finance', 'Youthful Industries', 'Education']
     },
@@ -91,7 +95,8 @@ export default {
         'Highly administrative, lots of red tape & paperwork',
         'High transaction costs',
         'Significant counter-party risk',
-        'Process automation'
+        'Process automation',
+        'Markets prone to corruption'
       ],
       applications: ['Property Markets', 'Construction', 'Manufacturing', 'Supply Chain', 'Remittences', 'Government']
     },
@@ -112,7 +117,7 @@ export default {
     {
       key: 'sovereignty',
       title: 'Sovereignty of Data',
-      description: 'Giving people sovereign ownership and contole of their data',
+      description: 'Giving people/busnesses sovereign ownership and control of their data',
       bullets: [
         'Privacy in the hands of the person',
         'Control who can access your data',
@@ -131,10 +136,11 @@ export default {
         'Payments too small for Visa/Paypal',
         'Small busuinesses',
         'High velocity transfer of value',
-        'Ad-hoc rewards / incentivisors',
+        'Ad-hoc rewards / incentives',
+        'Easier peer-to-peer transactions, e.g. trading home generated energy',
         'Micro consumption of services'
       ],
-      applications: ['IoT', 'Loyalty Points', 'Tipping', 'Energy Markets', 'Trasnport']
+      applications: ['IoT', 'Loyalty Points', 'Tipping', 'Online Reputation', 'Energy Markets', 'Trasnport']
     },
     {
       key: 'tokenization',
@@ -192,7 +198,9 @@ export default {
         'Traceability from \'farm to fork\'',
         'Projects - who did what when?',
         'Tracking value flows inside an organisation, e.g. Government spending (Councils, NHS)',
-        'What happened to my charity donation or government foreign aid contribution?'
+        'What happened to my charity donation or government foreign aid contribution?',
+        'Exposing inefficiencies, and avoiding corruption',
+        'Product Authenticity'
       ],
       applications: ['Supply Chain', 'Compliance', 'Project Management', 'Government Spending', 'Charity', 'Import/Export']
     },
@@ -217,7 +225,7 @@ export default {
       bullets: [
         'Verifying the truth',
         'Removing Fraud',
-        'Trust',
+        'Trust, avoid corruption',
         'Shared Ledgers',
         'Remove single point of failure',
         'Syndication of services',
@@ -226,6 +234,18 @@ export default {
         'Proof, reputation and credit worthiness, e.g. Self managed identity proof'
       ],
       applications: ['Legal', 'Business Identity', 'Safety', 'Fraud', 'Security', 'Trust']
+    },
+    {
+      key: 'crowdsourcing',
+      title: 'Crowdsourcing',
+      description: 'Leveraging the wisdom of the crowd',
+      bullets: [
+        'Forecasting and prediction markets',
+        'Freelance peer to peer markets',
+        'Incentivising micro-contributions, e.g. surveys',
+        'Research, consulting and analyisis'
+      ],
+      applications: ['Forecasting/Prediction', 'Freelance', 'Resourcing']
     },
     {
       key: 'uncensorable',
@@ -249,8 +269,9 @@ export default {
         'Sovereignty of the individual',
         'Free markets, anarchocapitalism',
         'Democratising money and markets, levelling the playing field',
-        'Solving social problems, where fiat currency just doesn\'t work',
-        'Money creation, and economics in hands of people, not authoritarian control'
+        'Solving social problems, where fiat currency just doesn\'t work, e.g. homelessness',
+        'Money creation, and economics in hands of people, not authoritarian control',
+        'Disincentivising corruption'
       ],
       applications: ['Political Movements', 'Anti-Political Movements', 'Economics', 'Social Problems']
     }

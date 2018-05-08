@@ -67,5 +67,11 @@ export default {
   },
   setEscrowContracts (state, payload) {
     state.escrowContracts = payload
+  },
+  resetBrandFundedContracts (state) {
+    state.brandFundedContracts = []
+  },
+  setBrandFundedContracts (state, payload) {
+    state.brandFundedContracts = payload
   }
 }

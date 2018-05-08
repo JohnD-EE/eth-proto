@@ -171,5 +171,78 @@ export default {
       }
     })
     return escrowItems.reverse()
+  },
+  allBrandFundedContracts: state => {
+    let escrowItems = []
+    let allUsersByEthAccount = helperUsers.getUsersByAddress()
+    state.brandFundedContracts.forEach(res => {
+      let agent = 'N/A'
+      let seller = 'N/A'
+      let buyer = 'N/A'
+      if (res.info.owner === state.userDetails.ethAccount) {
+        agent = state.user.displayName
+      } else {
+        agent = res.info.owner in allUsersByEthAccount ? allUsersByEthAccount[res.info.owner].displayName : 'N/A'
+      }
+      if (res.info.sellerAddress === state.userDetails.ethAccount) {
+        seller = state.user.displayName
+      } else {
+        seller = res.info.sellerAddress in allUsersByEthAccount ? allUsersByEthAccount[res.info.sellerAddress].displayName : 'N/A'
+      }
+      if (res.info.buyer === state.userDetails.ethAccount) {
+        buyer = state.user.displayName
+      } else {
+        buyer = res.info.buyerAddress in allUsersByEthAccount ? allUsersByEthAccount[res.info.buyerAddress].displayName : 'N/A'
+      }
+
+      let status = {text: '', color: ''}
+      if (res.info.buyerApprove && !res.info.sellerApprove) {
+        status.text = 'Pending Retailer Approval'
+        status.color = 'info'
+      } else if (!res.info.buyerApprove && res.info.sellerApprove) {
+        status.text = 'Pending Brand Approval'
+        status.color = 'info'
+      } else if (res.info.escrowComplete) {
+        status.text = 'Promotion Complete'
+        status.color = 'primary'
+      } else if (Number(res.info.balance) === 0) {
+        status.text = 'Pending Brand Funds'
+        status.color = 'info'
+      } else if (Number(res.info.balance) > 0) {
+        status.text = 'Brand Funded'
+        status.color = 'green'
+      } else if (res.info.owner === 0) {
+        // contract has self destructed (not sure if we need this because we delete)
+        status.text = 'Void'
+        status.color = 'black'
+      }
+
+      let userIsAgent = res.info.owner === state.userDetails.ethAccount
+      let userIsSeller = res.info.sellerAddress === state.userDetails.ethAccount
+      let userIsBuyer = res.info.buyerAddress === state.userDetails.ethAccount
+
+      if (userIsAgent || userIsSeller || userIsBuyer) {
+        escrowItems.push({
+          contractAddress: res.contractAddress,
+          status: status,
+          saleItem: res.info.saleItem,
+          ownerAddress: res.info.owner,
+          sellerAddress: res.info.sellerAddress,
+          buyerAddress: res.info.buyerAddress,
+          agent: agent,
+          seller: seller,
+          buyer: buyer,
+          userIsAgent: userIsAgent,
+          userIsSeller: userIsSeller,
+          userIsBuyer: userIsBuyer,
+          feePercent: Number(res.info.feePercent),
+          sellerApprove: res.info.sellerApprove,
+          buyerApprove: res.info.buyerApprove,
+          escrowComplete: res.info.escrowComplete,
+          balance: Number(res.info.balance)
+        })
+      }
+    })
+    return escrowItems.reverse()
   }
 }
