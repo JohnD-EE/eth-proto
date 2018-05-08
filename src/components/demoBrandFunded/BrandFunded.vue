@@ -7,7 +7,7 @@
           <v-container fill-height fluid>
             <v-layout row wrap>
               <v-flex xs12 sm6 align-end flexbox>
-                <span class="headline"><v-icon dark left large>account_balance</v-icon> Escrow</span>
+                <span class="headline"><v-icon dark left large>local_activity</v-icon> Brand Funded</span>
               </v-flex>
               <v-flex xs12 sm6 align-end flexbox>
                 <div class="text-xs-right">
@@ -21,33 +21,33 @@
         </v-card-media>
         <v-container fluid>
           <v-card-text>
-            <p>Place funds into the custody of a smart contract and released when conditions are met.</p>
-            <h3>As an Escrow Agent:</h3>
+            <p>Place <em>Brand</em> promotional funds into the custody of a smart contract which are released to the <em>Retailer</em> when the agreed amount of product is sold.</p>
+            <h3>As a Promotions Agent:</h3>
               <ul class="py-2 ml-5">
-                <li>I can create an Escrow service for two parties</li>
+                <li>I can create a 'Brand Funded' contract between a <em>Brand</em> and a <em>Retailer</em></li>
                 <li>I can specify a fee, as a percentage of the transaction value, for my services</li>
               </ul>
-            <h3>As a Seller in an Escrow contract:</h3>
+            <h3>As a Retailer:</h3>
             <ul class="py-2 ml-5">
-              <li>I can confirm that I have supplied the goods/services by approving the deal</li>
+              <li>I can confirm that I have sold the required amount of product by approving the deal</li>
               <li>I can void the contract</li>
-              <li>I receive payment once Buyer and Seller have approved the deal</li>
+              <li>I receive payment once the <em>Brand</em> and <em>Retailer</em> have approved the deal</li>
             </ul>
-            <h3>As a Buyer in an Escrow contract:</h3>
+            <h3>As a Brand:</h3>
             <ul class="py-2 ml-5">
-              <li>I can deposit funds into the custody of the contract</li>
-              <li>I can confirm that I'm happy with the goods/services by approving the deal</li>
-              <li>I can void the contract and have my depsit refunded</li>
+              <li>I can deposit funds into the custody of the contract to sponsor a promotion</li>
+              <li>I can confirm that the <em>Retailer</em> has sold the required amount by approving the deal</li>
+              <li>I can void the contract and have my funds refunded</li>
             </ul>
           </v-card-text>
           <v-card-text>
             <v-container>
               <v-layout row wrap>
                 <v-flex sm12 md6 align-end flexbox>
-                  <app-create-escrow></app-create-escrow>
+                  <app-create-brand-funded></app-create-brand-funded>
                 </v-flex>
                 <v-flex sm12 md6 align-end flexbox>
-                  <app-view-escrow></app-view-escrow>
+                  <app-view-brand-funded></app-view-brand-funded>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -61,8 +61,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import CreateEscrow from './CreateEscrow.vue'
-import ViewEscrow from './ViewEscrow.vue'
+import CreateBrandFunded from './CreateBrandFunded.vue'
+import ViewBrandFunded from './ViewBrandFunded.vue'
 
 export default {
   data () {
@@ -71,8 +71,8 @@ export default {
     }
   },
   components: {
-    'app-create-escrow': CreateEscrow,
-    'app-view-escrow': ViewEscrow
+    'app-create-brand-funded': CreateBrandFunded,
+    'app-view-brand-funded': ViewBrandFunded
   },
   computed: {
     ...mapGetters({

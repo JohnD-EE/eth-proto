@@ -160,6 +160,7 @@
 <script>
 import auctionHelper from './helpers/demoAuction/auction'
 import escrowHelper from './helpers/demoEscrow/escrow'
+import brandFundedHelper from './helpers/demoBrandFunded/brandFunded'
 
 export default {
   data () {
@@ -168,11 +169,12 @@ export default {
       blockchainLoading: false,
       sidebar: false,
       tools: [
-        { title: 'Opportunity Analysis', path: '/opportunityAnalysis', icon: 'lightbulb_outline' },
+        { title: 'Opportunity Analysis', path: '/opportunity-analysis', icon: 'lightbulb_outline' }
       ],
       demos: [
         { title: 'Auction', path: '/auction', icon: 'gavel' },
         { title: 'Escrow', path: '/escrow', icon: 'account_balance' },
+        { title: 'Brand Funded Promo', path: '/brand-funded', icon: 'local_activity' },
         { title: 'Coupon', path: '/morescenarios', icon: 'redeem' },
         { title: 'Voucher', path: '/morescenarios', icon: 'redeem' },
         { title: 'Loyalty', path: '/morescenarios', icon: 'loyalty' },
@@ -243,6 +245,9 @@ export default {
         }
         if (this.$route.path === '/escrow') {
           escrowHelper.updateEscrowData()
+        }
+        if (this.$route.path === '/brand-funded') {
+          brandFundedHelper.updateEscrowData()
         }
       }
       setTimeout(function () {

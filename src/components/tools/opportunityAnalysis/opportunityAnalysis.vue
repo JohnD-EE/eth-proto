@@ -1,6 +1,6 @@
 <template>
   <v-layout grid-list-xl>
-    <v-flex xs 12 md10 offset-md1 pt-4>
+    <v-flex xs 12 md10 offset-md1 py-4>
       <v-toolbar color="primary lighten-2" dark>
         <v-toolbar-title>Opportunity Analysis</v-toolbar-title>
         <v-spacer></v-spacer>
@@ -95,7 +95,7 @@ import StarRating from 'vue-star-rating'
     data () {
       return {
         showBullets: false,
-        showApplicationTags: false,
+        showApplicationTags: false
       }
     },
     computed: {

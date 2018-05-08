@@ -1,18 +1,18 @@
 import {store} from './../../store'
-import EscrowJSON from '../../../build/contracts/Escrow.json'
+import BrandFundedJSON from '../../../build/contracts/BrandFunded.json'
 import ContractsHelper from '../contracts'
 
 export default {
 
   createEscrow (payload) {
-    console.log('Creating Escrow: ', payload)
+    console.log('Creating Brand Funded: ', payload)
     const e = payload
-    const EscrowFactory = store.state.contracts['EscrowFactory']
-    EscrowFactory.methods.createEscrow(e.sellerAddress, e.buyerAddress, e.feePercent, e.saleItem)
+    const BrandFundedFactory = store.state.contracts['BrandFundedFactory']
+    BrandFundedFactory.methods.createEscrow(e.sellerAddress, e.buyerAddress, e.feePercent, e.saleItem)
     .send({from: e.escrowServiceAddress, gas: 3000000})
     .on('transactionHash', function (hash) {
       store.dispatch('newNotification', {
-        title: 'Create Escrow - New transaction to process',
+        title: 'Create Brand Funded Promo - New transaction to process',
         text: hash,
         type: 'success'
       })
@@ -40,22 +40,22 @@ export default {
   },
 
   getAllEscrowContracts () {
-    const EscrowFactory = store.state.contracts['EscrowFactory']
-    EscrowFactory.methods.allEscrowContracts().call({from: store.state.userDetails.ethAccount})
+    const BrandFundedFactory = store.state.contracts['BrandFundedFactory']
+    BrandFundedFactory.methods.allEscrowContracts().call({from: store.state.userDetails.ethAccount})
     .then(res => {
       return res
     })
   },
 
   updateEscrowData () {
-    let escrowAbi = EscrowJSON.abi
-    const EscrowFactory = store.state.contracts['EscrowFactory']
-    EscrowFactory.methods.allEscrowContracts().call()
+    let brandFundedAbi = BrandFundedJSON.abi
+    const BrandFundedFactory = store.state.contracts['BrandFundedFactory']
+    BrandFundedFactory.methods.allEscrowContracts().call()
     .then(res => {
       console.log('res', res)
       res.forEach(contractAddress => {
         // create an instance of the Auction based on the reference
-        let contract = new window.web3.eth.Contract(escrowAbi, contractAddress)
+        let contract = new window.web3.eth.Contract(brandFundedAbi, contractAddress)
         window.web3.eth.getCode(contractAddress)
         .then(code => {
           if (code.length > 3) {
@@ -87,9 +87,9 @@ export default {
                             contract.methods.balances(buyerAddress).call()
                             .then(balance => {
                               info.balance = window.web3.utils.fromWei(balance, 'ether')
-                              console.log('escrow complete: ', info)
+                              console.log('BrandFunded complete: ', info)
                               // store states
-                              store.dispatch('registerEscrowContract', {
+                              store.dispatch('registerBrandFundedContract', {
                                 contractAddress: contractAddress,
                                 contract: contract,
                                 info: info
@@ -104,7 +104,7 @@ export default {
               })
             })
           } else {
-            console.log('FAILED to get Escrow Contract (E.g. could be voided)', contractAddress)
+            console.log('FAILED to get Brand Funded Promo Contract (E.g. could be voided)', contractAddress)
           }
         })
       })
@@ -112,7 +112,7 @@ export default {
   },
 
   depositBuyerFunds (contractAddress, depositValue) {
-    let contract = ContractsHelper.getContractFromAddress(store.state.escrowContracts, contractAddress)
+    let contract = ContractsHelper.getContractFromAddress(store.state.brandFundedContracts, contractAddress)
     contract.methods.depositBuyerFunds().send({
       from: store.state.userDetails.ethAccount,
       value: window.web3.utils.toWei(depositValue.toString(), 'ether'),
@@ -147,14 +147,14 @@ export default {
   },
 
   approveContract (contractAddress) {
-    let contract = ContractsHelper.getContractFromAddress(store.state.escrowContracts, contractAddress)
+    let contract = ContractsHelper.getContractFromAddress(store.state.brandFundedContracts, contractAddress)
     contract.methods.approve().send({
       from: store.state.userDetails.ethAccount,
       gas: 3000000
     })
     .on('transactionHash', function (hash) {
       store.dispatch('newNotification', {
-        title: 'Request to approve Escrow contract - New transaction to process',
+        title: 'Request to approve Brand Funded contract - New transaction to process',
         text: hash,
         type: 'success'
       })
@@ -181,14 +181,14 @@ export default {
   },
 
   voidContract (contractAddress) {
-    let contract = ContractsHelper.getContractFromAddress(store.state.escrowContracts, contractAddress)
+    let contract = ContractsHelper.getContractFromAddress(store.state.brandFundedContracts, contractAddress)
     contract.methods.voidContract().send({
       from: store.state.userDetails.ethAccount,
       gas: 3000000
     })
     .on('transactionHash', function (hash) {
       store.dispatch('newNotification', {
-        title: 'Request to void the Escrow contract - New transaction to process',
+        title: 'Request to void the Brand Funded contract - New transaction to process',
         text: hash,
         type: 'success'
       })

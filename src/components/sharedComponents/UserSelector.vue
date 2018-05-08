@@ -52,7 +52,7 @@
         ]
         this.$store.getters.allUsers(true).forEach(res => {
           if (res.type === 'user') {
-            let path ='../../static/profile/'
+            let path = '../../static/profile/'
             let filename = res.displayName
             filename = filename.split(' ').join('')
             let fileType = '.jpg'

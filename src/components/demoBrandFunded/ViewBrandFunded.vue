@@ -2,14 +2,14 @@
   <v-layout row justify-center>
     <v-dialog v-model="dialog" :fullscreen="fullScreen" transition="dialog-bottom-transition" :overlay="false">
       <v-btn color="info" dark slot="activator" @click.native="viewEscrowContracts">
-        <v-icon left>visibility</v-icon>View Escrow Contracts
+        <v-icon left>visibility</v-icon>View Brand Funded Contracts
       </v-btn>
       <v-card>
         <v-toolbar dark color="info" @click.native="clickClose">
           <v-btn icon @click.native="clickClose" dark>
             <v-icon>close</v-icon>
           </v-btn>
-          <v-toolbar-title>View Escrow Contracts</v-toolbar-title>
+          <v-toolbar-title>View Brand Funded Contracts</v-toolbar-title>
         </v-toolbar>
 
         <template>
@@ -43,10 +43,10 @@
                 <td class="text-xs-center">{{ props.item.seller }}</td>
                 <td class="text-xs-center">
 
-                  <template v-if="props.item.userIsBuyer && props.item.balance === 0">
+                  <template v-if="props.item.userIsBuyer && props.item.balance === 0 && !props.item.escrowComplete">
                     <v-layout row justify-center>
                       <v-dialog v-model="depositDialog" persistent max-width="500px">
-                        <v-btn small round color="green" slot="activator" dark @click="">Deposit</v-btn>
+                        <v-btn small round color="green" slot="activator" dark @click="">Deposit Funds</v-btn>
                         <v-card>
                           <v-form v-model="depositValid.valid" ref="form" lazy-validation>
                           <v-card-title>
@@ -57,15 +57,15 @@
                               <v-layout row wrap>
                                 <v-flex xs12>
                                   <ul class="py-2 ml-3">
-                                    <li>As the buyer, you are required to deposit funds onto the contract.</li>
-                                    <li>Your funds are transferred to the Seller when both parties approve the contract</li>
-                                    <li>You may void the contract and withdraw your funds at any time prior to approval</li>
-                                  </ul>
+                                    <li>As the brand, you are required to deposit funds onto the contract.</li>
+                                    <li>Your funds are transferred to the retailer when both parties approve the sales requirements are met</li>
+                                  <li>You may void the contract and withdraw funds at any time prior to approval</li>
+                                </ul>
                                 </v-flex>
                                 <v-flex xs12 sm6>
                                   <v-text-field
                                     name="deposit-amount"
-                                    label="Your Deposit"
+                                    label="Brand Funds"
                                     hint="Provide the total amount you wish to deposit"
                                     required
                                     v-model="depositValue"
@@ -80,7 +80,7 @@
                           <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn color="primary darken-1" flat @click.native="closeDeposit">Close</v-btn>
-                            <v-btn color="primary darken-1" flat @click.native="depositBuyerFunds(props.item.contractAddress)">Submit Deposit</v-btn>
+                            <v-btn color="primary darken-1" flat @click.native="depositBuyerFunds(props.item.contractAddress)">Submit Funds</v-btn>
                           </v-card-actions>
                           </v-form>
                         </v-card>
@@ -125,7 +125,7 @@
 </template>
 
 <script>
-import escrowHelper from '../../helpers/demoEscrow/escrow'
+import brandFundedHelper from '../../helpers/demoBrandFunded/brandFunded'
 
 export default {
   data () {
@@ -145,11 +145,11 @@ export default {
       fullScreen: true, // todo detect screen size here and make true for sm screens
       search: '',
       headers: [
-        { text: 'Description/Ref', value: 'saleItem', sortable: false, align: 'left' },
+        { text: 'Promotion Name', value: 'saleItem', sortable: false, align: 'left' },
         { text: 'Status', value: 'status', sortable: false, align: 'center' },
         { text: 'Agent', value: 'agent', sortable: false, align: 'center' },
-        { text: 'Buyer', value: 'buyer', sortable: false, align: 'center' },
-        { text: 'Seller', value: 'seller', sortable: false, align: 'center' },
+        { text: 'Brand', value: 'buyer', sortable: false, align: 'center' },
+        { text: 'Retailer', value: 'seller', sortable: false, align: 'center' },
         { text: 'Contract Value', value: 'value', sortable: false, align: 'center' },
         { text: 'Agency Fees', value: 'feePercent', sortable: false, align: 'center' },
         { text: 'Approval', value: 'approval', sortable: false, align: 'center' },
@@ -168,7 +168,7 @@ export default {
       return this.$store.getters.balanceToEther
     },
     items () {
-      return this.$store.getters.allEscrowContracts
+      return this.$store.getters.allBrandFundedContracts
     },
     currency () {
       return this.$store.state.currency
@@ -186,15 +186,15 @@ export default {
       this.dialog = false
     },
     viewEscrowContracts () {
-      console.log('Calling: getAllEscrowContracts')
-      this.$store.dispatch('resetEscrowContracts')
-      escrowHelper.updateEscrowData()
+      console.log('Calling: getAllBrandFundedContracts')
+      this.$store.dispatch('resetBrandFundedContracts')
+      brandFundedHelper.updateEscrowData()
     },
     depositBuyerFunds (contractAddress) {
       // buyer can deposit to the contract
       console.log('deposit', {address: contractAddress, val: this.depositValue})
       if (this.$refs.form.validate()) {
-        escrowHelper.depositBuyerFunds(contractAddress, this.depositValue)
+        brandFundedHelper.depositBuyerFunds(contractAddress, this.depositValue)
         this.depositDialog = false
         this.clear()
       } else {
@@ -204,12 +204,12 @@ export default {
     voidContract (contractAddress) {
       // seller or buyer can void the contract
       console.log('void')
-      escrowHelper.voidContract(contractAddress)
+      brandFundedHelper.voidContract(contractAddress)
     },
     approveContract (contractAddress) {
       // seller or buyer can agree the deal
       console.log('agree')
-      escrowHelper.approveContract(contractAddress)
+      brandFundedHelper.approveContract(contractAddress)
     },
     clear () {
       this.$refs.form.reset()

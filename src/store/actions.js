@@ -4,6 +4,7 @@ import { db } from '../main'
 import userAccountsHelper from '../helpers/userAccounts'
 import AuctionFactoryJSON from '../../build/contracts/AuctionFactory.json'
 import EscrowFactoryJSON from '../../build/contracts/EscrowFactory.json'
+import BrandFundedFactoryJSON from '../../build/contracts/BrandFundedFactory.json'
 
 export default {
   newNotification ({commit}, payload) {
@@ -222,6 +223,7 @@ export default {
     let abi = []
     abi['AuctionFactory'] = AuctionFactoryJSON.abi
     abi['EscrowFactory'] = EscrowFactoryJSON.abi
+    abi['BrandFundedFactory'] = BrandFundedFactoryJSON.abi
     let defaultContractAddresses = this.state.defaultContractAddresses
     defaultContractAddresses.forEach(res => {
       let contract = new window.web3.eth.Contract(abi[res.instance], res.address)
@@ -305,6 +307,49 @@ export default {
       // We have a change
       escrowContracts.splice(index, 1, payload)
       commit('setEscrowContracts', escrowContracts)
+    }
+  },
+  resetBrandFundedContracts ({commit}) {
+    commit('resetBrandFundedContracts')
+  },
+  removeBrandFundedContract ({commit}, contractAddress) {
+    console.log('try to remove', contractAddress)
+    let brandFundedContracts = this.state.brandFundedContracts
+    // see if brandFunded address already exists
+    let index = false
+    let matchFound = false
+    brandFundedContracts.forEach(function (res, i) {
+      if (res.contractAddress === contractAddress) {
+        index = i
+        matchFound = true
+      }
+    })
+    if (matchFound) {
+      // delete the contract (e.g. if void)
+      brandFundedContracts.splice(index, 1)
+      console.log('Removing contract:', contractAddress)
+      commit('setBrandFundedContracts', brandFundedContracts)
+    }
+  },
+  registerBrandFundedContract ({commit}, payload) {
+    let brandFundedContracts = this.state.brandFundedContracts
+    // see if brandFunded address already exists
+    let index = false
+    let matchFound = false
+    brandFundedContracts.forEach(function (res, i) {
+      if (res.contractAddress === payload.contractAddress) {
+        index = i
+        matchFound = true
+      }
+    })
+    if (!matchFound) {
+      brandFundedContracts.push(payload)
+      // We have a new brandFunded item
+      commit('setBrandFundedContracts', brandFundedContracts)
+    } else {
+      // We have a change
+      brandFundedContracts.splice(index, 1, payload)
+      commit('setBrandFundedContracts', brandFundedContracts)
     }
   }
 }

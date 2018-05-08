@@ -12,8 +12,9 @@ const routerOptions = [
   { path: '*', component: 'NotFound' },
   { path: '/auction', component: 'demoAuction/Auction', meta: { requiresAuth: true } },
   { path: '/escrow', component: 'demoEscrow/Escrow', meta: { requiresAuth: true } },
+  { path: '/brand-funded', component: 'demoBrandFunded/BrandFunded', meta: { requiresAuth: true } },
   { path: '/morescenarios', component: 'demoScenarios/MoreScenarios', meta: { requiresAuth: true } },
-  { path: '/opportunityAnalysis', component: 'tools/opportunityAnalysis/opportunityAnalysis', meta: { requiresAuth: true } }
+  { path: '/opportunity-analysis', component: 'tools/opportunityAnalysis/opportunityAnalysis', meta: { requiresAuth: true } }
 ]
 
 const routes = routerOptions.map(route => {
