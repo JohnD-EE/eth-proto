@@ -56,6 +56,9 @@ export default {
   setContracts (state, payload) {
     state.contracts = payload
   },
+  setUserOpportunities (state, payload) {
+    state.userOpportunities = payload
+  },
   resetAuctionContracts (state) {
     state.auctionContracts = []
   },

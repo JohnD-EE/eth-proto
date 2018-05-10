@@ -5,15 +5,18 @@ export default {
   createOpportunity (title) {
     let docData = {
       user: store.state.user.email,
-      opportunity: {
-        title: title,
-        ratings: {}
-      }
+      title: title,
+      ratings: {}
     }
     db.collection('opportunities').doc().set(docData)
     .then(res => {
       // Done
-      console.log('Opportunity Created: ', res)
+      store.dispatch('newNotification', {
+        title: 'New Opportunity Created:',
+        text: title,
+        type: 'success'
+      })
+      store.dispatch('registerUserOpportunities')
     })
   }
 }

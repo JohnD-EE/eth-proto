@@ -58,6 +58,7 @@ const unsubscribe = firebase.auth()
         store.dispatch('registerAllUsers')
         if (firebaseUser) {
           store.dispatch('autoSignIn', firebaseUser)
+          store.dispatch('registerUserOpportunities')
         }
         store.dispatch('registerContracts')
       }

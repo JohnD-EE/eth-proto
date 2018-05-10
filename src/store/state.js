@@ -10,7 +10,8 @@ export default {
   user: {
     loggedIn: false,
     displayName: null,
-    email: null
+    email: null,
+    uid: null
   },
   userDetails: {
     displayName: null,
@@ -39,6 +40,7 @@ export default {
   escrowContracts: [],
   brandFundedContracts: [],
   notificationsQueue: [],
+  userOpportunities: [],
   opportunityAnalysis: [
     {
       key: 'registrar',

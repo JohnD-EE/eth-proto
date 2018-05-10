@@ -22,7 +22,7 @@ export default {
       firebaseUser.updateProfile({
         displayName: payload.name
       }).then(res => {
-        commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
+        commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName, uid: firebaseUser.uid})
         commit('setAllUsers')
         commit('setUserDetails', {
           displayName: firebaseUser.displayName
@@ -63,7 +63,7 @@ export default {
     commit('resetAuctionContracts')
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(firebaseUser => {
-        commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
+        commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName, uid: firebaseUser.uid})
         commit('setUserDetails', {
           displayName: firebaseUser.displayName
         })
@@ -91,7 +91,7 @@ export default {
   autoSignIn ({commit}, firebaseUser) {
     commit('setUserTxs', [])
     commit('resetAuctionContracts')
-    commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName})
+    commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName, uid: firebaseUser.uid})
     db.collection('users').doc(firebaseUser.uid).get()
     .then(doc => {
       let ethAccount = doc.data().ethAccount
@@ -214,6 +214,25 @@ export default {
           }
         })
       }
+    })
+  },
+
+  registerUserOpportunities ({commit}) {
+    commit('setUserOpportunities', [])
+    let userOpportunities = []
+    let opportunitiesRef = db.collection('opportunities')
+    let query = opportunitiesRef.where('user', '==', this.state.user.email).get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        userOpportunities.push({title: doc.data().title, ratings: doc.data().ratings, id: doc.id})
+        console.log(doc.id, '=>', doc.data())
+        if (userOpportunities.length === Object.keys(snapshot.docs).length) {
+            commit('setUserOpportunities', userOpportunities)
+        }
+      })
+    })
+    .catch(err => {
+      console.log('Error getting opportunity documents', err)
     })
   },
 
