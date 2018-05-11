@@ -131,7 +131,7 @@
                   <v-divider></v-divider>
                 </div>
                   <v-card-actions class="bottom-right">
-                  <star-rating v-bind:star-size="24"></star-rating>
+                  <star-rating @rating-selected ="setRating($event, card.key)" v-bind:star-size="24" :rating="getRating(card.key)"></star-rating>
                 </v-card-actions>
               </v-card>
             </v-flex>
@@ -172,7 +172,8 @@ export default {
         v => !!v || 'Title is required'
       ],
       rules: false,
-      selectedOpportunityId: null
+      selectedOpportunityId: null,
+      // selectedOpportunityIndex: null,
     }
   },
   computed: {
@@ -190,7 +191,6 @@ export default {
       })
       return opportunitiesById
     }
-
   },
   components: {
     'star-rating': StarRating
@@ -211,9 +211,25 @@ export default {
     clear () {
       this.$refs.form.reset()
     },
-    selectOpportunity(id) {
-      console.log("selectedId" ,id)
+    selectOpportunity (id) {
+      console.log("selectedId", id)
       this.selectedOpportunityId = id
+    },
+    getRating (opportunityKey) {
+      console.log(opportunityKey)
+      console.log('current opportunity', this.selectedOpportunityId)
+      console.log('get rating', this.opportunitiesById)
+      if (this.selectedOpportunityId !== null) {
+        if (opportunityKey in this.opportunitiesById[this.selectedOpportunityId].ratings) {
+          return this.opportunitiesById[this.selectedOpportunityId].ratings.opportunityKey
+        } else {
+          return 0
+        }
+      }
+    },
+    setRating (rating, opportunityKey) {
+      console.log('opportunityKey', opportunityKey)
+      console.log('rating', rating)
     }
   }
 }
