@@ -221,15 +221,17 @@ export default {
       console.log('get rating', this.opportunitiesById)
       if (this.selectedOpportunityId !== null) {
         if (opportunityKey in this.opportunitiesById[this.selectedOpportunityId].ratings) {
-          return this.opportunitiesById[this.selectedOpportunityId].ratings.opportunityKey
-        } else {
-          return 0
+          return this.opportunitiesById[this.selectedOpportunityId].ratings[opportunityKey]
         }
+        return 0
       }
     },
     setRating (rating, opportunityKey) {
       console.log('opportunityKey', opportunityKey)
       console.log('rating', rating)
+      if (this.selectedOpportunityId !== null) {
+        OpportunityAnalysisHelper.setRating(this.selectedOpportunityId, opportunityKey, rating)
+      }
     }
   }
 }

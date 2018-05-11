@@ -18,5 +18,13 @@ export default {
       })
       store.dispatch('registerUserOpportunities')
     })
+  },
+  setRating (selectedOpportunityId, opportunityKey, rating) {
+    let opportunitiesRef = db.collection('opportunities').doc(selectedOpportunityId)
+    let setWithMerge = opportunitiesRef.set({
+      ratings: {
+        [opportunityKey]: rating
+      }
+    }, { merge: true })
   }
 }
