@@ -97,6 +97,7 @@ export default {
         'Highly administrative, lots of red tape & paperwork',
         'High transaction costs',
         'Significant counter-party risk',
+        'Multiple parties, complex inter-dependencies',
         'Process automation',
         'Markets prone to corruption'
       ],
