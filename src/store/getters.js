@@ -68,6 +68,9 @@ export default {
     })
     return userTxs.reverse()
   },
+  userOpportunities: state => {
+    return state.userOpportunities
+  },
   allAuctionContracts: state => {
     let auctionItems = []
     let allUsersByEthAccount = helperUsers.getUsersByAddress()
