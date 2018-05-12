@@ -218,16 +218,16 @@ export default {
   },
 
   registerUserOpportunities ({commit}) {
-    commit('setUserOpportunities', [])
     let userOpportunities = []
     let opportunitiesRef = db.collection('opportunities')
-    let query = opportunitiesRef.where('user', '==', this.state.user.email).get()
+    opportunitiesRef.where('user', '==', this.state.user.email).get()
     .then(snapshot => {
+      commit('setUserOpportunities', [])
       snapshot.forEach(doc => {
         userOpportunities.push({title: doc.data().title, ratings: doc.data().ratings, id: doc.id})
         console.log(doc.id, '=>', doc.data())
         if (userOpportunities.length === Object.keys(snapshot.docs).length) {
-            commit('setUserOpportunities', userOpportunities)
+          commit('setUserOpportunities', userOpportunities)
         }
       })
     })

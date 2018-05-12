@@ -129,13 +129,17 @@
       <router-view></router-view>
     </v-content>
       <v-footer class="mt-4 pa-3" fixed>
-          <span class="pr-1">Latest Block: </span><span v-show="!blockchainLoading" >
-            <v-chip label outline color="primary" small>{{ latestBlock }}</v-chip>
-          </span>
-        <v-progress-circular class="pl-2" size="14" indeterminate color="green" v-show="blockchainLoading"></v-progress-circular>
-        <span class="pl-2 caption grey--text" v-show="blockchainLoading"> Polling Blockcain</span>
+
+        <v-slide-y-reverse-transition>
+        <span v-show="!blockchainLoading" >
+          <v-chip label color="primary lighten-2" text-color="white" small>Latest Block:&nbsp;<strong>{{ latestBlock }}</strong></v-chip>
+        </span>
+        </v-slide-y-reverse-transition>
+
       <v-spacer></v-spacer>
-      <div><span class="primary--text"><h3>#PurpleInnovation</h3></span></div>
+      <div>
+        <span class="primary--text"><h3>#PurpleInnovation</h3></span>
+      </div>
     </v-footer>
 
     <template>
@@ -252,7 +256,7 @@ export default {
       }
       setTimeout(function () {
         this.blockchainLoading = false
-      }.bind(this), 1200)
+      }.bind(this), 350)
     }
   },
   mounted: function () {

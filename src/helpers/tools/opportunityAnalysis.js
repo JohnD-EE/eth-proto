@@ -19,12 +19,51 @@ export default {
       store.dispatch('registerUserOpportunities')
     })
   },
-  setRating (selectedOpportunityId, opportunityKey, rating) {
+  deleteOpportunity (selectedOpportunityId) {
     let opportunitiesRef = db.collection('opportunities').doc(selectedOpportunityId)
-    let setWithMerge = opportunitiesRef.set({
+    opportunitiesRef.delete()
+    .then(res => {
+      // Done
+      store.dispatch('newNotification', {
+        title: 'Deleting Opportunity',
+        text: '',
+        type: 'success'
+      })
+      store.dispatch('registerUserOpportunities')
+    })
+  },
+  setRating (selectedOpportunityId, opportunityKey, rating, opportunityTitle) {
+    let opportunitiesRef = db.collection('opportunities').doc(selectedOpportunityId)
+    opportunitiesRef.set({
       ratings: {
         [opportunityKey]: rating
       }
     }, { merge: true })
+    .then(res => {
+      // Done
+      store.dispatch('newNotification', {
+        title: 'New rating registered for ' + opportunityTitle,
+        text: '',
+        type: 'success'
+      })
+      store.dispatch('registerUserOpportunities')
+    })
+  },
+  unsetRating (selectedOpportunityId, opportunityKey, opportunityTitle) {
+    let opportunitiesRef = db.collection('opportunities').doc(selectedOpportunityId)
+    opportunitiesRef.set({
+      ratings: {
+        [opportunityKey]: 0
+      }
+    }, { merge: true })
+    .then(res => {
+      // Done
+      store.dispatch('newNotification', {
+        title: 'Unsetting rating for ' + opportunityTitle,
+        text: '',
+        type: 'success'
+      })
+      store.dispatch('registerUserOpportunities')
+    })
   }
 }
