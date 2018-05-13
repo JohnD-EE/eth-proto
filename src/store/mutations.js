@@ -50,6 +50,9 @@ export default {
   setTxComposer (state, payload) {
     state.txComposer = payload
   },
+  setUserTxsBlockUpdate (state, payload) {
+    state.userTxsLatestBlock = payload
+  },
   setUserTxs (state, payload) {
     state.userTxs = payload
   },

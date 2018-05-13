@@ -242,8 +242,6 @@ export default {
     latestBlock: function (val) {
       this.blockchainLoading = true
       if (this.isAuthenticated) {
-        this.$store.dispatch('userTxs')
-        this.$store.dispatch('updateAccount')
         if (this.$route.path === '/auction') {
           auctionHelper.updateAuctionData()
         }
@@ -253,6 +251,8 @@ export default {
         if (this.$route.path === '/brand-funded') {
           brandFundedHelper.updateEscrowData()
         }
+        this.$store.dispatch('userTxs')
+        this.$store.dispatch('updateAccount')
       }
       setTimeout(function () {
         this.blockchainLoading = false
