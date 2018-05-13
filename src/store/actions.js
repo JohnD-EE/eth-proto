@@ -15,7 +15,7 @@ export default {
   // Sign up and user account creation
   userSignUp ({commit}, payload) {
     commit('setLoading', true)
-    commit('setUserTxBlockUpdate', 0)
+    commit('setUserTxsBlockUpdate', 0)
     commit('setUserTxs', [])
     commit('resetAuctionContracts')
     firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
@@ -60,7 +60,7 @@ export default {
   // Sign in
   userSignIn ({commit}, payload) {
     commit('setLoading', true)
-    commit('setUserTxBlockUpdate', 0)
+    commit('setUserTxsBlockUpdate', 0)
     commit('setUserTxs', [])
     commit('resetAuctionContracts')
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
@@ -91,7 +91,7 @@ export default {
 
   // sign in upon browser refresh
   autoSignIn ({commit}, firebaseUser) {
-    commit('setUserTxBlockUpdate', 0)
+    commit('setUserTxsBlockUpdate', 0)
     commit('setUserTxs', [])
     commit('resetAuctionContracts')
     commit('setUser', {loggedIn: true, email: firebaseUser.email, displayName: firebaseUser.displayName, uid: firebaseUser.uid})
@@ -112,7 +112,7 @@ export default {
     firebase.auth().signOut()
     commit('setUser', {loggedIn: false, displayName: null, email: null})
     commit('setUserDetails', {displayName: null, ethAccount: null, ethBalance: null})
-    commit('setUserTxBlockUpdate', 0)
+    commit('setUserTxsBlockUpdate', 0)
     commit('setUserTxs', [])
     commit('resetAuctionContracts')
     router.push('/')
@@ -197,16 +197,13 @@ export default {
       commit('setUserTxsBlockUpdate', 0)
       userTxsLatestBlock = 0
     }
-    console.log('userTxsLatestBlock', userTxsLatestBlock)
     window.web3.eth.getBlockNumber()
     .then(n => {
       if (n > userTxsLatestBlock) {
-        console.log('currentBlock', n)
-          console.log('txs', txs)
         for (let bl = (userTxsLatestBlock + 1); bl <= n; bl++) {
           window.web3.eth.getBlock(bl, true)
           .then(block => {
-              commit('setUserTxsBlockUpdate', bl)
+            commit('setUserTxsBlockUpdate', bl)
             for (let tx = 0; tx < block.transactions.length; tx++) {
               let blockTx = block.transactions[tx]
               if (blockTx.to === ethAccount || blockTx.from === ethAccount) {
@@ -226,39 +223,6 @@ export default {
             }
           })
         }
-      }
-    })
-  },
-
-  userTxsOld ({commit}) {
-    // @todo - Iiterating through the blockchain is OK for a prototype but in real
-    // dApps we would require transaction history to be stored more efficiently
-    // perhaps as a separate service
-    let ethAccount = this.state.userDetails.ethAccount
-    window.web3.eth.getBlockNumber()
-    .then(n => {
-      let txs = []
-      for (let bl = 0; bl <= n; bl++) {
-        window.web3.eth.getBlock(bl, true)
-        .then(block => {
-          for (let tx = 0; tx < block.transactions.length; tx++) {
-            let blockTx = block.transactions[tx]
-            if (blockTx.to === ethAccount || blockTx.from === ethAccount) {
-              window.web3.eth.getBalance(ethAccount, blockTx.blockNumber)
-              .then(balance => {
-                blockTx.balance = balance
-                window.web3.eth.getTransactionReceipt(blockTx.hash)
-                .then(receipt => {
-                  blockTx.gasUsed = receipt.gasUsed
-                  txs.push(blockTx)
-                  if (txs.length > this.state.userTxs.length) {
-                    commit('setUserTxs', txs)
-                  }
-                })
-              })
-            }
-          }
-        })
       }
     })
   },
