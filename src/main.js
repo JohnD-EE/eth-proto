@@ -5,9 +5,7 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
-import {
-  store
-} from './store'
+import { store } from './store'
 import firebase from 'firebase'
 import Web3 from 'web3'
 

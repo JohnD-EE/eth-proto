@@ -207,7 +207,7 @@ export default {
       }
     },
     latestBlock () {
-      return this.$store.state.web3.latestBlock.number
+      return this.$store.state.web3.latestBlock.number || 'No Network Detected'
     },
     notifications () {
       let notification = this.$store.getters.getNotification
@@ -264,7 +264,7 @@ export default {
     this.refreshBlockchainData()
     setInterval(function () {
       this.refreshBlockchainData()
-    }.bind(this), 1200)
+    }.bind(this), 1000)
   }
 }
 </script>

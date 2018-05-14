@@ -5,6 +5,7 @@ import userAccountsHelper from '../helpers/userAccounts'
 import AuctionFactoryJSON from '../../build/contracts/AuctionFactory.json'
 import EscrowFactoryJSON from '../../build/contracts/EscrowFactory.json'
 import BrandFundedFactoryJSON from '../../build/contracts/BrandFundedFactory.json'
+import EIP20FactoryJSON from '../../build/contracts/EIP20Factory.json'
 
 export default {
   newNotification ({commit}, payload) {
@@ -253,6 +254,7 @@ export default {
     abi['AuctionFactory'] = AuctionFactoryJSON.abi
     abi['EscrowFactory'] = EscrowFactoryJSON.abi
     abi['BrandFundedFactory'] = BrandFundedFactoryJSON.abi
+    abi['EIP20Factory'] = EIP20FactoryJSON.abi
     let defaultContractAddresses = this.state.defaultContractAddresses
     defaultContractAddresses.forEach(res => {
       let contract = new window.web3.eth.Contract(abi[res.instance], res.address)
