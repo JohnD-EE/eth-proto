@@ -14,7 +14,7 @@ contract BrandFundedFactory {
         BrandFunded newEscrow = new BrandFunded(msg.sender, _sellerAddress, _buyerAddress, _feePercent, _saleItem);
         escrowContracts.push(newEscrow);
 
-        BrandFundedCreated(newEscrow, msg.sender, escrowContracts.length, escrowContracts);
+        emit BrandFundedCreated(newEscrow, msg.sender, escrowContracts.length, escrowContracts);
     }
 
     function allEscrowContracts() public constant returns (address[]) {

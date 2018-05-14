@@ -14,7 +14,7 @@ contract EscrowFactory {
         Escrow newEscrow = new Escrow(msg.sender, _sellerAddress, _buyerAddress, _feePercent, _saleItem);
         escrowContracts.push(newEscrow);
 
-        EscrowCreated(newEscrow, msg.sender, escrowContracts.length, escrowContracts);
+        emit EscrowCreated(newEscrow, msg.sender, escrowContracts.length, escrowContracts);
     }
 
     function allEscrowContracts() public constant returns (address[]) {

@@ -14,7 +14,7 @@ contract AuctionFactory {
         Auction newAuction = new Auction(msg.sender, bidIncrement, startBlock, endBlock, saleItem);
         auctions.push(newAuction);
 
-        AuctionCreated(newAuction, msg.sender, auctions.length, auctions);
+        emit AuctionCreated(newAuction, msg.sender, auctions.length, auctions);
     }
 
     function allAuctions() public constant returns (address[]) {

@@ -87,7 +87,7 @@ contract Auction {
             highestBid = newBid;
         }
 
-        LogBid(msg.sender, newBid, highestBidder, highestBid, highestBindingBid);
+        emit LogBid(msg.sender, newBid, highestBidder, highestBid, highestBindingBid);
         return true;
     }
 
@@ -107,7 +107,7 @@ contract Auction {
         returns (bool success)
     {
         cancelled = true;
-        LogCancelled();
+        emit LogCancelled();
         return true;
     }
 
@@ -157,7 +157,7 @@ contract Auction {
         // send the funds
         msg.sender.transfer(withdrawalAmount);
 
-        LogWithdrawal(msg.sender, withdrawalAccount, withdrawalAmount);
+        emit LogWithdrawal(msg.sender, withdrawalAccount, withdrawalAmount);
 
         return true;
     }
