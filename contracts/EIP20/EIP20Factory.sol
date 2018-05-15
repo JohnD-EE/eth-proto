@@ -5,6 +5,7 @@ pragma solidity ^0.4.21;
 
 contract EIP20Factory {
 
+    address[] public eip20Contracts; //using for demo, use mapping in production
     mapping(address => address[]) public created;
     mapping(address => bool) public isEIP20; //verify without having to do a bytecode check.
     bytes public EIP20ByteCode; // solhint-disable-line var-name-mixedcase
@@ -39,6 +40,7 @@ contract EIP20Factory {
 
         EIP20 newToken = (new EIP20(_initialAmount, _name, _decimals, _symbol));
         created[msg.sender].push(address(newToken));
+        eip20Contracts.push(newToken);
         isEIP20[address(newToken)] = true;
         //the factory will own the created tokens. You must transfer them.
         newToken.transfer(msg.sender, _initialAmount);
@@ -63,4 +65,11 @@ contract EIP20Factory {
             extcodecopy(_addr, add(outputCode, 0x20), 0, size)
         }
     }
+
+    // for demo purposes this is fine, but perhaps use the mapper in production
+    function allEIP20Contracts() public constant returns (address[]) {
+        return eip20Contracts;
+    }
+
+
 }
