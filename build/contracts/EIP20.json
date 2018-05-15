@@ -315,7 +315,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 228,
-        "sourceUnit": 459,
+        "sourceUnit": 444,
         "src": "135:30:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -329,10 +329,10 @@
               "id": 3,
               "name": "EIP20Interface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 458,
+              "referencedDeclaration": 443,
               "src": "189:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EIP20Interface_$458",
+                "typeIdentifier": "t_contract$_EIP20Interface_$443",
                 "typeString": "contract EIP20Interface"
               }
             },
@@ -342,7 +342,7 @@
           }
         ],
         "contractDependencies": [
-          458
+          443
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -350,7 +350,7 @@
         "id": 227,
         "linearizedBaseContracts": [
           227,
-          458
+          443
         ],
         "name": "EIP20",
         "nodeType": "ContractDefinition",
@@ -697,7 +697,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1650,
+                          "referencedDeclaration": 1635,
                           "src": "1071:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -768,7 +768,7 @@
                       "name": "totalSupply",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 396,
+                      "referencedDeclaration": 381,
                       "src": "1163:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1117,7 +1117,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1650,
+                              "referencedDeclaration": 1635,
                               "src": "1663:3:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -1182,10 +1182,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1653,
-                        1654
+                        1638,
+                        1639
                       ],
-                      "referencedDeclaration": 1653,
+                      "referencedDeclaration": 1638,
                       "src": "1646:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1242,7 +1242,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1650,
+                          "referencedDeclaration": 1635,
                           "src": "1705:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1384,7 +1384,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1650,
+                          "referencedDeclaration": 1635,
                           "src": "1785:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1451,7 +1451,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 449,
+                      "referencedDeclaration": 434,
                       "src": "1776:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -1606,7 +1606,7 @@
             "scope": 227,
             "src": "1558:327:0",
             "stateMutability": "nonpayable",
-            "superFunction": 412,
+            "superFunction": 397,
             "visibility": "public"
           },
           {
@@ -1699,7 +1699,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1650,
+                        "referencedDeclaration": 1635,
                         "src": "2035:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1886,10 +1886,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1653,
-                        1654
+                        1638,
+                        1639
                       ],
-                      "referencedDeclaration": 1653,
+                      "referencedDeclaration": 1638,
                       "src": "2057:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2174,7 +2174,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1650,
+                                "referencedDeclaration": 1635,
                                 "src": "2254:3:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -2297,7 +2297,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 449,
+                      "referencedDeclaration": 434,
                       "src": "2302:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -2478,7 +2478,7 @@
             "scope": 227,
             "src": "1893:513:0",
             "stateMutability": "nonpayable",
-            "superFunction": 423,
+            "superFunction": 408,
             "visibility": "public"
           },
           {
@@ -2613,7 +2613,7 @@
             "scope": 227,
             "src": "2414:115:0",
             "stateMutability": "view",
-            "superFunction": 403,
+            "superFunction": 388,
             "visibility": "public"
           },
           {
@@ -2656,7 +2656,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1650,
+                            "referencedDeclaration": 1635,
                             "src": "2637:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -2750,7 +2750,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1650,
+                          "referencedDeclaration": 1635,
                           "src": "2692:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2817,7 +2817,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 457,
+                      "referencedDeclaration": 442,
                       "src": "2683:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -2972,7 +2972,7 @@
             "scope": 227,
             "src": "2537:260:0",
             "stateMutability": "nonpayable",
-            "superFunction": 432,
+            "superFunction": 417,
             "visibility": "public"
           },
           {
@@ -3160,7 +3160,7 @@
             "scope": 227,
             "src": "2805:144:0",
             "stateMutability": "view",
-            "superFunction": 441,
+            "superFunction": 426,
             "visibility": "public"
           }
         ],
@@ -3197,7 +3197,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 228,
-        "sourceUnit": 459,
+        "sourceUnit": 444,
         "src": "135:30:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3211,10 +3211,10 @@
               "id": 3,
               "name": "EIP20Interface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 458,
+              "referencedDeclaration": 443,
               "src": "189:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EIP20Interface_$458",
+                "typeIdentifier": "t_contract$_EIP20Interface_$443",
                 "typeString": "contract EIP20Interface"
               }
             },
@@ -3224,7 +3224,7 @@
           }
         ],
         "contractDependencies": [
-          458
+          443
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -3232,7 +3232,7 @@
         "id": 227,
         "linearizedBaseContracts": [
           227,
-          458
+          443
         ],
         "name": "EIP20",
         "nodeType": "ContractDefinition",
@@ -3579,7 +3579,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1650,
+                          "referencedDeclaration": 1635,
                           "src": "1071:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -3650,7 +3650,7 @@
                       "name": "totalSupply",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 396,
+                      "referencedDeclaration": 381,
                       "src": "1163:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -3999,7 +3999,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1650,
+                              "referencedDeclaration": 1635,
                               "src": "1663:3:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -4064,10 +4064,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1653,
-                        1654
+                        1638,
+                        1639
                       ],
-                      "referencedDeclaration": 1653,
+                      "referencedDeclaration": 1638,
                       "src": "1646:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -4124,7 +4124,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1650,
+                          "referencedDeclaration": 1635,
                           "src": "1705:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -4266,7 +4266,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1650,
+                          "referencedDeclaration": 1635,
                           "src": "1785:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -4333,7 +4333,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 449,
+                      "referencedDeclaration": 434,
                       "src": "1776:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -4488,7 +4488,7 @@
             "scope": 227,
             "src": "1558:327:0",
             "stateMutability": "nonpayable",
-            "superFunction": 412,
+            "superFunction": 397,
             "visibility": "public"
           },
           {
@@ -4581,7 +4581,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1650,
+                        "referencedDeclaration": 1635,
                         "src": "2035:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -4768,10 +4768,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1653,
-                        1654
+                        1638,
+                        1639
                       ],
-                      "referencedDeclaration": 1653,
+                      "referencedDeclaration": 1638,
                       "src": "2057:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -5056,7 +5056,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1650,
+                                "referencedDeclaration": 1635,
                                 "src": "2254:3:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -5179,7 +5179,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 449,
+                      "referencedDeclaration": 434,
                       "src": "2302:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -5360,7 +5360,7 @@
             "scope": 227,
             "src": "1893:513:0",
             "stateMutability": "nonpayable",
-            "superFunction": 423,
+            "superFunction": 408,
             "visibility": "public"
           },
           {
@@ -5495,7 +5495,7 @@
             "scope": 227,
             "src": "2414:115:0",
             "stateMutability": "view",
-            "superFunction": 403,
+            "superFunction": 388,
             "visibility": "public"
           },
           {
@@ -5538,7 +5538,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1650,
+                            "referencedDeclaration": 1635,
                             "src": "2637:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -5632,7 +5632,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1650,
+                          "referencedDeclaration": 1635,
                           "src": "2692:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -5699,7 +5699,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 457,
+                      "referencedDeclaration": 442,
                       "src": "2683:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -5854,7 +5854,7 @@
             "scope": 227,
             "src": "2537:260:0",
             "stateMutability": "nonpayable",
-            "superFunction": 432,
+            "superFunction": 417,
             "visibility": "public"
           },
           {
@@ -6042,7 +6042,7 @@
             "scope": 227,
             "src": "2805:144:0",
             "stateMutability": "view",
-            "superFunction": 441,
+            "superFunction": 426,
             "visibility": "public"
           }
         ],
@@ -6058,5 +6058,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-15T08:56:22.290Z"
+  "updatedAt": "2018-05-15T14:03:17.692Z"
 }

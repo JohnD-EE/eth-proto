@@ -39,7 +39,7 @@
                 <td class="text-xs-center">
                   <v-chip small :color="props.item.status.color" text-color="white">{{props.item.status.text}}</v-chip>
                 </td>
-                <td class="text-xs-center">{{ props.item.initialAmount }}</td>
+                <td class="text-xs-center">{{ props.item.totalSupply }}</td>
                 <td class="text-xs-center">{{ props.item.decimals }}</td>
 
               </template>
@@ -67,9 +67,9 @@ export default {
       search: '',
       headers: [
         { text: 'Currency Name', value: 'name', sortable: false, align: 'left' },
-        { text: 'Symbol', value: 'symbol', sortable: false, align: 'left' },
+        { text: 'Symbol', value: 'symbol', sortable: false, align: 'center' },
         { text: 'Status', value: 'status', sortable: false, align: 'center' },
-        { text: 'Initial Amount', value: 'initialAmount', sortable: false, align: 'center' },
+        { text: 'Total Supply', value: 'totalSupply', sortable: false, align: 'center' },
         { text: 'Decimals', value: 'decimals', sortable: false, align: 'center' }
       ]
     }
@@ -85,7 +85,7 @@ export default {
       return this.$store.getters.balanceToEther
     },
     items () {
-      return this.$store.getters.allBrandedCurrencyContracts
+      return this.$store.getters.allEIP20Contracts
     },
     currency () {
       return this.$store.state.currency
@@ -99,8 +99,7 @@ export default {
       this.dialog = false
     },
     viewCurrencies () {
-      console.log('Calling: getAllCurrencies')
-      // this.$store.dispatch('resetCurrencies')
+      this.$store.dispatch('resetEIP20Contracts')
       brandedCurrencyHelper.updateEIP20Data()
     },
     clear () {

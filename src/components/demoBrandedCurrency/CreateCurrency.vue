@@ -16,7 +16,7 @@
               <v-flex xs12>
                 Enter the currency parameters:
               </v-flex>
-              <v-flex xs12>
+              <v-flex xs12 sm6>
                 <v-text-field
                 label="Currency Name"
                 v-model="currencyName"
@@ -25,7 +25,7 @@
                 required>
               </v-text-field>
               </v-flex>
-              <v-flex xs12>
+              <v-flex xs12 sm6>
                 <v-text-field
                 label="Currency Symbol"
                 v-model="currencySymbol"
@@ -33,6 +33,8 @@
                 clearable
                 required>
               </v-text-field>
+            </v-flex>
+              <v-flex xs12 sm6>
               <v-text-field
               label="Initial Supply"
               v-model="initialSupply"
@@ -40,6 +42,8 @@
               hint="The initial money supply"
               required>
             </v-text-field>
+            </v-flex>
+            <v-flex xs12 sm6>
               <v-text-field
               label="Decimals"
               v-model="decimals"
@@ -47,7 +51,7 @@
               hint="Digits after the decimal point"
               required>
             </v-text-field>
-              </v-flex>
+            </v-flex>
             </v-layout>
           </v-container>
           <small>*required fields</small>

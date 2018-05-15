@@ -73,17 +73,17 @@ export default {
                     info.totalSupply = totalSupply
                     console.log('got contract: ', info)
                     // store states
-                    // store.dispatch('registerEscrowContract', {
-                    //  contractAddress: contractAddress,
-                    //  contract: contract,
-                    //  info: info
-                    // })
+                    store.dispatch('registerEIP20Contracts', {
+                      contractAddress: contractAddress,
+                      contract: contract,
+                      info: info
+                    })
                   })
                 })
               })
             })
           } else {
-            console.log('FAILED to get Escrow Contract (E.g. could be voided)', contractAddress)
+            console.log('FAILED to get EIP20 Contract', contractAddress)
           }
         })
       })

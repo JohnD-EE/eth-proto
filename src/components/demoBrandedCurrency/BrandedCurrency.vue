@@ -6,10 +6,10 @@
         <v-card-media class="primary lighten-2 white--text" height="120px">
           <v-container fill-height fluid>
             <v-layout row wrap>
-              <v-flex xs12 sm6 align-end flexbox>
+              <v-flex xs12 sm7 align-end flexbox>
                 <span class="headline"><v-icon dark left large>payment</v-icon> Branded Currency</span>
               </v-flex>
-              <v-flex xs12 sm6 align-end flexbox>
+              <v-flex xs12 sm5 align-end flexbox>
                 <div class="text-xs-right">
                   <v-avatar size="86px">
                     <img :src="profileImage" onerror="this.src='../../../static/profile/noImage.jpg'">
@@ -23,20 +23,28 @@
           <v-card-text>
             <h3>As a Retailer:</h3>
               <ul class="py-2 ml-5">
-                <li>I can create an Escrow service for two parties</li>
-                <li>I can specify a fee, as a percentage of the transaction value, for my services</li>
+                <li>I can create multiple Branded Currencies (token) and configure the monetary policy (Supply, liquidity, exchange mechanism)</li>
+                <li>I can reward customers with payments in the Branded Currency</li>
+                <li>I can process POS payments in the Branded Currency</li>
+                <li>I can create promotions (Vouchers / Coupons) for specific products using discounts, or rewards</li>
+                <li>I can run an in-house Staff Rewards programme, using a Branded Currency</li>
+                <li>I can spin up multiple currencies to support many promotions (e.g. a Xmas coin)</li>
               </ul>
-            <h3>As a Seller in an Escrow contract:</h3>
+            <h3>As a Retailer, Customer, Brand, or Partner:</h3>
             <ul class="py-2 ml-5">
-              <li>I can confirm that I have supplied the goods/services by approving the deal</li>
-              <li>I can void the contract</li>
-              <li>I receive payment once Buyer and Seller have approved the deal</li>
+              <li>I can exchange ETH for the Branded Currency at a given exchange rate (In real world, customers exchange with £s and $s)</li>
+              <li>I can see my currency exchanges in my transction history</li>
+              <li>I can see my transactions and balances of the Branded Currency</li>
             </ul>
-            <h3>As a Buyer in an Escrow contract:</h3>
+            <h3>As a Customer:</h3>
             <ul class="py-2 ml-5">
-              <li>I can deposit funds into the custody of the contract</li>
-              <li>I can confirm that I'm happy with the goods/services by approving the deal</li>
-              <li>I can void the contract and have my depsit refunded</li>
+              <li>I can pay with Branded Currency at the checkout (POS)</li>
+              <li>I can collect promotions, and have them applied by my wallet at the POS</li>
+              <li>I can send accrued Branded Currency to other users (friends/family)</li>
+            </ul>
+            <h3>As a Brand:</h3>
+            <ul class="py-2 ml-5">
+              <li>I can fund a promotion, placing funds into Escrow custody, released to a Retailer/Agents upon reaching agreed sales volumes</li>
             </ul>
           </v-card-text>
           <v-card-text>

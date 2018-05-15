@@ -12,8 +12,8 @@ contract EIP20Factory {
 
     function EIP20Factory() public {
         //upon creation of the factory, deploy a EIP20 (parameters are meaningless) and store the bytecode provably.
-        address verifiedToken = createEIP20(10000, "Verify Token", 3, "VTX");
-        EIP20ByteCode = codeAt(verifiedToken);
+        // address verifiedToken = createEIP20(10000, "Verify Token", 3, "VTX"); //use unit tests instead of this
+        // EIP20ByteCode = codeAt(verifiedToken); //use unit tests instead of this
     }
 
     //verifies if a contract that has been deployed is a Human Standard Token.
