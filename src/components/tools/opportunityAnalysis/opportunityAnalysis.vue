@@ -194,6 +194,7 @@
 <script>
 import StarRating from 'vue-star-rating'
 import OpportunityAnalysisHelper from '../../../helpers/tools/opportunityAnalysis'
+import OpportunitiesJSON from './opportunities.json'
 
 export default {
   data () {
@@ -216,7 +217,8 @@ export default {
       return this.offsetTop > 150
     },
     cards () {
-      return this.$store.state.opportunityAnalysis
+      return OpportunitiesJSON
+      // return this.$store.state.opportunityAnalysis
     },
     opportunities () {
       return this.$store.getters.userOpportunities

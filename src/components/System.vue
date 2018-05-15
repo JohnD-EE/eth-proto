@@ -1,12 +1,12 @@
 <template>
 <v-container fluid>
   <v-layout row wrap>
-    <v-flex xs12 class="text-xs-center" mt-5>
-      <h1>System Settings</h1>
+    <v-flex xs12 sm10 offset-sm1 md8 offset-md2 class="text-xs-left" mt-3>
+      <h3>System Settings:</h3>
     </v-flex>
   </v-layout>
   <v-layout row wrap>
-    <v-flex mt-3 mb-5 xs12 sm10 offset-sm1 md8 offset-md2>
+    <v-flex xs12 sm10 offset-sm1 md8 offset-md2>
       <v-expansion-panel focusable>
         <v-expansion-panel-content>
           <div slot="header">Blockchain</div>

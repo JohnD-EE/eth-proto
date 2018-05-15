@@ -264,7 +264,7 @@ export default {
     this.refreshBlockchainData()
     setInterval(function () {
       this.refreshBlockchainData()
-    }.bind(this), 1000)
+    }.bind(this), 5000)
   }
 }
 </script>

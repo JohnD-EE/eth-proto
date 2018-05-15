@@ -251,10 +251,8 @@ export default {
 
   allEIP20Contracts: state => {
     let eip20Items = []
-    console.log('eip20Contracts STATE', state.eip20Contracts)
     // let allUsersByEthAccount = helperUsers.getUsersByAddress()
     state.eip20Contracts.forEach(res => {
-      console.log('eip20Contracts res', res)
       let status = {text: '', color: ''}
       status.text = 'Active'
       status.color = 'green'
