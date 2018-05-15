@@ -79,5 +79,11 @@ export default {
   },
   setBrandFundedContracts (state, payload) {
     state.brandFundedContracts = payload
+  },
+  resetEIP20Contracts (state) {
+    state.eip20Contracts = []
+  },
+  setEIP20Contracts (state, payload) {
+    state.eip20Contracts = payload
   }
 }

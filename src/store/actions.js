@@ -236,7 +236,6 @@ export default {
       commit('setUserOpportunities', [])
       snapshot.forEach(doc => {
         userOpportunities.push({title: doc.data().title, ratings: doc.data().ratings, id: doc.id})
-        console.log(doc.id, '=>', doc.data())
         if (userOpportunities.length === Object.keys(snapshot.docs).length) {
           commit('setUserOpportunities', userOpportunities)
         }
@@ -301,7 +300,6 @@ export default {
     commit('resetEscrowContracts')
   },
   removeEscrowContract ({commit}, contractAddress) {
-    console.log('try to remove', contractAddress)
     let escrowContracts = this.state.escrowContracts
     // see if escrow address already exists
     let index = false
@@ -344,7 +342,6 @@ export default {
     commit('resetBrandFundedContracts')
   },
   removeBrandFundedContract ({commit}, contractAddress) {
-    console.log('try to remove', contractAddress)
     let brandFundedContracts = this.state.brandFundedContracts
     // see if brandFunded address already exists
     let index = false
@@ -381,6 +378,32 @@ export default {
       // We have a change
       brandFundedContracts.splice(index, 1, payload)
       commit('setBrandFundedContracts', brandFundedContracts)
+    }
+  },
+
+  resetEIP20Contracts ({commit}) {
+    commit('resetEIP20Contracts')
+  },
+
+  registerEIP20Contracts ({commit}, payload) {
+    let eip20Contracts = this.state.eip20Contracts
+    // see if EIP20 address already exists
+    let index = false
+    let matchFound = false
+    eip20Contracts.forEach(function (res, i) {
+      if (res.contractAddress === payload.contractAddress) {
+        index = i
+        matchFound = true
+      }
+    })
+    if (!matchFound) {
+      eip20Contracts.push(payload)
+      // We have a new EIP20 contract
+      commit('setEIP20Contracts', eip20Contracts)
+    } else {
+      // We have a change
+      eip20Contracts.splice(index, 1, payload)
+      commit('setEIP20Contracts', eip20Contracts)
     }
   }
 }

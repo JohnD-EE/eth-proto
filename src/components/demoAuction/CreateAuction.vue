@@ -75,7 +75,7 @@ export default {
     saleItem: '',
     saleItemRules: [
       v => !!v || 'Sale Item is required',
-      v => v.length <= 32 || 'Maximum 32 characters'
+      v => (v && v.length <= 32) || 'Maximum 32 characters'
     ],
     startBlock: null,
     startBlockRules: [

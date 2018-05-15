@@ -247,5 +247,28 @@ export default {
       }
     })
     return escrowItems.reverse()
+  },
+
+  allEIP20Contracts: state => {
+    let eip20Items = []
+    console.log('eip20Contracts STATE', state.eip20Contracts)
+    // let allUsersByEthAccount = helperUsers.getUsersByAddress()
+    state.eip20Contracts.forEach(res => {
+      console.log('eip20Contracts res', res)
+      let status = {text: '', color: ''}
+      status.text = 'Active'
+      status.color = 'green'
+
+      // let userIsRetailer = res.info.owner === state.userDetails.ethAccount
+      eip20Items.push({
+        contractAddress: res.contractAddress,
+        status: status,
+        name: res.info.name,
+        symbol: res.info.symbol,
+        decimals: res.info.decimals,
+        totalSupply: res.info.totalSupply
+      })
+    })
+    return eip20Items.reverse()
   }
 }

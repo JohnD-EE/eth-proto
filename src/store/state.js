@@ -41,6 +41,7 @@ export default {
   auctionContracts: [],
   escrowContracts: [],
   brandFundedContracts: [],
+  eip20Contracts: [],
   notificationsQueue: [],
   userOpportunities: [],
   opportunityAnalysis: [

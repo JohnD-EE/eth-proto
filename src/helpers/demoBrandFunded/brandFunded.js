@@ -41,7 +41,7 @@ export default {
 
   getAllEscrowContracts () {
     const BrandFundedFactory = store.state.contracts['BrandFundedFactory']
-    BrandFundedFactory.methods.allEscrowContracts().call({from: store.state.userDetails.ethAccount})
+    BrandFundedFactory.methods.allEscrowContracts().call()
     .then(res => {
       return res
     })

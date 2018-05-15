@@ -179,10 +179,10 @@ export default {
         { title: 'Auction', path: '/auction', icon: 'gavel' },
         { title: 'Escrow', path: '/escrow', icon: 'account_balance' },
         { title: 'Brand Funded Promo', path: '/brand-funded', icon: 'local_activity' },
+        { title: 'Branded Currency', path: '/branded-currency', icon: 'payment' },
         { title: 'Coupon', path: '/morescenarios', icon: 'redeem' },
         { title: 'Voucher', path: '/morescenarios', icon: 'redeem' },
-        { title: 'Loyalty', path: '/morescenarios', icon: 'loyalty' },
-        { title: 'Branded Currency', path: '/morescenarios', icon: 'payment' }
+        { title: 'Loyalty', path: '/morescenarios', icon: 'loyalty' }
       ]
     }
   },
