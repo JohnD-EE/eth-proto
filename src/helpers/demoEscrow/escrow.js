@@ -41,7 +41,7 @@ export default {
 
   getAllEscrowContracts () {
     const EscrowFactory = store.state.contracts['EscrowFactory']
-    EscrowFactory.methods.allEscrowContracts().call({from: store.state.userDetails.ethAccount})
+    EscrowFactory.methods.allEscrowContracts().call()
     .then(res => {
       return res
     })

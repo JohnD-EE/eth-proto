@@ -21,6 +21,7 @@
                 label="Currency Name"
                 v-model="currencyName"
                 :rules="currencyNameRules"
+                clearable
                 required>
               </v-text-field>
               </v-flex>
@@ -29,6 +30,7 @@
                 label="Currency Symbol"
                 v-model="currencySymbol"
                 :rules="currencySymbolRules"
+                clearable
                 required>
               </v-text-field>
               <v-text-field
@@ -71,12 +73,12 @@ export default {
     currencyName: '',
     currencyNameRules: [
       v => !!v || 'Currency Name is required',
-      v => v.length <= 32 || 'Maximum 32 characters'
+      v => (v && v.length <= 32) || 'Maximum 32 characters'
     ],
     currencySymbol: '',
     currencySymbolRules: [
       v => !!v || 'Currency Symbol is required',
-      v => v.length <= 8 || 'Maximum 8 characters'
+      v => (v && v.length <= 8) || 'Maximum 8 characters'
     ],
     initialSupply: null,
     initialSupplyRules: [

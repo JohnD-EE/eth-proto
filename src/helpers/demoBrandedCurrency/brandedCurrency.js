@@ -40,16 +40,53 @@ export default {
 
   getAllCurrencies () {
     const EIP20Factory = store.state.contracts['EIP20Factory']
-    // EIP20Factory.methods.allEIP20Contracts().call({from: store.state.userDetails.ethAccount})
-    // .then(res => {
-    //  return res
-  //  })
-  // }
-
-  EIP20Factory.methods.created(store.state.userDetails.ethAccount).call({from: store.state.userDetails.ethAccount})
+    EIP20Factory.methods.allEIP20Contracts().call()
     .then(res => {
-      console.log(res)
+      return res
+    })
+  },
+
+  updateEIP20Data () {
+    let eip20Abi = EIP20JSON.abi
+    const EIP20Factory = store.state.contracts['EIP20Factory']
+    EIP20Factory.methods.allEIP20Contracts().call()
+    .then(res => {
+      console.log('res', res)
+      res.forEach(contractAddress => {
+        // create an instance of the Auction based on the reference
+        let contract = new window.web3.eth.Contract(eip20Abi, contractAddress)
+        window.web3.eth.getCode(contractAddress)
+        .then(code => {
+          if (code.length > 3) {
+            let info = {}
+            contract.methods.name().call()
+            .then(name => {
+              info.name = name
+              contract.methods.symbol().call()
+              .then(symbol => {
+                info.symbol = symbol
+                contract.methods.decimals().call()
+                .then(decimals => {
+                  info.decimals = decimals
+                  contract.methods.totalSupply().call()
+                  .then(totalSupply => {
+                    info.totalSupply = totalSupply
+                    console.log('got contract: ', info)
+                    // store states
+                    // store.dispatch('registerEscrowContract', {
+                    //  contractAddress: contractAddress,
+                    //  contract: contract,
+                    //  info: info
+                    // })
+                  })
+                })
+              })
+            })
+          } else {
+            console.log('FAILED to get Escrow Contract (E.g. could be voided)', contractAddress)
+          }
+        })
+      })
     })
   }
-
 }

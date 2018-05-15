@@ -100,9 +100,8 @@ export default {
     },
     viewCurrencies () {
       console.log('Calling: getAllCurrencies')
-      brandedCurrencyHelper.getAllCurrencies()
-      //this.$store.dispatch('resetCurrencies')
-      //brandedCurrencyHelper.updateCurrencyData()
+      // this.$store.dispatch('resetCurrencies')
+      brandedCurrencyHelper.updateEIP20Data()
     },
     clear () {
       this.$refs.form.reset()
