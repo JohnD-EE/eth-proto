@@ -39,7 +39,7 @@ contract EIP20 is EIP20Interface {
         decimals = _decimalUnits;                            // Amount of decimals for display purposes
         symbol = _tokenSymbol;                               // Set the symbol for display purposes
         exchangeRateToEth = _exchangeRateToEth;              // Set a fixed exchange exhange rate (otherwise assume floating or pointsOnly)
-        isPointsOnly = _isPointsOnly;                     s   // Points only, not an exchangeable currency
+        isPointsOnly = _isPointsOnly;                        // Points only, not an exchangeable currency
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {

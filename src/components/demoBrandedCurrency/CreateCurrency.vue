@@ -72,7 +72,7 @@
                 </v-btn>
               </v-btn-toggle>
             </v-flex>
-            <v-flex xs12 sm6 v-show="exchangeRate === 'fixed'">
+            <v-flex xs12 sm6 v-show="exchangeRate === 'fixed' && tokenType === 'currency'">
               <v-text-field
               label="Fixed Exchange Rate"
               v-model="fixedExchangeRate"
@@ -107,13 +107,13 @@ export default {
     exchangeRate: 'floating',
     fixedExchangeRate: '',
     fixedExchangeRateRules: [
-      v => !!v || 'Exchange rate is required',
-      v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Maximum 8 characters'
+      // v => !!v || 'Exchange rate is required',
+      // v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Maximum 8 characters'
     ],
     currencyName: '',
     currencyNameRules: [
       v => !!v || 'Currency Name is required',
-      v => (!isNaN(parseInt(v)) && isFinite(v) && v > 0) || 'Maximum 32 characters'
+      v => (v && v.length <= 32) || 'Maximum 32 characters'
     ],
     currencySymbol: '',
     currencySymbolRules: [
@@ -150,7 +150,7 @@ export default {
             decimals: Number(this.decimals),
             currencySymbol: this.currencySymbol,
             isPointsOnly: this.tokenType === 'points', // e.g. points = true, otherwise false and currency selected
-            exchangeRateToEth: this.fixedExchangeRate,
+            exchangeRateToEth: this.fixedExchangeRate.toString(),
             owner: this.$store.state.userDetails.ethAccount
           }
         )

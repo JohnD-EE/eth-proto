@@ -35,6 +35,7 @@
                   hint="Set your fee as the Escrow agent"
                   v-model="feePercent"
                   :rules="feePercentRules"
+                  suffix="%"
                   persistent-hint
                 ></v-select>
               </v-flex>

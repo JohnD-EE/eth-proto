@@ -39,10 +39,12 @@
                 <td class="text-xs-center">
                   <v-chip small :color="props.item.status.color" text-color="white">{{props.item.status.text}}</v-chip>
                 </td>
+                <td class="text-xs-center">{{ props.item.isPointsOnly ? 'POINTS' : 'CURRENCY' }}</td>
                 <td class="text-xs-center">{{ props.item.totalSupply }}</td>
                 <td class="text-xs-center">{{ props.item.decimals }}</td>
                 <td class="text-xs-center">
-
+                  <div v-if="props.item.isPointsOnly">N/A</div>
+                  <div v-else>
                   <template>
                     <v-layout row justify-center>
                       <v-dialog v-model="exchangeDialog" persistent max-width="500px">
@@ -56,7 +58,7 @@
                                   <v-container grid-list-md>
                                     <v-layout row wrap>
                                       <v-flex xs12 class="py-2">
-                                        <p>Choose to Buy or Sell {{props.item.name}}:</p>
+                                        <p>Choose to Buy or Sell <strong>{{props.item.name}}</strong> at {{props.item.exchangeRateToEth}} {{props.item.symbol}} = 1 ETH</p>
                                         <v-btn-toggle v-model="exchangeMode">
                                           <v-btn flat value="buy" class="px-5">
                                             BUY
@@ -94,8 +96,10 @@
                             </v-dialog>
                           </v-layout>
                         </template>
+                        </div>
                       </td>
-                </template>
+                  </template>
+
               <v-alert slot="no-results" :value="true" color="error" icon="warning">
                 Your search for "{{ search }}" found no results.
               </v-alert>
@@ -129,6 +133,7 @@ export default {
         { text: 'Currency Name', value: 'name', sortable: false, align: 'left' },
         { text: 'Symbol', value: 'symbol', sortable: false, align: 'center' },
         { text: 'Status', value: 'status', sortable: false, align: 'center' },
+        { text: 'Type', value: 'type', sortable: false, align: 'center' },
         { text: 'Total Supply', value: 'totalSupply', sortable: false, align: 'center' },
         { text: 'Decimals', value: 'decimals', sortable: false, align: 'center' },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }

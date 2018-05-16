@@ -7,7 +7,7 @@ export default {
     console.log('Creating Currency: ', payload)
     const e = payload
     const EIP20Factory = store.state.contracts['EIP20Factory']
-    EIP20Factory.methods.createEIP20(e.initialSupply, e.currencyName, e.decimals, e.currencySymbol, e.exhangeRateToEth, e.isPointsOnly)
+    EIP20Factory.methods.createEIP20(e.initialSupply, e.currencyName, e.decimals, e.currencySymbol, e.exchangeRateToEth, e.isPointsOnly)
     .send({from: e.owner, gas: 3000000})
     .on('transactionHash', function (hash) {
       store.dispatch('newNotification', {
@@ -68,15 +68,23 @@ export default {
                 contract.methods.decimals().call()
                 .then(decimals => {
                   info.decimals = decimals
-                  contract.methods.totalSupply().call()
-                  .then(totalSupply => {
-                    info.totalSupply = totalSupply
-                    console.log('got contract: ', info)
-                    // store states
-                    store.dispatch('registerEIP20Contracts', {
-                      contractAddress: contractAddress,
-                      contract: contract,
-                      info: info
+                  contract.methods.isPointsOnly().call()
+                  .then(isPointsOnly => {
+                    info.isPointsOnly = isPointsOnly
+                    contract.methods.exchangeRateToEth().call()
+                    .then(exchangeRateToEth => {
+                      info.exchangeRateToEth = exchangeRateToEth
+                      contract.methods.totalSupply().call()
+                      .then(totalSupply => {
+                        info.totalSupply = totalSupply
+                        console.log('got contract: ', info)
+                        // store states
+                        store.dispatch('registerEIP20Contracts', {
+                          contractAddress: contractAddress,
+                          contract: contract,
+                          info: info
+                        })
+                      })  
                     })
                   })
                 })

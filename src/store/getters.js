@@ -264,6 +264,8 @@ export default {
         name: res.info.name,
         symbol: res.info.symbol,
         decimals: res.info.decimals,
+        isPointsOnly: res.info.isPointsOnly,
+        exchangeRateToEth: res.info.exchangeRateToEth,
         totalSupply: res.info.totalSupply
       })
     })
