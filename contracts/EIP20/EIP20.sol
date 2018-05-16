@@ -9,7 +9,7 @@ import "./EIP20Interface.sol";
 
 
 contract EIP20 is EIP20Interface {
-    
+
     uint256 constant private MAX_UINT256 = 2**256 - 1;
     mapping (address => uint256) public balances;
     mapping (address => mapping (address => uint256)) public allowed;
@@ -19,21 +19,27 @@ contract EIP20 is EIP20Interface {
     They allow one to customise the token contract & in no way influences the core functionality.
     Some wallets/interfaces might not even bother to look at this information.
     */
-    string public name;                   //fancy name: eg Simon Bucks
+    string public name;                   //fancy name: eg TRUMP COIN
     uint8 public decimals;                //How many decimals to show.
-    string public symbol;                 //An identifier: eg SBX
+    string public symbol;                 //An identifier: eg TMP
+    string public exchangeRateToEth;      //Token to Eth exchange rate (0.5 means 2 Tokens = 1 Eth)
+    bool public isPointsOnly;             //Used as tokens, not a currency and non-exchangeable
 
     function EIP20(
         uint256 _initialAmount,
         string _tokenName,
         uint8 _decimalUnits,
-        string _tokenSymbol
+        string _tokenSymbol,
+        string _exchangeRateToEth,
+        bool _isPointsOnly
     ) public {
         balances[msg.sender] = _initialAmount;               // Give the creator all initial tokens
         totalSupply = _initialAmount;                        // Update total supply
         name = _tokenName;                                   // Set the name for display purposes
         decimals = _decimalUnits;                            // Amount of decimals for display purposes
         symbol = _tokenSymbol;                               // Set the symbol for display purposes
+        exchangeRateToEth = _exchangeRateToEth;              // Set a fixed exchange exhange rate (otherwise assume floating or pointsOnly)
+        isPointsOnly = _isPointsOnly;                     s   // Points only, not an exchangeable currency
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {

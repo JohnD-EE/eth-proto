@@ -13,9 +13,7 @@
 
           <v-container grid-list-md>
             <v-layout row wrap>
-              <v-flex xs12>
-                Enter the currency parameters:
-              </v-flex>
+
               <v-flex xs12 sm6>
                 <v-text-field
                 label="Currency Name"
@@ -52,6 +50,37 @@
               required>
             </v-text-field>
             </v-flex>
+            <v-flex xs12 class="py-2">
+              <p>Choose points only or exchangeable currency:</p>
+              <v-btn-toggle v-model="tokenType">
+                <v-btn flat value="points" class="px-5">
+                  Points
+                </v-btn>
+                <v-btn flat value="currency" class="px-5">
+                  Currency
+                </v-btn>
+              </v-btn-toggle>
+            </v-flex>
+            <v-flex xs12 class="py-2" v-show="tokenType === 'currency'">
+              <p>Choose floating or fixed exchange rate:</p>
+              <v-btn-toggle v-model="exchangeRate">
+                <v-btn flat value="floating" class="px-5">
+                  Floating
+                </v-btn>
+                <v-btn flat value="fixed" class="px-5">
+                  Fixed
+                </v-btn>
+              </v-btn-toggle>
+            </v-flex>
+            <v-flex xs12 sm6 v-show="exchangeRate === 'fixed'">
+              <v-text-field
+              label="Fixed Exchange Rate"
+              v-model="fixedExchangeRate"
+              :rules="fixedExchangeRateRules"
+              hint="E.g. 0.5 means 2 Tokens = 1 Ether"
+              required>
+              </v-text-field>
+            </v-flex>
             </v-layout>
           </v-container>
           <small>*required fields</small>
@@ -74,10 +103,17 @@ import brandedCurrencyHelper from '../../helpers/demoBrandedCurrency/brandedCurr
 export default {
   data: () => ({
     dialog: false,
+    tokenType: 'points',
+    exchangeRate: 'floating',
+    fixedExchangeRate: '',
+    fixedExchangeRateRules: [
+      v => !!v || 'Exchange rate is required',
+      v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Maximum 8 characters'
+    ],
     currencyName: '',
     currencyNameRules: [
       v => !!v || 'Currency Name is required',
-      v => (v && v.length <= 32) || 'Maximum 32 characters'
+      v => (!isNaN(parseInt(v)) && isFinite(v) && v > 0) || 'Maximum 32 characters'
     ],
     currencySymbol: '',
     currencySymbolRules: [
@@ -113,6 +149,8 @@ export default {
             currencyName: this.currencyName,
             decimals: Number(this.decimals),
             currencySymbol: this.currencySymbol,
+            isPointsOnly: this.tokenType === 'points', // e.g. points = true, otherwise false and currency selected
+            exchangeRateToEth: this.fixedExchangeRate,
             owner: this.$store.state.userDetails.ethAccount
           }
         )
@@ -122,6 +160,8 @@ export default {
       }
     },
     close () {
+      this.tokenType = 'points'
+      this.exchangeRate = 'floating'
       this.clear()
       this.dialog = false
     },

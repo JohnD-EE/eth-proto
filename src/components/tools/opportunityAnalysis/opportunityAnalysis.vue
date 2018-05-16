@@ -217,6 +217,7 @@ export default {
       return this.offsetTop > 150
     },
     cards () {
+      return OpportunitiesJSON
     },
     opportunities () {
       return this.$store.getters.userOpportunities

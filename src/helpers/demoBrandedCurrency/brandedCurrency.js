@@ -7,7 +7,7 @@ export default {
     console.log('Creating Currency: ', payload)
     const e = payload
     const EIP20Factory = store.state.contracts['EIP20Factory']
-    EIP20Factory.methods.createEIP20(e.initialSupply, e.currencyName, e.decimals, e.currencySymbol)
+    EIP20Factory.methods.createEIP20(e.initialSupply, e.currencyName, e.decimals, e.currencySymbol, e.exhangeRateToEth, e.isPointsOnly)
     .send({from: e.owner, gas: 3000000})
     .on('transactionHash', function (hash) {
       store.dispatch('newNotification', {
