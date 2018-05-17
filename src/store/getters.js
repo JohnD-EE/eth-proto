@@ -257,6 +257,18 @@ export default {
       status.text = 'Active'
       status.color = 'green'
 
+      let exchangeRateMode = null
+      let exchangeRateToEth = null
+      if (!res.info.isPointsOnly) {
+        if (res.info.exchangeRateToEth) {
+          exchangeRateToEth = res.info.exchangeRateToEth
+          exchangeRateMode = 'fixed'
+        } else {
+          exchangeRateToEth = ((1000000 / res.info.totalSupply) + (Math.random() / (res.info.totalSupply / 10000))).toFixed(8)
+          exchangeRateMode = 'floating'
+        }
+      }
+
       // let userIsRetailer = res.info.owner === state.userDetails.ethAccount
       eip20Items.push({
         contractAddress: res.contractAddress,
@@ -265,7 +277,8 @@ export default {
         symbol: res.info.symbol,
         decimals: res.info.decimals,
         isPointsOnly: res.info.isPointsOnly,
-        exchangeRateToEth: res.info.exchangeRateToEth,
+        exchangeRateToEth: exchangeRateToEth,
+        exchangeRateMode: exchangeRateMode,
         totalSupply: res.info.totalSupply
       })
     })

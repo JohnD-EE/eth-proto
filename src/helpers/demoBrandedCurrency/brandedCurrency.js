@@ -1,5 +1,6 @@
 import {store} from './../../store'
 import EIP20JSON from '../../../build/contracts/EIP20.json'
+import ContractsHelper from '../contracts'
 
 export default {
 
@@ -54,9 +55,9 @@ export default {
     }
     EIP20Factory.methods.allEIP20Contracts().call()
     .then(res => {
-      console.log('res', res)
+      console.log('All EIP20 Contracts: ', res)
       res.forEach(contractAddress => {
-        // create an instance of the Auction based on the reference
+        // create an instance of the EIP contract based on the reference
         let contract = new window.web3.eth.Contract(eip20Abi, contractAddress)
         window.web3.eth.getCode(contractAddress)
         .then(code => {
@@ -80,7 +81,7 @@ export default {
                       contract.methods.totalSupply().call()
                       .then(totalSupply => {
                         info.totalSupply = totalSupply
-                        console.log('got contract: ', info)
+                        console.log('Got EIP20 Contract: ', info)
                         // store states
                         store.dispatch('registerEIP20Contracts', {
                           contractAddress: contractAddress,
@@ -98,6 +99,48 @@ export default {
           }
         })
       })
+    })
+  },
+
+  buyOrder (payload) {
+    console.log('buyOrder', payload)
+    let contractAddress = payload.contractAddress
+    let amount = Number(payload.amount)
+    let exchangeRateToEth = payload.exchangeRateToEth
+    let cost = Number(exchangeRateToEth * amount).toString()
+    console.log('cost', cost)
+    let from = payload.from
+    let contract = ContractsHelper.getContractFromAddress(store.state.eip20Contracts, contractAddress)
+    contract.methods.buyOrder(amount).send({
+      from: from,
+      value: window.web3.utils.toWei(cost, 'ether'),
+      gas: 3000000
+    })
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Buying Currency - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
+      console.log('TransactionHash: ', hash)
+    })
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed - Funds were not deposited',
+        text: error,
+        type: 'error'
+      })
+      console.log(error)
     })
   }
 }

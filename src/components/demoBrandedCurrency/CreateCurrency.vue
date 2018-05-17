@@ -52,7 +52,7 @@
             </v-flex>
             <v-flex xs12 class="py-2">
               <p>Choose points only or exchangeable currency:</p>
-              <v-btn-toggle v-model="tokenType">
+              <v-btn-toggle v-model="tokenType" mandatory>
                 <v-btn flat value="points" class="px-5">
                   Points
                 </v-btn>
@@ -61,7 +61,7 @@
                 </v-btn>
               </v-btn-toggle>
             </v-flex>
-            <v-flex xs12 class="py-2" v-show="tokenType === 'currency'">
+            <v-flex xs12 class="py-2" v-show="tokenType === 'currency'" mandatory>
               <p>Choose floating or fixed exchange rate:</p>
               <v-btn-toggle v-model="exchangeRate">
                 <v-btn flat value="floating" class="px-5">
@@ -146,10 +146,10 @@ export default {
         let exchangeRateToEth = ''
         if (this.tokenType === 'currency' && this.exchangeRate === 'fixed') {
           this.fixedExchangeRate = Number(this.fixedExchangeRate)
-          if (this.fixedExchangeRate.length > 0) {
+          if (this.fixedExchangeRate > 0) {
             exchangeRateToEth = this.fixedExchangeRate.toString()
           } else {
-            exchangeRateToEth = 1
+            exchangeRateToEth = '1'
           }
         }
         brandedCurrencyHelper.createCurrency(

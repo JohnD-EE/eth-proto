@@ -10,6 +10,7 @@ import "./EIP20Interface.sol";
 
 contract EIP20 is EIP20Interface {
 
+    address public owner;
     uint256 constant private MAX_UINT256 = 2**256 - 1;
     mapping (address => uint256) public balances;
     mapping (address => mapping (address => uint256)) public allowed;
@@ -40,6 +41,7 @@ contract EIP20 is EIP20Interface {
         symbol = _tokenSymbol;                               // Set the symbol for display purposes
         exchangeRateToEth = _exchangeRateToEth;              // Set a fixed exchange exhange rate (otherwise assume floating or pointsOnly)
         isPointsOnly = _isPointsOnly;                        // Points only, not an exchangeable currency
+        owner = msg.sender;
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
@@ -75,4 +77,13 @@ contract EIP20 is EIP20Interface {
     function allowance(address _owner, address _spender) public view returns (uint256 remaining) {
         return allowed[_owner][_spender];
     }
+
+    //buy tokens - send them from contract owner to buyer
+    function buyOrder(uint256 _amount) public payable returns (bool success) {
+        // reject payments of 0 ETH
+        if (msg.value == 0) revert();
+        transferFrom(owner, msg.sender, _amount);
+        return true;
+    }
+
 }

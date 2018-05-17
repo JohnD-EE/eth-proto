@@ -42,7 +42,9 @@
                 <td class="text-xs-center">{{ props.item.isPointsOnly ? 'POINTS' : 'CURRENCY' }}</td>
                 <td class="text-xs-center">{{ props.item.totalSupply }}</td>
                 <td class="text-xs-center">{{ props.item.decimals }}</td>
-                <td class="text-xs-center">{{ props.item.isPointsOnly ? 'N/A' : props.item.exchangeRateToEth }}</td>
+                <td class="text-xs-center">
+                  {{ props.item.isPointsOnly ? 'N/A' : props.item.exchangeRateToEth }}
+                </td>
                 <td class="text-xs-center">
                   <div v-if="props.item.isPointsOnly">N/A</div>
                   <div v-else>
@@ -60,7 +62,7 @@
                                     <v-layout row wrap>
                                       <v-flex xs12 class="py-2">
                                         <p>Choose to Buy or Sell <strong>{{props.item.name}}</strong> at {{props.item.exchangeRateToEth}} {{props.item.symbol}} = 1 ETH</p>
-                                        <v-btn-toggle v-model="exchangeMode">
+                                        <v-btn-toggle v-model="exchangeMode" mandatory>
                                           <v-btn flat value="buy" class="px-5">
                                             BUY
                                           </v-btn>
@@ -69,20 +71,25 @@
                                           </v-btn>
                                         </v-btn-toggle>
                                       </v-flex>
-                                      <v-flex xs12 sm6>
+                                      <v-flex xs12>
                                         <v-text-field v-show="exchangeMode === 'sell'"
+                                        name="sell-amount"
                                         label="Sell Amount"
                                         v-model="sellAmount"
                                         :rules="sellAmountRules"
+                                        :suffix="calculateSellValue(props.item.exchangeRateToEth)"
                                         >
                                         </v-text-field>
                                         <v-text-field v-show="exchangeMode === 'buy'"
+                                        name="buy-amount"
                                         label="Buy Amount"
                                         v-model="buyAmount"
                                         :rules="buyAmountRules"
+                                        :suffix="calculateBuyValue(props.item.exchangeRateToEth)"
                                         >
                                         </v-text-field>
                                       </v-flex>
+
                                     </v-layout>
                                   </v-container>
                                 <small>*required fields</small>
@@ -90,7 +97,7 @@
                                 <v-card-actions>
                                   <v-spacer></v-spacer>
                                   <v-btn color="primary darken-1" flat @click.native="exchangeClose">Close</v-btn>
-                                  <v-btn color="primary darken-1" flat @click.native="exchangeMode === 'buy' ? exchangeSubmitBuy(props.item.contractAddress) : exchangeSubmitSell(props.item.contractAddress)">{{exchangeMode === 'buy' ? 'Buy' : 'Sell'}}</v-btn>
+                                  <v-btn color="primary darken-1" flat @click.native="exchangeMode === 'buy' ? exchangeSubmitBuy(props.item.contractAddress, props.item.exchangeRateToEth) : exchangeSubmitSell(props.item.contractAddress, props.item.exchangeRateToEth)">{{exchangeMode === 'buy' ? 'Buy' : 'Sell'}}</v-btn>
                                 </v-card-actions>
                                 </v-form>
                               </v-card>
@@ -119,11 +126,11 @@ export default {
   data () {
     return {
       exchangeDialog: false,
-      buyAmount: null,
-      buyAmountRules: null,
-      sellAmount: null,
-      sellAmountRules: null,
-      exchangeValid: [],
+      buyAmount: '',
+      buyAmountRules: [],
+      sellAmount: '',
+      sellAmountRules: [],
+      exchangeValid: true,
       exchangeMode: 'buy',
       rules: false,
       dialog: false,
@@ -137,7 +144,7 @@ export default {
         { text: 'Type', value: 'type', sortable: false, align: 'center' },
         { text: 'Total Supply', value: 'totalSupply', sortable: false, align: 'center' },
         { text: 'Decimals', value: 'decimals', sortable: false, align: 'center' },
-        { text: 'Exchange Rate', value: 'exchangeRate', sortable: false, align: 'center' },
+        { text: 'Exchange Rate', value: 'exchangeRateToEth', sortable: false, align: 'center' },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }
       ]
     }
@@ -162,7 +169,24 @@ export default {
       return this.$store.state.web3.latestBlock.number
     }
   },
+  watch: {
+    items: function (val) {
+       console.log('changes', val)
+     }
+   },
   methods: {
+    calculateBuyValue(exchangeRateToEth) {
+      let eth = 0
+      let buyAmount = this.buyAmount
+      eth = (buyAmount * exchangeRateToEth).toFixed(8)
+      return "Cost: " + eth + " ETH"
+    },
+    calculateSellValue(exchangeRateToEth) {
+      let eth = 0
+      let sellAmount = this.sellAmount
+      eth = (sellAmount * exchangeRateToEth).toFixed(8)
+      return "Value: " + eth + " ETH"
+    },
     clickClose () {
       this.dialog = false
     },
@@ -174,11 +198,25 @@ export default {
       console.log('Exchange')
       this.exchangeDialog = true
     },
-    exchangeSubmitBuy (contractAddress) {
+    exchangeSubmitBuy (contractAddress, exchangeRateToEth) {
       console.log('Buy Currency')
+      let buyOrderPayload = {
+        contractAddress: contractAddress,
+        amount: this.buyAmount,
+        exchangeRateToEth: exchangeRateToEth,
+        from: this.userDetails.ethAccount
+      }
+      brandedCurrencyHelper.buyOrder(buyOrderPayload)
+      this.exchangeDialog = false
+      this.exchangeMode = 'buy'
+      this.clear()
     },
-    exchangeSubmitSell (contractAddress) {
+    exchangeSubmitSell (contractAddress, exchangeRateToEth) {
       console.log('Sell Currency')
+
+      this.exchangeDialog = false
+      this.exchangeMode = 'buy'
+      this.clear()
     },
     exchangeClose () {
       this.exchangeDialog = false

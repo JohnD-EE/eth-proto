@@ -165,6 +165,7 @@
 import auctionHelper from './helpers/demoAuction/auction'
 import escrowHelper from './helpers/demoEscrow/escrow'
 import brandFundedHelper from './helpers/demoBrandFunded/brandFunded'
+import brandedCurrencyHelper from './helpers/demoBrandedCurrency/brandedCurrency'
 
 export default {
   data () {
@@ -287,7 +288,7 @@ export default {
           brandFundedHelper.updateEscrowData()
         }
         if (this.$route.path === '/branded-currency') {
-          brandFundedHelper.updateEIP20Data()
+          brandedCurrencyHelper.updateEIP20Data()
         }
         this.$store.dispatch('userTxs')
         this.$store.dispatch('updateAccount')
