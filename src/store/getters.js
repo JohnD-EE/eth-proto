@@ -279,7 +279,8 @@ export default {
         isPointsOnly: res.info.isPointsOnly,
         exchangeRateToEth: exchangeRateToEth,
         exchangeRateMode: exchangeRateMode,
-        totalSupply: res.info.totalSupply
+        totalSupply: res.info.totalSupply,
+        userBalance: 1
       })
     })
     return eip20Items.reverse()

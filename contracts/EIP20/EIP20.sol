@@ -81,7 +81,9 @@ contract EIP20 is EIP20Interface {
     //buy tokens - send them from contract owner to buyer
     function buyOrder(uint256 _amount) public payable returns (bool success) {
         // reject payments of 0 ETH
-        if (msg.value == 0) revert();
+        if (msg.value == 0) {
+          revert();
+        }
         transferFrom(owner, msg.sender, _amount);
         return true;
     }

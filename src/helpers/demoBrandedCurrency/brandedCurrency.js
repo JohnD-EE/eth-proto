@@ -49,6 +49,7 @@ export default {
 
   updateEIP20Data () {
     let eip20Abi = EIP20JSON.abi
+    let userAddress = store.state.userDetails.ethAccount
     const EIP20Factory = store.state.contracts['EIP20Factory']
     if (EIP20Factory.length === 0) {
       return false
@@ -81,12 +82,20 @@ export default {
                       contract.methods.totalSupply().call()
                       .then(totalSupply => {
                         info.totalSupply = totalSupply
+                        contract.methods.owner().call()
+                        .then(owner => {
+                          info.owner = owner
+                          contract.methods.balances(userAddress).call()
+                          .then(balance => {
+                            info.balance = balance
                         console.log('Got EIP20 Contract: ', info)
                         // store states
                         store.dispatch('registerEIP20Contracts', {
                           contractAddress: contractAddress,
                           contract: contract,
                           info: info
+                        })
+                        })
                         })
                       })
                     })
@@ -109,9 +118,10 @@ export default {
     let exchangeRateToEth = payload.exchangeRateToEth
     let cost = Number(exchangeRateToEth * amount).toString()
     console.log('cost', cost)
+    console.log('amount', amount)
     let from = payload.from
     let contract = ContractsHelper.getContractFromAddress(store.state.eip20Contracts, contractAddress)
-    contract.methods.buyOrder(amount).send({
+    contract.methods.buyOrder(4).send({
       from: from,
       value: window.web3.utils.toWei(cost, 'ether'),
       gas: 3000000

@@ -170,9 +170,9 @@ export default {
     }
   },
   watch: {
-    items: function (val) {
-       console.log('changes', val)
-     }
+    // items: function (val) {
+      // console.log('changes', val)
+     // }
    },
   methods: {
     calculateBuyValue(exchangeRateToEth) {
