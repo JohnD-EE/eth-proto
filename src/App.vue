@@ -239,9 +239,44 @@ export default {
     }
   },
   watch: {
+    $route (to, from) {
+      switch (to.path) {
+        case '/auction':
+          //
+          break
+        case '/escrow':
+          //
+          break
+        case '/brand-funded':
+          //
+          break
+        case '/branded-currency':
+          //
+          break
+        default:
+          //
+      }
+      switch (from.path) {
+        case '/auction':
+          this.$store.dispatch('resetAuctionContracts')
+          break
+        case '/escrow':
+          this.$store.dispatch('resetEscrowContracts')
+          break
+        case '/brand-funded':
+          this.$store.dispatch('resetBrandFundedContracts')
+          break
+        case '/branded-currency':
+          this.$store.dispatch('resetEIP20Contracts')
+          break
+        default:
+          //
+      }
+      this.show = false
+    },
     latestBlock: function (val) {
       this.blockchainLoading = true
-      if (this.isAuthenticated) {
+      if (this.isAuthenticated && this.$route) {
         if (this.$route.path === '/auction') {
           auctionHelper.updateAuctionData()
         }
@@ -250,6 +285,9 @@ export default {
         }
         if (this.$route.path === '/brand-funded') {
           brandFundedHelper.updateEscrowData()
+        }
+        if (this.$route.path === '/branded-currency') {
+          brandFundedHelper.updateEIP20Data()
         }
         this.$store.dispatch('userTxs')
         this.$store.dispatch('updateAccount')
@@ -264,7 +302,7 @@ export default {
     this.refreshBlockchainData()
     setInterval(function () {
       this.refreshBlockchainData()
-    }.bind(this), 5000)
+    }.bind(this), 6500)
   }
 }
 </script>

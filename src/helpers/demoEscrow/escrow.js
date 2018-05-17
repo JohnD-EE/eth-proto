@@ -50,6 +50,9 @@ export default {
   updateEscrowData () {
     let escrowAbi = EscrowJSON.abi
     const EscrowFactory = store.state.contracts['EscrowFactory']
+    if (EscrowFactory.length === 0) {
+      return false
+    }
     EscrowFactory.methods.allEscrowContracts().call()
     .then(res => {
       console.log('res', res)

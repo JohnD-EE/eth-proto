@@ -50,6 +50,9 @@ export default {
   updateEscrowData () {
     let brandFundedAbi = BrandFundedJSON.abi
     const BrandFundedFactory = store.state.contracts['BrandFundedFactory']
+    if (BrandFundedFactory.length === 0) {
+      return false
+    }
     BrandFundedFactory.methods.allEscrowContracts().call()
     .then(res => {
       console.log('res', res)

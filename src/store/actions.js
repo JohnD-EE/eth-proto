@@ -99,10 +99,12 @@ export default {
     db.collection('users').doc(firebaseUser.uid).get()
     .then(doc => {
       let ethAccount = doc.data().ethAccount
-      commit('setUserDetails', {ethAccount: ethAccount})
-      window.web3.eth.getBalance(ethAccount).then(
-        res => commit('setUserDetails', {ethBalance: res})
-      )
+      if (ethAccount) {
+        commit('setUserDetails', {ethAccount: ethAccount})
+        window.web3.eth.getBalance(ethAccount).then(
+          res => commit('setUserDetails', {ethBalance: res})
+        )
+      }
     })
     .catch(error => console.log('Error retrieving document: ', error))
     commit('setAllUsers')
@@ -177,12 +179,16 @@ export default {
   // Update Eth Account e.g. after a transaction
   updateAccount ({commit}) {
     let ethAccount = this.state.userDetails.ethAccount
-    if (!window.web3.utils.isAddress(ethAccount)) {
-      return false
+    if (ethAccount) {
+      if (!window.web3.utils.isAddress(ethAccount)) {
+        return false
+      }
+      window.web3.eth.getBalance(ethAccount).then(
+        res => commit('setUserDetails', {ethBalance: res})
+      )
+    } else {
+      console.log('No Eth Account Registered')
     }
-    window.web3.eth.getBalance(ethAccount).then(
-      res => commit('setUserDetails', {ethBalance: res})
-    )
   },
 
   accountSeeding ({commit}, payload) {
@@ -191,41 +197,45 @@ export default {
 
   userTxs ({commit}) {
     let ethAccount = this.state.userDetails.ethAccount
-    let userTxsLatestBlock = this.state.userTxsLatestBlock
-    let txs = this.state.userTxs
-    if (txs.length === 0) {
-      // @todo this is clearly wrong but gets round the problem of initial txs load.
-      commit('setUserTxsBlockUpdate', 0)
-      userTxsLatestBlock = 0
-    }
-    window.web3.eth.getBlockNumber()
-    .then(n => {
-      if (n > userTxsLatestBlock) {
-        for (let bl = (userTxsLatestBlock + 1); bl <= n; bl++) {
-          window.web3.eth.getBlock(bl, true)
-          .then(block => {
-            commit('setUserTxsBlockUpdate', bl)
-            for (let tx = 0; tx < block.transactions.length; tx++) {
-              let blockTx = block.transactions[tx]
-              if (blockTx.to === ethAccount || blockTx.from === ethAccount) {
-                window.web3.eth.getBalance(ethAccount, blockTx.blockNumber)
-                .then(balance => {
-                  blockTx.balance = balance
-                  window.web3.eth.getTransactionReceipt(blockTx.hash)
-                  .then(receipt => {
-                    blockTx.gasUsed = receipt.gasUsed
-                    txs.push(blockTx)
-                    if (txs.length > this.state.userTxs.length) {
-                      commit('setUserTxs', txs)
-                    }
-                  })
-                })
-              }
-            }
-          })
-        }
+    if (ethAccount) {
+      let userTxsLatestBlock = this.state.userTxsLatestBlock
+      let txs = this.state.userTxs
+      if (txs.length === 0) {
+        // @todo this is clearly wrong but gets round the problem of initial txs load.
+        commit('setUserTxsBlockUpdate', 0)
+        userTxsLatestBlock = 0
       }
-    })
+      window.web3.eth.getBlockNumber()
+      .then(n => {
+        if (n > userTxsLatestBlock) {
+          for (let bl = (userTxsLatestBlock + 1); bl <= n; bl++) {
+            window.web3.eth.getBlock(bl, true)
+            .then(block => {
+              commit('setUserTxsBlockUpdate', bl)
+              for (let tx = 0; tx < block.transactions.length; tx++) {
+                let blockTx = block.transactions[tx]
+                if (blockTx.to === ethAccount || blockTx.from === ethAccount) {
+                  window.web3.eth.getBalance(ethAccount, blockTx.blockNumber)
+                  .then(balance => {
+                    blockTx.balance = balance
+                    window.web3.eth.getTransactionReceipt(blockTx.hash)
+                    .then(receipt => {
+                      blockTx.gasUsed = receipt.gasUsed
+                      txs.push(blockTx)
+                      if (txs.length > this.state.userTxs.length) {
+                        commit('setUserTxs', txs)
+                      }
+                    })
+                  })
+                }
+              }
+            })
+          }
+        }
+      })
+    } else {
+      console.log('No Eth Account Found')
+    }
   },
 
   registerUserOpportunities ({commit}) {

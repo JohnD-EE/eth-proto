@@ -105,7 +105,7 @@ export default {
     dialog: false,
     tokenType: 'points',
     exchangeRate: 'floating',
-    fixedExchangeRate: '',
+    fixedExchangeRate: '1',
     fixedExchangeRateRules: [
       // v => !!v || 'Exchange rate is required',
       // v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Maximum 8 characters'
@@ -143,6 +143,15 @@ export default {
     submit () {
       if (this.$refs.form.validate()) {
         // create the Branded Currency contract
+        let exchangeRateToEth = ''
+        if (this.tokenType === 'currency' && this.exchangeRate === 'fixed') {
+          this.fixedExchangeRate = Number(this.fixedExchangeRate)
+          if (this.fixedExchangeRate.length > 0) {
+            exchangeRateToEth = this.fixedExchangeRate.toString()
+          } else {
+            exchangeRateToEth = 1
+          }
+        }
         brandedCurrencyHelper.createCurrency(
           {
             initialSupply: Number(this.initialSupply),
@@ -150,7 +159,7 @@ export default {
             decimals: Number(this.decimals),
             currencySymbol: this.currencySymbol,
             isPointsOnly: this.tokenType === 'points', // e.g. points = true, otherwise false and currency selected
-            exchangeRateToEth: this.fixedExchangeRate.toString(),
+            exchangeRateToEth: exchangeRateToEth,
             owner: this.$store.state.userDetails.ethAccount
           }
         )
@@ -162,6 +171,7 @@ export default {
     close () {
       this.tokenType = 'points'
       this.exchangeRate = 'floating'
+      this.fixedExchangeRate = '1'
       this.clear()
       this.dialog = false
     },

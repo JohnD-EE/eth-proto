@@ -49,6 +49,9 @@ export default {
   updateEIP20Data () {
     let eip20Abi = EIP20JSON.abi
     const EIP20Factory = store.state.contracts['EIP20Factory']
+    if (EIP20Factory.length === 0) {
+      return false
+    }
     EIP20Factory.methods.allEIP20Contracts().call()
     .then(res => {
       console.log('res', res)
@@ -84,7 +87,7 @@ export default {
                           contract: contract,
                           info: info
                         })
-                      })  
+                      })
                     })
                   })
                 })

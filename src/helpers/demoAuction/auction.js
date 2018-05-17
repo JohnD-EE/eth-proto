@@ -49,6 +49,9 @@ export default {
   updateAuctionData () {
     let auctionAbi = AuctionJSON.abi
     const AuctionFactory = store.state.contracts['AuctionFactory']
+    if (AuctionFactory.length === 0) {
+      return false
+    }
     AuctionFactory.methods.allAuctions().call()
     .then(res => {
       res.forEach(contractAddress => {

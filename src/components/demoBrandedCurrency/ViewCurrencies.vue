@@ -42,6 +42,7 @@
                 <td class="text-xs-center">{{ props.item.isPointsOnly ? 'POINTS' : 'CURRENCY' }}</td>
                 <td class="text-xs-center">{{ props.item.totalSupply }}</td>
                 <td class="text-xs-center">{{ props.item.decimals }}</td>
+                <td class="text-xs-center">{{ props.item.isPointsOnly ? 'N/A' : props.item.exchangeRateToEth }}</td>
                 <td class="text-xs-center">
                   <div v-if="props.item.isPointsOnly">N/A</div>
                   <div v-else>
@@ -73,13 +74,13 @@
                                         label="Sell Amount"
                                         v-model="sellAmount"
                                         :rules="sellAmountRules"
-                                        required>
+                                        >
                                         </v-text-field>
                                         <v-text-field v-show="exchangeMode === 'buy'"
                                         label="Buy Amount"
                                         v-model="buyAmount"
                                         :rules="buyAmountRules"
-                                        required>
+                                        >
                                         </v-text-field>
                                       </v-flex>
                                     </v-layout>
@@ -136,6 +137,7 @@ export default {
         { text: 'Type', value: 'type', sortable: false, align: 'center' },
         { text: 'Total Supply', value: 'totalSupply', sortable: false, align: 'center' },
         { text: 'Decimals', value: 'decimals', sortable: false, align: 'center' },
+        { text: 'Exchange Rate', value: 'exchangeRate', sortable: false, align: 'center' },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }
       ]
     }
