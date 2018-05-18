@@ -271,7 +271,7 @@ export default {
       console.log('issuer', res.info.issuer)
       let issuer = 'N/A'
       let userIsIssuer = res.info.issuer === state.userDetails.ethAccount
-      if ( userIsIssuer) {
+      if (userIsIssuer) {
         issuer = state.user.displayName
       } else {
         issuer = res.info.issuer in allUsersByEthAccount ? allUsersByEthAccount[res.info.issuer].displayName : 'N/A'

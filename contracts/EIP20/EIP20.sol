@@ -85,7 +85,16 @@ contract EIP20 is EIP20Interface {
         if (msg.value == 0) {
           revert();
         }
-        transferFrom(issuer, msg.sender, _amount);
+        processBuyOrder(issuer, msg.sender, _amount);
+        return true;
+    }
+
+    // A relaxed version of the TransferFrom Method for demo purposes - need to understand properly how allowances work...
+    function processBuyOrder(address _from, address _to, uint256 _value) public returns (bool success) {
+        require(balances[_from] >= _value);
+        balances[_to] += _value;
+        balances[_from] -= _value;
+        emit Transfer(_from, _to, _value); //solhint-disable-line indent, no-unused-vars
         return true;
     }
 

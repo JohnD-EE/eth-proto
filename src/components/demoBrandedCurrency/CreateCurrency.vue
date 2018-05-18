@@ -63,7 +63,7 @@
             </v-flex>
             <v-flex xs12 class="py-2" v-show="tokenType === 'currency'" mandatory>
               <p>Choose floating or fixed exchange rate:</p>
-              <v-btn-toggle v-model="exchangeRate">
+              <v-btn-toggle v-model="exchangeRate" mandatory>
                 <v-btn flat value="floating" class="px-5">
                   Floating
                 </v-btn>

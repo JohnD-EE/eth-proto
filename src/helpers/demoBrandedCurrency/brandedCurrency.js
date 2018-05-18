@@ -88,14 +88,14 @@ export default {
                           contract.methods.balances(userAddress).call()
                           .then(balance => {
                             info.balance = balance
-                        console.log('Got EIP20 Contract: ', info)
-                        // store states
-                        store.dispatch('registerEIP20Contracts', {
-                          contractAddress: contractAddress,
-                          contract: contract,
-                          info: info
-                        })
-                        })
+                            console.log('Got EIP20 Contract: ', info)
+                            // store states
+                            store.dispatch('registerEIP20Contracts', {
+                              contractAddress: contractAddress,
+                              contract: contract,
+                              info: info
+                            })
+                          })
                         })
                       })
                     })
@@ -121,7 +121,7 @@ export default {
     console.log('amount', amount)
     let from = payload.from
     let contract = ContractsHelper.getContractFromAddress(store.state.eip20Contracts, contractAddress)
-    contract.methods.buyOrder(4).send({
+    contract.methods.buyOrder(amount).send({
       from: from,
       value: window.web3.utils.toWei(cost, 'ether'),
       gas: 3000000

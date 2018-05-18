@@ -34,18 +34,17 @@
               :search="search"
             >
               <template slot="items" slot-scope="props">
-                <td>{{ props.item.name }}</td>
-                <td class="text-xs-center">{{ props.item.symbol }}</td>
+                <td>{{ props.item.name }} ({{ props.item.symbol }})</td>
                 <td class="text-xs-center">{{ props.item.issuer }}</td>
                 <td class="text-xs-center">{{ props.item.isPointsOnly ? 'POINTS' : 'CURRENCY' }}</td>
                 <td class="text-xs-center">{{ props.item.totalSupply }}</td>
                 <td class="text-xs-center">{{ props.item.decimals }}</td>
-                <td class="text-xs-center">{{ props.item.userBalance }}</td>
+                <td class="text-xs-center">{{ props.item.userBalance }} {{ props.item.symbol }}</td>
                 <td class="text-xs-center">
                   {{ props.item.isPointsOnly ? 'N/A' : props.item.exchangeRateToEth }}
                 </td>
                 <td class="text-xs-center">
-                  <div v-if="props.item.isPointsOnly">N/A</div>
+                  <div v-if="props.item.isPointsOnly || props.item.userIsIssuer">N/A</div>
                   <div v-else>
                   <template>
                     <v-layout row justify-center>
@@ -54,12 +53,13 @@
                           <v-card>
                             <v-form v-model="exchangeValid" ref="form" lazy-validation>
                               <v-card-title>
-                                <span class="headline">Exchange Currency</span>
+                                <span class="headline">Exchange Currency: <strong>{{ props.item.symbol }}</strong></span>
                               </v-card-title>
                                 <v-card-text>
                                   <v-container grid-list-md>
                                     <v-layout row wrap>
                                       <v-flex xs12 class="py-2">
+                                        <p>Your Balance: {{ props.item.userBalance }} {{ props.item.symbol }}</p>
                                         <p>Choose to Buy or Sell <strong>{{props.item.name}}</strong> at {{props.item.exchangeRateToEth}} {{props.item.symbol}} = 1 ETH</p>
                                         <v-btn-toggle v-model="exchangeMode" mandatory>
                                           <v-btn flat value="buy" class="px-5">
@@ -138,7 +138,6 @@ export default {
       search: '',
       headers: [
         { text: 'Currency Name', value: 'name', sortable: false, align: 'left' },
-        { text: 'Symbol', value: 'symbol', sortable: false, align: 'center' },
         { text: 'Issuer', value: 'owner', sortable: false, align: 'center' },
         { text: 'Type', value: 'type', sortable: false, align: 'center' },
         { text: 'Total Supply', value: 'totalSupply', sortable: false, align: 'center' },
