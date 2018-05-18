@@ -251,7 +251,7 @@ export default {
 
   allEIP20Contracts: state => {
     let eip20Items = []
-    // let allUsersByEthAccount = helperUsers.getUsersByAddress()
+    let allUsersByEthAccount = helperUsers.getUsersByAddress()
     state.eip20Contracts.forEach(res => {
       let status = {text: '', color: ''}
       status.text = 'Active'
@@ -268,8 +268,15 @@ export default {
           exchangeRateMode = 'floating'
         }
       }
+      console.log('issuer', res.info.issuer)
+      let issuer = 'N/A'
+      let userIsIssuer = res.info.issuer === state.userDetails.ethAccount
+      if ( userIsIssuer) {
+        issuer = state.user.displayName
+      } else {
+        issuer = res.info.issuer in allUsersByEthAccount ? allUsersByEthAccount[res.info.issuer].displayName : 'N/A'
+      }
 
-      // let userIsRetailer = res.info.owner === state.userDetails.ethAccount
       eip20Items.push({
         contractAddress: res.contractAddress,
         status: status,
@@ -280,7 +287,9 @@ export default {
         exchangeRateToEth: exchangeRateToEth,
         exchangeRateMode: exchangeRateMode,
         totalSupply: res.info.totalSupply,
-        userBalance: 1
+        userBalance: res.info.balance,
+        userIsIssuer: userIsIssuer,
+        issuer: issuer
       })
     })
     return eip20Items.reverse()

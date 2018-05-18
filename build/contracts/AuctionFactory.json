@@ -104,14 +104,14 @@
     "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/auction/AuctionFactory.sol",
     "exportedSymbols": {
       "AuctionFactory": [
-        1068
+        1073
       ]
     },
-    "id": 1069,
+    "id": 1074,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 999,
+        "id": 1004,
         "literals": [
           "solidity",
           "^",
@@ -124,14 +124,14 @@
       {
         "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/auction/Auction.sol",
         "file": "./Auction.sol",
-        "id": 1001,
+        "id": 1006,
         "nodeType": "ImportDirective",
-        "scope": 1069,
-        "sourceUnit": 998,
+        "scope": 1074,
+        "sourceUnit": 1003,
         "src": "27:40:5",
         "symbolAliases": [
           {
-            "foreign": 1000,
+            "foreign": 1005,
             "local": null
           }
         ],
@@ -140,24 +140,24 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          997
+          1002
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1068,
+        "id": 1073,
         "linearizedBaseContracts": [
-          1068
+          1073
         ],
         "name": "AuctionFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1004,
+            "id": 1009,
             "name": "auctions",
             "nodeType": "VariableDeclaration",
-            "scope": 1068,
+            "scope": 1073,
             "src": "102:25:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -167,7 +167,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 1002,
+                "id": 1007,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "102:7:5",
@@ -176,7 +176,7 @@
                   "typeString": "address"
                 }
               },
-              "id": 1003,
+              "id": 1008,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "102:9:5",
@@ -191,20 +191,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1015,
+            "id": 1020,
             "name": "AuctionCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1014,
+              "id": 1019,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1006,
+                  "id": 1011,
                   "indexed": false,
                   "name": "auctionContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1015,
+                  "scope": 1020,
                   "src": "157:23:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -213,7 +213,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1005,
+                    "id": 1010,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "157:7:5",
@@ -227,11 +227,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1008,
+                  "id": 1013,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1015,
+                  "scope": 1020,
                   "src": "182:13:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -240,7 +240,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1007,
+                    "id": 1012,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "182:7:5",
@@ -254,11 +254,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1010,
+                  "id": 1015,
                   "indexed": false,
                   "name": "numAuctions",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1015,
+                  "scope": 1020,
                   "src": "197:16:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -267,7 +267,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1009,
+                    "id": 1014,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "197:4:5",
@@ -281,11 +281,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1013,
+                  "id": 1018,
                   "indexed": false,
                   "name": "allAuctions",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1015,
+                  "scope": 1020,
                   "src": "215:21:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -295,7 +295,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1011,
+                      "id": 1016,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "215:7:5",
@@ -304,7 +304,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1012,
+                    "id": 1017,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "215:9:5",
@@ -323,13 +323,13 @@
           },
           {
             "body": {
-              "id": 1018,
+              "id": 1023,
               "nodeType": "Block",
               "src": "280:8:5",
               "statements": []
             },
             "documentation": null,
-            "id": 1019,
+            "id": 1024,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -337,19 +337,19 @@
             "name": "AuctionFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1016,
+              "id": 1021,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "270:2:5"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1017,
+              "id": 1022,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "280:0:5"
             },
-            "scope": 1068,
+            "scope": 1073,
             "src": "246:42:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -357,37 +357,37 @@
           },
           {
             "body": {
-              "id": 1057,
+              "id": 1062,
               "nodeType": "Block",
               "src": "394:228:5",
               "statements": [
                 {
                   "assignments": [
-                    1031
+                    1036
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1031,
+                      "id": 1036,
                       "name": "newAuction",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1058,
+                      "scope": 1063,
                       "src": "405:18:5",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_Auction_$997",
+                        "typeIdentifier": "t_contract$_Auction_$1002",
                         "typeString": "contract Auction"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 1030,
+                        "id": 1035,
                         "name": "Auction",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 997,
+                        "referencedDeclaration": 1002,
                         "src": "405:7:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       },
@@ -395,7 +395,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1041,
+                  "id": 1046,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -403,18 +403,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1034,
+                          "id": 1039,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1689,
+                          "referencedDeclaration": 1694,
                           "src": "438:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1035,
+                        "id": 1040,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -430,11 +430,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1036,
+                        "id": 1041,
                         "name": "bidIncrement",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1021,
+                        "referencedDeclaration": 1026,
                         "src": "450:12:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -443,11 +443,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1037,
+                        "id": 1042,
                         "name": "startBlock",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1023,
+                        "referencedDeclaration": 1028,
                         "src": "464:10:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -456,11 +456,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1038,
+                        "id": 1043,
                         "name": "endBlock",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1025,
+                        "referencedDeclaration": 1030,
                         "src": "476:8:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -469,11 +469,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1039,
+                        "id": 1044,
                         "name": "saleItem",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1027,
+                        "referencedDeclaration": 1032,
                         "src": "486:8:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -504,7 +504,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 1033,
+                      "id": 1038,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -512,23 +512,23 @@
                       "nodeType": "NewExpression",
                       "src": "426:11:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$returns$_t_contract$_Auction_$997_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$returns$_t_contract$_Auction_$1002_$",
                         "typeString": "function (address,uint256,uint256,uint256,string memory) returns (contract Auction)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 1032,
+                        "id": 1037,
                         "name": "Auction",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 997,
+                        "referencedDeclaration": 1002,
                         "src": "430:7:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       }
                     },
-                    "id": 1040,
+                    "id": 1045,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -538,7 +538,7 @@
                     "nodeType": "FunctionCall",
                     "src": "426:69:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_Auction_$997",
+                      "typeIdentifier": "t_contract$_Auction_$1002",
                       "typeString": "contract Auction"
                     }
                   },
@@ -551,14 +551,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1045,
+                        "id": 1050,
                         "name": "newAuction",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1031,
+                        "referencedDeclaration": 1036,
                         "src": "520:10:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       }
@@ -566,24 +566,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1042,
+                        "id": 1047,
                         "name": "auctions",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1004,
+                        "referencedDeclaration": 1009,
                         "src": "506:8:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 1044,
+                      "id": 1049,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -597,7 +597,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 1046,
+                    "id": 1051,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -611,7 +611,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1047,
+                  "id": 1052,
                   "nodeType": "ExpressionStatement",
                   "src": "506:25:5"
                 },
@@ -621,14 +621,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1049,
+                        "id": 1054,
                         "name": "newAuction",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1031,
+                        "referencedDeclaration": 1036,
                         "src": "564:10:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       },
@@ -636,18 +636,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1050,
+                          "id": 1055,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1689,
+                          "referencedDeclaration": 1694,
                           "src": "576:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1051,
+                        "id": 1056,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -665,18 +665,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1052,
+                          "id": 1057,
                           "name": "auctions",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1004,
+                          "referencedDeclaration": 1009,
                           "src": "588:8:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 1053,
+                        "id": 1058,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -692,11 +692,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1054,
+                        "id": 1059,
                         "name": "auctions",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1004,
+                        "referencedDeclaration": 1009,
                         "src": "605:8:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -707,7 +707,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         },
                         {
@@ -723,18 +723,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 1048,
+                      "id": 1053,
                       "name": "AuctionCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1015,
+                      "referencedDeclaration": 1020,
                       "src": "549:14:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 1055,
+                    "id": 1060,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -748,14 +748,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1056,
+                  "id": 1061,
                   "nodeType": "EmitStatement",
                   "src": "544:70:5"
                 }
               ]
             },
             "documentation": null,
-            "id": 1058,
+            "id": 1063,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -763,15 +763,15 @@
             "name": "createAuction",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1028,
+              "id": 1033,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1021,
+                  "id": 1026,
                   "name": "bidIncrement",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1058,
+                  "scope": 1063,
                   "src": "319:17:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -780,7 +780,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1020,
+                    "id": 1025,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "319:4:5",
@@ -794,10 +794,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1023,
+                  "id": 1028,
                   "name": "startBlock",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1058,
+                  "scope": 1063,
                   "src": "338:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -806,7 +806,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1022,
+                    "id": 1027,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "338:4:5",
@@ -820,10 +820,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1025,
+                  "id": 1030,
                   "name": "endBlock",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1058,
+                  "scope": 1063,
                   "src": "355:13:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -832,7 +832,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1024,
+                    "id": 1029,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "355:4:5",
@@ -846,10 +846,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1027,
+                  "id": 1032,
                   "name": "saleItem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1058,
+                  "scope": 1063,
                   "src": "370:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -858,7 +858,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1026,
+                    "id": 1031,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "370:6:5",
@@ -875,12 +875,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1029,
+              "id": 1034,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "394:0:5"
             },
-            "scope": 1068,
+            "scope": 1073,
             "src": "296:326:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -888,33 +888,33 @@
           },
           {
             "body": {
-              "id": 1066,
+              "id": 1071,
               "nodeType": "Block",
               "src": "689:34:5",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1064,
+                    "id": 1069,
                     "name": "auctions",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1004,
+                    "referencedDeclaration": 1009,
                     "src": "707:8:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 1063,
-                  "id": 1065,
+                  "functionReturnParameters": 1068,
+                  "id": 1070,
                   "nodeType": "Return",
                   "src": "700:15:5"
                 }
               ]
             },
             "documentation": null,
-            "id": 1067,
+            "id": 1072,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -922,22 +922,22 @@
             "name": "allAuctions",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1059,
+              "id": 1064,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "650:2:5"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1063,
+              "id": 1068,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1062,
+                  "id": 1067,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1067,
+                  "scope": 1072,
                   "src": "678:9:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -947,7 +947,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1060,
+                      "id": 1065,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "678:7:5",
@@ -956,7 +956,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1061,
+                    "id": 1066,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "678:9:5",
@@ -971,14 +971,14 @@
               ],
               "src": "677:11:5"
             },
-            "scope": 1068,
+            "scope": 1073,
             "src": "630:93:5",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1069,
+        "scope": 1074,
         "src": "71:655:5"
       }
     ],
@@ -988,14 +988,14 @@
     "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/auction/AuctionFactory.sol",
     "exportedSymbols": {
       "AuctionFactory": [
-        1068
+        1073
       ]
     },
-    "id": 1069,
+    "id": 1074,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 999,
+        "id": 1004,
         "literals": [
           "solidity",
           "^",
@@ -1008,14 +1008,14 @@
       {
         "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/auction/Auction.sol",
         "file": "./Auction.sol",
-        "id": 1001,
+        "id": 1006,
         "nodeType": "ImportDirective",
-        "scope": 1069,
-        "sourceUnit": 998,
+        "scope": 1074,
+        "sourceUnit": 1003,
         "src": "27:40:5",
         "symbolAliases": [
           {
-            "foreign": 1000,
+            "foreign": 1005,
             "local": null
           }
         ],
@@ -1024,24 +1024,24 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          997
+          1002
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1068,
+        "id": 1073,
         "linearizedBaseContracts": [
-          1068
+          1073
         ],
         "name": "AuctionFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1004,
+            "id": 1009,
             "name": "auctions",
             "nodeType": "VariableDeclaration",
-            "scope": 1068,
+            "scope": 1073,
             "src": "102:25:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1051,7 +1051,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 1002,
+                "id": 1007,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "102:7:5",
@@ -1060,7 +1060,7 @@
                   "typeString": "address"
                 }
               },
-              "id": 1003,
+              "id": 1008,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "102:9:5",
@@ -1075,20 +1075,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1015,
+            "id": 1020,
             "name": "AuctionCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1014,
+              "id": 1019,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1006,
+                  "id": 1011,
                   "indexed": false,
                   "name": "auctionContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1015,
+                  "scope": 1020,
                   "src": "157:23:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1097,7 +1097,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1005,
+                    "id": 1010,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "157:7:5",
@@ -1111,11 +1111,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1008,
+                  "id": 1013,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1015,
+                  "scope": 1020,
                   "src": "182:13:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1124,7 +1124,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1007,
+                    "id": 1012,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "182:7:5",
@@ -1138,11 +1138,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1010,
+                  "id": 1015,
                   "indexed": false,
                   "name": "numAuctions",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1015,
+                  "scope": 1020,
                   "src": "197:16:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1151,7 +1151,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1009,
+                    "id": 1014,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "197:4:5",
@@ -1165,11 +1165,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1013,
+                  "id": 1018,
                   "indexed": false,
                   "name": "allAuctions",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1015,
+                  "scope": 1020,
                   "src": "215:21:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1179,7 +1179,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1011,
+                      "id": 1016,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "215:7:5",
@@ -1188,7 +1188,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1012,
+                    "id": 1017,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "215:9:5",
@@ -1207,13 +1207,13 @@
           },
           {
             "body": {
-              "id": 1018,
+              "id": 1023,
               "nodeType": "Block",
               "src": "280:8:5",
               "statements": []
             },
             "documentation": null,
-            "id": 1019,
+            "id": 1024,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1221,19 +1221,19 @@
             "name": "AuctionFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1016,
+              "id": 1021,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "270:2:5"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1017,
+              "id": 1022,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "280:0:5"
             },
-            "scope": 1068,
+            "scope": 1073,
             "src": "246:42:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1241,37 +1241,37 @@
           },
           {
             "body": {
-              "id": 1057,
+              "id": 1062,
               "nodeType": "Block",
               "src": "394:228:5",
               "statements": [
                 {
                   "assignments": [
-                    1031
+                    1036
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1031,
+                      "id": 1036,
                       "name": "newAuction",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1058,
+                      "scope": 1063,
                       "src": "405:18:5",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_Auction_$997",
+                        "typeIdentifier": "t_contract$_Auction_$1002",
                         "typeString": "contract Auction"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 1030,
+                        "id": 1035,
                         "name": "Auction",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 997,
+                        "referencedDeclaration": 1002,
                         "src": "405:7:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       },
@@ -1279,7 +1279,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1041,
+                  "id": 1046,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -1287,18 +1287,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1034,
+                          "id": 1039,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1689,
+                          "referencedDeclaration": 1694,
                           "src": "438:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1035,
+                        "id": 1040,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1314,11 +1314,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1036,
+                        "id": 1041,
                         "name": "bidIncrement",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1021,
+                        "referencedDeclaration": 1026,
                         "src": "450:12:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1327,11 +1327,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1037,
+                        "id": 1042,
                         "name": "startBlock",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1023,
+                        "referencedDeclaration": 1028,
                         "src": "464:10:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1340,11 +1340,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1038,
+                        "id": 1043,
                         "name": "endBlock",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1025,
+                        "referencedDeclaration": 1030,
                         "src": "476:8:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1353,11 +1353,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1039,
+                        "id": 1044,
                         "name": "saleItem",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1027,
+                        "referencedDeclaration": 1032,
                         "src": "486:8:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -1388,7 +1388,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 1033,
+                      "id": 1038,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1396,23 +1396,23 @@
                       "nodeType": "NewExpression",
                       "src": "426:11:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$returns$_t_contract$_Auction_$997_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$returns$_t_contract$_Auction_$1002_$",
                         "typeString": "function (address,uint256,uint256,uint256,string memory) returns (contract Auction)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 1032,
+                        "id": 1037,
                         "name": "Auction",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 997,
+                        "referencedDeclaration": 1002,
                         "src": "430:7:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       }
                     },
-                    "id": 1040,
+                    "id": 1045,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1422,7 +1422,7 @@
                     "nodeType": "FunctionCall",
                     "src": "426:69:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_Auction_$997",
+                      "typeIdentifier": "t_contract$_Auction_$1002",
                       "typeString": "contract Auction"
                     }
                   },
@@ -1435,14 +1435,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1045,
+                        "id": 1050,
                         "name": "newAuction",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1031,
+                        "referencedDeclaration": 1036,
                         "src": "520:10:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       }
@@ -1450,24 +1450,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1042,
+                        "id": 1047,
                         "name": "auctions",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1004,
+                        "referencedDeclaration": 1009,
                         "src": "506:8:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 1044,
+                      "id": 1049,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1481,7 +1481,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 1046,
+                    "id": 1051,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1495,7 +1495,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1047,
+                  "id": 1052,
                   "nodeType": "ExpressionStatement",
                   "src": "506:25:5"
                 },
@@ -1505,14 +1505,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1049,
+                        "id": 1054,
                         "name": "newAuction",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1031,
+                        "referencedDeclaration": 1036,
                         "src": "564:10:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         }
                       },
@@ -1520,18 +1520,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1050,
+                          "id": 1055,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1689,
+                          "referencedDeclaration": 1694,
                           "src": "576:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1051,
+                        "id": 1056,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1549,18 +1549,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1052,
+                          "id": 1057,
                           "name": "auctions",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1004,
+                          "referencedDeclaration": 1009,
                           "src": "588:8:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 1053,
+                        "id": 1058,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -1576,11 +1576,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1054,
+                        "id": 1059,
                         "name": "auctions",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1004,
+                        "referencedDeclaration": 1009,
                         "src": "605:8:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -1591,7 +1591,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_Auction_$997",
+                          "typeIdentifier": "t_contract$_Auction_$1002",
                           "typeString": "contract Auction"
                         },
                         {
@@ -1607,18 +1607,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 1048,
+                      "id": 1053,
                       "name": "AuctionCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1015,
+                      "referencedDeclaration": 1020,
                       "src": "549:14:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 1055,
+                    "id": 1060,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1632,14 +1632,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1056,
+                  "id": 1061,
                   "nodeType": "EmitStatement",
                   "src": "544:70:5"
                 }
               ]
             },
             "documentation": null,
-            "id": 1058,
+            "id": 1063,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1647,15 +1647,15 @@
             "name": "createAuction",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1028,
+              "id": 1033,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1021,
+                  "id": 1026,
                   "name": "bidIncrement",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1058,
+                  "scope": 1063,
                   "src": "319:17:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1664,7 +1664,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1020,
+                    "id": 1025,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "319:4:5",
@@ -1678,10 +1678,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1023,
+                  "id": 1028,
                   "name": "startBlock",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1058,
+                  "scope": 1063,
                   "src": "338:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1690,7 +1690,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1022,
+                    "id": 1027,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "338:4:5",
@@ -1704,10 +1704,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1025,
+                  "id": 1030,
                   "name": "endBlock",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1058,
+                  "scope": 1063,
                   "src": "355:13:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1716,7 +1716,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1024,
+                    "id": 1029,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "355:4:5",
@@ -1730,10 +1730,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1027,
+                  "id": 1032,
                   "name": "saleItem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1058,
+                  "scope": 1063,
                   "src": "370:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1742,7 +1742,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1026,
+                    "id": 1031,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "370:6:5",
@@ -1759,12 +1759,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1029,
+              "id": 1034,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "394:0:5"
             },
-            "scope": 1068,
+            "scope": 1073,
             "src": "296:326:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1772,33 +1772,33 @@
           },
           {
             "body": {
-              "id": 1066,
+              "id": 1071,
               "nodeType": "Block",
               "src": "689:34:5",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1064,
+                    "id": 1069,
                     "name": "auctions",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1004,
+                    "referencedDeclaration": 1009,
                     "src": "707:8:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 1063,
-                  "id": 1065,
+                  "functionReturnParameters": 1068,
+                  "id": 1070,
                   "nodeType": "Return",
                   "src": "700:15:5"
                 }
               ]
             },
             "documentation": null,
-            "id": 1067,
+            "id": 1072,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1806,22 +1806,22 @@
             "name": "allAuctions",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1059,
+              "id": 1064,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "650:2:5"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1063,
+              "id": 1068,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1062,
+                  "id": 1067,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1067,
+                  "scope": 1072,
                   "src": "678:9:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1831,7 +1831,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1060,
+                      "id": 1065,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "678:7:5",
@@ -1840,7 +1840,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1061,
+                    "id": 1066,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "678:9:5",
@@ -1855,14 +1855,14 @@
               ],
               "src": "677:11:5"
             },
-            "scope": 1068,
+            "scope": 1073,
             "src": "630:93:5",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1069,
+        "scope": 1074,
         "src": "71:655:5"
       }
     ],
@@ -1881,5 +1881,5 @@
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-17T19:45:55.619Z"
+  "updatedAt": "2018-05-18T05:23:10.868Z"
 }

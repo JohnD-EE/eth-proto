@@ -8,7 +8,7 @@ export default {
     console.log('Creating Currency: ', payload)
     const e = payload
     const EIP20Factory = store.state.contracts['EIP20Factory']
-    EIP20Factory.methods.createEIP20(e.initialSupply, e.currencyName, e.decimals, e.currencySymbol, e.exchangeRateToEth, e.isPointsOnly)
+    EIP20Factory.methods.createEIP20(e.initialSupply, e.currencyName, e.decimals, e.currencySymbol, e.exchangeRateToEth, e.isPointsOnly, e.owner)
     .send({from: e.owner, gas: 3000000})
     .on('transactionHash', function (hash) {
       store.dispatch('newNotification', {
@@ -82,9 +82,9 @@ export default {
                       contract.methods.totalSupply().call()
                       .then(totalSupply => {
                         info.totalSupply = totalSupply
-                        contract.methods.owner().call()
-                        .then(owner => {
-                          info.owner = owner
+                        contract.methods.issuer().call()
+                        .then(issuer => {
+                          info.issuer = issuer
                           contract.methods.balances(userAddress).call()
                           .then(balance => {
                             info.balance = balance

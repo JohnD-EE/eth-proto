@@ -35,11 +35,11 @@ contract EIP20Factory {
     }
 
     function createEIP20(uint256 _initialAmount, string _name, uint8 _decimals, string _symbol, string _exchangeRateToEth,
-    bool _isPointsOnly)
+    bool _isPointsOnly, address _issuer)
         public
     returns (address) {
 
-        EIP20 newToken = (new EIP20(_initialAmount, _name, _decimals, _symbol, _exchangeRateToEth, _isPointsOnly));
+        EIP20 newToken = (new EIP20(_initialAmount, _name, _decimals, _symbol, _exchangeRateToEth, _isPointsOnly, _issuer));
         created[msg.sender].push(address(newToken));
         eip20Contracts.push(newToken);
         isEIP20[address(newToken)] = true;

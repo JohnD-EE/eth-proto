@@ -36,12 +36,11 @@
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-center">{{ props.item.symbol }}</td>
-                <td class="text-xs-center">
-                  <v-chip small :color="props.item.status.color" text-color="white">{{props.item.status.text}}</v-chip>
-                </td>
+                <td class="text-xs-center">{{ props.item.issuer }}</td>
                 <td class="text-xs-center">{{ props.item.isPointsOnly ? 'POINTS' : 'CURRENCY' }}</td>
                 <td class="text-xs-center">{{ props.item.totalSupply }}</td>
                 <td class="text-xs-center">{{ props.item.decimals }}</td>
+                <td class="text-xs-center">{{ props.item.userBalance }}</td>
                 <td class="text-xs-center">
                   {{ props.item.isPointsOnly ? 'N/A' : props.item.exchangeRateToEth }}
                 </td>
@@ -140,10 +139,11 @@ export default {
       headers: [
         { text: 'Currency Name', value: 'name', sortable: false, align: 'left' },
         { text: 'Symbol', value: 'symbol', sortable: false, align: 'center' },
-        { text: 'Status', value: 'status', sortable: false, align: 'center' },
+        { text: 'Issuer', value: 'owner', sortable: false, align: 'center' },
         { text: 'Type', value: 'type', sortable: false, align: 'center' },
         { text: 'Total Supply', value: 'totalSupply', sortable: false, align: 'center' },
         { text: 'Decimals', value: 'decimals', sortable: false, align: 'center' },
+        { text: 'Your Balance', value: 'balance', sortable: false, align: 'center' },
         { text: 'Exchange Rate', value: 'exchangeRateToEth', sortable: false, align: 'center' },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }
       ]
