@@ -26,6 +26,8 @@ contract EIP20 is EIP20Interface {
     string public exchangeRateToEth;      //Token to Eth exchange rate (0.5 means 2 Tokens = 1 Eth)
     bool public isPointsOnly;             //Used as tokens, not a currency and non-exchangeable
 
+    event LogSell(address to, uint value);
+
     function EIP20(
         uint256 _initialAmount,
         string _tokenName,
@@ -90,11 +92,32 @@ contract EIP20 is EIP20Interface {
     }
 
     // A relaxed version of the TransferFrom Method for demo purposes - need to understand properly how allowances work...
-    function processBuyOrder(address _from, address _to, uint256 _value) public returns (bool success) {
-        require(balances[_from] >= _value);
-        balances[_to] += _value;
-        balances[_from] -= _value;
-        emit Transfer(_from, _to, _value); //solhint-disable-line indent, no-unused-vars
+    function processBuyOrder(address _from, address _to, uint256 _amount) public returns (bool success) {
+        require(balances[_from] >= _amount);
+        balances[_to] += _amount;
+        balances[_from] -= _amount;
+        emit Transfer(_from, _to, _amount); //solhint-disable-line indent, no-unused-vars
+        return true;
+    }
+
+    //sell tokens - (very insecure!!) send eth from contract to buyer - obviously this is insecure. needs a separate exchange contract
+    function sellOrder(uint256 _amount, uint256 _value) public payable returns (bool success) {
+        processSellOrder(msg.sender, issuer, _amount, _value);
+        return true;
+    }
+
+    // A relaxed version of the TransferFrom Method for demo purposes - need to understand properly how allowances work...
+    function processSellOrder(address _seller, address _issuer, uint256 _amountToken, uint256 _valueEth) public returns (bool success) {
+        require(balances[_seller] >= _amountToken);
+        balances[_issuer] += _amountToken;
+        balances[_seller] -= _amountToken;
+
+        emit Transfer(_seller, _issuer, _amountToken); //solhint-disable-line indent, no-unused-vars
+
+        // Send eth to _to address
+        _seller.transfer(_valueEth);
+        emit LogSell(_seller, _valueEth);
+
         return true;
     }
 

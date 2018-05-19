@@ -212,7 +212,13 @@ export default {
     },
     exchangeSubmitSell (contractAddress, exchangeRateToEth) {
       console.log('Sell Currency')
-
+      let sellOrderPayload = {
+        contractAddress: contractAddress,
+        amount: this.sellAmount,
+        exchangeRateToEth: exchangeRateToEth,
+        from: this.userDetails.ethAccount
+      }
+      brandedCurrencyHelper.sellOrder(sellOrderPayload)
       this.exchangeDialog = false
       this.exchangeMode = 'buy'
       this.clear()

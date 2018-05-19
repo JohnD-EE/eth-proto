@@ -104,14 +104,14 @@
     "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/brandFunded/BrandFundedFactory.sol",
     "exportedSymbols": {
       "BrandFundedFactory": [
-        1416
+        1495
       ]
     },
-    "id": 1417,
+    "id": 1496,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1347,
+        "id": 1426,
         "literals": [
           "solidity",
           "^",
@@ -124,14 +124,14 @@
       {
         "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/brandFunded/BrandFunded.sol",
         "file": "./BrandFunded.sol",
-        "id": 1349,
+        "id": 1428,
         "nodeType": "ImportDirective",
-        "scope": 1417,
-        "sourceUnit": 1346,
+        "scope": 1496,
+        "sourceUnit": 1425,
         "src": "27:48:7",
         "symbolAliases": [
           {
-            "foreign": 1348,
+            "foreign": 1427,
             "local": null
           }
         ],
@@ -140,24 +140,24 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          1345
+          1424
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1416,
+        "id": 1495,
         "linearizedBaseContracts": [
-          1416
+          1495
         ],
         "name": "BrandFundedFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1352,
+            "id": 1431,
             "name": "escrowContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 1416,
+            "scope": 1495,
             "src": "114:32:7",
             "stateVariable": true,
             "storageLocation": "default",
@@ -167,7 +167,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 1350,
+                "id": 1429,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "114:7:7",
@@ -176,7 +176,7 @@
                   "typeString": "address"
                 }
               },
-              "id": 1351,
+              "id": 1430,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "114:9:7",
@@ -191,20 +191,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1363,
+            "id": 1442,
             "name": "BrandFundedCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1362,
+              "id": 1441,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1354,
+                  "id": 1433,
                   "indexed": false,
                   "name": "escrowContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1363,
+                  "scope": 1442,
                   "src": "180:22:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -213,7 +213,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1353,
+                    "id": 1432,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "180:7:7",
@@ -227,11 +227,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1356,
+                  "id": 1435,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1363,
+                  "scope": 1442,
                   "src": "204:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -240,7 +240,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1355,
+                    "id": 1434,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "204:7:7",
@@ -254,11 +254,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1358,
+                  "id": 1437,
                   "indexed": false,
                   "name": "numEscrowContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1363,
+                  "scope": 1442,
                   "src": "219:23:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -267,7 +267,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1357,
+                    "id": 1436,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "219:4:7",
@@ -281,11 +281,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1361,
+                  "id": 1440,
                   "indexed": false,
                   "name": "allEscrowContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1363,
+                  "scope": 1442,
                   "src": "244:28:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -295,7 +295,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1359,
+                      "id": 1438,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "244:7:7",
@@ -304,7 +304,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1360,
+                    "id": 1439,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "244:9:7",
@@ -323,13 +323,13 @@
           },
           {
             "body": {
-              "id": 1366,
+              "id": 1445,
               "nodeType": "Block",
               "src": "320:8:7",
               "statements": []
             },
             "documentation": null,
-            "id": 1367,
+            "id": 1446,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -337,19 +337,19 @@
             "name": "BrandFundedFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1364,
+              "id": 1443,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "310:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1365,
+              "id": 1444,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "320:0:7"
             },
-            "scope": 1416,
+            "scope": 1495,
             "src": "282:46:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -357,37 +357,37 @@
           },
           {
             "body": {
-              "id": 1405,
+              "id": 1484,
               "nodeType": "Block",
               "src": "448:267:7",
               "statements": [
                 {
                   "assignments": [
-                    1379
+                    1458
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1379,
+                      "id": 1458,
                       "name": "newEscrow",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1406,
+                      "scope": 1485,
                       "src": "459:21:7",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                        "typeIdentifier": "t_contract$_BrandFunded_$1424",
                         "typeString": "contract BrandFunded"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 1378,
+                        "id": 1457,
                         "name": "BrandFunded",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 1345,
+                        "referencedDeclaration": 1424,
                         "src": "459:11:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       },
@@ -395,7 +395,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1389,
+                  "id": 1468,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -403,18 +403,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1382,
+                          "id": 1461,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1734,
+                          "referencedDeclaration": 1813,
                           "src": "499:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1383,
+                        "id": 1462,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -430,11 +430,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1384,
+                        "id": 1463,
                         "name": "_sellerAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1369,
+                        "referencedDeclaration": 1448,
                         "src": "511:14:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -443,11 +443,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1385,
+                        "id": 1464,
                         "name": "_buyerAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1371,
+                        "referencedDeclaration": 1450,
                         "src": "527:13:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -456,11 +456,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1386,
+                        "id": 1465,
                         "name": "_feePercent",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1373,
+                        "referencedDeclaration": 1452,
                         "src": "542:11:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -469,11 +469,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1387,
+                        "id": 1466,
                         "name": "_saleItem",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1375,
+                        "referencedDeclaration": 1454,
                         "src": "555:9:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -504,7 +504,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 1381,
+                      "id": 1460,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -512,23 +512,23 @@
                       "nodeType": "NewExpression",
                       "src": "483:15:7",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_address_$_t_address_$_t_uint256_$_t_string_memory_ptr_$returns$_t_contract$_BrandFunded_$1345_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_address_$_t_address_$_t_uint256_$_t_string_memory_ptr_$returns$_t_contract$_BrandFunded_$1424_$",
                         "typeString": "function (address,address,address,uint256,string memory) returns (contract BrandFunded)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 1380,
+                        "id": 1459,
                         "name": "BrandFunded",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 1345,
+                        "referencedDeclaration": 1424,
                         "src": "487:11:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       }
                     },
-                    "id": 1388,
+                    "id": 1467,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -538,7 +538,7 @@
                     "nodeType": "FunctionCall",
                     "src": "483:82:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                      "typeIdentifier": "t_contract$_BrandFunded_$1424",
                       "typeString": "contract BrandFunded"
                     }
                   },
@@ -551,14 +551,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1393,
+                        "id": 1472,
                         "name": "newEscrow",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1379,
+                        "referencedDeclaration": 1458,
                         "src": "597:9:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       }
@@ -566,24 +566,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1390,
+                        "id": 1469,
                         "name": "escrowContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1352,
+                        "referencedDeclaration": 1431,
                         "src": "576:15:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 1392,
+                      "id": 1471,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -597,7 +597,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 1394,
+                    "id": 1473,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -611,7 +611,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1395,
+                  "id": 1474,
                   "nodeType": "ExpressionStatement",
                   "src": "576:31:7"
                 },
@@ -621,14 +621,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1397,
+                        "id": 1476,
                         "name": "newEscrow",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1379,
+                        "referencedDeclaration": 1458,
                         "src": "644:9:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       },
@@ -636,18 +636,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1398,
+                          "id": 1477,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1734,
+                          "referencedDeclaration": 1813,
                           "src": "655:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1399,
+                        "id": 1478,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -665,18 +665,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1400,
+                          "id": 1479,
                           "name": "escrowContracts",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1352,
+                          "referencedDeclaration": 1431,
                           "src": "667:15:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 1401,
+                        "id": 1480,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -692,11 +692,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1402,
+                        "id": 1481,
                         "name": "escrowContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1352,
+                        "referencedDeclaration": 1431,
                         "src": "691:15:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -707,7 +707,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         },
                         {
@@ -723,18 +723,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 1396,
+                      "id": 1475,
                       "name": "BrandFundedCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1363,
+                      "referencedDeclaration": 1442,
                       "src": "625:18:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 1403,
+                    "id": 1482,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -748,14 +748,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1404,
+                  "id": 1483,
                   "nodeType": "EmitStatement",
                   "src": "620:87:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 1406,
+            "id": 1485,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -763,15 +763,15 @@
             "name": "createEscrow",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1376,
+              "id": 1455,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1369,
+                  "id": 1448,
                   "name": "_sellerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1406,
+                  "scope": 1485,
                   "src": "358:22:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -780,7 +780,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1368,
+                    "id": 1447,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "358:7:7",
@@ -794,10 +794,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1371,
+                  "id": 1450,
                   "name": "_buyerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1406,
+                  "scope": 1485,
                   "src": "382:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -806,7 +806,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1370,
+                    "id": 1449,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "382:7:7",
@@ -820,10 +820,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1373,
+                  "id": 1452,
                   "name": "_feePercent",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1406,
+                  "scope": 1485,
                   "src": "405:16:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -832,7 +832,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1372,
+                    "id": 1451,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "405:4:7",
@@ -846,10 +846,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1375,
+                  "id": 1454,
                   "name": "_saleItem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1406,
+                  "scope": 1485,
                   "src": "423:16:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -858,7 +858,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1374,
+                    "id": 1453,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "423:6:7",
@@ -875,12 +875,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1377,
+              "id": 1456,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "448:0:7"
             },
-            "scope": 1416,
+            "scope": 1495,
             "src": "336:379:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -888,33 +888,33 @@
           },
           {
             "body": {
-              "id": 1414,
+              "id": 1493,
               "nodeType": "Block",
               "src": "789:41:7",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1412,
+                    "id": 1491,
                     "name": "escrowContracts",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1352,
+                    "referencedDeclaration": 1431,
                     "src": "807:15:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 1411,
-                  "id": 1413,
+                  "functionReturnParameters": 1490,
+                  "id": 1492,
                   "nodeType": "Return",
                   "src": "800:22:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 1415,
+            "id": 1494,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -922,22 +922,22 @@
             "name": "allEscrowContracts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1407,
+              "id": 1486,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "750:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1411,
+              "id": 1490,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1410,
+                  "id": 1489,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1415,
+                  "scope": 1494,
                   "src": "778:9:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -947,7 +947,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1408,
+                      "id": 1487,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "778:7:7",
@@ -956,7 +956,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1409,
+                    "id": 1488,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "778:9:7",
@@ -971,14 +971,14 @@
               ],
               "src": "777:11:7"
             },
-            "scope": 1416,
+            "scope": 1495,
             "src": "723:107:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1417,
+        "scope": 1496,
         "src": "79:754:7"
       }
     ],
@@ -988,14 +988,14 @@
     "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/brandFunded/BrandFundedFactory.sol",
     "exportedSymbols": {
       "BrandFundedFactory": [
-        1416
+        1495
       ]
     },
-    "id": 1417,
+    "id": 1496,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1347,
+        "id": 1426,
         "literals": [
           "solidity",
           "^",
@@ -1008,14 +1008,14 @@
       {
         "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/brandFunded/BrandFunded.sol",
         "file": "./BrandFunded.sol",
-        "id": 1349,
+        "id": 1428,
         "nodeType": "ImportDirective",
-        "scope": 1417,
-        "sourceUnit": 1346,
+        "scope": 1496,
+        "sourceUnit": 1425,
         "src": "27:48:7",
         "symbolAliases": [
           {
-            "foreign": 1348,
+            "foreign": 1427,
             "local": null
           }
         ],
@@ -1024,24 +1024,24 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          1345
+          1424
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1416,
+        "id": 1495,
         "linearizedBaseContracts": [
-          1416
+          1495
         ],
         "name": "BrandFundedFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1352,
+            "id": 1431,
             "name": "escrowContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 1416,
+            "scope": 1495,
             "src": "114:32:7",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1051,7 +1051,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 1350,
+                "id": 1429,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "114:7:7",
@@ -1060,7 +1060,7 @@
                   "typeString": "address"
                 }
               },
-              "id": 1351,
+              "id": 1430,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "114:9:7",
@@ -1075,20 +1075,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1363,
+            "id": 1442,
             "name": "BrandFundedCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1362,
+              "id": 1441,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1354,
+                  "id": 1433,
                   "indexed": false,
                   "name": "escrowContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1363,
+                  "scope": 1442,
                   "src": "180:22:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1097,7 +1097,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1353,
+                    "id": 1432,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "180:7:7",
@@ -1111,11 +1111,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1356,
+                  "id": 1435,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1363,
+                  "scope": 1442,
                   "src": "204:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1124,7 +1124,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1355,
+                    "id": 1434,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "204:7:7",
@@ -1138,11 +1138,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1358,
+                  "id": 1437,
                   "indexed": false,
                   "name": "numEscrowContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1363,
+                  "scope": 1442,
                   "src": "219:23:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1151,7 +1151,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1357,
+                    "id": 1436,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "219:4:7",
@@ -1165,11 +1165,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1361,
+                  "id": 1440,
                   "indexed": false,
                   "name": "allEscrowContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1363,
+                  "scope": 1442,
                   "src": "244:28:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1179,7 +1179,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1359,
+                      "id": 1438,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "244:7:7",
@@ -1188,7 +1188,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1360,
+                    "id": 1439,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "244:9:7",
@@ -1207,13 +1207,13 @@
           },
           {
             "body": {
-              "id": 1366,
+              "id": 1445,
               "nodeType": "Block",
               "src": "320:8:7",
               "statements": []
             },
             "documentation": null,
-            "id": 1367,
+            "id": 1446,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1221,19 +1221,19 @@
             "name": "BrandFundedFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1364,
+              "id": 1443,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "310:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1365,
+              "id": 1444,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "320:0:7"
             },
-            "scope": 1416,
+            "scope": 1495,
             "src": "282:46:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1241,37 +1241,37 @@
           },
           {
             "body": {
-              "id": 1405,
+              "id": 1484,
               "nodeType": "Block",
               "src": "448:267:7",
               "statements": [
                 {
                   "assignments": [
-                    1379
+                    1458
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1379,
+                      "id": 1458,
                       "name": "newEscrow",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1406,
+                      "scope": 1485,
                       "src": "459:21:7",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                        "typeIdentifier": "t_contract$_BrandFunded_$1424",
                         "typeString": "contract BrandFunded"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 1378,
+                        "id": 1457,
                         "name": "BrandFunded",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 1345,
+                        "referencedDeclaration": 1424,
                         "src": "459:11:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       },
@@ -1279,7 +1279,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1389,
+                  "id": 1468,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -1287,18 +1287,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1382,
+                          "id": 1461,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1734,
+                          "referencedDeclaration": 1813,
                           "src": "499:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1383,
+                        "id": 1462,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1314,11 +1314,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1384,
+                        "id": 1463,
                         "name": "_sellerAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1369,
+                        "referencedDeclaration": 1448,
                         "src": "511:14:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1327,11 +1327,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1385,
+                        "id": 1464,
                         "name": "_buyerAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1371,
+                        "referencedDeclaration": 1450,
                         "src": "527:13:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1340,11 +1340,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1386,
+                        "id": 1465,
                         "name": "_feePercent",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1373,
+                        "referencedDeclaration": 1452,
                         "src": "542:11:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1353,11 +1353,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1387,
+                        "id": 1466,
                         "name": "_saleItem",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1375,
+                        "referencedDeclaration": 1454,
                         "src": "555:9:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -1388,7 +1388,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 1381,
+                      "id": 1460,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1396,23 +1396,23 @@
                       "nodeType": "NewExpression",
                       "src": "483:15:7",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_address_$_t_address_$_t_uint256_$_t_string_memory_ptr_$returns$_t_contract$_BrandFunded_$1345_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_address_$_t_address_$_t_uint256_$_t_string_memory_ptr_$returns$_t_contract$_BrandFunded_$1424_$",
                         "typeString": "function (address,address,address,uint256,string memory) returns (contract BrandFunded)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 1380,
+                        "id": 1459,
                         "name": "BrandFunded",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 1345,
+                        "referencedDeclaration": 1424,
                         "src": "487:11:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       }
                     },
-                    "id": 1388,
+                    "id": 1467,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1422,7 +1422,7 @@
                     "nodeType": "FunctionCall",
                     "src": "483:82:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                      "typeIdentifier": "t_contract$_BrandFunded_$1424",
                       "typeString": "contract BrandFunded"
                     }
                   },
@@ -1435,14 +1435,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1393,
+                        "id": 1472,
                         "name": "newEscrow",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1379,
+                        "referencedDeclaration": 1458,
                         "src": "597:9:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       }
@@ -1450,24 +1450,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1390,
+                        "id": 1469,
                         "name": "escrowContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1352,
+                        "referencedDeclaration": 1431,
                         "src": "576:15:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 1392,
+                      "id": 1471,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1481,7 +1481,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 1394,
+                    "id": 1473,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1495,7 +1495,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1395,
+                  "id": 1474,
                   "nodeType": "ExpressionStatement",
                   "src": "576:31:7"
                 },
@@ -1505,14 +1505,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1397,
+                        "id": 1476,
                         "name": "newEscrow",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1379,
+                        "referencedDeclaration": 1458,
                         "src": "644:9:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         }
                       },
@@ -1520,18 +1520,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1398,
+                          "id": 1477,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1734,
+                          "referencedDeclaration": 1813,
                           "src": "655:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1399,
+                        "id": 1478,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1549,18 +1549,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1400,
+                          "id": 1479,
                           "name": "escrowContracts",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1352,
+                          "referencedDeclaration": 1431,
                           "src": "667:15:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 1401,
+                        "id": 1480,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -1576,11 +1576,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1402,
+                        "id": 1481,
                         "name": "escrowContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1352,
+                        "referencedDeclaration": 1431,
                         "src": "691:15:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -1591,7 +1591,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_BrandFunded_$1345",
+                          "typeIdentifier": "t_contract$_BrandFunded_$1424",
                           "typeString": "contract BrandFunded"
                         },
                         {
@@ -1607,18 +1607,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 1396,
+                      "id": 1475,
                       "name": "BrandFundedCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1363,
+                      "referencedDeclaration": 1442,
                       "src": "625:18:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 1403,
+                    "id": 1482,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1632,14 +1632,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1404,
+                  "id": 1483,
                   "nodeType": "EmitStatement",
                   "src": "620:87:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 1406,
+            "id": 1485,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1647,15 +1647,15 @@
             "name": "createEscrow",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1376,
+              "id": 1455,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1369,
+                  "id": 1448,
                   "name": "_sellerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1406,
+                  "scope": 1485,
                   "src": "358:22:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1664,7 +1664,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1368,
+                    "id": 1447,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "358:7:7",
@@ -1678,10 +1678,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1371,
+                  "id": 1450,
                   "name": "_buyerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1406,
+                  "scope": 1485,
                   "src": "382:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1690,7 +1690,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1370,
+                    "id": 1449,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "382:7:7",
@@ -1704,10 +1704,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1373,
+                  "id": 1452,
                   "name": "_feePercent",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1406,
+                  "scope": 1485,
                   "src": "405:16:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1716,7 +1716,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1372,
+                    "id": 1451,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "405:4:7",
@@ -1730,10 +1730,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1375,
+                  "id": 1454,
                   "name": "_saleItem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1406,
+                  "scope": 1485,
                   "src": "423:16:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1742,7 +1742,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1374,
+                    "id": 1453,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "423:6:7",
@@ -1759,12 +1759,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1377,
+              "id": 1456,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "448:0:7"
             },
-            "scope": 1416,
+            "scope": 1495,
             "src": "336:379:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1772,33 +1772,33 @@
           },
           {
             "body": {
-              "id": 1414,
+              "id": 1493,
               "nodeType": "Block",
               "src": "789:41:7",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1412,
+                    "id": 1491,
                     "name": "escrowContracts",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1352,
+                    "referencedDeclaration": 1431,
                     "src": "807:15:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 1411,
-                  "id": 1413,
+                  "functionReturnParameters": 1490,
+                  "id": 1492,
                   "nodeType": "Return",
                   "src": "800:22:7"
                 }
               ]
             },
             "documentation": null,
-            "id": 1415,
+            "id": 1494,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1806,22 +1806,22 @@
             "name": "allEscrowContracts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1407,
+              "id": 1486,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "750:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1411,
+              "id": 1490,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1410,
+                  "id": 1489,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1415,
+                  "scope": 1494,
                   "src": "778:9:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1831,7 +1831,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1408,
+                      "id": 1487,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "778:7:7",
@@ -1840,7 +1840,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1409,
+                    "id": 1488,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "778:9:7",
@@ -1855,14 +1855,14 @@
               ],
               "src": "777:11:7"
             },
-            "scope": 1416,
+            "scope": 1495,
             "src": "723:107:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1417,
+        "scope": 1496,
         "src": "79:754:7"
       }
     ],
@@ -1876,10 +1876,10 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xf6d5d1ef4e262c7cf0ec648b6a170954b70c6957",
-      "transactionHash": "0xdd4cadc0125f7956048b8a49fa80c669d2f09dc8aa7c83830567e97af1fab547"
+      "address": "0x4ecd566058ee1909c9b0527311075f3825232109",
+      "transactionHash": "0x90a6105687db79a1da49c022eb50d9cb8a4880f95be527fb6aa91ab549d26ff2"
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-18T22:13:31.825Z"
+  "updatedAt": "2018-05-19T23:37:09.545Z"
 }

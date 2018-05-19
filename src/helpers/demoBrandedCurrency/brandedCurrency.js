@@ -146,7 +146,49 @@ export default {
     })
     .on('error', function (error) {
       store.dispatch('newNotification', {
-        title: 'Transaction Failed - Funds were not deposited',
+        title: 'Transaction Failed - Buy Order did not complete',
+        text: error,
+        type: 'error'
+      })
+      console.log(error)
+    })
+  },
+
+  sellOrder (payload) {
+    console.log('sellOrder', payload)
+    let contractAddress = payload.contractAddress
+    let amount = Number(payload.amount)
+    let exchangeRateToEth = payload.exchangeRateToEth
+    let value = Number(exchangeRateToEth * amount).toString()
+    console.log('value', value)
+    console.log('amount', amount)
+    let from = payload.from
+    let contract = ContractsHelper.getContractFromAddress(store.state.eip20Contracts, contractAddress)
+    contract.methods.sellOrder(amount, window.web3.utils.toWei(value, 'ether')).send({
+      from: from,
+      gas: 3000000
+    })
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Selling Currency - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
+      console.log('TransactionHash: ', hash)
+    })
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed - Sell Order did not complete',
         text: error,
         type: 'error'
       })
