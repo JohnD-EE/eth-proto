@@ -1,5 +1,6 @@
 <template>
-<v-container fluid>
+<v-container fluid class="mb-5">
+
   <v-layout row wrap>
     <v-flex xs12 sm8 offset-sm2>
       <v-card>
@@ -19,34 +20,44 @@
             </v-layout>
           </v-container>
         </v-card-media>
+
+        <v-card-text class="grey lighten-4">
+          <v-flex xs12>
+            <h3>Description:</h3>
+          <p>Create a points based loaylty system, or a real cryptocurency for whatever purpose you choose, fully controlled by Smart Contracts</p>
+        </v-flex>
+          <template>
+
+              <v-layout row wrap>
+                <v-flex xs12 md8 class="mb-3">
+                  <v-expansion-panel popout>
+                    <v-expansion-panel-content v-for="(item,i) in storyItems" :key="i">
+                      <div slot="header">{{ item.header }}</div>
+                      <v-card class="grey lighten-3">
+                        <v-card-text>
+                          <Ul class="ml-4" style="list-style-type:disc">
+                            <li v-for="(listItem,l) in item.descriptions" :key="l">
+                              {{ listItem }}
+                            </li>
+                          </ul>
+                        </v-card-text>
+                      </v-card>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-flex>
+                <v-flex xs12 md4 class="text-md-right">
+                    <v-tooltip v-for="(item,i) in qualities" :key="i" bottom min-width="100px">
+                  <v-chip small color="orange" text-color="white" slot="activator">
+                    {{ item.quality }}
+                  </v-chip>
+                    <span>{{ item.description }}</span>
+                  </v-tooltip>
+                </v-flex>
+              </v-layout>
+          </template>
+        </v-card-text>
+
         <v-container fluid>
-          <v-card-text>
-            <h3>As a Retailer:</h3>
-              <ul class="py-2 ml-5">
-                <li>I can create multiple Branded Currencies (token) and configure the monetary policy (Supply, liquidity, exchange mechanism)</li>
-                <li>I can reward customers with payments in the Branded Currency</li>
-                <li>I can process POS payments in the Branded Currency</li>
-                <li>I can create promotions (Vouchers / Coupons) for specific products using discounts, or rewards</li>
-                <li>I can run an in-house Staff Rewards programme, using a Branded Currency</li>
-                <li>I can spin up multiple currencies to support many promotions (e.g. a Xmas coin)</li>
-              </ul>
-            <h3>As a Retailer, Customer, Brand, or Partner:</h3>
-            <ul class="py-2 ml-5">
-              <li>I can exchange ETH for the Branded Currency at a given exchange rate (In real world, customers exchange with £s and $s)</li>
-              <li>I can see my currency exchanges in my transction history</li>
-              <li>I can see my transactions and balances of the Branded Currency</li>
-            </ul>
-            <h3>As a Customer:</h3>
-            <ul class="py-2 ml-5">
-              <li>I can pay with Branded Currency at the checkout (POS)</li>
-              <li>I can collect promotions, and have them applied by my wallet at the POS</li>
-              <li>I can send accrued Branded Currency to other users (friends/family)</li>
-            </ul>
-            <h3>As a Brand:</h3>
-            <ul class="py-2 ml-5">
-              <li>I can fund a promotion, placing funds into Escrow custody, released to a Retailer/Agents upon reaching agreed sales volumes</li>
-            </ul>
-          </v-card-text>
           <v-card-text>
             <v-container>
               <v-layout row wrap>
@@ -60,6 +71,7 @@
             </v-container>
           </v-card-text>
         </v-container>
+
       </v-card>
     </v-flex>
   </v-layout>
@@ -74,7 +86,60 @@ import ViewCurrencies from './ViewCurrencies.vue'
 export default {
   data () {
     return {
-      //
+      storyItems: [{
+        header: 'As a Retailer:',
+        descriptions: [
+          'I can create multiple Branded Currencies (token) and configure the monetary policy (Supply, liquidity, exchange mechanism)',
+          'I can reward customers with payments in the Branded Currency',
+          'I can process POS payments in the Branded Currency',
+          'I can create promotions (Vouchers / Coupons) for specific products using discounts, or rewards',
+          'I can run an in-house Staff Rewards programme, using a Branded Currency',
+          'I can spin up multiple currencies to support many promotions (e.g. a Xmas coin)'
+        ]
+      },
+      {
+        header: 'As a Retailer, Customer, Brand, or Partner:',
+        descriptions: [
+          'I can exchange ETH for the Branded Currency at a given exchange rate (In real world, customers exchange with £s and $s)',
+          'I can see my currency exchanges in my transction history',
+          'I can see my transactions and balances of the Branded Currency'
+        ]
+      },
+      {
+        header: 'As a Customer:',
+        descriptions: [
+          'I can pay with Branded Currency at the checkout (POS)',
+          'I can collect promotions, and have them applied by my wallet at the POS',
+          'I can send accrued Branded Currency to other users (friends/family)'
+        ]
+      },
+      {
+        header: 'As a Brand:',
+        descriptions: [
+          'I can fund a promotion, placing funds into Escrow custody, released to a Retailer/Agents upon reaching agreed sales volumes'
+        ]
+      }],
+      qualities: [{
+        quality: 'Secure',
+        description: 'A distributed ledger stores all balances, no single point of failure'
+      },
+      {
+        quality: 'Fraud Proof',
+        description: 'Historical transactions, once written to the blockchain, are tamper proof'
+      },
+      {
+        quality: 'Traceable',
+        description: 'A timestamped audit trail of all transactions'
+      },
+      {
+        quality: 'Programmable',
+        description: 'Prgrammable money, flexible, configurable to your needs'
+      },
+      {
+        quality: 'Cost Efficient Transactions',
+        description: '3rd party payments services and banks are not required, pass savings onto customers'
+      }
+      ]
     }
   },
   components: {

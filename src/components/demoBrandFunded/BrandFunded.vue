@@ -1,5 +1,5 @@
 <template>
-<v-container fluid>
+<v-container fluid class="mb-5">
   <v-layout row wrap>
     <v-flex xs12 sm8 offset-sm2>
       <v-card>
@@ -19,27 +19,35 @@
             </v-layout>
           </v-container>
         </v-card-media>
-        <v-container fluid>
-          <v-card-text>
-            <p>Place <em>Brand</em> promotional funds into the custody of a smart contract which are released to the <em>Retailer</em> when the agreed amount of product is sold.</p>
-            <h3>As a Promotions Agent:</h3>
-              <ul class="py-2 ml-5">
-                <li>I can create a 'Brand Funded' contract between a <em>Brand</em> and a <em>Retailer</em></li>
-                <li>I can specify a fee, as a percentage of the transaction value, for my services</li>
-              </ul>
-            <h3>As a Retailer:</h3>
-            <ul class="py-2 ml-5">
-              <li>I can confirm that I have sold the required amount of product by approving the deal</li>
-              <li>I can void the contract</li>
-              <li>I receive payment once the <em>Brand</em> and <em>Retailer</em> have approved the deal</li>
-            </ul>
-            <h3>As a Brand:</h3>
-            <ul class="py-2 ml-5">
-              <li>I can deposit funds into the custody of the contract to sponsor a promotion</li>
-              <li>I can confirm that the <em>Retailer</em> has sold the required amount by approving the deal</li>
-              <li>I can void the contract and have my funds refunded</li>
-            </ul>
-          </v-card-text>
+
+        <v-card-text class="grey lighten-4">
+          <v-flex xs12>
+            <h3>Description:</h3>
+            <p>Place <em>Brand</em> promotional funds into the custody of a Smart Contract which are released to the <em>Retailer</em> when the agreed amount of product is sold.</p>
+          </v-flex>
+
+          <template>
+              <v-layout row wrap>
+                <v-flex xs12>
+                  <v-expansion-panel popout>
+                    <v-expansion-panel-content v-for="(item,i) in storyItems" :key="i">
+                      <div slot="header">{{ item.header }}</div>
+                      <v-card class="grey lighten-3">
+                        <v-card-text>
+                          <Ul class="ml-4" style="list-style-type:disc">
+                            <li v-for="(listItem,l) in item.descriptions" :key="l">
+                              {{ listItem }}
+                            </li>
+                          </ul>
+                        </v-card-text>
+                      </v-card>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-flex>
+              </v-layout>
+          </template>
+        </v-card-text>
+
           <v-card-text>
             <v-container>
               <v-layout row wrap>
@@ -52,7 +60,7 @@
               </v-layout>
             </v-container>
           </v-card-text>
-        </v-container>
+
       </v-card>
     </v-flex>
   </v-layout>
@@ -67,7 +75,30 @@ import ViewBrandFunded from './ViewBrandFunded.vue'
 export default {
   data () {
     return {
-      //
+      storyItems: [{
+        header: 'As a Promotions Agent:',
+        descriptions: [
+          'I can create a \'Brand Funded\' contract between a Brand and a Retailer',
+          'I can specify a fee, as a percentage of the transaction value, for my services'
+        ]
+      },
+      {
+        header: 'As a Retailer:',
+        descriptions: [
+          'I can confirm that I have sold the required amount of product by approving the deal',
+          'I can void the contract',
+          'I receive payment once the Brand and Retailer have approved the deal'
+        ]
+      },
+      {
+        header: 'As a Brand:',
+        descriptions: [
+          'I can deposit funds into the custody of the contract to sponsor a promotion',
+          'I can confirm that the Retailer has sold the required amount by approving the deal',
+          'I can void the contract and have my funds refunded'
+        ]
+      }
+      ]
     }
   },
   components: {

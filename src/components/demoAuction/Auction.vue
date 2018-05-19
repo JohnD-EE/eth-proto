@@ -1,5 +1,5 @@
 <template>
-<v-container fluid>
+<v-container fluid class="mb-5">
   <v-layout row wrap>
     <v-flex xs12 sm8 offset-sm2>
       <v-card>
@@ -21,21 +21,36 @@
             </v-layout>
           </v-container>
         </v-card-media>
-        <v-container fluid>
-          <v-card-text>
-            <h3>As an Auction Host:</h3>
-              <ul class="py-2 ml-5">
-                <li>I can create an auction for a specified item</li>
-                <li>I can specify the auction start and end dates/times</li>
-                <li>I can receive funds from the highest bidder when the Auction ends</li>
-                <li>I can cancel the Auction at any time prior to the specified end date</li>
-              </ul>
-            <h3>As an Auction Bidder:</h3>
-            <ul class="py-2 ml-5">
-              <li>I can place bids on an item</li>
-              <li>I can withdraw any unused funds when the auction is over</li>
-            </ul>
-          </v-card-text>
+
+        <v-card-text class="grey lighten-4">
+          <v-flex xs12>
+            <h3>Description:</h3>
+            <p>An auction, fully controlled by Smart Contracts</p>
+          </v-flex>
+
+
+          <template>
+              <v-layout row wrap>
+                <v-flex xs12>
+                  <v-expansion-panel popout>
+                    <v-expansion-panel-content v-for="(item,i) in storyItems" :key="i">
+                      <div slot="header">{{ item.header }}</div>
+                      <v-card class="grey lighten-3">
+                        <v-card-text>
+                          <Ul class="ml-4" style="list-style-type:disc">
+                            <li v-for="(listItem,l) in item.descriptions" :key="l">
+                              {{ listItem }}
+                            </li>
+                          </ul>
+                        </v-card-text>
+                      </v-card>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-flex>
+              </v-layout>
+          </template>
+        </v-card-text>
+
           <v-card-text>
             <v-container>
               <v-layout row wrap>
@@ -48,7 +63,7 @@
               </v-layout>
             </v-container>
           </v-card-text>
-        </v-container>
+
       </v-card>
     </v-flex>
   </v-layout>
@@ -63,7 +78,23 @@ import ViewAuctions from './ViewAuctions.vue'
 export default {
   data () {
     return {
-      //
+      storyItems: [{
+        header: 'As an Auction Host:',
+        descriptions: [
+          'I can create an auction for a specified item',
+          'I can specify the auction start and end dates/times',
+          'I can receive funds from the highest bidder when the Auction ends',
+          'I can cancel the Auction at any time prior to the specified end date'
+        ]
+      },
+      {
+        header: 'As an Auction Bidder:',
+        descriptions: [
+          'I can place bids on an item',
+          'I can withdraw any unused funds when the auction is over'
+        ]
+      }
+      ]
     }
   },
   components: {

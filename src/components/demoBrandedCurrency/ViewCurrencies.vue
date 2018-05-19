@@ -172,19 +172,19 @@ export default {
     // items: function (val) {
       // console.log('changes', val)
      // }
-   },
+  },
   methods: {
-    calculateBuyValue(exchangeRateToEth) {
+    calculateBuyValue (exchangeRateToEth) {
       let eth = 0
       let buyAmount = this.buyAmount
       eth = (buyAmount * exchangeRateToEth).toFixed(8)
-      return "Cost: " + eth + " ETH"
+      return 'Cost: ' + eth + ' ETH'
     },
-    calculateSellValue(exchangeRateToEth) {
+    calculateSellValue (exchangeRateToEth) {
       let eth = 0
       let sellAmount = this.sellAmount
       eth = (sellAmount * exchangeRateToEth).toFixed(8)
-      return "Value: " + eth + " ETH"
+      return 'Value: ' + eth + ' ETH'
     },
     clickClose () {
       this.dialog = false
