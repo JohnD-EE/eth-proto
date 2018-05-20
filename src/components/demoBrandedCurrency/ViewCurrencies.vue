@@ -75,7 +75,7 @@
                                         name="sell-amount"
                                         label="Sell Amount"
                                         v-model="sellAmount"
-                                        :rules="sellAmountRules"
+                                        :rules="sellAmountRules(props.item.userBalance, props.item.symbol)"
                                         :suffix="calculateSellValue(props.item.exchangeRateToEth)"
                                         >
                                         </v-text-field>
@@ -126,9 +126,13 @@ export default {
     return {
       exchangeDialog: false,
       buyAmount: '',
-      buyAmountRules: [],
+      buyAmountRules: [
+        v => !!v || 'Amount is required',
+        v => (!isNaN(parseInt(v)) && isFinite(v) && v > 0) || 'Amount must be a valid integer number larger than zero',
+        v => v <= this.balanceToEther || 'Insufficent funds'
+      ],
       sellAmount: '',
-      sellAmountRules: [],
+
       exchangeValid: true,
       exchangeMode: 'buy',
       rules: false,
@@ -174,6 +178,13 @@ export default {
      // }
   },
   methods: {
+    sellAmountRules(userBalance, symbol) {
+      return [
+      v => !!v || 'Amount is required',
+      v => (!isNaN(parseInt(v)) && isFinite(v) && v > 0) || 'Amount must be a valid integer number larger than zero',
+      v => v <= userBalance || 'Insufficent currency funds, you hold ' + userBalance + ' ' + symbol
+    ]
+  },
     calculateBuyValue (exchangeRateToEth) {
       let eth = 0
       let buyAmount = this.buyAmount
@@ -199,16 +210,18 @@ export default {
     },
     exchangeSubmitBuy (contractAddress, exchangeRateToEth) {
       console.log('Buy Currency')
-      let buyOrderPayload = {
-        contractAddress: contractAddress,
-        amount: this.buyAmount,
-        exchangeRateToEth: exchangeRateToEth,
-        from: this.userDetails.ethAccount
+      if (this.$refs.form.validate()) {
+        let buyOrderPayload = {
+          contractAddress: contractAddress,
+          amount: this.buyAmount,
+          exchangeRateToEth: exchangeRateToEth,
+          from: this.userDetails.ethAccount
+        }
+        brandedCurrencyHelper.buyOrder(buyOrderPayload)
+        this.exchangeDialog = false
+        this.exchangeMode = 'buy'
+        this.clear()
       }
-      brandedCurrencyHelper.buyOrder(buyOrderPayload)
-      this.exchangeDialog = false
-      this.exchangeMode = 'buy'
-      this.clear()
     },
     exchangeSubmitSell (contractAddress, exchangeRateToEth) {
       console.log('Sell Currency')
