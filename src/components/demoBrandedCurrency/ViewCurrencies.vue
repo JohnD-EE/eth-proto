@@ -132,7 +132,6 @@ export default {
         v => v <= this.balanceToEther || 'Insufficent funds'
       ],
       sellAmount: '',
-
       exchangeValid: true,
       exchangeMode: 'buy',
       rules: false,

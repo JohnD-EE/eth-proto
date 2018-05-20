@@ -21,8 +21,27 @@
         </v-card-media>
         <v-container fluid>
           <v-card-text>
+
+            <p class="text-xs-center"><strong>Account:</strong> {{ userDetails.ethAccount || '' }}</p>
+
+            <template>
+              <v-data-table
+              :headers="headers"
+              :items="currencies"
+              hide-actions
+              class="elevation-1"
+              >
+                <template slot="items" slot-scope="props">
+                  <td>{{ props.item.currency }}</td>
+                  <td class="text-xs-center">{{ props.item.balance }}</td>
+                  <td class="text-xs-center">{{ props.item.eth }}</td>
+                  <td class="text-xs-center">{{ props.item.gbp }}</td>
+                </template>
+              </v-data-table>
+            </template>
+
             <span>
-              <p class="text-xs-center"><strong>Account:</strong> {{ userDetails.ethAccount || '' }}</p>
+
                 <h3 class="text-xs-center">Balance:
                   <span v-show="fetchingBalance">
                     <v-progress-circular indeterminate :size="16" color="green"></v-progress-circular>
@@ -61,8 +80,15 @@ export default {
     return {
       balance: null,
       fetchingEthAccount: true,
-      fetchingBalance: false
-    }
+      fetchingBalance: false,
+      headers: [
+          { text: 'Currency', align: 'left', sortable: false, value: 'currency' },
+          { text: 'Balance', align: 'center', sortable: false, value: 'balance' },
+          { text: 'Eth', align: 'center', sortable: false, value: 'eth' },
+          { text: 'GBP', align: 'center', sortable: false, value: 'gbp' }
+        ]
+
+      }
   },
   components: {
     'app-transaction-send': TransactionSend,
@@ -80,6 +106,36 @@ export default {
     },
     currency () {
       return this.$store.state.currency
+    },
+    currencies () {
+      let allCurrencies = []
+      allCurrencies.push(
+        {
+          value: false,
+          currency: 'Ether',
+          balance: this.balanceToEther,
+          eth: this.balanceToEther,
+          gbp: "To do"
+        }
+      )
+
+      let eip20Currencies = this.$store.getters.allEIP20Contracts
+      console.log("eip20Currencies", eip20Currencies)
+      eip20Currencies.forEach(res => {
+        let eth = 0
+        eth = (res.userBalance * res.exchangeRateToEth).toFixed(8)
+        allCurrencies.push(
+          {
+            value: false,
+            currency: res.name + '(' + res.symbol + ')',
+            balance: res.userBalance,
+            eth: eth,
+            gbp: "To do"
+          }
+        )
+      })
+
+      return allCurrencies
     },
     profileImage () {
       let path = '../../static/profile/'

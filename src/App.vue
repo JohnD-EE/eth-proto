@@ -268,6 +268,7 @@ export default {
           this.$store.dispatch('resetBrandFundedContracts')
           break
         case '/branded-currency':
+        case '/wallet':
           this.$store.dispatch('resetEIP20Contracts')
           break
         default:
@@ -288,6 +289,9 @@ export default {
           brandFundedHelper.updateEscrowData()
         }
         if (this.$route.path === '/branded-currency') {
+          brandedCurrencyHelper.updateEIP20Data()
+        }
+        if (this.$route.path === '/wallet') {
           brandedCurrencyHelper.updateEIP20Data()
         }
         this.$store.dispatch('userTxs')
