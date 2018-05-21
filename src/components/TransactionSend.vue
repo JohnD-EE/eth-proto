@@ -1,8 +1,8 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="dialog" :fullscreen="fullScreen" transition="dialog-bottom-transition" :overlay="false">
-      <v-btn color="success" dark slot="activator" @click="clickSend">
-        <v-icon left>add</v-icon>New Transaction
+      <v-btn icon flat color="success" class="mx-0" slot="activator" @click="clickSend">
+        <v-icon>add</v-icon>
       </v-btn>
       <v-card>
         <v-toolbar dark color="success" @click.native="clickClose">

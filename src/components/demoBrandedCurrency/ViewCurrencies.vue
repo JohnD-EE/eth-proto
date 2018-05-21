@@ -177,13 +177,13 @@ export default {
      // }
   },
   methods: {
-    sellAmountRules(userBalance, symbol) {
+    sellAmountRules (userBalance, symbol) {
       return [
-      v => !!v || 'Amount is required',
-      v => (!isNaN(parseInt(v)) && isFinite(v) && v > 0) || 'Amount must be a valid integer number larger than zero',
-      v => v <= userBalance || 'Insufficent currency funds, you hold ' + userBalance + ' ' + symbol
-    ]
-  },
+        v => !!v || 'Amount is required',
+        v => (!isNaN(parseInt(v)) && isFinite(v) && v > 0) || 'Amount must be a valid integer number larger than zero',
+        v => v <= userBalance || 'Insufficent currency funds, you hold ' + userBalance + ' ' + symbol
+      ]
+    },
     calculateBuyValue (exchangeRateToEth) {
       let eth = 0
       let buyAmount = this.buyAmount

@@ -1,8 +1,8 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="dialog" :fullscreen="fullScreen" transition="dialog-bottom-transition" :overlay="false">
-      <v-btn color="info" dark slot="activator" @click.native="viewTxs">
-        <v-icon left>receipt</v-icon>View Transactions
+      <v-btn icon flat color="info" class="mx-0" slot="activator" @click.native="viewTxs">
+        <v-icon>receipt</v-icon>
       </v-btn>
       <v-card>
         <v-toolbar dark color="info" @click.native="clickClose">
@@ -11,9 +11,7 @@
           </v-btn>
           <v-toolbar-title>View Transactions</v-toolbar-title>
         </v-toolbar>
-
         <app-transactions-list></app-transactions-list>
-
       </v-card>
     </v-dialog>
   </v-layout>

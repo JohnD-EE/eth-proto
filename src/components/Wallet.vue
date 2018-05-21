@@ -1,7 +1,7 @@
 <template>
 <v-container fluid>
   <v-layout row wrap>
-    <v-flex xs12 sm8 md6 offset-sm2 offset-md3>
+    <v-flex xs12 sm12 md8 offset-md2>
       <v-card>
         <v-card-media class="primary lighten-2 white--text" height="120px">
           <v-container fill-height fluid>
@@ -29,40 +29,22 @@
               :headers="headers"
               :items="currencies"
               hide-actions
+              :loading="fetchingBalance"
               class="elevation-1"
               >
+              <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
                 <template slot="items" slot-scope="props">
                   <td>{{ props.item.currency }}</td>
                   <td class="text-xs-center">{{ props.item.balance }}</td>
                   <td class="text-xs-center">{{ props.item.eth }}</td>
                   <td class="text-xs-center">{{ props.item.gbp }}</td>
+                  <td class="justify-center layout px-0">
+                    <app-transaction-send></app-transaction-send>
+                    <app-transactions-view></app-transactions-view>
+                  </td>
                 </template>
               </v-data-table>
             </template>
-
-            <span>
-
-                <h3 class="text-xs-center">Balance:
-                  <span v-show="fetchingBalance">
-                    <v-progress-circular indeterminate :size="16" color="green"></v-progress-circular>
-                  </span>
-                  <span v-show="!fetchingBalance">
-                    <strong>{{ balanceToEther }} {{ currency.symbol }}</strong>
-                  </span>
-                </h3>
-            </span>
-          </v-card-text>
-          <v-card-text>
-            <v-container>
-              <v-layout row wrap>
-                <v-flex sm12 md6 align-end flexbox>
-                  <app-transaction-send></app-transaction-send>
-                </v-flex>
-                <v-flex sm12 md6 align-end flexbox>
-                  <app-transactions-view></app-transactions-view>
-                </v-flex>
-              </v-layout>
-            </v-container>
           </v-card-text>
         </v-container>
       </v-card>
@@ -75,20 +57,23 @@
 import { mapGetters } from 'vuex'
 import TransactionSend from './TransactionSend.vue'
 import TransactionsView from './TransactionsView.vue'
+import brandedCurrencyHelper from './../helpers/demoBrandedCurrency/brandedCurrency'
+
 export default {
   data () {
     return {
       balance: null,
       fetchingEthAccount: true,
       fetchingBalance: false,
-      headers: [
-          { text: 'Currency', align: 'left', sortable: false, value: 'currency' },
-          { text: 'Balance', align: 'center', sortable: false, value: 'balance' },
-          { text: 'Eth', align: 'center', sortable: false, value: 'eth' },
-          { text: 'GBP', align: 'center', sortable: false, value: 'gbp' }
-        ]
-
-      }
+      headers:
+      [
+        { text: 'Currency', align: 'left', sortable: false, value: 'currency' },
+        { text: 'Balance', align: 'center', sortable: false, value: 'balance' },
+        { text: 'Eth', align: 'center', sortable: false, value: 'eth' },
+        { text: 'GBP', align: 'center', sortable: false, value: 'gbp' },
+        { text: 'Actions', align: 'center', sortable: false, value: 'actions' }
+      ]
+    }
   },
   components: {
     'app-transaction-send': TransactionSend,
@@ -112,29 +97,31 @@ export default {
       allCurrencies.push(
         {
           value: false,
-          currency: 'Ether',
+          currency: 'Ether (ETH)',
           balance: this.balanceToEther,
           eth: this.balanceToEther,
-          gbp: "To do"
-        }
-      )
-
+          gbp: 'To do',
+          actions: ''
+        })
       let eip20Currencies = this.$store.getters.allEIP20Contracts
-      console.log("eip20Currencies", eip20Currencies)
       eip20Currencies.forEach(res => {
         let eth = 0
-        eth = (res.userBalance * res.exchangeRateToEth).toFixed(8)
+        eth = Number((res.userBalance * res.exchangeRateToEth).toFixed(8))
+        let balance = res.userBalance
+        if (res.isPointsOnly) {
+          balance += ' Points'
+        }
         allCurrencies.push(
           {
             value: false,
-            currency: res.name + '(' + res.symbol + ')',
-            balance: res.userBalance,
-            eth: eth,
-            gbp: "To do"
+            currency: res.name + ' (' + res.symbol + ')',
+            balance: balance,
+            eth: res.isPointsOnly ? 'N/A' : eth,
+            gbp: res.isPointsOnly ? 'N/A' : 'To do',
+            actions: ''
           }
         )
       })
-
       return allCurrencies
     },
     profileImage () {
@@ -164,13 +151,17 @@ export default {
   methods: {
     balanceUpdated () {
       this.fetchingBalance = false
+      brandedCurrencyHelper.updateEIP20Data()
     },
     checkBalance () {
       this.$store.dispatch('updateAccount')
     }
   },
   mounted: function () {
+    this.fetchingBalance = true
+    setTimeout(this.balanceUpdated, 1600)
     this.checkBalance()
+    brandedCurrencyHelper.updateEIP20Data()
   }
 }
 </script>
