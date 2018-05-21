@@ -43,5 +43,9 @@ export default {
   brandFundedContracts: [],
   eip20Contracts: [],
   notificationsQueue: [],
-  userOpportunities: []
+  userOpportunities: [],
+  currencyConversionRates: {
+    ethusd: '700',
+    ethgbp: '523'
+  }
 }

@@ -71,6 +71,9 @@ export default {
   userOpportunities: state => {
     return state.userOpportunities
   },
+  currencyConverter: (state) => (inputValue, conversionKey) => {
+    return (Number(state.currencyConversionRates[conversionKey]) * Number(inputValue)).toString()
+  },
   allAuctionContracts: state => {
     let auctionItems = []
     let allUsersByEthAccount = helperUsers.getUsersByAddress()

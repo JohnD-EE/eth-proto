@@ -58,6 +58,7 @@ import TransactionSend from './TransactionSend.vue'
 import TransactionsView from './TransactionsView.vue'
 import brandedCurrencyHelper from './../helpers/demoBrandedCurrency/brandedCurrency'
 import EthereumQRPlugin from 'ethereum-qr-code'
+import Axios from 'axios'
 
 export default {
   data () {
@@ -101,7 +102,7 @@ export default {
           currency: 'Ether (ETH)',
           balance: this.balanceToEther,
           eth: this.balanceToEther,
-          gbp: 'To do',
+          gbp: this.convert(this.balanceToEther, 'ethgbp'),
           actions: ''
         })
       let eip20Currencies = this.$store.getters.allEIP20Contracts
@@ -118,7 +119,7 @@ export default {
             currency: res.name + ' (' + res.symbol + ')',
             balance: balance,
             eth: res.isPointsOnly ? 'N/A' : eth,
-            gbp: res.isPointsOnly ? 'N/A' : 'To do',
+            gbp: res.isPointsOnly ? 'N/A' : this.convert(eth, 'ethgbp'),
             actions: ''
           }
         )
@@ -149,6 +150,31 @@ export default {
     }
   },
   methods: {
+    convert (eth, conversionKey) {
+      return this.$store.getters.currencyConverter(eth, conversionKey)
+    },
+    getEthereumPrice (source = 'local') {
+      if (source === 'local') {
+        return false
+      }
+      Axios.get('https://api.coinmarketcap.com/v2/ticker/1027', {
+        headers: {'Access-Control-Allow-Origin': '*'},
+        params: {
+          convert: 'GBP'
+        }
+      })
+      .then(function (response) {
+        console.log('Ethereum Price', response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+      /* Axios call doesn't work when calling from localhost due to CORS problem
+      CROSS ORIGIN RESOURCE SHARING.  Solutions from this post
+      https://github.com/axios/axios/issues/853 suggest either having a proxy
+      server or altering the webpack config.  In the meantime I will user a state
+      variable to approxiate the Ethereum price. */
+    },
     createQRCode () {
       if (this.userDetails.ethAccount && !this.qrCodeRendered) {
         const qr = new EthereumQRPlugin()
@@ -156,7 +182,7 @@ export default {
           to: this.userDetails.ethAccount
         }
         const configDetails = {
-          size:180,
+          size: 180,
           selector: '#ethereum-qr-code',
           options: {
             margin: 2
@@ -180,6 +206,7 @@ export default {
     setTimeout(this.balanceUpdated, 1600)
     this.checkBalance()
     brandedCurrencyHelper.updateEIP20Data()
+    this.getEthereumPrice()
   }
 }
 </script>
