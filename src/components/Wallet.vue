@@ -1,5 +1,5 @@
 <template>
-<v-container fluid>
+<v-container fluid class="mb-5">
   <v-layout row wrap>
     <v-flex xs12 sm12 md8 offset-md2>
       <v-card>
@@ -21,9 +21,8 @@
         </v-card-media>
         <v-container fluid>
           <v-card-text>
-
+            <div id="ethereum-qr-code" class="text-xs-center"><canvas height="205" width="205" style="width: 180px;" class="blue-grey lighten-2"></canvas></div>
             <p class="text-xs-center"><strong>Account:</strong> {{ userDetails.ethAccount || '' }}</p>
-
             <template>
               <v-data-table
               :headers="headers"
@@ -58,6 +57,7 @@ import { mapGetters } from 'vuex'
 import TransactionSend from './TransactionSend.vue'
 import TransactionsView from './TransactionsView.vue'
 import brandedCurrencyHelper from './../helpers/demoBrandedCurrency/brandedCurrency'
+import EthereumQRPlugin from 'ethereum-qr-code'
 
 export default {
   data () {
@@ -65,6 +65,7 @@ export default {
       balance: null,
       fetchingEthAccount: true,
       fetchingBalance: false,
+      qrCodeRendered: false,
       headers:
       [
         { text: 'Currency', align: 'left', sortable: false, value: 'currency' },
@@ -129,7 +130,6 @@ export default {
       let filename = this.$store.state.user.displayName
       filename = filename.split(' ').join('')
       let fileType = '.jpg'
-      console.log(path + filename + fileType)
       return path + filename + fileType
     }
   },
@@ -149,9 +149,27 @@ export default {
     }
   },
   methods: {
+    createQRCode () {
+      if (this.userDetails.ethAccount && !this.qrCodeRendered) {
+        const qr = new EthereumQRPlugin()
+        const sendDetails = {
+          to: this.userDetails.ethAccount
+        }
+        const configDetails = {
+          size:180,
+          selector: '#ethereum-qr-code',
+          options: {
+            margin: 2
+          }
+        }
+        qr.toCanvas(sendDetails, configDetails)
+        this.qrCodeRendered = true
+      }
+    },
     balanceUpdated () {
       this.fetchingBalance = false
       brandedCurrencyHelper.updateEIP20Data()
+      this.createQRCode()
     },
     checkBalance () {
       this.$store.dispatch('updateAccount')
