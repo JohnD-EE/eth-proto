@@ -38,7 +38,22 @@
                   <td class="text-xs-center">{{ props.item.eth }}</td>
                   <td class="text-xs-center">{{ props.item.gbp }}</td>
                   <td class="justify-center layout px-0">
-                    <app-transaction-send></app-transaction-send>
+                    <app-transaction-send
+                    :parentCurrency="props.item.currency"
+                    :contractAddress="props.item.contractAddress"
+                    :isToken="props.item.isToken"
+                    :tokenBalance="props.item.balance"
+                    :tokenSymbol="props.item.symbol"
+                     v-if="props.item.isTransferable"
+                    ></app-transaction-send>
+                    <div v-else>
+                      <v-tooltip bottom>
+                        <v-btn icon flat color="grey" class="mx-0" slot="activator" @click="">
+                          <v-icon>swap_horiz</v-icon>
+                        </v-btn>
+                        <span>Non-Transferable</span>
+                      </v-tooltip>
+                    </div>
                     <app-transactions-view></app-transactions-view>
                   </td>
                 </template>
@@ -58,6 +73,7 @@ import TransactionSend from './TransactionSend.vue'
 import TransactionsView from './TransactionsView.vue'
 import brandedCurrencyHelper from './../helpers/demoBrandedCurrency/brandedCurrency'
 import EthereumQRPlugin from 'ethereum-qr-code'
+import Utils from './../helpers/utils'
 import Axios from 'axios'
 
 export default {
@@ -102,8 +118,12 @@ export default {
           currency: 'Ether (ETH)',
           balance: this.balanceToEther,
           eth: this.balanceToEther,
-          gbp: this.convert(this.balanceToEther, 'ethgbp'),
-          actions: ''
+          gbp: '£' + Utils.currencyFormat(this.convert(this.balanceToEther, 'ethgbp')),
+          actions: '',
+          isToken: false,
+          isTransferable: true,
+          contractAddress: null,
+          symbol: 'ETH'
         })
       let eip20Currencies = this.$store.getters.allEIP20Contracts
       eip20Currencies.forEach(res => {
@@ -119,8 +139,12 @@ export default {
             currency: res.name + ' (' + res.symbol + ')',
             balance: balance,
             eth: res.isPointsOnly ? 'N/A' : eth,
-            gbp: res.isPointsOnly ? 'N/A' : this.convert(eth, 'ethgbp'),
-            actions: ''
+            gbp: res.isPointsOnly ? 'N/A' : '£' + Utils.currencyFormat(this.convert(eth, 'ethgbp')),
+            actions: '',
+            isToken: true,
+            isTransferable: res.isTransferable,
+            contractAddress: res.contractAddress,
+            symbol: res.symbol
           }
         )
       })

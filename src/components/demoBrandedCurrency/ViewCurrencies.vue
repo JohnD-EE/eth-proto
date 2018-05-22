@@ -178,6 +178,9 @@ export default {
   },
   methods: {
     sellAmountRules (userBalance, symbol) {
+      if (this.exchangeMode === 'buy') {
+        return []
+      }
       return [
         v => !!v || 'Amount is required',
         v => (!isNaN(parseInt(v)) && isFinite(v) && v > 0) || 'Amount must be a valid integer number larger than zero',

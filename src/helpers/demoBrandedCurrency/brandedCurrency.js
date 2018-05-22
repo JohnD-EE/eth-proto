@@ -8,7 +8,7 @@ export default {
     console.log('Creating Currency: ', payload)
     const e = payload
     const EIP20Factory = store.state.contracts['EIP20Factory']
-    EIP20Factory.methods.createEIP20(e.initialSupply, e.currencyName, e.decimals, e.currencySymbol, e.exchangeRateToEth, e.isPointsOnly, e.owner)
+    EIP20Factory.methods.createEIP20(e.initialSupply, e.currencyName, e.decimals, e.currencySymbol, e.exchangeRateToEth, e.isPointsOnly, e.owner, e.isTransferable)
     .send({from: e.owner, gas: 3000000})
     .on('transactionHash', function (hash) {
       store.dispatch('newNotification', {
@@ -85,15 +85,19 @@ export default {
                         contract.methods.issuer().call()
                         .then(issuer => {
                           info.issuer = issuer
-                          contract.methods.balances(userAddress).call()
-                          .then(balance => {
-                            info.balance = balance
-                            console.log('Got EIP20 Contract: ', info)
-                            // store states
-                            store.dispatch('registerEIP20Contracts', {
-                              contractAddress: contractAddress,
-                              contract: contract,
-                              info: info
+                          contract.methods.isTransferable().call()
+                          .then(isTransferable => {
+                            info.isTransferable = isTransferable
+                            contract.methods.balances(userAddress).call()
+                            .then(balance => {
+                              info.balance = balance
+                              console.log('Got EIP20 Contract: ', info)
+                              // store states
+                              store.dispatch('registerEIP20Contracts', {
+                                contractAddress: contractAddress,
+                                contract: contract,
+                                info: info
+                              })
                             })
                           })
                         })
@@ -171,6 +175,45 @@ export default {
     .on('transactionHash', function (hash) {
       store.dispatch('newNotification', {
         title: 'Selling Currency - New transaction to process',
+        text: hash,
+        type: 'success'
+      })
+      console.log('TransactionHash: ', hash)
+    })
+    .on('receipt', function (receipt) {
+      store.dispatch('newNotification', {
+        title: 'Transaction completed',
+        type: 'success'
+      })
+      console.log('Receipt: ', receipt)
+    })
+    .on('confirmation', function (confirmationNumber, receipt) {
+      //
+    })
+    .on('error', function (error) {
+      store.dispatch('newNotification', {
+        title: 'Transaction Failed - Sell Order did not complete',
+        text: error,
+        type: 'error'
+      })
+      console.log(error)
+    })
+  },
+
+  transfer (payload) {
+    console.log('transfer', payload)
+    let contractAddress = payload.contractAddress
+    let amount = Number(payload.amount)
+    let toAddress = payload.toAddress
+    let from = payload.fromAddress
+    let contract = ContractsHelper.getContractFromAddress(store.state.eip20Contracts, contractAddress)
+    contract.methods.transfer(toAddress, amount).send({
+      from: from,
+      gas: 3000000
+    })
+    .on('transactionHash', function (hash) {
+      store.dispatch('newNotification', {
+        title: 'Transfer Request - New transaction to process',
         text: hash,
         type: 'success'
       })

@@ -50,6 +50,13 @@
               required>
             </v-text-field>
             </v-flex>
+            <v-flex xs12>
+              <v-checkbox
+              v-model="isTransferable"
+              :rules="isTransferableRules"
+              label="Transferable?"
+              ></v-checkbox>
+            </v-flex>
             <v-flex xs12 class="py-2">
               <p>Choose points only or exchangeable currency:</p>
               <v-btn-toggle v-model="tokenType" mandatory>
@@ -81,6 +88,8 @@
               required>
               </v-text-field>
             </v-flex>
+
+
             </v-layout>
           </v-container>
           <small>*required fields</small>
@@ -130,6 +139,8 @@ export default {
       v => !!v || 'The Decimals field is required',
       v => (!isNaN(parseInt(v)) && v <= 255 && v >= 0) || 'Decimals must be a valid integer number less than 256'
     ],
+    isTransferable: true,
+    isTransferableRules: [],
     valid: true,
     rules: false
   }),
@@ -160,7 +171,8 @@ export default {
             currencySymbol: this.currencySymbol,
             isPointsOnly: this.tokenType === 'points', // e.g. points = true, otherwise false and currency selected
             exchangeRateToEth: exchangeRateToEth,
-            owner: this.$store.state.userDetails.ethAccount
+            owner: this.$store.state.userDetails.ethAccount,
+            isTransferable: this.isTransferable
           }
         )
         this.close()

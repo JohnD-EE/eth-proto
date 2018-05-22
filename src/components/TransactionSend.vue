@@ -1,15 +1,15 @@
 <template>
-  <v-layout row justify-center>
+
     <v-dialog v-model="dialog" :fullscreen="fullScreen" transition="dialog-bottom-transition" :overlay="false">
       <v-btn icon flat color="success" class="mx-0" slot="activator" @click="clickSend">
-        <v-icon>add</v-icon>
+        <v-icon>swap_horiz</v-icon>
       </v-btn>
       <v-card>
         <v-toolbar dark color="success" @click.native="clickClose">
           <v-btn icon @click.native="clickClose" dark>
             <v-icon>close</v-icon>
           </v-btn>
-          <v-toolbar-title>New Transaction</v-toolbar-title>
+          <v-toolbar-title>New Transaction: {{ parentCurrency }}</v-toolbar-title>
 
         </v-toolbar>
         <v-list two-line subheader>
@@ -35,7 +35,14 @@
           <v-list-tile avatar>
             <v-list-tile-content>
               <v-list-tile-title>Current Balance</v-list-tile-title>
-              <v-list-tile-sub-title>{{balanceToEther}} {{currency.symbol}}</v-list-tile-sub-title>
+              <v-list-tile-sub-title>
+                <span v-if="isToken">
+                  {{ tokenBalance }} {{ tokenSymbol }}
+                </span>
+                <span v-else>
+                {{balanceToEther}} {{currency.symbol}}
+              </span>
+              </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -69,6 +76,7 @@
                           v-model="txAmount"
                           :rules="txAmountRules"
                           required
+                          :suffix="currency.symbol"
                           ></v-text-field>
                         </v-flex>
                       </v-layout>
@@ -76,27 +84,24 @@
                   </template>
                 </v-list-tile-content>
               </v-list-tile>
-
               <v-list-tile >
                 <v-list-tile-content>
                   <v-btn color="success" @click.native="submit">
                     Send Transaction
-                    <v-icon right>send</v-icon>
+                    <v-icon right>swap_horiz</v-icon>
                   </v-btn>
                 </v-list-tile-content>
               </v-list-tile>
-
             </v-list>
-
         </v-form>
       </v-card>
     </v-dialog>
-  </v-layout>
 </template>
 
 <script>
 import UserSelector from './sharedComponents/UserSelector.vue'
 import transactionsHelper from '../helpers/transactions'
+import brandedCurrencyHelper from './../helpers/demoBrandedCurrency/brandedCurrency'
 
 export default {
   data () {
@@ -105,16 +110,12 @@ export default {
       notifications: false,
       fullScreen: true, // todo detect screen size here and make true for sm screens
       valid: true,
-      txAmountRules: [
-        v => !!v || 'Amount is required',
-        v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
-        v => v <= this.balanceToEther || 'Insufficent funds'
-      ],
       txAmount: null,
       txComposer: null,
       rules: false
     }
   },
+  props: ['parentCurrency', 'isToken', 'contractAddress', 'tokenBalance', 'tokenSymbol'],
   components: {
     'app-user-selector': UserSelector
   },
@@ -129,7 +130,26 @@ export default {
       return this.$store.getters.balanceToEther
     },
     currency () {
-      return this.$store.state.currency
+      if (!this.isToken) {
+        return this.$store.state.currency
+      } else {
+        return {symbol: this.tokenSymbol}
+      }
+    },
+    txAmountRules () {
+      if (!this.isToken) {
+        return [
+          v => !!v || 'Amount is required',
+          v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
+          v => v <= this.balanceToEther || 'Insufficent funds'
+        ]
+      } else {
+        return [
+          v => !!v || 'Amount is required',
+          v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
+          v => v <= this.tokenBalance || 'Insufficent funds'
+        ]
+      }
     }
   },
   methods: {
@@ -159,20 +179,31 @@ export default {
     },
     submit () {
       if (this.$refs.form.validate()) {
-        let weiAmount = window.web3.utils.toWei(this.txAmount, 'ether')
-        this.$store.dispatch('composeTransaction', {
-          fromAddress: this.$store.state.userDetails.ethAccount,
-          fromName: this.$store.state.user.displayName,
-          toAddress: this.$store.state.txComposer.toAccount,
-          toName: this.$store.state.txComposer.toName,
-          amount: weiAmount
-        })
-        this.txComposer = this.$store.state.txComposer
-        transactionsHelper.sendTransaction(this.txComposer)
-        // show notification
-
-        // clear screen
-        this.dialog = false
+        if (!this.isToken) {
+          let weiAmount = window.web3.utils.toWei(this.txAmount, 'ether')
+          this.$store.dispatch('composeTransaction', {
+            fromAddress: this.$store.state.userDetails.ethAccount,
+            fromName: this.$store.state.user.displayName,
+            toAddress: this.$store.state.txComposer.toAccount,
+            toName: this.$store.state.txComposer.toName,
+            amount: weiAmount
+          })
+          this.txComposer = this.$store.state.txComposer
+          transactionsHelper.sendTransaction(this.txComposer)
+          // clear screen
+          this.dialog = false
+        } else {
+          // call the relevant EIP20 contract and to send from / send to
+          let transferPayload = {
+            fromAddress: this.$store.state.userDetails.ethAccount,
+            toAddress: this.$store.state.txComposer.toAccount,
+            contractAddress: this.contractAddress,
+            amount: this.txAmount
+          }
+          brandedCurrencyHelper.transfer(transferPayload)
+          // clear screen
+          this.dialog = false
+        }
       } else {
         console.log('validation failed')
       }

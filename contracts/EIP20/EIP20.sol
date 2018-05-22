@@ -25,6 +25,7 @@ contract EIP20 is EIP20Interface {
     string public symbol;                 //An identifier: eg TMP
     string public exchangeRateToEth;      //Token to Eth exchange rate (0.5 means 2 Tokens = 1 Eth)
     bool public isPointsOnly;             //Used as tokens, not a currency and non-exchangeable
+    bool public isTransferable;           //Trasnferability between users
 
     event LogSell(address to, uint value);
 
@@ -35,7 +36,8 @@ contract EIP20 is EIP20Interface {
         string _tokenSymbol,
         string _exchangeRateToEth,
         bool _isPointsOnly,
-        address _issuer
+        address _issuer,
+        bool _isTransferable
     ) public {
         balances[msg.sender] = _initialAmount;               // Give the creator all initial tokens
         totalSupply = _initialAmount;                        // Update total supply
@@ -45,6 +47,7 @@ contract EIP20 is EIP20Interface {
         exchangeRateToEth = _exchangeRateToEth;              // Set a fixed exchange exhange rate (otherwise assume floating or pointsOnly)
         isPointsOnly = _isPointsOnly;                        // Points only, not an exchangeable currency
         issuer = _issuer;
+        isTransferable = _isTransferable;
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {

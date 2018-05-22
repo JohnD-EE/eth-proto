@@ -255,6 +255,7 @@ export default {
   allEIP20Contracts: state => {
     let eip20Items = []
     let allUsersByEthAccount = helperUsers.getUsersByAddress()
+
     state.eip20Contracts.forEach(res => {
       let status = {text: '', color: ''}
       status.text = 'Active'
@@ -292,9 +293,10 @@ export default {
         totalSupply: res.info.totalSupply,
         userBalance: res.info.balance,
         userIsIssuer: userIsIssuer,
-        issuer: issuer
+        issuer: issuer,
+        isTransferable: res.info.isTransferable
       })
     })
-    return eip20Items.reverse()
+    return eip20Items
   }
 }
