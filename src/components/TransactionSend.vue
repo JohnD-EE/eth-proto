@@ -115,7 +115,7 @@ export default {
       rules: false
     }
   },
-  props: ['parentCurrency', 'isToken', 'contractAddress', 'tokenBalance', 'tokenSymbol'],
+  props: ['parentCurrency', 'isToken', 'contractAddress', 'tokenBalance', 'tokenSymbol', 'issuer', 'userIsIssuer'],
   components: {
     'app-user-selector': UserSelector
   },
@@ -141,13 +141,13 @@ export default {
         return [
           v => !!v || 'Amount is required',
           v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
-          v => v <= this.balanceToEther || 'Insufficent funds'
+          v => v <= Number(this.balanceToEther) || 'Insufficent funds'
         ]
       } else {
         return [
           v => !!v || 'Amount is required',
           v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
-          v => v <= this.tokenBalance || 'Insufficent funds'
+          v => v <= Number(this.tokenBalance) || 'Insufficent funds ' + this.tokenBalance
         ]
       }
     }
