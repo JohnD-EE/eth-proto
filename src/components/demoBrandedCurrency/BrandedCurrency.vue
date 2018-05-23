@@ -132,13 +132,17 @@ export default {
         description: 'A timestamped audit trail of all transactions'
       },
       {
+        quality: 'Low Cost Transactions',
+        description: '3rd party payments services (Visa) and banks are not required, large transactions are inexpensive'
+      },
+      {
         quality: 'Programmable',
         description: 'Prgrammable money, flexible, configurable to your needs'
       },
       {
-        quality: 'Cost Efficient Transactions',
-        description: '3rd party payments services and banks are not required, pass savings onto customers'
-      }
+        quality: 'Brandable',
+        description: 'Currency as a marketing tool: beyond a medium of exchange and store of value'
+      },
       ]
     }
   },

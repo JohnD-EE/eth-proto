@@ -6,102 +6,136 @@
       </v-btn>
       <v-card>
         <v-form v-model="valid" ref="form" lazy-validation>
-        <v-card-title>
-          <span class="headline">Create a Branded Currency</span>
-        </v-card-title>
-        <v-card-text>
-
-          <v-container grid-list-md>
-            <v-layout row wrap>
-
-              <v-flex xs12 sm6>
-                <v-text-field
-                label="Currency Name"
-                v-model="currencyName"
-                :rules="currencyNameRules"
-                clearable
-                required>
-              </v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                label="Currency Symbol"
-                v-model="currencySymbol"
-                :rules="currencySymbolRules"
-                clearable
-                required>
-              </v-text-field>
-            </v-flex>
-              <v-flex xs12 sm6>
-              <v-text-field
-              label="Initial Supply"
-              v-model="initialSupply"
-              :rules="initialSupplyRules"
-              hint="The initial money supply"
-              required>
-            </v-text-field>
-            </v-flex>
-            <v-flex xs12 sm6>
-              <v-text-field
-              label="Decimals"
-              v-model="decimals"
-              :rules="decimalsRules"
-              hint="Digits after the decimal point"
-              required>
-            </v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-checkbox
-              v-model="isTransferable"
-              :rules="isTransferableRules"
-              label="Transferable?"
-              ></v-checkbox>
-            </v-flex>
-            <v-flex xs12 class="py-2">
-              <p>Choose points only or exchangeable currency:</p>
-              <v-btn-toggle v-model="tokenType" mandatory>
-                <v-btn flat value="points" class="px-5">
-                  Points
-                </v-btn>
-                <v-btn flat value="currency" class="px-5">
-                  Currency
-                </v-btn>
-              </v-btn-toggle>
-            </v-flex>
-            <v-flex xs12 class="py-2" v-show="tokenType === 'currency'" mandatory>
-              <p>Choose floating or fixed exchange rate:</p>
-              <v-btn-toggle v-model="exchangeRate" mandatory>
-                <v-btn flat value="floating" class="px-5">
-                  Floating
-                </v-btn>
-                <v-btn flat value="fixed" class="px-5">
-                  Fixed
-                </v-btn>
-              </v-btn-toggle>
-            </v-flex>
-            <v-flex xs12 sm6 v-show="exchangeRate === 'fixed' && tokenType === 'currency'">
-              <v-text-field
-              label="Fixed Exchange Rate"
-              v-model="fixedExchangeRate"
-              :rules="fixedExchangeRateRules"
-              hint="E.g. 0.5 means 2 Tokens = 1 Ether"
-              required>
-              </v-text-field>
-            </v-flex>
-
-
-            </v-layout>
-          </v-container>
-          <small>*required fields</small>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="primary darken-1" flat @click.native="close">Close</v-btn>
-          <v-btn color="primary darken-1" flat @click.native="submit">Save</v-btn>
-        </v-card-actions>
-        </v-form>
-      </v-card>
-
+          <v-stepper v-model="currencyStepper" vertical>
+            <v-card-title>
+              <span class="headline">Create a Branded Currency</span>
+            </v-card-title>
+            <v-stepper-step :rules="step1Rules" step="1">Currency Naming</v-stepper-step>
+            <v-stepper-content step="1">
+              <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
+                <v-container grid-list-md>
+                  <v-layout row wrap>
+                    <v-flex xs10>
+                      <v-text-field
+                        label="Currency Name"
+                        v-model="currencyName"
+                        :rules="currencyNameRules"
+                        clearable
+                        required>
+                      </v-text-field>
+                    </v-flex>
+                    <v-flex xs10>
+                      <v-text-field
+                        label="Currency Symbol"
+                        v-model="currencySymbol"
+                        :rules="currencySymbolRules"
+                        clearable
+                        required>
+                      </v-text-field>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+              <v-btn color="primary" @click.native="currencyStepper = 2, step1Continued = true">Continue</v-btn>
+              </v-stepper-content>
+              <v-stepper-step :rules="step2Rules" step="2">Monetary Config</v-stepper-step>
+                <v-stepper-content step="2">
+                  <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
+                    <v-container grid-list-md>
+                      <v-layout row wrap>
+                        <v-flex xs10>
+                          <v-text-field
+                            label="Initial Supply"
+                            v-model="initialSupply"
+                            :rules="initialSupplyRules"
+                            hint="The initial money supply"
+                            required>
+                          </v-text-field>
+                        </v-flex>
+                        <v-flex xs10>
+                          <v-text-field
+                            label="Decimals"
+                            v-model="decimals"
+                            :rules="decimalsRules"
+                            hint="Digits after the decimal point"
+                            required>
+                          </v-text-field>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card>
+                  <v-btn color="primary" @click.native="currencyStepper = 3, step2Continued = true">Continue</v-btn>
+                  <v-btn @click.native="currencyStepper = 1">Back</v-btn>
+                </v-stepper-content>
+                <v-stepper-step step="3">Type</v-stepper-step>
+                <v-stepper-content step="3">
+                  <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
+                    <v-container grid-list-md>
+                      <v-layout row wrap>
+                        <v-flex xs10>
+                          <p>Choose points only or exchangeable currency:</p>
+                          <v-btn-toggle v-model="tokenType" mandatory>
+                            <v-btn flat value="points" class="px-5">
+                              Points
+                            </v-btn>
+                            <v-btn flat value="currency" class="px-5">
+                              Currency
+                            </v-btn>
+                          </v-btn-toggle>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card>
+                  <v-btn color="primary" @click.native="currencyStepper = 4, step3Continued = true">Continue</v-btn>
+                  <v-btn @click.native="currencyStepper = 2">Back</v-btn>
+                </v-stepper-content>
+                <v-stepper-step step="4">Exchange and Transfer Mechanisms</v-stepper-step>
+                <v-stepper-content step="4">
+                  <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
+                    <v-container grid-list-md>
+                      <v-layout row wrap>
+                        <v-flex xs10>
+                          <v-checkbox
+                            v-model="isTransferable"
+                            :rules="isTransferableRules"
+                            hint="Determines whether the currency be transferred between users"
+                            persistent-hint
+                            label="Transferable?"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs10 v-show="tokenType === 'currency'" mandatory>
+                          <p>Choose floating or fixed exchange rate:</p>
+                          <v-btn-toggle v-model="exchangeRate" mandatory>
+                            <v-btn flat value="floating" class="px-5">
+                              Floating
+                            </v-btn>
+                            <v-btn flat value="fixed" class="px-5">
+                              Fixed
+                            </v-btn>
+                          </v-btn-toggle>
+                        </v-flex>
+                        <v-flex xs10 v-show="exchangeRate === 'fixed' && tokenType === 'currency'">
+                          <v-text-field
+                            label="Fixed Exchange Rate"
+                            v-model="fixedExchangeRate"
+                            :rules="fixedExchangeRateRules"
+                            hint="E.g. 0.5 means 2 Tokens = 1 Ether"
+                            required>
+                          </v-text-field>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card>
+                  <v-btn @click.native="currencyStepper = 3">Back</v-btn>
+                </v-stepper-content>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary darken-1" flat @click.native="close">Close</v-btn>
+                  <v-btn color="primary darken-1" flat @click.native="submit">Save</v-btn>
+                </v-card-actions>
+              </v-stepper>
+            </v-form>
+          </v-card>
     </v-dialog>
   </v-layout>
 </template>
@@ -111,6 +145,10 @@ import brandedCurrencyHelper from '../../helpers/demoBrandedCurrency/brandedCurr
 
 export default {
   data: () => ({
+    currencyStepper: 1,
+    step1Continued: false,
+    step2Continued: false,
+    step3Continued: false,
     dialog: false,
     tokenType: 'points',
     exchangeRate: 'floating',
@@ -120,21 +158,17 @@ export default {
       // v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Maximum 8 characters'
     ],
     currencyName: '',
-    currencyNameRules: [
-      v => !!v || 'Currency Name is required',
-      v => (v && v.length <= 32) || 'Maximum 32 characters'
-    ],
     currencySymbol: '',
     currencySymbolRules: [
       v => !!v || 'Currency Symbol is required',
       v => (v && v.length <= 8) || 'Maximum 8 characters'
     ],
-    initialSupply: null,
+    initialSupply: '',
     initialSupplyRules: [
       v => !!v || 'Initial Supply is required',
       v => (!isNaN(parseInt(v)) && isFinite(v) && v > 0) || 'Initial Supply must be a valid integer number larger than zero'
     ],
-    decimals: null,
+    decimals: '',
     decimalsRules: [
       v => !!v || 'The Decimals field is required',
       v => (!isNaN(parseInt(v)) && v <= 255 && v >= 0) || 'Decimals must be a valid integer number less than 256'
@@ -145,7 +179,23 @@ export default {
     rules: false
   }),
   computed: {
-    //
+    step1Rules () {
+      if (this.step1Continued && (!this.currencyName || !this.currencySymbol)) {
+        return [() => false]
+      }
+    },
+    step2Rules () {
+      if (this.step2Continued && (!this.initialSupply || !this.decimals)) {
+        return [() => false]
+      }
+    },
+
+    currencyNameRules () {
+    return [
+      v => !!v || 'Currency Name is required',
+      v => (v && v.length <= 32) || 'Maximum 32 characters'
+      ]
+    }
   },
   components: {
     //
