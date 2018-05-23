@@ -35,16 +35,32 @@
             >
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.name }} ({{ props.item.symbol }})</td>
-                <td class="text-xs-center">{{ props.item.issuer }}</td>
+                <td class="text-xs-center" :class="{ 'orange--text': true }">
+                  {{ props.item.issuer }}
+                </td>
                 <td class="text-xs-center">{{ props.item.isPointsOnly ? 'POINTS' : 'CURRENCY' }}</td>
                 <td class="text-xs-center">{{ props.item.totalSupply }}</td>
                 <td class="text-xs-center">{{ props.item.decimals }}</td>
                 <td class="text-xs-center">{{ props.item.userBalance }} {{ props.item.symbol }}</td>
                 <td class="text-xs-center">
-                  {{ props.item.isPointsOnly ? 'N/A' : props.item.exchangeRateToEth }}
+                  <span v-if="props.item.isPointsOnly">
+                    <v-tooltip bottom>
+                    <span slot="activator">N/A</span>
+                      <span>Points cannot be exchanged for currency</span>
+                    </v-tooltip>
+                  </span>
+                  <span v-else>
+                    <v-tooltip bottom>
+                    <span slot="activator">{{ props.item.exchangeRateToEth }}</span>
+                      <span>1 {{ props.item.symbol }} = {{ props.item.exchangeRateToEth }} ETH </span>
+                    </v-tooltip>
+                  </span>
                 </td>
                 <td class="text-xs-center">
-                  <div v-if="props.item.isPointsOnly || props.item.userIsIssuer">N/A</div>
+                  <div v-if="props.item.userIsIssuer">
+                    <app-transaction-send :currencyDetails="props.item"></app-transaction-send>
+                  </div>
+                  <div v-else-if="props.item.isPointsOnly">-</div>
                   <div v-else>
                   <template>
                     <v-layout row justify-center>
@@ -120,6 +136,7 @@
 
 <script>
 import brandedCurrencyHelper from '../../helpers/demoBrandedCurrency/brandedCurrency'
+import TransactionSend from './../TransactionSend.vue'
 
 export default {
   data () {
@@ -146,7 +163,7 @@ export default {
         { text: 'Total Supply', value: 'totalSupply', sortable: false, align: 'center' },
         { text: 'Decimals', value: 'decimals', sortable: false, align: 'center' },
         { text: 'Your Balance', value: 'balance', sortable: false, align: 'center' },
-        { text: 'Exchange Rate', value: 'exchangeRateToEth', sortable: false, align: 'center' },
+        { text: 'Exchange Rate to ETH', value: 'exchangeRateToEth', sortable: false, align: 'center' },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }
       ]
     }
@@ -170,6 +187,9 @@ export default {
     latestBlockNumber () {
       return this.$store.state.web3.latestBlock.number
     }
+  },
+  components: {
+    'app-transaction-send': TransactionSend
   },
   watch: {
     // items: function (val) {

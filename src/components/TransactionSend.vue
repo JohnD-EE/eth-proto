@@ -1,5 +1,4 @@
 <template>
-
     <v-dialog v-model="dialog" :fullscreen="fullScreen" transition="dialog-bottom-transition" :overlay="false">
       <v-btn icon flat color="success" class="mx-0" slot="activator" @click="clickSend">
         <v-icon>swap_horiz</v-icon>
@@ -9,8 +8,7 @@
           <v-btn icon @click.native="clickClose" dark>
             <v-icon>close</v-icon>
           </v-btn>
-          <v-toolbar-title>New Transaction: {{ parentCurrency }}</v-toolbar-title>
-
+          <v-toolbar-title>New Transaction: {{ currencyDetails.name }} ({{ currencyDetails.symbol }})</v-toolbar-title>
         </v-toolbar>
         <v-list two-line subheader>
           <v-subheader>From Account Details</v-subheader>
@@ -36,11 +34,11 @@
             <v-list-tile-content>
               <v-list-tile-title>Current Balance</v-list-tile-title>
               <v-list-tile-sub-title>
-                <span v-if="isToken">
-                  {{ tokenBalance }} {{ tokenSymbol }}
+                <span v-if="currencyDetails.isToken">
+                  {{ currencyDetails.userBalance }} {{ currencyDetails.symbol }}
                 </span>
                 <span v-else>
-                {{balanceToEther}} {{currency.symbol}}
+                {{balanceToEther}} {{currencyDetails.symbol}}
               </span>
               </v-list-tile-sub-title>
             </v-list-tile-content>
@@ -76,7 +74,7 @@
                           v-model="txAmount"
                           :rules="txAmountRules"
                           required
-                          :suffix="currency.symbol"
+                          :suffix="currencyDetails.symbol"
                           ></v-text-field>
                         </v-flex>
                       </v-layout>
@@ -115,7 +113,7 @@ export default {
       rules: false
     }
   },
-  props: ['parentCurrency', 'isToken', 'contractAddress', 'tokenBalance', 'tokenSymbol', 'issuer', 'userIsIssuer'],
+  props: ['currencyDetails'],
   components: {
     'app-user-selector': UserSelector
   },
@@ -129,25 +127,26 @@ export default {
     balanceToEther () {
       return this.$store.getters.balanceToEther
     },
-    currency () {
-      if (!this.isToken) {
-        return this.$store.state.currency
-      } else {
-        return {symbol: this.tokenSymbol}
-      }
-    },
+  //  currency () {
+    //  console.log('currency Details: ', this.currencyDetails)
+    //  if (!this.currencyDetails.isToken) {
+    //    return this.$store.state.currency
+    //  } else {
+    //    return {symbol: this.currencyDetails.symbol}
+    //  }
+  //  },
     txAmountRules () {
-      if (!this.isToken) {
+      if (!this.currencyDetails.isToken) {
         return [
           v => !!v || 'Amount is required',
           v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
-          v => v <= Number(this.balanceToEther) || 'Insufficent funds'
+          v => v <= Number(this.balanceToEther) || 'Insufficent funds' + '(Exceeds ' + this.balanceToEther + ' ETH)'
         ]
       } else {
         return [
           v => !!v || 'Amount is required',
           v => (!isNaN(parseFloat(v)) && isFinite(v) && v > 0) || 'Amount must be a valid number larger than zero',
-          v => v <= Number(this.tokenBalance) || 'Insufficent funds ' + this.tokenBalance
+          v => v <= Number(this.currencyDetails.userBalance) || 'Insufficent funds ' + '(Exceeds ' + this.currencyDetails.userBalance + ' ' + this.currencyDetails.symbol + ')'
         ]
       }
     }
@@ -179,7 +178,7 @@ export default {
     },
     submit () {
       if (this.$refs.form.validate()) {
-        if (!this.isToken) {
+        if (!this.currencyDetails.isToken) {
           let weiAmount = window.web3.utils.toWei(this.txAmount, 'ether')
           this.$store.dispatch('composeTransaction', {
             fromAddress: this.$store.state.userDetails.ethAccount,
@@ -197,7 +196,7 @@ export default {
           let transferPayload = {
             fromAddress: this.$store.state.userDetails.ethAccount,
             toAddress: this.$store.state.txComposer.toAccount,
-            contractAddress: this.contractAddress,
+            contractAddress: this.currencyDetails.contractAddress,
             amount: this.txAmount
           }
           brandedCurrencyHelper.transfer(transferPayload)

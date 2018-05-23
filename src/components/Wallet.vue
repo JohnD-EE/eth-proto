@@ -33,24 +33,17 @@
               >
               <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
                 <template slot="items" slot-scope="props">
-                  <td>{{ props.item.currency }}
-
+                  <td>{{ props.item.name }} ({{ props.item.symbol }})
                     <span class="orange--text" v-show="props.item.userIsIssuer"><br/><strong>ISSUER</strong></span>
                   </td>
-                  <td class="text-xs-center">{{ props.item.balance }}
+                  <td class="text-xs-center">{{ props.item.userBalance }}
                     <span class="primary--text" v-show="props.item.isPointsOnly"><br/><strong>POINTS</strong></span>
                   </td>
                   <td class="text-xs-center">{{ props.item.eth }}</td>
                   <td class="text-xs-center">{{ props.item.gbp }}</td>
                   <td class="justify-center layout px-0">
                     <app-transaction-send
-                    :parentCurrency="props.item.currency"
-                    :contractAddress="props.item.contractAddress"
-                    :isToken="props.item.isToken"
-                    :tokenBalance="props.item.balance"
-                    :tokenSymbol="props.item.symbol"
-                    :issuer="props.item.issuer"
-                    :userIsIssuer="props.item.userIsIssuer"
+                    :currencyDetails="props.item"
                      v-if="props.item.isTransferable || (!props.item.isTransferable && props.item.userIsIssuer)"
                     ></app-transaction-send>
                     <div v-else>
@@ -93,7 +86,7 @@ export default {
       headers:
       [
         { text: 'Currency', align: 'left', sortable: false, value: 'currency' },
-        { text: 'Balance', align: 'center', sortable: false, value: 'balance' },
+        { text: 'Balance', align: 'center', sortable: false, value: 'userBalance' },
         { text: 'ETH', align: 'center', sortable: false, value: 'eth' },
         { text: 'GBP', align: 'center', sortable: false, value: 'gbp' },
         { text: 'Actions', align: 'center', sortable: false, value: 'actions' }
@@ -122,8 +115,8 @@ export default {
       allCurrencies.push(
         {
           value: false,
-          currency: 'Ether (ETH)',
-          balance: this.balanceToEther,
+          name: 'Ether',
+          userBalance: this.balanceToEther,
           eth: this.balanceToEther,
           gbp: '£' + Utils.currencyFormat(this.convert(this.balanceToEther, 'ethgbp')),
           actions: '',
@@ -138,16 +131,16 @@ export default {
       eip20Currencies.forEach(res => {
         let eth = 0
         eth = Number((res.userBalance * res.exchangeRateToEth).toFixed(8))
-        let balance = res.userBalance
+        // let balance = res.userBalance
         allCurrencies.push(
           {
             value: false,
-            currency: res.name + ' (' + res.symbol + ')',
-            balance: balance,
+            name: res.name,
+            userBalance: res.userBalance,
             eth: res.isPointsOnly ? '-' : eth,
             gbp: res.isPointsOnly ? '-' : '£' + Utils.currencyFormat(this.convert(eth, 'ethgbp')),
             actions: '',
-            isToken: true,
+            isToken: res.isToken,
             isPointsOnly: res.isPointsOnly,
             userIsIssuer: res.userIsIssuer,
             isTransferable: res.isTransferable,

@@ -288,10 +288,11 @@ export default {
         symbol: res.info.symbol,
         decimals: res.info.decimals,
         isPointsOnly: res.info.isPointsOnly,
+        isToken: true, // EIP20 Contracts will always be tokens compared with ETH which is non-token
         exchangeRateToEth: exchangeRateToEth,
         exchangeRateMode: exchangeRateMode,
         totalSupply: res.info.totalSupply,
-        userBalance: res.info.balance,
+        userBalance: res.info.balance, // User's Balance
         userIsIssuer: userIsIssuer,
         issuer: issuer,
         isTransferable: res.info.isTransferable
