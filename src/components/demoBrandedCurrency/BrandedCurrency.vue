@@ -142,7 +142,7 @@ export default {
       {
         quality: 'Brandable',
         description: 'Currency as a marketing tool: beyond a medium of exchange and store of value'
-      },
+      }
       ]
     }
   },

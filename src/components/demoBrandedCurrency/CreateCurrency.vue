@@ -180,20 +180,19 @@ export default {
   }),
   computed: {
     step1Rules () {
-      if (this.step1Continued && (!this.currencyName || !this.currencySymbol)) {
+      if (this.step1Continued && (!this.currencyName || !this.currencySymbol || this.currencySymbol.length > 8 || this.currencyName.length > 32)) {
         return [() => false]
       }
     },
     step2Rules () {
-      if (this.step2Continued && (!this.initialSupply || !this.decimals)) {
+      if (this.step2Continued && (!this.initialSupply || !this.decimals || !(!isNaN(parseInt(this.initialSupply)) && isFinite(this.initialSupply) && this.initialSupply > 0) || !(!isNaN(parseInt(this.decimals)) && this.decimals <= 255 && this.decimals >= 0))) {
         return [() => false]
       }
     },
-
     currencyNameRules () {
-    return [
-      v => !!v || 'Currency Name is required',
-      v => (v && v.length <= 32) || 'Maximum 32 characters'
+      return [
+        v => !!v || 'Currency Name is required',
+        v => (v && v.length <= 32) || 'Maximum 32 characters'
       ]
     }
   },
@@ -234,6 +233,10 @@ export default {
       this.tokenType = 'points'
       this.exchangeRate = 'floating'
       this.fixedExchangeRate = '1'
+      this.currencyStepper = 1
+      this.step1Continued = false
+      this.step2Continued = false
+      this.step3Continued = false
       this.clear()
       this.dialog = false
     },
