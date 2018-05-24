@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-scroll="onScroll">
     <v-navigation-drawer v-model="sidebar" disable-resize-watcher app>
       <v-list>
         <v-list-tile
@@ -145,7 +145,7 @@
     <template>
       <v-card>
         <v-snackbar
-          :snackbar="notifications.length > 0"
+          v-model="snackbar"
           :timeout="6000"
           :bottom="true"
           :vertical="true"
@@ -157,6 +157,16 @@
     </v-snackbar>
   </v-card>
 </template>
+
+<v-scale-transition>
+  <v-btn v-show="showScroller" fab dark bottom right fixed small @click="$vuetify.goTo(0, {
+    duration: 600,
+    offset: 0,
+    easing: 'easeInOutCubic'
+    })" color="pink lighten-1 mb-4">
+      <v-icon dark>keyboard_arrow_up</v-icon>
+    </v-btn>
+</v-scale-transition>
 
   </v-app>
 </template>
@@ -171,6 +181,7 @@ export default {
   data () {
     return {
       snackbar: false,
+      offsetTop: 0,
       blockchainLoading: false,
       sidebar: false,
       tools: [
@@ -188,6 +199,9 @@ export default {
     }
   },
   computed: {
+    showScroller () {
+      return this.offsetTop > 150
+    },
     appTitle () {
       return this.$store.state.appTitle
     },
@@ -213,6 +227,7 @@ export default {
     notifications () {
       let notification = this.$store.getters.getNotification
       if (notification) {
+        this.snackbar = true
         return {
           title: notification.title,
           text: notification.text,
@@ -229,6 +244,9 @@ export default {
     }
   },
   methods: {
+    onScroll (e) {
+      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+    },
     userSignOut () {
       this.$store.dispatch('userSignOut')
     },

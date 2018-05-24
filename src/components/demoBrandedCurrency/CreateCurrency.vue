@@ -10,7 +10,7 @@
             <v-card-title>
               <span class="headline">Create a Branded Currency</span>
             </v-card-title>
-            <v-stepper-step :rules="step1Rules" step="1">Currency Naming</v-stepper-step>
+            <v-stepper-step @click.native="currencyStepper = 1" :rules="step1Rules" step="1">Currency Naming</v-stepper-step>
             <v-stepper-content step="1">
               <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
                 <v-container grid-list-md>
@@ -38,7 +38,7 @@
               </v-card>
               <v-btn color="primary" @click.native="currencyStepper = 2, step1Continued = true">Continue</v-btn>
               </v-stepper-content>
-              <v-stepper-step :rules="step2Rules" step="2">Monetary Config</v-stepper-step>
+              <v-stepper-step  @click.native="currencyStepper = 2" :rules="step2Rules" step="2">Monetary Config</v-stepper-step>
                 <v-stepper-content step="2">
                   <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
                     <v-container grid-list-md>
@@ -67,7 +67,7 @@
                   <v-btn color="primary" @click.native="currencyStepper = 3, step2Continued = true">Continue</v-btn>
                   <v-btn @click.native="currencyStepper = 1">Back</v-btn>
                 </v-stepper-content>
-                <v-stepper-step step="3">Type</v-stepper-step>
+                <v-stepper-step  @click.native="currencyStepper = 3" step="3">Type</v-stepper-step>
                 <v-stepper-content step="3">
                   <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
                     <v-container grid-list-md>
@@ -89,7 +89,7 @@
                   <v-btn color="primary" @click.native="currencyStepper = 4, step3Continued = true">Continue</v-btn>
                   <v-btn @click.native="currencyStepper = 2">Back</v-btn>
                 </v-stepper-content>
-                <v-stepper-step step="4">Exchange and Transfer Mechanisms</v-stepper-step>
+                <v-stepper-step  @click.native="currencyStepper = 4" step="4">Exchange and Transfer Mechanisms</v-stepper-step>
                 <v-stepper-content step="4">
                   <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
                     <v-container grid-list-md>

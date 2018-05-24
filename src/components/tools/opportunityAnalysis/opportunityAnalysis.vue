@@ -1,5 +1,5 @@
 <template>
-  <v-layout grid-list-xl v-scroll="onScroll">
+  <v-layout grid-list-xl>
     <v-flex xs 12 md10 offset-md1 py-4>
       <v-toolbar color="primary lighten-2" dark>
 
@@ -162,19 +162,7 @@
         </v-container>
       </v-card>
     </v-flex>
-
-    <v-scale-transition>
-      <v-btn v-show="showScroller" fab dark bottom right fixed small @click="$vuetify.goTo(0, {
-        duration: 600,
-        offset: 0,
-        easing: 'easeInOutCubic'
-        })" color="pink lighten-1 mb-4">
-          <v-icon dark>keyboard_arrow_up</v-icon>
-        </v-btn>
-    </v-scale-transition>
-
   </v-layout>
-
 </template>
 
 <style>
@@ -199,7 +187,6 @@ import OpportunitiesJSON from './opportunities.json'
 export default {
   data () {
     return {
-      offsetTop: 0,
       showBullets: false,
       showApplicationTags: false,
       opportunityDialog: false,
@@ -213,9 +200,6 @@ export default {
     }
   },
   computed: {
-    showScroller () {
-      return this.offsetTop > 150
-    },
     cards () {
       return OpportunitiesJSON
     },
@@ -235,9 +219,6 @@ export default {
     'star-rating': StarRating
   },
   methods: {
-    onScroll (e) {
-      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
-    },
     closeOpportunity () {
       this.clear()
       this.opportunityDialog = false
