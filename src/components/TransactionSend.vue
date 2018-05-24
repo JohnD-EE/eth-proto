@@ -127,14 +127,6 @@ export default {
     balanceToEther () {
       return this.$store.getters.balanceToEther
     },
-  //  currency () {
-    //  console.log('currency Details: ', this.currencyDetails)
-    //  if (!this.currencyDetails.isToken) {
-    //    return this.$store.state.currency
-    //  } else {
-    //    return {symbol: this.currencyDetails.symbol}
-    //  }
-  //  },
     txAmountRules () {
       if (!this.currencyDetails.isToken) {
         return [
