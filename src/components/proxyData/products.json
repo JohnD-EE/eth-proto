@@ -1,0 +1,321 @@
+[
+  {
+    "key": "rolaCola500ml",
+    "title": "Rola Cola",
+      "attributes": {
+        "size": "500 ml"
+      },
+    "image": "rolaCola.jpg",
+    "SKU": 100001,
+    "priceInPence": 66,
+    "categories": ["beverages", "non-alcoholic"]
+  },
+  {
+    "key": "cocaCola500ml",
+    "title": "Coke",
+      "attributes": {
+        "size": "500 ml"
+      },
+    "image": "cocaCola.jpg",
+    "SKU": 100002,
+    "priceInPence": 185,
+    "categories": ["beverages", "non-alcoholic"]
+  },
+  {
+    "key": "pepsiCola500ml",
+    "title": "Pepsi",
+      "attributes": {
+        "size": "500 ml"
+      },
+    "image": "pepsiCola.jpg",
+    "SKU": 100003,
+    "priceInPence": 175,
+    "categories": ["beverages", "non-alcoholic"]
+  },
+  {
+    "key": "cokeZero500ml",
+    "title": "Coke Zero",
+      "attributes": {
+        "size": "500 ml"
+      },
+    "image": "cokeZero.jpg",
+    "SKU": 100004,
+    "priceInPence": 189,
+    "categories": ["beverages", "non-alcoholic"]
+  },
+  {
+    "key": "tango330ml",
+    "title": "Tango",
+      "attributes": {
+        "size": "330 ml"
+      },
+    "image": "tango.jpg",
+    "SKU": 100005,
+    "priceInPence": 125,
+    "categories": ["beverages", "non-alcoholic"]
+  },
+  {
+    "key": "irnBru330ml",
+    "title": "Irn-Bru",
+      "attributes": {
+        "size": "330 ml"
+      },
+    "image": "irnBru.jpg",
+    "SKU": 100006,
+    "priceInPence": 120,
+    "categories": ["beverages", "non-alcoholic"]
+  },
+  {
+    "key": "duffBeer1pint",
+    "title": "Duff Beer",
+      "attributes": {
+        "size": "1 pint"
+      },
+    "image": "duffBeer.jpg",
+    "SKU": 100100,
+    "priceInPence": 315,
+    "categories": ["beverages", "alcoholic"]
+  },
+  {
+    "key": "guinness1pint",
+    "title": "Guinness",
+      "attributes": {
+        "size": "1 pint"
+      },
+    "image": "guinness.jpg",
+    "SKU": 100101,
+    "priceInPence": 450,
+    "categories": ["beverages", "alcoholic"]
+  },
+  {
+    "key": "heineken1pint",
+    "title": "Heineken",
+      "attributes": {
+        "size": "1 pint"
+      },
+    "image": "heineken.jpg",
+    "SKU": 100102,
+    "priceInPence": 420,
+    "categories": ["beverages", "alcoholic"]
+  },
+  {
+    "key": "johnSmiths1pint",
+    "title": "John Smith's",
+      "attributes": {
+        "size": "1 pint"
+      },
+    "image": "johnSmiths.jpg",
+    "SKU": 100103,
+    "priceInPence": 415,
+    "categories": ["beverages", "alcoholic"]
+  },
+  {
+    "key": "stellaArtois1pint",
+    "title": "Stella Artois",
+      "attributes": {
+        "size": "1 pint"
+      },
+    "image": "stellaArtois.jpg",
+    "SKU": 100104,
+    "priceInPence": 415,
+    "categories": ["beverages", "alcoholic"]
+  },
+  {
+    "key": "babyLeafSpinach200g",
+    "title": "Baby Leaf Spinach",
+      "attributes": {
+        "size": "200g"
+      },
+    "image": "spinach.jpg",
+    "SKU": 100200,
+    "priceInPence": 160,
+    "categories": ["food", "salad", "healthy"]
+  },
+  {
+    "key": "saladOnions130g",
+    "title": "Salad Onions",
+      "attributes": {
+        "size": "130g"
+      },
+    "image": "saladOnions.jpg",
+    "SKU": 100201,
+    "priceInPence": 100,
+    "categories": ["food", "salad", "healthy"]
+  },
+  {
+    "key": "redOnions130g",
+    "title": "Red Onions Organic",
+      "attributes": {
+        "size": "130g"
+      },
+    "image": "redOnions.jpg",
+    "SKU": 100202,
+    "priceInPence": 125,
+    "categories": ["food", "salad", "vegatables", "healthy"]
+  },
+  {
+    "key": "cherryTomatoes335g",
+    "title": "Cherry Tomatoes",
+      "attributes": {
+        "size": "335g"
+      },
+    "image": "cherryTomatoes.jpg",
+    "SKU": 100203,
+    "priceInPence": 200,
+    "categories": ["food", "salad", "healthy"]
+  },
+  {
+    "key": "largeAvocado",
+    "title": "Large Avocado",
+      "attributes": {
+        "size": "Large"
+      },
+    "image": "avocado.jpg",
+    "SKU": 100204,
+    "priceInPence": 135,
+    "categories": ["food", "salad", "healthy"]
+  },
+  {
+    "key": "radish200g",
+    "title": "Radish",
+      "attributes": {
+        "size": "200g"
+      },
+    "image": "radish.jpg",
+    "SKU": 100205,
+    "priceInPence": 65,
+    "categories": ["food", "salad", "healthy"]
+  },
+  {
+    "key": "carrotsOrganic750g",
+    "title": "Carrots Organic",
+      "attributes": {
+        "size": "750g"
+      },
+    "image": "carrots.jpg",
+    "SKU": 100206,
+    "priceInPence": 135,
+    "categories": ["food", "vegetables", "healthy"]
+  },
+  {
+    "key": "aubergineLarge",
+    "title": "Large Aubergine",
+      "attributes": {
+        "size": "Large"
+      },
+    "image": "aubergine.jpg",
+    "SKU": 100207,
+    "priceInPence": 85,
+    "categories": ["food", "vegetables", "healthy"]
+  },
+  {
+    "key": "broccoli300g",
+    "title": "Broccoli",
+      "attributes": {
+        "size": "300g"
+      },
+    "image": "broccoli.jpg",
+    "SKU": 100207,
+    "priceInPence": 85,
+    "categories": ["food", "vegetables", "healthy"]
+  },
+  {
+    "key": "pinkLadyApples8Pack",
+    "title": "Pink Lady Apples",
+      "attributes": {
+        "size": "8 Pack"
+      },
+    "image": "pinkLadyApples.jpg",
+    "SKU": 100300,
+    "priceInPence": 395,
+    "categories": ["food", "fruit", "healthy"]
+  },
+  {
+    "key": "bananas5",
+    "title": "Bananas",
+      "attributes": {
+        "size": "Bunch * 5"
+      },
+    "image": "bananas.jpg",
+    "SKU": 100301,
+    "priceInPence": 85,
+    "categories": ["food", "fruit", "healthy"]
+  },
+  {
+    "key": "raspberries225g",
+    "title": "Raspberries",
+      "attributes": {
+        "size": "225g"
+      },
+    "image": "raspberries.jpg",
+    "SKU": 100302,
+    "priceInPence": 245,
+    "categories": ["food", "fruit", "healthy"]
+  },
+  {
+    "key": "blueberries150",
+    "title": "Blueberries",
+      "attributes": {
+        "size": "150g"
+      },
+    "image": "blueberries.jpg",
+    "SKU": 100303,
+    "priceInPence": 205,
+    "categories": ["food", "fruit", "healthy"]
+  },
+  {
+    "key": "brazilNuts200g",
+    "title": "Brazil Nuts",
+      "attributes": {
+        "size": "200g"
+      },
+    "image": "brazilNuts.jpg",
+    "SKU": 100400,
+    "priceInPence": 265,
+    "categories": ["food", "nuts", "healthy"]
+  },
+  {
+    "key": "walnuts200g",
+    "title": "Walnuts",
+      "attributes": {
+        "size": "200g"
+      },
+    "image": "walnuts.jpg",
+    "SKU": 100401,
+    "priceInPence": 275,
+    "categories": ["food", "nuts", "healthy"]
+  },
+  {
+    "key": "pecanNuts200g",
+    "title": "Pecan Nuts",
+      "attributes": {
+        "size": "200g"
+      },
+    "image": "pecanNuts.jpg",
+    "SKU": 100401,
+    "priceInPence": 345,
+    "categories": ["food", "nuts", "healthy"]
+  },
+  {
+    "key": "sunflowerSeeds200g",
+    "title": "Sunflower Seeds",
+      "attributes": {
+        "size": "200g"
+      },
+    "image": "sunflowerSeeds.jpg",
+    "SKU": 100501,
+    "priceInPence": 195,
+    "categories": ["food", "seeds", "healthy"]
+  },
+  {
+    "key": "chiaSeeds200g",
+    "title": "chia Seeds",
+      "attributes": {
+        "size": "150g"
+      },
+    "image": "chiaSeeds.jpg",
+    "SKU": 100502,
+    "priceInPence": 115,
+    "categories": ["food", "seeds", "healthy"]
+  }
+]
