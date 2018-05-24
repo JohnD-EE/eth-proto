@@ -159,7 +159,7 @@
       "attributes": {
         "size": "335g"
       },
-    "image": "cherryTomatoes.jpg",
+    "image": "cherryTomatoes.jpeg",
     "SKU": 100203,
     "priceInPence": 200,
     "categories": ["food", "salad", "healthy"]
@@ -203,7 +203,7 @@
       "attributes": {
         "size": "Large"
       },
-    "image": "aubergine.jpg",
+    "image": "aubergine.jepg",
     "SKU": 100207,
     "priceInPence": 85,
     "categories": ["food", "vegetables", "healthy"]
