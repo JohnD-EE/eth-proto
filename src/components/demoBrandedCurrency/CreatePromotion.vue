@@ -73,6 +73,9 @@ export default {
         return [() => false]
       }
     },
+    step2Rules () {
+      //
+    },
     promotionNameRules () {
       return [
         v => !!v || 'Promotion Name is required',

@@ -26,7 +26,7 @@ contract EIP20 is EIP20Interface {
     string public exchangeRateToEth;      //Token to Eth exchange rate (0.5 means 2 Tokens = 1 Eth)
     bool public isPointsOnly;             //Used as tokens, not a currency and non-exchangeable
     bool public isTransferable;           //Trasnferability between users
-
+    
     event LogSell(address to, uint value);
 
     function EIP20(

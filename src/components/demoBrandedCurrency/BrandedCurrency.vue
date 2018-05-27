@@ -8,7 +8,8 @@
           <v-container fill-height fluid>
             <v-layout row wrap>
               <v-flex xs12 sm7 align-end flexbox>
-                <span class="headline"><v-icon dark left large>payment</v-icon> Branded Currency</span>
+                <span class="headline">
+                  <v-icon dark left large>payment</v-icon> Branded Currency</span>
               </v-flex>
               <v-flex xs12 sm5 align-end flexbox>
                 <div class="text-xs-right">
@@ -27,11 +28,11 @@
           <p>Create a points based loaylty system, or a real cryptocurency for whatever purpose you choose, fully controlled by Smart Contracts</p>
         </v-flex>
           <template>
-
               <v-layout row wrap>
                 <v-flex xs12 md8 class="mb-3">
                   <v-expansion-panel popout>
-                    <v-expansion-panel-content v-for="(item,i) in storyItems" :key="i">
+                    <v-expansion-panel-content
+                    v-for="(item,i) in storyItems" :key="i">
                       <div slot="header">{{ item.header }}</div>
                       <v-card class="grey lighten-3">
                         <v-card-text>
@@ -46,6 +47,23 @@
                   </v-expansion-panel>
                 </v-flex>
                 <v-flex xs12 md4 class="text-md-right">
+                  <v-menu offset-y>
+                  <v-btn slot="activator" color="info" icon><v-icon>info</v-icon></v-btn>
+                  <v-list>
+                  <v-list-tile
+                  v-for="(item, index) in subMenu"
+                  :key="item.title"
+                  @click.native="openPromotionTypesDialog()">
+                  <v-list-tile-action>
+                    <v-icon v-text="item.icon"></v-icon>
+                  </v-list-tile-action>
+                    <v-list-tile-title v-text="item.title"></v-list-tile-title>
+                  </v-list-tile>
+                </v-list>
+                </v-menu>
+
+                <app-promotion-types-definitions @close="onClosePromotionTypeDialog" :openDialog="promotionTypesDialog"></app-promotion-types-definitions>
+
                     <v-tooltip v-for="(item,i) in qualities" :key="i" bottom min-width="100px">
                   <v-chip small color="orange" text-color="white" slot="activator">
                     {{ item.quality }}
@@ -86,10 +104,15 @@ import { mapGetters } from 'vuex'
 import CreateCurrency from './CreateCurrency.vue'
 import ViewCurrencies from './ViewCurrencies.vue'
 import CreatePromotion from './CreatePromotion.vue'
+import PromotionTypesDefinitions from './PromotionTypesDefinitions.vue'
 
 export default {
   data () {
     return {
+      promotionTypesDialog: false,
+      subMenu: [
+        { title: 'Promotion Types Definitions', click: 'openPromotionTypesDialog', icon: 'info' }
+      ],
       storyItems: [{
         header: 'As a Retailer:',
         descriptions: [
@@ -153,7 +176,8 @@ export default {
   components: {
     'app-create-currency': CreateCurrency,
     'app-view-currencies': ViewCurrencies,
-    'app-create-promotion': CreatePromotion
+    'app-create-promotion': CreatePromotion,
+    'app-promotion-types-definitions': PromotionTypesDefinitions
   },
   computed: {
     ...mapGetters({
@@ -180,7 +204,12 @@ export default {
     //
   },
   methods: {
-    //
+    openPromotionTypesDialog () {
+      this.promotionTypesDialog = true
+    },
+    onClosePromotionTypeDialog () {
+      this.promotionTypesDialog = false
+    }
   }
 }
 </script>
