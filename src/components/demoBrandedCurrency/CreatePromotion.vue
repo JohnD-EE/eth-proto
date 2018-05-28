@@ -23,14 +23,68 @@
                         clearable
                         required>
                       </v-text-field>
+                      <v-radio-group v-model="promotionType" required>
+                        <v-radio
+                          label="Smart Coupon"
+                          value="smartCoupon"
+                        ></v-radio>
+                        <v-radio
+                          label="Smart Voucher"
+                          value="smartVoucher"
+                        ></v-radio>
+                        <v-radio
+                          label="Smart Offers"
+                          value="smartOffers"
+                        ></v-radio>
+                      </v-radio-group>
                     </v-flex>
                   </v-layout>
                 </v-container>
               </v-card>
               <v-btn color="primary" @click.native="promotionStepper = 2, step1Continued = true">Continue</v-btn>
               </v-stepper-content>
-              <v-stepper-step  @click.native="promotionStepper = 2" :rules="step2Rules" step="2">Select Products</v-stepper-step>
+
+              <v-stepper-step  @click.native="promotionStepper = 2" :rules="step2Rules" step="2">Cofigure Promotion</v-stepper-step>
                 <v-stepper-content step="2">
+                  <v-card color="grey lighten-3" class="mb-5">
+
+                    <v-flex xs12>
+                      <div v-if="!promotionType">
+                        No Promotion Type selected
+                      </div>
+                      <div v-else-if="promotionType === 'smartOffer'">
+                        Smart Offer:
+                        <ul class="ml-4 mb-3" style="list-style-type:disc">
+                          <li>Buy One, Get Discount on 2nd</li>
+                          <li>Share to Activate Discount</li>
+                          <li>Buy one now, get next one free next month.</li>
+                          <li>Spend £50 units and get Points</li>
+                          <li>Spend £50 and get Discount</li>
+                          <li>Spend £20 on Fruit and get discount</li>
+                        </ul>
+                      </div>
+                      <div v-else-if="promotionType === 'smartVoucher'">
+                        Smart Voucher
+                      </div>
+                      <div v-else-if="promotionType === 'smartCoupon'">
+                        Smart Coupon<br/>
+                        Apply to Product Category<br/>
+                        Select Specific products<br/>
+                        Percent Discount / Fixed Discount<br/>
+                        Qualyfying Spend<br/>
+                        Available to Promoters? (e.g. Wowcher)  Promoter fee percent?<br/>
+                        Use once or Multiple?<br/>
+                        Redemption Windows?<br/>
+                      </div>
+                    </v-flex>
+
+                  </v-card>
+                  <v-btn color="primary" @click.native="promotionStepper = 3, step2Continued = true">Continue</v-btn>
+                  <v-btn @click.native="promotionStepper = 1">Back</v-btn>
+                </v-stepper-content>
+
+              <v-stepper-step  @click.native="promotionStepper = 3" :rules="step3Rules" step="3">Select Products</v-stepper-step>
+                <v-stepper-content step="3">
                   <v-card color="grey lighten-3" class="mb-5">
 
                         <v-flex xs12>
@@ -38,8 +92,8 @@
                         </v-flex>
 
                   </v-card>
-                  <v-btn color="primary" @click.native="promotionStepper = 3, step2Continued = true">Continue</v-btn>
-                  <v-btn @click.native="promotionStepper = 1">Back</v-btn>
+                  <v-btn color="primary" @click.native="promotionStepper = 4, step3Continued = true">Continue</v-btn>
+                  <v-btn @click.native="promotionStepper = 2">Back</v-btn>
                 </v-stepper-content>
                 <v-card-actions>
                   <v-spacer></v-spacer>
@@ -64,6 +118,7 @@ export default {
     step3Continued: false,
     dialog: false,
     promotionName: '',
+    promotionType: '',
     valid: true,
     rules: false
   }),
@@ -72,6 +127,9 @@ export default {
       if (this.step1Continued && (!this.promotionName || this.promotionName.length > 32)) {
         return [() => false]
       }
+    },
+    step2Rules () {
+      //
     },
     step2Rules () {
       //
