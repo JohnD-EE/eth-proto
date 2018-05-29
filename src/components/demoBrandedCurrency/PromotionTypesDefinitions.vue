@@ -120,8 +120,6 @@ export default {
       active: null,
       tabItems: [
         { tabTitle: 'Intrinsic Offers', content: [{
-
-
         }] },
         { tabTitle: 'Vouchers', text: 'vouchers' },
         { tabTitle: 'Coupons', text: 'coupons' }
@@ -142,8 +140,8 @@ export default {
       this.$emit('close', {promotionTypesDialog: false})
     },
     next () {
-        const active = parseInt(this.active)
-        this.active = (active < 2 ? active + 1 : 0).toString()
+      const active = parseInt(this.active)
+      this.active = (active < 2 ? active + 1 : 0).toString()
       }
   }
 }

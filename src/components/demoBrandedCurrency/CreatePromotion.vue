@@ -15,9 +15,9 @@
               <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
                 <v-container grid-list-md>
                   <v-layout row wrap>
-                    <v-flex xs10>
+                    <v-flex xs8>
                       <v-text-field
-                        label="Promotion Name"
+                        label="Promotion name"
                         v-model="promotionName"
                         :rules="promotionNameRules"
                         clearable
@@ -25,15 +25,15 @@
                       </v-text-field>
                       <v-radio-group v-model="promotionType" required>
                         <v-radio
-                          label="Smart Coupon"
+                          label="Smart coupon"
                           value="smartCoupon"
                         ></v-radio>
                         <v-radio
-                          label="Smart Voucher"
+                          label="Smart voucher"
                           value="smartVoucher"
                         ></v-radio>
                         <v-radio
-                          label="Smart Offers"
+                          label="Smart offers"
                           value="smartOffers"
                         ></v-radio>
                       </v-radio-group>
@@ -44,16 +44,18 @@
               <v-btn color="primary" @click.native="promotionStepper = 2, step1Continued = true">Continue</v-btn>
               </v-stepper-content>
 
-              <v-stepper-step  @click.native="promotionStepper = 2" :rules="step2Rules" step="2">Cofigure Promotion</v-stepper-step>
+              <v-stepper-step @click.native="promotionStepper = 2" :rules="step2Rules" step="2">Configure promotion: {{ promotionTypeText }}</v-stepper-step>
                 <v-stepper-content step="2">
-                  <v-card color="grey lighten-3" class="mb-5">
+                  <v-card color="grey lighten-3" class="mb-5 pb-3 pl-3">
 
-                    <v-flex xs12>
+                    <v-container grid-list-md>
+                      <v-layout row wrap>
+                        <v-flex xs10>
                       <div v-if="!promotionType">
-                        No Promotion Type selected
+                        Please select a 'Promotion Type' in Step 1
                       </div>
                       <div v-else-if="promotionType === 'smartOffer'">
-                        Smart Offer:
+                        Smart Offer: (not yet complete, choose Smart Coupon instead)
                         <ul class="ml-4 mb-3" style="list-style-type:disc">
                           <li>Buy One, Get Discount on 2nd</li>
                           <li>Share to Activate Discount</li>
@@ -64,19 +66,99 @@
                         </ul>
                       </div>
                       <div v-else-if="promotionType === 'smartVoucher'">
-                        Smart Voucher
+                        Smart Voucher, not yet complete, choose Smart Coupon instead
                       </div>
                       <div v-else-if="promotionType === 'smartCoupon'">
-                        Smart Coupon<br/>
-                        Apply to Product Category<br/>
-                        Select Specific products<br/>
-                        Percent Discount / Fixed Discount<br/>
-                        Qualyfying Spend<br/>
-                        Available to Promoters? (e.g. Wowcher)  Promoter fee percent?<br/>
-                        Use once or Multiple?<br/>
-                        Redemption Windows?<br/>
+                        <span class="grey--text">Qualifying products:</span><br/>
+                        <v-radio-group v-model="couponQualifyingProducts" required>
+                          <v-radio
+                            label="Specified products"
+                            value="specificProducts"
+                          ></v-radio>
+                          <v-radio
+                            label="Product categories"
+                            value="productCategories"
+                          ></v-radio>
+                          <v-radio
+                            label="All products"
+                            value="allProducts"
+                          ></v-radio>
+                        </v-radio-group>
+
+                        <span class="grey--text">Discount Type:</span><br/>
+                        <v-radio-group v-model="couponDiscountType" required>
+                          <v-radio
+                            label="Percent discount"
+                            value="percentDiscount"
+                          ></v-radio>
+                          <v-radio
+                            label="Fixed discount"
+                            value="fixedDiscount"
+                          ></v-radio>
+                        </v-radio-group>
+
+                        <v-text-field v-show = "couponDiscountType === 'fixedDiscount'"
+                          label="Fixed discount"
+                          v-model="couponFixedDiscount"
+                          :rules="couponFixedDiscountRules"
+                          clearable>
+                        </v-text-field>
+
+                        <v-text-field v-show = "couponDiscountType === 'couponPercentDiscount'"
+                          label="Percent discount"
+                          v-model="couponPercentDiscount"
+                          :rules="couponPercentDiscountRules"
+                          clearable>
+                        </v-text-field>
+
+                        <span class="grey--text">Qualyfying Spend:</span><br/>
+                        <v-text-field class="mt-3"
+                          label="Total basket spend"
+                          v-model="couponQualifyingSpend"
+                          :rules="couponQualifyingSpendRules"
+                          hint="Leave blank to not apply total spend constraints"
+                          clearable>
+                        </v-text-field>
+
+                        <span class="grey--text">3rd Party Promoters:</span><br/>
+                        <v-checkbox class="mt-3"
+                          v-model="couponPromotersAllowed"
+                          label="Available to Promoters"
+                          :rules="couponPromotersAllowedRules"
+                          clearable>
+                        </v-checkbox>
+                        <v-text-field v-show = "couponPromotersAllowed"
+                          label="Promoter fee percent"
+                          v-model="couponPromoterFee"
+                          :rules="couponPromoterFeeRules"
+                          clearable>
+                        </v-text-field>
+
+                        <span class="grey--text">Single or Multiple Use:</span><br/>
+                        <v-radio-group v-model="couponReusePolicy" required>
+                          <v-radio
+                            label="Single Use"
+                            value="singleUse"
+                          ></v-radio>
+                          <v-radio
+                            label="Multiple Use"
+                            value="multipleUse"
+                          ></v-radio>
+                        </v-radio-group>
+
+                        <span class="grey--text">Coupon Expiry:</span><br/>
+                        <v-text-field class="mt-3"
+                          label="Coupon Expiry Block"
+                          v-model="couponExpiryBlock"
+                          :rules="couponExpiryBlockRules"
+                          clearable
+                          required
+                          hint="Specify the Block Number when the coupon expires">
+                        </v-text-field>
                       </div>
                     </v-flex>
+                  </v-layout>
+                </v-container>
 
                   </v-card>
                   <v-btn color="primary" @click.native="promotionStepper = 3, step2Continued = true">Continue</v-btn>
@@ -87,9 +169,15 @@
                 <v-stepper-content step="3">
                   <v-card color="grey lighten-3" class="mb-5">
 
-                        <v-flex xs12>
-                          <app-product-picker></app-product-picker>
-                        </v-flex>
+                    <v-flex xs12>
+                      <app-product-picker v-if="couponQualifyingProducts === 'specificProducts'"></app-product-picker>
+                      <span v-else-if="couponQualifyingProducts === 'productCategories'">
+                        Show a Product Category picker
+                      </span>
+                      <span v-else-if="couponQualifyingProducts === 'allProducts'">
+                        Promotion applies to all products
+                      </span>
+                    </v-flex>
 
                   </v-card>
                   <v-btn color="primary" @click.native="promotionStepper = 4, step3Continued = true">Continue</v-btn>
@@ -119,6 +207,23 @@ export default {
     dialog: false,
     promotionName: '',
     promotionType: '',
+    couponQualifyingProducts: '',
+    couponFixedDiscount: '',
+    couponPercentDiscount: '',
+    couponQualifyingSpend: '',
+    couponDiscountType: '',
+    couponReusePolicy: '',
+    couponPromotersAllowed: '',
+    couponPromoterFee: '',
+    couponExpiryBlock: '',
+    reusePolicy: '',
+    couponFixedDiscountRules: [],
+    couponPercentDiscountRules: [],
+    couponQualifyingSpendRules: [],
+    couponPromotersAllowedRules: [],
+    couponPromoterFeeRules: [],
+    couponReusePolicyRules: [],
+    couponExpiryBlockRules: [],
     valid: true,
     rules: false
   }),
@@ -131,8 +236,25 @@ export default {
     step2Rules () {
       //
     },
-    step2Rules () {
+    step3Rules () {
       //
+    },
+    promotionTypeText () {
+      let text = ''
+      switch (this.promotionType) {
+        case 'smartCoupon':
+          text = 'Smart Coupon'
+          break
+        case 'smartVoucher':
+          text = 'Smart Voucher'
+          break
+        case 'smartOffer':
+          text = 'Smart Offer'
+          break
+        default:
+          text = 'Not Selected (Step 1)'
+      }
+      return text
     },
     promotionNameRules () {
       return [
@@ -146,8 +268,42 @@ export default {
   },
   methods: {
     submit () {
+      switch (this.promotionType) {
+        case 'smartCoupon':
+          this.submitCouponCreate()
+          break
+        case 'smartVoucher':
+          this.submitVoucherCreate()
+          break
+        case 'smartOffer':
+          this.submitOfferCreate()
+          break
+        default:
+          return false
+      }
+    },
+    submitCouponCreate () {
       if (this.$refs.form.validate()) {
-        // create the Promotions contract
+        // create the Coupon contract
+        console.log('Submitting Coupon')
+        this.close()
+      } else {
+        console.log('validation failed')
+      }
+    },
+    submitVoucherCreate () {
+      if (this.$refs.form.validate()) {
+        // create the Voucher contract
+
+        this.close()
+      } else {
+        console.log('validation failed')
+      }
+    },
+    submitOfferCreate () {
+      if (this.$refs.form.validate()) {
+        // create the Offer contract
+
         this.close()
       } else {
         console.log('validation failed')

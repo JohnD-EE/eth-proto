@@ -85,5 +85,11 @@ export default {
   },
   setEIP20Contracts (state, payload) {
     state.eip20Contracts = payload
+  },
+  resetSmartCouponContracts (state) {
+    state.smartCouponContracts = []
+  },
+  setSmartCouponContracts (state, payload) {
+    state.smartCouponContracts = payload
   }
 }

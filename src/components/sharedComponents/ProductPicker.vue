@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     filteredCategory (categories) {
-      let matched = false;
+      let matched = false
       let categoriesFiltered = this.categoriesFiltered
       categoriesFiltered.forEach(res => {
         if (categories.includes(res)) {

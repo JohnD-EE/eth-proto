@@ -6,6 +6,9 @@ import AuctionFactoryJSON from '../../build/contracts/AuctionFactory.json'
 import EscrowFactoryJSON from '../../build/contracts/EscrowFactory.json'
 import BrandFundedFactoryJSON from '../../build/contracts/BrandFundedFactory.json'
 import EIP20FactoryJSON from '../../build/contracts/EIP20Factory.json'
+import SmartCouponFactoryJSON from '../../build/contracts/SmartCouponFactory.json'
+import SmartVoucherFactoryJSON from '../../build/contracts/SmartVoucherFactory.json'
+import SmartOfferFactoryJSON from '../../build/contracts/SmartOfferFactory.json'
 
 export default {
   newNotification ({commit}, payload) {
@@ -264,6 +267,9 @@ export default {
     abi['EscrowFactory'] = EscrowFactoryJSON.abi
     abi['BrandFundedFactory'] = BrandFundedFactoryJSON.abi
     abi['EIP20Factory'] = EIP20FactoryJSON.abi
+    abi['SmartCouponFactory'] = SmartCouponFactoryJSON.abi
+    abi['SmartVoucherFactory'] = SmartVoucherFactoryJSON.abi
+    abi['SmartOfferFactory'] = SmartOfferFactoryJSON.abi
     let defaultContractAddresses = this.state.defaultContractAddresses
     defaultContractAddresses.forEach(res => {
       let contract = new window.web3.eth.Contract(abi[res.instance], res.address)
@@ -414,6 +420,32 @@ export default {
       // We have a change
       eip20Contracts.splice(index, 1, payload)
       commit('setEIP20Contracts', eip20Contracts)
+    }
+  },
+
+  resetSmartCouponContracts ({commit}) {
+    commit('resetSmartCouponContracts')
+  },
+
+  registerSmartCouponContracts ({commit}, payload) {
+    let smartCouponContracts = this.state.smartCouponContracts
+    // see if EIP20 address already exists
+    let index = false
+    let matchFound = false
+    smartCouponContracts.forEach(function (res, i) {
+      if (res.contractAddress === payload.contractAddress) {
+        index = i
+        matchFound = true
+      }
+    })
+    if (!matchFound) {
+      smartCouponContracts.push(payload)
+      // We have a new EIP20 contract
+      commit('setSmartCouponContracts', smartCouponContracts)
+    } else {
+      // We have a change
+      smartCouponContracts.splice(index, 1, payload)
+      commit('setSmartCouponContracts', smartCouponContracts)
     }
   }
 }
