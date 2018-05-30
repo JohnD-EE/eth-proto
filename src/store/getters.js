@@ -272,7 +272,6 @@ export default {
           exchangeRateMode = 'floating'
         }
       }
-      console.log('issuer', res.info.issuer)
       let issuer = 'N/A'
       let userIsIssuer = res.info.issuer === state.userDetails.ethAccount
       if (userIsIssuer) {
@@ -299,5 +298,33 @@ export default {
       })
     })
     return eip20Items
+  },
+
+  smartCouponContracts: state => {
+    let smartCouponItems = []
+    let allUsersByEthAccount = helperUsers.getUsersByAddress()
+
+    state.smartCouponContracts.forEach(res => {
+      let status = {text: '', color: ''}
+      status.text = 'Active'
+      status.color = 'green'
+    })
+
+    smartCouponItems.push({
+      contractAddress: res.contractAddress,
+      status: status,
+      promotionName: res.info.promotionName,
+      couponQualifyingProducts: res.info.couponQualifyingProducts,
+      couponFixedDiscount: res.info.couponFixedDiscount,
+      couponPercentDiscount: res.info.couponPercentDiscount,
+      couponQualifyingSpend: res.info.couponQualifyingSpend,
+      couponDiscountType: res.info.couponDiscountType,
+      couponReusePolicy: res.info.couponReusePolicy,
+      couponPromotersAllowed: res.info.couponPromotersAllowed,
+      couponPromoterFee: res.info.couponPromoterFee,
+      couponExpiryBlock: res.info.couponExpiryBlock
+    })
+
   }
+
 }
