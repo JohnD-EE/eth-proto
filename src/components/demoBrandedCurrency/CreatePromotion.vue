@@ -104,7 +104,7 @@
                           clearable>
                         </v-text-field>
 
-                        <v-text-field v-show = "couponDiscountType === 'couponPercentDiscount'"
+                        <v-text-field v-show = "couponDiscountType === '[percentDiscount'"
                           label="Percent discount"
                           v-model="couponPercentDiscount"
                           :rules="couponPercentDiscountRules"
@@ -197,6 +197,7 @@
 
 <script>
 import ProductPicker from '../sharedComponents/ProductPicker.vue'
+import smartCouponHelper from '../../helpers/promotions/smartCoupon'
 
 export default {
   data: () => ({
@@ -207,7 +208,8 @@ export default {
     dialog: false,
     promotionName: '',
     promotionType: '',
-    couponQualifyingProducts: '',
+    couponQualifyingProducts: '', //
+    couponQualifyingProductSKUs: [100101, 100102], //
     couponFixedDiscount: '',
     couponPercentDiscount: '',
     couponQualifyingSpend: '',
@@ -216,7 +218,6 @@ export default {
     couponPromotersAllowed: '',
     couponPromoterFee: '',
     couponExpiryBlock: '',
-    reusePolicy: '',
     couponFixedDiscountRules: [],
     couponPercentDiscountRules: [],
     couponQualifyingSpendRules: [],
@@ -286,6 +287,21 @@ export default {
       if (this.$refs.form.validate()) {
         // create the Coupon contract
         console.log('Submitting Coupon')
+        smartCouponHelper.createSmartCoupon(
+          {
+            owner: this.$store.state.userDetails.ethAccount,
+            promotionName: this.promotionName,
+            couponQualifyingProductSKUs: this.couponQualifyingProductSKUs,
+            couponFixedDiscount: Number(this.couponFixedDiscount),
+            couponPercentDiscount: Number(this.couponPercentDiscount),
+            couponQualifyingSpend: Number(this.couponQualifyingSpend),
+            couponDiscountType: this.couponDiscountType,
+            couponReusePolicy: this.couponReusePolicy,
+            couponPromotersAllowed: this.couponPromotersAllowed,
+            couponPromoterFee: Number(this.couponPromoterFee),
+            couponExpiryBlock: Number(this.couponExpiryBlock)
+          }
+        )
         this.close()
       } else {
         console.log('validation failed')

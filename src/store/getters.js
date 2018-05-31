@@ -300,7 +300,7 @@ export default {
     return eip20Items
   },
 
-  smartCouponContracts: state => {
+  allSmartCouponContracts: state => {
     let smartCouponItems = []
     let allUsersByEthAccount = helperUsers.getUsersByAddress()
 
@@ -308,13 +308,12 @@ export default {
       let status = {text: '', color: ''}
       status.text = 'Active'
       status.color = 'green'
-    })
 
     smartCouponItems.push({
       contractAddress: res.contractAddress,
       status: status,
       promotionName: res.info.promotionName,
-      couponQualifyingProducts: res.info.couponQualifyingProducts,
+      couponQualifyingProductSKUs: res.info.couponQualifyingProductSKUs,
       couponFixedDiscount: res.info.couponFixedDiscount,
       couponPercentDiscount: res.info.couponPercentDiscount,
       couponQualifyingSpend: res.info.couponQualifyingSpend,
@@ -323,8 +322,8 @@ export default {
       couponPromotersAllowed: res.info.couponPromotersAllowed,
       couponPromoterFee: res.info.couponPromoterFee,
       couponExpiryBlock: res.info.couponExpiryBlock
+      })
     })
-
+    return smartCouponItems
   }
-
 }

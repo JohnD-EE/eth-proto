@@ -79,14 +79,17 @@
           <v-card-text>
             <v-container>
               <v-layout row wrap>
-                <v-flex sm12 md4 align-end flexbox>
+                <v-flex sm12 md6 align-end flexbox>
                   <app-create-currency></app-create-currency>
                 </v-flex>
-                <v-flex sm12 md4 align-end flexbox>
+                <v-flex sm12 md6 align-end flexbox>
                   <app-view-currencies></app-view-currencies>
                 </v-flex>
-                <v-flex sm12 md4 align-end flexbox>
+                <v-flex sm12 md6 align-end flexbox>
                   <app-create-promotion></app-create-promotion>
+                </v-flex>
+                <v-flex sm12 md6 align-end flexbox>
+                  <app-view-coupons></app-view-coupons>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -104,6 +107,7 @@ import { mapGetters } from 'vuex'
 import CreateCurrency from './CreateCurrency.vue'
 import ViewCurrencies from './ViewCurrencies.vue'
 import CreatePromotion from './CreatePromotion.vue'
+import ViewCoupons from './ViewCoupons.vue'
 import PromotionTypesDefinitions from './PromotionTypesDefinitions.vue'
 
 export default {
@@ -177,6 +181,7 @@ export default {
     'app-create-currency': CreateCurrency,
     'app-view-currencies': ViewCurrencies,
     'app-create-promotion': CreatePromotion,
+    'app-view-coupons': ViewCoupons,
     'app-promotion-types-definitions': PromotionTypesDefinitions
   },
   computed: {

@@ -13,7 +13,7 @@ contract SmartCouponFactory {
 
   function createSmartCoupon(
     string _promotionName,
-    uint[] _couponQualifyingProducts,
+    uint[] _couponQualifyingProductSKUs,
     uint _couponFixedDiscount,
     uint _couponPercentDiscount,
     uint _couponQualifyingSpend,
@@ -26,7 +26,7 @@ contract SmartCouponFactory {
       SmartCoupon newSmartCoupon = new SmartCoupon(
         msg.sender,
         _promotionName,
-        _couponQualifyingProducts,
+        _couponQualifyingProductSKUs,
         _couponFixedDiscount,
         _couponPercentDiscount,
         _couponQualifyingSpend,

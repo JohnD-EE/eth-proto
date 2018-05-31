@@ -5,7 +5,7 @@ contract SmartCoupon {
   // static
   address public owner;
   string public promotionName;
-  uint[] public couponQualifyingProducts;
+  uint[] public couponQualifyingProductSKUs;
   uint public couponFixedDiscount;
   uint public couponPercentDiscount;
   uint public couponQualifyingSpend;
@@ -16,11 +16,10 @@ contract SmartCoupon {
   uint public couponExpiryBlock;
 
   // states
-
   function SmartCoupon (
     address _owner,
     string _promotionName,
-    uint[] _couponQualifyingProducts,
+    uint[] _couponQualifyingProductSKUs,
     uint _couponFixedDiscount,
     uint _couponPercentDiscount,
     uint _couponQualifyingSpend,
@@ -34,7 +33,7 @@ contract SmartCoupon {
 
       owner = _owner;
       promotionName = _promotionName;
-      couponQualifyingProducts = _couponQualifyingProducts;
+      couponQualifyingProductSKUs = _couponQualifyingProductSKUs;
       couponFixedDiscount = _couponFixedDiscount;
       couponPercentDiscount = _couponPercentDiscount;
       couponQualifyingSpend = _couponQualifyingSpend;
@@ -43,7 +42,6 @@ contract SmartCoupon {
       couponPromotersAllowed = _couponPromotersAllowed;
       couponPromoterFee = _couponPromoterFee;
       couponExpiryBlock = _couponExpiryBlock;
-
   }
 
 }
