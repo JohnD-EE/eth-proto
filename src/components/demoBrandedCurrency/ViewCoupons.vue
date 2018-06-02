@@ -38,9 +38,9 @@
                 <td>Status</td>
                 <td class="text-xs-center">{{ props.item.couponPercentDiscount }}</td>
                 <td class="text-xs-center">
-                  <span v-for="(product, p) in props.item.couponQualifyingProductSKUs"
+                  <span v-for="(productSKU, p) in props.item.couponQualifyingProductSKUs"
                     :key="p">
-                     {{ product }}
+                     {{ productListBySku[productSKU].title }}<span v-show="(p + 1) < props.item.couponQualifyingProductSKUs.length">, </span>
                    </span>
                  </td>
                 <td class="text-xs-center">{{ props.item.couponQualifyingSpend }}</td>
@@ -62,6 +62,7 @@
 
 <script>
 import smartCouponsHelper from '../../helpers/promotions/smartCoupon'
+import ProductsJSON from '../proxyData/products.json'
 
 export default {
   data () {
@@ -102,6 +103,13 @@ export default {
     },
     latestBlockNumber () {
       return this.$store.state.web3.latestBlock.number
+    },
+    productListBySku() {
+      let productList = []
+      ProductsJSON.forEach(res => {
+        productList[res.SKU] = res
+      })
+      return productList
     }
   },
   components: {
