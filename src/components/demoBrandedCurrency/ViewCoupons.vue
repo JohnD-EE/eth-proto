@@ -37,7 +37,12 @@
                 <td>{{ props.item.promotionName }}</td>
                 <td>Status</td>
                 <td class="text-xs-center">{{ props.item.couponPercentDiscount }}</td>
-                <td class="text-xs-center">{{ props.item.couponQualifyingProductSKUs }}</td>
+                <td class="text-xs-center">
+                  <span v-for="(product, p) in props.item.couponQualifyingProductSKUs"
+                    :key="p">
+                     {{ product }}
+                   </span>
+                 </td>
                 <td class="text-xs-center">{{ props.item.couponQualifyingSpend }}</td>
                 <td class="text-xs-center">{{ props.item.couponReusePolicy }}</td>
                 <td class="text-xs-center">{{ props.item.couponPromotersAllowed }}</td>

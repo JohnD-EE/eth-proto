@@ -92,14 +92,14 @@
     "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartOfferFactory.sol",
     "exportedSymbols": {
       "SmartOfferFactory": [
-        2095
+        2104
       ]
     },
-    "id": 2096,
+    "id": 2105,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2035,
+        "id": 2044,
         "literals": [
           "solidity",
           "^",
@@ -112,14 +112,14 @@
       {
         "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartOffer.sol",
         "file": "./SmartOffer.sol",
-        "id": 2037,
+        "id": 2046,
         "nodeType": "ImportDirective",
-        "scope": 2096,
-        "sourceUnit": 2034,
+        "scope": 2105,
+        "sourceUnit": 2043,
         "src": "28:46:13",
         "symbolAliases": [
           {
-            "foreign": 2036,
+            "foreign": 2045,
             "local": null
           }
         ],
@@ -128,24 +128,24 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          2033
+          2042
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2095,
+        "id": 2104,
         "linearizedBaseContracts": [
-          2095
+          2104
         ],
         "name": "SmartOfferFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2040,
+            "id": 2049,
             "name": "smartOfferContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 2095,
+            "scope": 2104,
             "src": "110:36:13",
             "stateVariable": true,
             "storageLocation": "default",
@@ -155,7 +155,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 2038,
+                "id": 2047,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "110:7:13",
@@ -164,7 +164,7 @@
                   "typeString": "address"
                 }
               },
-              "id": 2039,
+              "id": 2048,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "110:9:13",
@@ -179,20 +179,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2051,
+            "id": 2060,
             "name": "SmartOfferCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2050,
+              "id": 2059,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2042,
+                  "id": 2051,
                   "indexed": false,
                   "name": "smartOfferContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2051,
+                  "scope": 2060,
                   "src": "229:26:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -201,7 +201,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2041,
+                    "id": 2050,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "229:7:13",
@@ -215,11 +215,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2044,
+                  "id": 2053,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2051,
+                  "scope": 2060,
                   "src": "257:13:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -228,7 +228,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2043,
+                    "id": 2052,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "257:7:13",
@@ -242,11 +242,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2046,
+                  "id": 2055,
                   "indexed": false,
                   "name": "numSmartOffer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2051,
+                  "scope": 2060,
                   "src": "272:18:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -255,7 +255,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2045,
+                    "id": 2054,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "272:4:13",
@@ -269,11 +269,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2049,
+                  "id": 2058,
                   "indexed": false,
                   "name": "allSmartOfferContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2051,
+                  "scope": 2060,
                   "src": "292:32:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -283,7 +283,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2047,
+                      "id": 2056,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "292:7:13",
@@ -292,7 +292,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2048,
+                    "id": 2057,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "292:9:13",
@@ -311,13 +311,13 @@
           },
           {
             "body": {
-              "id": 2054,
+              "id": 2063,
               "nodeType": "Block",
               "src": "368:32:13",
               "statements": []
             },
             "documentation": null,
-            "id": 2055,
+            "id": 2064,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -325,19 +325,19 @@
             "name": "SmartOfferFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2052,
+              "id": 2061,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "358:2:13"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2053,
+              "id": 2062,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "368:0:13"
             },
-            "scope": 2095,
+            "scope": 2104,
             "src": "332:68:13",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -345,37 +345,37 @@
           },
           {
             "body": {
-              "id": 2084,
+              "id": 2093,
               "nodeType": "Block",
               "src": "462:241:13",
               "statements": [
                 {
                   "assignments": [
-                    2061
+                    2070
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2061,
+                      "id": 2070,
                       "name": "newSmartOffer",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2085,
+                      "scope": 2094,
                       "src": "471:24:13",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                        "typeIdentifier": "t_contract$_SmartOffer_$2042",
                         "typeString": "contract SmartOffer"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2060,
+                        "id": 2069,
                         "name": "SmartOffer",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2033,
+                        "referencedDeclaration": 2042,
                         "src": "471:10:13",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       },
@@ -383,7 +383,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2068,
+                  "id": 2077,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -391,18 +391,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2064,
+                          "id": 2073,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2202,
+                          "referencedDeclaration": 2211,
                           "src": "513:3:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2065,
+                        "id": 2074,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -418,11 +418,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2066,
+                        "id": 2075,
                         "name": "_promotionName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2057,
+                        "referencedDeclaration": 2066,
                         "src": "525:14:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -441,7 +441,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 2063,
+                      "id": 2072,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -449,23 +449,23 @@
                       "nodeType": "NewExpression",
                       "src": "498:14:13",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartOffer_$2033_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartOffer_$2042_$",
                         "typeString": "function (address,string memory) returns (contract SmartOffer)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2062,
+                        "id": 2071,
                         "name": "SmartOffer",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2033,
+                        "referencedDeclaration": 2042,
                         "src": "502:10:13",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       }
                     },
-                    "id": 2067,
+                    "id": 2076,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -475,7 +475,7 @@
                     "nodeType": "FunctionCall",
                     "src": "498:42:13",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                      "typeIdentifier": "t_contract$_SmartOffer_$2042",
                       "typeString": "contract SmartOffer"
                     }
                   },
@@ -488,14 +488,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2072,
+                        "id": 2081,
                         "name": "newSmartOffer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2061,
+                        "referencedDeclaration": 2070,
                         "src": "574:13:13",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       }
@@ -503,24 +503,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2069,
+                        "id": 2078,
                         "name": "smartOfferContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2040,
+                        "referencedDeclaration": 2049,
                         "src": "549:19:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2071,
+                      "id": 2080,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -534,7 +534,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 2073,
+                    "id": 2082,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -548,7 +548,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2074,
+                  "id": 2083,
                   "nodeType": "ExpressionStatement",
                   "src": "549:39:13"
                 },
@@ -558,14 +558,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2076,
+                        "id": 2085,
                         "name": "newSmartOffer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2061,
+                        "referencedDeclaration": 2070,
                         "src": "622:13:13",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       },
@@ -573,18 +573,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2077,
+                          "id": 2086,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2202,
+                          "referencedDeclaration": 2211,
                           "src": "637:3:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2078,
+                        "id": 2087,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -602,18 +602,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2079,
+                          "id": 2088,
                           "name": "smartOfferContracts",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2040,
+                          "referencedDeclaration": 2049,
                           "src": "649:19:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 2080,
+                        "id": 2089,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -629,11 +629,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2081,
+                        "id": 2090,
                         "name": "smartOfferContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2040,
+                        "referencedDeclaration": 2049,
                         "src": "677:19:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -644,7 +644,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         },
                         {
@@ -660,18 +660,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 2075,
+                      "id": 2084,
                       "name": "SmartOfferCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2051,
+                      "referencedDeclaration": 2060,
                       "src": "604:17:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 2082,
+                    "id": 2091,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -685,14 +685,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2083,
+                  "id": 2092,
                   "nodeType": "EmitStatement",
                   "src": "599:98:13"
                 }
               ]
             },
             "documentation": null,
-            "id": 2085,
+            "id": 2094,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -700,15 +700,15 @@
             "name": "createSmartOffer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2058,
+              "id": 2067,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2057,
+                  "id": 2066,
                   "name": "_promotionName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2085,
+                  "scope": 2094,
                   "src": "432:21:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -717,7 +717,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2056,
+                    "id": 2065,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "432:6:13",
@@ -734,12 +734,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2059,
+              "id": 2068,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "462:0:13"
             },
-            "scope": 2095,
+            "scope": 2104,
             "src": "406:297:13",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -747,33 +747,33 @@
           },
           {
             "body": {
-              "id": 2093,
+              "id": 2102,
               "nodeType": "Block",
               "src": "779:41:13",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2091,
+                    "id": 2100,
                     "name": "smartOfferContracts",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2040,
+                    "referencedDeclaration": 2049,
                     "src": "795:19:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 2090,
-                  "id": 2092,
+                  "functionReturnParameters": 2099,
+                  "id": 2101,
                   "nodeType": "Return",
                   "src": "788:26:13"
                 }
               ]
             },
             "documentation": null,
-            "id": 2094,
+            "id": 2103,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -781,22 +781,22 @@
             "name": "allSmartOfferContracts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2086,
+              "id": 2095,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "740:2:13"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2090,
+              "id": 2099,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2089,
+                  "id": 2098,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2094,
+                  "scope": 2103,
                   "src": "768:9:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -806,7 +806,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2087,
+                      "id": 2096,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "768:7:13",
@@ -815,7 +815,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2088,
+                    "id": 2097,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "768:9:13",
@@ -830,14 +830,14 @@
               ],
               "src": "767:11:13"
             },
-            "scope": 2095,
+            "scope": 2104,
             "src": "709:111:13",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2096,
+        "scope": 2105,
         "src": "78:747:13"
       }
     ],
@@ -847,14 +847,14 @@
     "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartOfferFactory.sol",
     "exportedSymbols": {
       "SmartOfferFactory": [
-        2095
+        2104
       ]
     },
-    "id": 2096,
+    "id": 2105,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2035,
+        "id": 2044,
         "literals": [
           "solidity",
           "^",
@@ -867,14 +867,14 @@
       {
         "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartOffer.sol",
         "file": "./SmartOffer.sol",
-        "id": 2037,
+        "id": 2046,
         "nodeType": "ImportDirective",
-        "scope": 2096,
-        "sourceUnit": 2034,
+        "scope": 2105,
+        "sourceUnit": 2043,
         "src": "28:46:13",
         "symbolAliases": [
           {
-            "foreign": 2036,
+            "foreign": 2045,
             "local": null
           }
         ],
@@ -883,24 +883,24 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          2033
+          2042
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2095,
+        "id": 2104,
         "linearizedBaseContracts": [
-          2095
+          2104
         ],
         "name": "SmartOfferFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2040,
+            "id": 2049,
             "name": "smartOfferContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 2095,
+            "scope": 2104,
             "src": "110:36:13",
             "stateVariable": true,
             "storageLocation": "default",
@@ -910,7 +910,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 2038,
+                "id": 2047,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "110:7:13",
@@ -919,7 +919,7 @@
                   "typeString": "address"
                 }
               },
-              "id": 2039,
+              "id": 2048,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "110:9:13",
@@ -934,20 +934,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2051,
+            "id": 2060,
             "name": "SmartOfferCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2050,
+              "id": 2059,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2042,
+                  "id": 2051,
                   "indexed": false,
                   "name": "smartOfferContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2051,
+                  "scope": 2060,
                   "src": "229:26:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -956,7 +956,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2041,
+                    "id": 2050,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "229:7:13",
@@ -970,11 +970,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2044,
+                  "id": 2053,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2051,
+                  "scope": 2060,
                   "src": "257:13:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -983,7 +983,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2043,
+                    "id": 2052,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "257:7:13",
@@ -997,11 +997,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2046,
+                  "id": 2055,
                   "indexed": false,
                   "name": "numSmartOffer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2051,
+                  "scope": 2060,
                   "src": "272:18:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1010,7 +1010,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2045,
+                    "id": 2054,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "272:4:13",
@@ -1024,11 +1024,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2049,
+                  "id": 2058,
                   "indexed": false,
                   "name": "allSmartOfferContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2051,
+                  "scope": 2060,
                   "src": "292:32:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1038,7 +1038,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2047,
+                      "id": 2056,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "292:7:13",
@@ -1047,7 +1047,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2048,
+                    "id": 2057,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "292:9:13",
@@ -1066,13 +1066,13 @@
           },
           {
             "body": {
-              "id": 2054,
+              "id": 2063,
               "nodeType": "Block",
               "src": "368:32:13",
               "statements": []
             },
             "documentation": null,
-            "id": 2055,
+            "id": 2064,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1080,19 +1080,19 @@
             "name": "SmartOfferFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2052,
+              "id": 2061,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "358:2:13"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2053,
+              "id": 2062,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "368:0:13"
             },
-            "scope": 2095,
+            "scope": 2104,
             "src": "332:68:13",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1100,37 +1100,37 @@
           },
           {
             "body": {
-              "id": 2084,
+              "id": 2093,
               "nodeType": "Block",
               "src": "462:241:13",
               "statements": [
                 {
                   "assignments": [
-                    2061
+                    2070
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2061,
+                      "id": 2070,
                       "name": "newSmartOffer",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2085,
+                      "scope": 2094,
                       "src": "471:24:13",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                        "typeIdentifier": "t_contract$_SmartOffer_$2042",
                         "typeString": "contract SmartOffer"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2060,
+                        "id": 2069,
                         "name": "SmartOffer",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2033,
+                        "referencedDeclaration": 2042,
                         "src": "471:10:13",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       },
@@ -1138,7 +1138,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2068,
+                  "id": 2077,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -1146,18 +1146,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2064,
+                          "id": 2073,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2202,
+                          "referencedDeclaration": 2211,
                           "src": "513:3:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2065,
+                        "id": 2074,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1173,11 +1173,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2066,
+                        "id": 2075,
                         "name": "_promotionName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2057,
+                        "referencedDeclaration": 2066,
                         "src": "525:14:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -1196,7 +1196,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 2063,
+                      "id": 2072,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1204,23 +1204,23 @@
                       "nodeType": "NewExpression",
                       "src": "498:14:13",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartOffer_$2033_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartOffer_$2042_$",
                         "typeString": "function (address,string memory) returns (contract SmartOffer)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2062,
+                        "id": 2071,
                         "name": "SmartOffer",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2033,
+                        "referencedDeclaration": 2042,
                         "src": "502:10:13",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       }
                     },
-                    "id": 2067,
+                    "id": 2076,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1230,7 +1230,7 @@
                     "nodeType": "FunctionCall",
                     "src": "498:42:13",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                      "typeIdentifier": "t_contract$_SmartOffer_$2042",
                       "typeString": "contract SmartOffer"
                     }
                   },
@@ -1243,14 +1243,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2072,
+                        "id": 2081,
                         "name": "newSmartOffer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2061,
+                        "referencedDeclaration": 2070,
                         "src": "574:13:13",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       }
@@ -1258,24 +1258,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2069,
+                        "id": 2078,
                         "name": "smartOfferContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2040,
+                        "referencedDeclaration": 2049,
                         "src": "549:19:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2071,
+                      "id": 2080,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1289,7 +1289,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 2073,
+                    "id": 2082,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1303,7 +1303,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2074,
+                  "id": 2083,
                   "nodeType": "ExpressionStatement",
                   "src": "549:39:13"
                 },
@@ -1313,14 +1313,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2076,
+                        "id": 2085,
                         "name": "newSmartOffer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2061,
+                        "referencedDeclaration": 2070,
                         "src": "622:13:13",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         }
                       },
@@ -1328,18 +1328,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2077,
+                          "id": 2086,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2202,
+                          "referencedDeclaration": 2211,
                           "src": "637:3:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2078,
+                        "id": 2087,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1357,18 +1357,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2079,
+                          "id": 2088,
                           "name": "smartOfferContracts",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2040,
+                          "referencedDeclaration": 2049,
                           "src": "649:19:13",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 2080,
+                        "id": 2089,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -1384,11 +1384,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2081,
+                        "id": 2090,
                         "name": "smartOfferContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2040,
+                        "referencedDeclaration": 2049,
                         "src": "677:19:13",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -1399,7 +1399,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartOffer_$2033",
+                          "typeIdentifier": "t_contract$_SmartOffer_$2042",
                           "typeString": "contract SmartOffer"
                         },
                         {
@@ -1415,18 +1415,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 2075,
+                      "id": 2084,
                       "name": "SmartOfferCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2051,
+                      "referencedDeclaration": 2060,
                       "src": "604:17:13",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 2082,
+                    "id": 2091,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1440,14 +1440,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2083,
+                  "id": 2092,
                   "nodeType": "EmitStatement",
                   "src": "599:98:13"
                 }
               ]
             },
             "documentation": null,
-            "id": 2085,
+            "id": 2094,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1455,15 +1455,15 @@
             "name": "createSmartOffer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2058,
+              "id": 2067,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2057,
+                  "id": 2066,
                   "name": "_promotionName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2085,
+                  "scope": 2094,
                   "src": "432:21:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1472,7 +1472,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2056,
+                    "id": 2065,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "432:6:13",
@@ -1489,12 +1489,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2059,
+              "id": 2068,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "462:0:13"
             },
-            "scope": 2095,
+            "scope": 2104,
             "src": "406:297:13",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1502,33 +1502,33 @@
           },
           {
             "body": {
-              "id": 2093,
+              "id": 2102,
               "nodeType": "Block",
               "src": "779:41:13",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2091,
+                    "id": 2100,
                     "name": "smartOfferContracts",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2040,
+                    "referencedDeclaration": 2049,
                     "src": "795:19:13",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 2090,
-                  "id": 2092,
+                  "functionReturnParameters": 2099,
+                  "id": 2101,
                   "nodeType": "Return",
                   "src": "788:26:13"
                 }
               ]
             },
             "documentation": null,
-            "id": 2094,
+            "id": 2103,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1536,22 +1536,22 @@
             "name": "allSmartOfferContracts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2086,
+              "id": 2095,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "740:2:13"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2090,
+              "id": 2099,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2089,
+                  "id": 2098,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2094,
+                  "scope": 2103,
                   "src": "768:9:13",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1561,7 +1561,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2087,
+                      "id": 2096,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "768:7:13",
@@ -1570,7 +1570,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2088,
+                    "id": 2097,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "768:9:13",
@@ -1585,14 +1585,14 @@
               ],
               "src": "767:11:13"
             },
-            "scope": 2095,
+            "scope": 2104,
             "src": "709:111:13",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2096,
+        "scope": 2105,
         "src": "78:747:13"
       }
     ],
@@ -1606,10 +1606,10 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x4ecd566058ee1909c9b0527311075f3825232109",
-      "transactionHash": "0x90789e45bd46c1e295f95673cda8491735e6ac81b6e9017ba4dd7c4f1449740f"
+      "address": "0x6186a48b091a8b5bcaf89d30471856782f42189a",
+      "transactionHash": "0x672887bf108bf4c754e2bfb9ebab6f99d032de4b9239937867ff4ed417a1433f"
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-31T17:08:01.571Z"
+  "updatedAt": "2018-06-02T11:40:03.505Z"
 }

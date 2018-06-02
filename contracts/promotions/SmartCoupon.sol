@@ -44,4 +44,8 @@ contract SmartCoupon {
       couponExpiryBlock = _couponExpiryBlock;
   }
 
+  function getAllCouponQualifyingProductSKUs() public view returns (uint[]) {
+    return couponQualifyingProductSKUs;
+  }
+
 }

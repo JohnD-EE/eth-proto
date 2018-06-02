@@ -79,7 +79,7 @@ export default {
             contract.methods.promotionName().call()
             .then(promotionName => {
               info.promotionName = promotionName
-              contract.methods.promotionName().call()
+              contract.methods.getAllCouponQualifyingProductSKUs().call()
               .then(couponQualifyingProductSKUs => {
                 info.couponQualifyingProductSKUs = couponQualifyingProductSKUs
                 contract.methods.couponFixedDiscount().call()
