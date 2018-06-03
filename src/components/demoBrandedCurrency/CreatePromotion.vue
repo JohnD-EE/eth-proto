@@ -170,7 +170,7 @@
                   <v-card color="grey lighten-3" class="mb-5">
 
                     <v-flex xs12>
-                      <app-product-picker v-if="couponQualifyingProducts === 'specificProducts'"></app-product-picker>
+                      <app-product-picker @selected="onSelectProducts" v-if="couponQualifyingProducts === 'specificProducts'"></app-product-picker>
                       <span v-else-if="couponQualifyingProducts === 'productCategories'">
                         Show a Product Category picker
                       </span>
@@ -268,6 +268,16 @@ export default {
     'app-product-picker': ProductPicker
   },
   methods: {
+    onSelectProducts (value) {
+      if (value.products) {
+        this.couponQualifyingProductSKUs = []
+        value.products.forEach(res => {
+          this.couponQualifyingProductSKUs.push(res)
+        })
+      } else {
+        console.log('No Products Selected')
+      }
+    },
     submit () {
       switch (this.promotionType) {
         case 'smartCoupon':

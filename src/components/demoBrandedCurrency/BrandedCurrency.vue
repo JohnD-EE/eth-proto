@@ -85,6 +85,7 @@
                 <v-flex sm12 md6 align-end flexbox>
                   <app-view-currencies></app-view-currencies>
                 </v-flex>
+
                 <v-flex sm12 md6 align-end flexbox>
                   <app-create-promotion></app-create-promotion>
                 </v-flex>
