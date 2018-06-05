@@ -35,17 +35,25 @@
             >
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.promotionName }}</td>
-                <td>Status</td>
-                <td class="text-xs-center">{{ props.item.couponPercentDiscount }}</td>
+                <td class="text-xs-center">
+                  <v-chip small :color="props.item.status.color" text-color="white">{{props.item.status.text}}</v-chip>
+                </td>
+                <td class="text-xs-center">{{ props.item.couponPercentDiscount }}% Off</td>
                 <td class="text-xs-center">
                   <span v-for="(productSKU, p) in props.item.couponQualifyingProductSKUs"
                     :key="p">
                      {{ productListBySku[productSKU].title }}<span v-show="(p + 1) < props.item.couponQualifyingProductSKUs.length">, </span>
                    </span>
                  </td>
+                <td class="text-xs-center">
+                 <span v-for="(currency, c) in props.item.couponQualifyingCurrencies"
+                   :key="c">
+                    {{ currencyListByAddress[currency].name }}<span v-show="(c + 1) < props.item.couponQualifyingCurrencies.length">, </span>
+                  </span>
+                </td>
                 <td class="text-xs-center">{{ props.item.couponQualifyingSpend }}</td>
                 <td class="text-xs-center">{{ props.item.couponReusePolicy }}</td>
-                <td class="text-xs-center">{{ props.item.couponPromotersAllowed }}</td>
+                <td class="text-xs-center">{{ props.item.couponPromotersAllowed ? props.item.couponPromoterFee + '% Fee' : 'N/A' }}</td>
                 <td class="text-xs-center">{{ props.item.couponExpiryBlock }}</td>
                 <td class="text-xs-center">Actions</td>
               </template>
@@ -77,9 +85,10 @@ export default {
         { text: 'Status', value: 'status', sortable: false, align: 'center' },
         { text: 'Discount', value: 'discount', sortable: false, align: 'center' },
         { text: 'Products', value: 'couponQualifyingProductSKUs', sortable: false, align: 'center' },
+        { text: 'Currencies', value: 'couponQualifyingCurrencies', sortable: false, align: 'center' },
         { text: 'Qualifying Spend', value: 'couponQualifyingSpend', sortable: false, align: 'center' },
         { text: 'Re-use Policy', value: 'couponReusePolicy', sortable: false, align: 'center' },
-        { text: 'Promotion Policy', value: 'promotionPolicy', sortable: false, align: 'center' },
+        { text: '3rd Party Promoters', value: 'promotionPolicy', sortable: false, align: 'center' },
         { text: 'Expiry Block', value: 'couponExpiryBlock', sortable: false, align: 'center' },
         { text: 'Actions', value: 'actions', sortable: false, align: 'center' }
       ]
@@ -104,12 +113,20 @@ export default {
     latestBlockNumber () {
       return this.$store.state.web3.latestBlock.number
     },
-    productListBySku() {
+    productListBySku () {
       let productList = []
       ProductsJSON.forEach(res => {
         productList[res.SKU] = res
       })
       return productList
+    },
+    currencyListByAddress () {
+      let currencyList = []
+      let allEIP20 = this.$store.getters.allEIP20Contracts
+      allEIP20.forEach(res => {
+        currencyList[res.contractAddress] = res
+      })
+      return currencyList
     }
   },
   components: {

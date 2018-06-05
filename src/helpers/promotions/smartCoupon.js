@@ -12,12 +12,10 @@ export default {
     SmartCouponFactory.methods.createSmartCoupon(
       e.promotionName,
       e.couponQualifyingProductSKUs,
-      e.couponFixedDiscount,
       e.couponPercentDiscount,
+      e.couponQualifyingCurrencies,
       e.couponQualifyingSpend,
-      e.couponDiscountType,
       e.couponReusePolicy,
-      e.couponPromotersAllowed,
       e.couponPromoterFee,
       e.couponExpiryBlock
       )
@@ -82,9 +80,9 @@ export default {
               contract.methods.getAllCouponQualifyingProductSKUs().call()
               .then(couponQualifyingProductSKUs => {
                 info.couponQualifyingProductSKUs = couponQualifyingProductSKUs
-                contract.methods.couponFixedDiscount().call()
-                .then(couponFixedDiscount => {
-                  info.couponFixedDiscount = couponFixedDiscount
+                contract.methods.getAllCouponQualifyingCurrencies().call()
+                .then(couponQualifyingCurrencies => {
+                  info.couponQualifyingCurrencies = couponQualifyingCurrencies
                   contract.methods.couponPercentDiscount().call()
                   .then(couponPercentDiscount=> {
                     info.couponPercentDiscount = couponPercentDiscount

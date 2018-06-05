@@ -85,38 +85,38 @@
                           ></v-radio>
                         </v-radio-group>
 
-                        <span class="grey--text">Discount Type:</span><br/>
-                        <v-radio-group v-model="couponDiscountType" required>
-                          <v-radio
-                            label="Percent discount"
-                            value="percentDiscount"
-                          ></v-radio>
-                          <v-radio
-                            label="Fixed discount"
-                            value="fixedDiscount"
-                          ></v-radio>
-                        </v-radio-group>
+                        <span class="grey--text">Discount Percent:</span><br/>
 
-                        <v-text-field v-show = "couponDiscountType === 'fixedDiscount'"
-                          label="Fixed discount"
-                          v-model="couponFixedDiscount"
-                          :rules="couponFixedDiscountRules"
-                          clearable>
-                        </v-text-field>
-
-                        <v-text-field v-show = "couponDiscountType === '[percentDiscount'"
+                        <v-select
                           label="Percent discount"
+                          required
+                          :items="percentItems"
+                          item-text='text'
+                          item-value='value'
                           v-model="couponPercentDiscount"
-                          :rules="couponPercentDiscountRules"
-                          clearable>
-                        </v-text-field>
+                            :rules="couponPercentDiscountRules"
+                          clearable
+                        ></v-select>
+
+                        <span class="grey--text">Qualyfying Currencies:</span><br/>
+                        <v-select class="mt-3"
+                          :items="currencyItems"
+                          item-text='text'
+                          item-value='value'
+                          v-model="couponQualifyingCurrencies"
+                          :rules="couponQualifyingCurrenciesRules"
+                          label="Select"
+                          multiple
+                          chips
+                          hint="Which currecnies qualify for this promotion?"
+                        ></v-select>
 
                         <span class="grey--text">Qualyfying Spend:</span><br/>
                         <v-text-field class="mt-3"
                           label="Total basket spend"
                           v-model="couponQualifyingSpend"
                           :rules="couponQualifyingSpendRules"
-                          hint="Leave blank to not apply total spend constraints"
+                          hint="Leave blank to not apply total spend constraints. @todo needs spend per currency"
                           clearable>
                         </v-text-field>
 
@@ -124,17 +124,22 @@
                         <v-checkbox class="mt-3"
                           v-model="couponPromotersAllowed"
                           label="Available to Promoters"
-                          :rules="couponPromotersAllowedRules"
                           clearable>
                         </v-checkbox>
-                        <v-text-field v-show = "couponPromotersAllowed"
+
+                        <v-select v-show = "couponPromotersAllowed"
                           label="Promoter fee percent"
+                          required
+                          :items="percentItems"
+                          item-text='text'
+                          item-value='value'
+                          hint="Set the fee for 3rd party promoters"
                           v-model="couponPromoterFee"
                           :rules="couponPromoterFeeRules"
-                          clearable>
-                        </v-text-field>
+                          clearable
+                        ></v-select>
 
-                        <span class="grey--text">Single or Multiple Use:</span><br/>
+                        <span class="grey--text">Single / Multiple Use:</span><br/>
                         <v-radio-group v-model="couponReusePolicy" required>
                           <v-radio
                             label="Single Use"
@@ -153,7 +158,7 @@
                           :rules="couponExpiryBlockRules"
                           clearable
                           required
-                          hint="Specify the Block Number when the coupon expires">
+                          hint="Specify the block number (In production we would use date/time)">
                         </v-text-field>
                       </div>
                     </v-flex>
@@ -172,10 +177,14 @@
                     <v-flex xs12>
                       <app-product-picker @selected="onSelectProducts" v-if="couponQualifyingProducts === 'specificProducts'"></app-product-picker>
                       <span v-else-if="couponQualifyingProducts === 'productCategories'">
-                        Show a Product Category picker
+                        <v-container>
+                          @todo - Show a Product Category picker
+                        </v-container>
                       </span>
                       <span v-else-if="couponQualifyingProducts === 'allProducts'">
-                        Promotion applies to all products
+                        <v-container>
+                          This promotion applies to all products
+                        </v-container>
                       </span>
                     </v-flex>
 
@@ -201,6 +210,29 @@ import smartCouponHelper from '../../helpers/promotions/smartCoupon'
 
 export default {
   data: () => ({
+    percentItems: [
+      {text: '0%', value: 0},
+      {text: '5%', value: 5},
+      {text: '10%', value: 10},
+      {text: '15%', value: 15},
+      {text: '20%', value: 20},
+      {text: '25%', value: 25},
+      {text: '30%', value: 30},
+      {text: '35%', value: 35},
+      {text: '40%', value: 40},
+      {text: '45%', value: 45},
+      {text: '50%', value: 50},
+      {text: '55%', value: 55},
+      {text: '60%', value: 60},
+      {text: '65%', value: 65},
+      {text: '70%', value: 70},
+      {text: '75%', value: 75},
+      {text: '80%', value: 80},
+      {text: '85%', value: 85},
+      {text: '90%', value: 90},
+      {text: '95%', value: 95},
+      {text: '100%', value: 100}
+    ],
     promotionStepper: 1,
     step1Continued: false,
     step2Continued: false,
@@ -208,25 +240,24 @@ export default {
     dialog: false,
     promotionName: '',
     promotionType: '',
-    couponQualifyingProducts: '', //
-    couponQualifyingProductSKUs: [100101, 100102], //
-    couponFixedDiscount: '',
+    couponQualifyingProducts: '',
+    couponQualifyingProductSKUs: [],
     couponPercentDiscount: '',
+    couponQualifyingCurrencies: [],
     couponQualifyingSpend: '',
-    couponDiscountType: '',
     couponReusePolicy: '',
-    couponPromotersAllowed: '',
     couponPromoterFee: '',
     couponExpiryBlock: '',
     couponFixedDiscountRules: [],
     couponPercentDiscountRules: [],
+    couponQualifyingCurrenciesRules: [],
     couponQualifyingSpendRules: [],
-    couponPromotersAllowedRules: [],
     couponPromoterFeeRules: [],
     couponReusePolicyRules: [],
     couponExpiryBlockRules: [],
     valid: true,
-    rules: false
+    rules: false,
+    couponPromotersAllowed: '',
   }),
   computed: {
     step1Rules () {
@@ -239,6 +270,16 @@ export default {
     },
     step3Rules () {
       //
+    },
+    currencyItems () {
+      let allEIP20 = this.$store.getters.allEIP20Contracts
+      let items = []
+      allEIP20.forEach(res => {
+        if (res.userIsIssuer) {
+          items.push({text: res.name, value: res.contractAddress})
+        }
+      })
+      return items
     },
     promotionTypeText () {
       let text = ''
@@ -302,12 +343,10 @@ export default {
             owner: this.$store.state.userDetails.ethAccount,
             promotionName: this.promotionName,
             couponQualifyingProductSKUs: this.couponQualifyingProductSKUs,
-            couponFixedDiscount: Number(this.couponFixedDiscount),
             couponPercentDiscount: Number(this.couponPercentDiscount),
+            couponQualifyingCurrencies: this.couponQualifyingCurrencies,
             couponQualifyingSpend: Number(this.couponQualifyingSpend),
-            couponDiscountType: this.couponDiscountType,
             couponReusePolicy: this.couponReusePolicy,
-            couponPromotersAllowed: this.couponPromotersAllowed,
             couponPromoterFee: Number(this.couponPromoterFee),
             couponExpiryBlock: Number(this.couponExpiryBlock)
           }

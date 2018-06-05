@@ -92,14 +92,14 @@
     "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucherFactory.sol",
     "exportedSymbols": {
       "SmartVoucherFactory": [
-        2196
+        2197
       ]
     },
-    "id": 2197,
+    "id": 2198,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2136,
+        "id": 2137,
         "literals": [
           "solidity",
           "^",
@@ -112,14 +112,14 @@
       {
         "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
         "file": "./SmartVoucher.sol",
-        "id": 2138,
+        "id": 2139,
         "nodeType": "ImportDirective",
-        "scope": 2197,
-        "sourceUnit": 2135,
+        "scope": 2198,
+        "sourceUnit": 2136,
         "src": "28:50:15",
         "symbolAliases": [
           {
-            "foreign": 2137,
+            "foreign": 2138,
             "local": null
           }
         ],
@@ -128,24 +128,24 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          2134
+          2135
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2196,
+        "id": 2197,
         "linearizedBaseContracts": [
-          2196
+          2197
         ],
         "name": "SmartVoucherFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2141,
+            "id": 2142,
             "name": "smartVoucherContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 2196,
+            "scope": 2197,
             "src": "116:38:15",
             "stateVariable": true,
             "storageLocation": "default",
@@ -155,7 +155,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 2139,
+                "id": 2140,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "116:7:15",
@@ -164,7 +164,7 @@
                   "typeString": "address"
                 }
               },
-              "id": 2140,
+              "id": 2141,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "116:9:15",
@@ -179,20 +179,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2152,
+            "id": 2153,
             "name": "SmartVoucherCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2151,
+              "id": 2152,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2143,
+                  "id": 2144,
                   "indexed": false,
                   "name": "smartVoucherContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2152,
+                  "scope": 2153,
                   "src": "240:28:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -201,7 +201,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2142,
+                    "id": 2143,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "240:7:15",
@@ -215,11 +215,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2145,
+                  "id": 2146,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2152,
+                  "scope": 2153,
                   "src": "270:13:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -228,7 +228,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2144,
+                    "id": 2145,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "270:7:15",
@@ -242,11 +242,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2147,
+                  "id": 2148,
                   "indexed": false,
                   "name": "numSmartVoucher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2152,
+                  "scope": 2153,
                   "src": "285:20:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -255,7 +255,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2146,
+                    "id": 2147,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "285:4:15",
@@ -269,11 +269,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2150,
+                  "id": 2151,
                   "indexed": false,
                   "name": "allSmartVoucherContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2152,
+                  "scope": 2153,
                   "src": "307:34:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -283,7 +283,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2148,
+                      "id": 2149,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "307:7:15",
@@ -292,7 +292,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2149,
+                    "id": 2150,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "307:9:15",
@@ -311,13 +311,13 @@
           },
           {
             "body": {
-              "id": 2155,
+              "id": 2156,
               "nodeType": "Block",
               "src": "387:32:15",
               "statements": []
             },
             "documentation": null,
-            "id": 2156,
+            "id": 2157,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -325,19 +325,19 @@
             "name": "SmartVoucherFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2153,
+              "id": 2154,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "377:2:15"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2154,
+              "id": 2155,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "387:0:15"
             },
-            "scope": 2196,
+            "scope": 2197,
             "src": "349:70:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -345,37 +345,37 @@
           },
           {
             "body": {
-              "id": 2185,
+              "id": 2186,
               "nodeType": "Block",
               "src": "483:259:15",
               "statements": [
                 {
                   "assignments": [
-                    2162
+                    2163
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2162,
+                      "id": 2163,
                       "name": "newSmartVoucher",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2186,
+                      "scope": 2187,
                       "src": "492:28:15",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                        "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                         "typeString": "contract SmartVoucher"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2161,
+                        "id": 2162,
                         "name": "SmartVoucher",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2134,
+                        "referencedDeclaration": 2135,
                         "src": "492:12:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       },
@@ -383,7 +383,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2169,
+                  "id": 2170,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -391,18 +391,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2165,
+                          "id": 2166,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2211,
+                          "referencedDeclaration": 2212,
                           "src": "540:3:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2166,
+                        "id": 2167,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -418,11 +418,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2167,
+                        "id": 2168,
                         "name": "_promotionName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2158,
+                        "referencedDeclaration": 2159,
                         "src": "552:14:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -441,7 +441,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 2164,
+                      "id": 2165,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -449,23 +449,23 @@
                       "nodeType": "NewExpression",
                       "src": "523:16:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartVoucher_$2134_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartVoucher_$2135_$",
                         "typeString": "function (address,string memory) returns (contract SmartVoucher)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2163,
+                        "id": 2164,
                         "name": "SmartVoucher",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2134,
+                        "referencedDeclaration": 2135,
                         "src": "527:12:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       }
                     },
-                    "id": 2168,
+                    "id": 2169,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -475,7 +475,7 @@
                     "nodeType": "FunctionCall",
                     "src": "523:44:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                      "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                       "typeString": "contract SmartVoucher"
                     }
                   },
@@ -488,14 +488,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2173,
+                        "id": 2174,
                         "name": "newSmartVoucher",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2162,
+                        "referencedDeclaration": 2163,
                         "src": "603:15:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       }
@@ -503,24 +503,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2170,
+                        "id": 2171,
                         "name": "smartVoucherContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2141,
+                        "referencedDeclaration": 2142,
                         "src": "576:21:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2172,
+                      "id": 2173,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -534,7 +534,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 2174,
+                    "id": 2175,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -548,7 +548,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2175,
+                  "id": 2176,
                   "nodeType": "ExpressionStatement",
                   "src": "576:43:15"
                 },
@@ -558,14 +558,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2177,
+                        "id": 2178,
                         "name": "newSmartVoucher",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2162,
+                        "referencedDeclaration": 2163,
                         "src": "655:15:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       },
@@ -573,18 +573,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2178,
+                          "id": 2179,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2211,
+                          "referencedDeclaration": 2212,
                           "src": "672:3:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2179,
+                        "id": 2180,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -602,18 +602,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2180,
+                          "id": 2181,
                           "name": "smartVoucherContracts",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2141,
+                          "referencedDeclaration": 2142,
                           "src": "684:21:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 2181,
+                        "id": 2182,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -629,11 +629,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2182,
+                        "id": 2183,
                         "name": "smartVoucherContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2141,
+                        "referencedDeclaration": 2142,
                         "src": "714:21:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -644,7 +644,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         },
                         {
@@ -660,18 +660,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 2176,
+                      "id": 2177,
                       "name": "SmartVoucherCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2152,
+                      "referencedDeclaration": 2153,
                       "src": "635:19:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 2183,
+                    "id": 2184,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -685,14 +685,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2184,
+                  "id": 2185,
                   "nodeType": "EmitStatement",
                   "src": "630:106:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2186,
+            "id": 2187,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -700,15 +700,15 @@
             "name": "createSmartVoucher",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2159,
+              "id": 2160,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2158,
+                  "id": 2159,
                   "name": "_promotionName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2186,
+                  "scope": 2187,
                   "src": "453:21:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -717,7 +717,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2157,
+                    "id": 2158,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "453:6:15",
@@ -734,12 +734,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2160,
+              "id": 2161,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "483:0:15"
             },
-            "scope": 2196,
+            "scope": 2197,
             "src": "425:317:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -747,33 +747,33 @@
           },
           {
             "body": {
-              "id": 2194,
+              "id": 2195,
               "nodeType": "Block",
               "src": "820:43:15",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2192,
+                    "id": 2193,
                     "name": "smartVoucherContracts",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2141,
+                    "referencedDeclaration": 2142,
                     "src": "836:21:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 2191,
-                  "id": 2193,
+                  "functionReturnParameters": 2192,
+                  "id": 2194,
                   "nodeType": "Return",
                   "src": "829:28:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2195,
+            "id": 2196,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -781,22 +781,22 @@
             "name": "allSmartVoucherContracts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2187,
+              "id": 2188,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "781:2:15"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2191,
+              "id": 2192,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2190,
+                  "id": 2191,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2195,
+                  "scope": 2196,
                   "src": "809:9:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -806,7 +806,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2188,
+                      "id": 2189,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "809:7:15",
@@ -815,7 +815,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2189,
+                    "id": 2190,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "809:9:15",
@@ -830,14 +830,14 @@
               ],
               "src": "808:11:15"
             },
-            "scope": 2196,
+            "scope": 2197,
             "src": "748:115:15",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2197,
+        "scope": 2198,
         "src": "82:786:15"
       }
     ],
@@ -847,14 +847,14 @@
     "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucherFactory.sol",
     "exportedSymbols": {
       "SmartVoucherFactory": [
-        2196
+        2197
       ]
     },
-    "id": 2197,
+    "id": 2198,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2136,
+        "id": 2137,
         "literals": [
           "solidity",
           "^",
@@ -867,14 +867,14 @@
       {
         "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
         "file": "./SmartVoucher.sol",
-        "id": 2138,
+        "id": 2139,
         "nodeType": "ImportDirective",
-        "scope": 2197,
-        "sourceUnit": 2135,
+        "scope": 2198,
+        "sourceUnit": 2136,
         "src": "28:50:15",
         "symbolAliases": [
           {
-            "foreign": 2137,
+            "foreign": 2138,
             "local": null
           }
         ],
@@ -883,24 +883,24 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          2134
+          2135
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2196,
+        "id": 2197,
         "linearizedBaseContracts": [
-          2196
+          2197
         ],
         "name": "SmartVoucherFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2141,
+            "id": 2142,
             "name": "smartVoucherContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 2196,
+            "scope": 2197,
             "src": "116:38:15",
             "stateVariable": true,
             "storageLocation": "default",
@@ -910,7 +910,7 @@
             },
             "typeName": {
               "baseType": {
-                "id": 2139,
+                "id": 2140,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "116:7:15",
@@ -919,7 +919,7 @@
                   "typeString": "address"
                 }
               },
-              "id": 2140,
+              "id": 2141,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "116:9:15",
@@ -934,20 +934,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2152,
+            "id": 2153,
             "name": "SmartVoucherCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2151,
+              "id": 2152,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2143,
+                  "id": 2144,
                   "indexed": false,
                   "name": "smartVoucherContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2152,
+                  "scope": 2153,
                   "src": "240:28:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -956,7 +956,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2142,
+                    "id": 2143,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "240:7:15",
@@ -970,11 +970,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2145,
+                  "id": 2146,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2152,
+                  "scope": 2153,
                   "src": "270:13:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -983,7 +983,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2144,
+                    "id": 2145,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "270:7:15",
@@ -997,11 +997,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2147,
+                  "id": 2148,
                   "indexed": false,
                   "name": "numSmartVoucher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2152,
+                  "scope": 2153,
                   "src": "285:20:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1010,7 +1010,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2146,
+                    "id": 2147,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "285:4:15",
@@ -1024,11 +1024,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2150,
+                  "id": 2151,
                   "indexed": false,
                   "name": "allSmartVoucherContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2152,
+                  "scope": 2153,
                   "src": "307:34:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1038,7 +1038,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2148,
+                      "id": 2149,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "307:7:15",
@@ -1047,7 +1047,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2149,
+                    "id": 2150,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "307:9:15",
@@ -1066,13 +1066,13 @@
           },
           {
             "body": {
-              "id": 2155,
+              "id": 2156,
               "nodeType": "Block",
               "src": "387:32:15",
               "statements": []
             },
             "documentation": null,
-            "id": 2156,
+            "id": 2157,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1080,19 +1080,19 @@
             "name": "SmartVoucherFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2153,
+              "id": 2154,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "377:2:15"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2154,
+              "id": 2155,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "387:0:15"
             },
-            "scope": 2196,
+            "scope": 2197,
             "src": "349:70:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1100,37 +1100,37 @@
           },
           {
             "body": {
-              "id": 2185,
+              "id": 2186,
               "nodeType": "Block",
               "src": "483:259:15",
               "statements": [
                 {
                   "assignments": [
-                    2162
+                    2163
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2162,
+                      "id": 2163,
                       "name": "newSmartVoucher",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2186,
+                      "scope": 2187,
                       "src": "492:28:15",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                        "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                         "typeString": "contract SmartVoucher"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2161,
+                        "id": 2162,
                         "name": "SmartVoucher",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2134,
+                        "referencedDeclaration": 2135,
                         "src": "492:12:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       },
@@ -1138,7 +1138,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2169,
+                  "id": 2170,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -1146,18 +1146,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2165,
+                          "id": 2166,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2211,
+                          "referencedDeclaration": 2212,
                           "src": "540:3:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2166,
+                        "id": 2167,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1173,11 +1173,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2167,
+                        "id": 2168,
                         "name": "_promotionName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2158,
+                        "referencedDeclaration": 2159,
                         "src": "552:14:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -1196,7 +1196,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 2164,
+                      "id": 2165,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1204,23 +1204,23 @@
                       "nodeType": "NewExpression",
                       "src": "523:16:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartVoucher_$2134_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartVoucher_$2135_$",
                         "typeString": "function (address,string memory) returns (contract SmartVoucher)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2163,
+                        "id": 2164,
                         "name": "SmartVoucher",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2134,
+                        "referencedDeclaration": 2135,
                         "src": "527:12:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       }
                     },
-                    "id": 2168,
+                    "id": 2169,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1230,7 +1230,7 @@
                     "nodeType": "FunctionCall",
                     "src": "523:44:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                      "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                       "typeString": "contract SmartVoucher"
                     }
                   },
@@ -1243,14 +1243,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2173,
+                        "id": 2174,
                         "name": "newSmartVoucher",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2162,
+                        "referencedDeclaration": 2163,
                         "src": "603:15:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       }
@@ -1258,24 +1258,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2170,
+                        "id": 2171,
                         "name": "smartVoucherContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2141,
+                        "referencedDeclaration": 2142,
                         "src": "576:21:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2172,
+                      "id": 2173,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1289,7 +1289,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 2174,
+                    "id": 2175,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1303,7 +1303,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2175,
+                  "id": 2176,
                   "nodeType": "ExpressionStatement",
                   "src": "576:43:15"
                 },
@@ -1313,14 +1313,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2177,
+                        "id": 2178,
                         "name": "newSmartVoucher",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2162,
+                        "referencedDeclaration": 2163,
                         "src": "655:15:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         }
                       },
@@ -1328,18 +1328,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2178,
+                          "id": 2179,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2211,
+                          "referencedDeclaration": 2212,
                           "src": "672:3:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2179,
+                        "id": 2180,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1357,18 +1357,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2180,
+                          "id": 2181,
                           "name": "smartVoucherContracts",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2141,
+                          "referencedDeclaration": 2142,
                           "src": "684:21:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 2181,
+                        "id": 2182,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -1384,11 +1384,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2182,
+                        "id": 2183,
                         "name": "smartVoucherContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2141,
+                        "referencedDeclaration": 2142,
                         "src": "714:21:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -1399,7 +1399,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2134",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
                           "typeString": "contract SmartVoucher"
                         },
                         {
@@ -1415,18 +1415,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 2176,
+                      "id": 2177,
                       "name": "SmartVoucherCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2152,
+                      "referencedDeclaration": 2153,
                       "src": "635:19:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 2183,
+                    "id": 2184,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1440,14 +1440,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2184,
+                  "id": 2185,
                   "nodeType": "EmitStatement",
                   "src": "630:106:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2186,
+            "id": 2187,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1455,15 +1455,15 @@
             "name": "createSmartVoucher",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2159,
+              "id": 2160,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2158,
+                  "id": 2159,
                   "name": "_promotionName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2186,
+                  "scope": 2187,
                   "src": "453:21:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1472,7 +1472,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2157,
+                    "id": 2158,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "453:6:15",
@@ -1489,12 +1489,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2160,
+              "id": 2161,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "483:0:15"
             },
-            "scope": 2196,
+            "scope": 2197,
             "src": "425:317:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1502,33 +1502,33 @@
           },
           {
             "body": {
-              "id": 2194,
+              "id": 2195,
               "nodeType": "Block",
               "src": "820:43:15",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2192,
+                    "id": 2193,
                     "name": "smartVoucherContracts",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2141,
+                    "referencedDeclaration": 2142,
                     "src": "836:21:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 2191,
-                  "id": 2193,
+                  "functionReturnParameters": 2192,
+                  "id": 2194,
                   "nodeType": "Return",
                   "src": "829:28:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2195,
+            "id": 2196,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1536,22 +1536,22 @@
             "name": "allSmartVoucherContracts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2187,
+              "id": 2188,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "781:2:15"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2191,
+              "id": 2192,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2190,
+                  "id": 2191,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2195,
+                  "scope": 2196,
                   "src": "809:9:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1561,7 +1561,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2188,
+                      "id": 2189,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "809:7:15",
@@ -1570,7 +1570,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2189,
+                    "id": 2190,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "809:9:15",
@@ -1585,14 +1585,14 @@
               ],
               "src": "808:11:15"
             },
-            "scope": 2196,
+            "scope": 2197,
             "src": "748:115:15",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2197,
+        "scope": 2198,
         "src": "82:786:15"
       }
     ],
@@ -1611,5 +1611,5 @@
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-02T11:40:03.502Z"
+  "updatedAt": "2018-06-05T13:46:31.190Z"
 }

@@ -6,10 +6,10 @@ contract SmartCoupon {
   address public owner;
   string public promotionName;
   uint[] public couponQualifyingProductSKUs;
-  uint public couponFixedDiscount;
   uint public couponPercentDiscount;
+  address[] public couponQualifyingCurrencies; // addresses of the Currencies
   uint public couponQualifyingSpend;
-  string public couponDiscountType; // perhaps this should be enum 'fixed' / 'percent'
+  string public couponDiscountType = 'percentDiscount';
   string public couponReusePolicy; // perhaps this should be enum 'single' / 'multi'
   bool public couponPromotersAllowed;
   uint public couponPromoterFee; // percentage for promoter
@@ -20,12 +20,10 @@ contract SmartCoupon {
     address _owner,
     string _promotionName,
     uint[] _couponQualifyingProductSKUs,
-    uint _couponFixedDiscount,
     uint _couponPercentDiscount,
+    address[] _couponQualifyingCurrencies,
     uint _couponQualifyingSpend,
-    string _couponDiscountType,
     string _couponReusePolicy,
-    bool _couponPromotersAllowed,
     uint _couponPromoterFee,
     uint _couponExpiryBlock
     ) public {
@@ -34,18 +32,21 @@ contract SmartCoupon {
       owner = _owner;
       promotionName = _promotionName;
       couponQualifyingProductSKUs = _couponQualifyingProductSKUs;
-      couponFixedDiscount = _couponFixedDiscount;
       couponPercentDiscount = _couponPercentDiscount;
+      couponQualifyingCurrencies = _couponQualifyingCurrencies;
       couponQualifyingSpend = _couponQualifyingSpend;
-      couponDiscountType = _couponDiscountType;
       couponReusePolicy = _couponReusePolicy;
-      couponPromotersAllowed = _couponPromotersAllowed;
+      couponPromotersAllowed = _couponPromoterFee > 0;
       couponPromoterFee = _couponPromoterFee;
       couponExpiryBlock = _couponExpiryBlock;
   }
 
   function getAllCouponQualifyingProductSKUs() public view returns (uint[]) {
     return couponQualifyingProductSKUs;
+  }
+
+  function getAllCouponQualifyingCurrencies() public view returns (address[]) {
+    return couponQualifyingCurrencies;
   }
 
 }

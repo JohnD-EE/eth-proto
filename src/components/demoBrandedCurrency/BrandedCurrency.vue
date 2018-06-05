@@ -86,6 +86,15 @@
                   <app-view-currencies></app-view-currencies>
                 </v-flex>
 
+              </v-layout>
+            </v-container>
+          </v-card-text>
+        </v-container>
+        <v-container fluid class="grey lighten-3">
+          <v-card-text>
+            <v-container>
+              <v-layout row wrap>
+
                 <v-flex sm12 md6 align-end flexbox>
                   <app-create-promotion></app-create-promotion>
                 </v-flex>

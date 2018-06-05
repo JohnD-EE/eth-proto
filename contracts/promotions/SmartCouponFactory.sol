@@ -14,12 +14,10 @@ contract SmartCouponFactory {
   function createSmartCoupon(
     string _promotionName,
     uint[] _couponQualifyingProductSKUs,
-    uint _couponFixedDiscount,
     uint _couponPercentDiscount,
+    address[] _couponQualifyingCurrencies,
     uint _couponQualifyingSpend,
-    string _couponDiscountType,
     string _couponReusePolicy,
-    bool _couponPromotersAllowed,
     uint _couponPromoterFee,
     uint _couponExpiryBlock
     ) public {
@@ -27,12 +25,10 @@ contract SmartCouponFactory {
         msg.sender,
         _promotionName,
         _couponQualifyingProductSKUs,
-        _couponFixedDiscount,
         _couponPercentDiscount,
+        _couponQualifyingCurrencies,
         _couponQualifyingSpend,
-        _couponDiscountType,
         _couponReusePolicy,
-        _couponPromotersAllowed,
         _couponPromoterFee,
         _couponExpiryBlock);
 
