@@ -82,24 +82,24 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b50610898806100206000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063057589f31461005c5780636b9ff6a2146100c5578063de8a840214610132575b600080fd5b34801561006857600080fd5b506100c3600480360381019080803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919291929050505061019e565b005b3480156100d157600080fd5b506100f0600480360381019080803590602001909291905050506103f6565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561013e57600080fd5b50610147610434565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b8381101561018a57808201518184015260208101905061016f565b505050509050019250505060405180910390f35b600033826101aa6104c2565b808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019080838360005b838110156102195780820151818401526020810190506101fe565b50505050905090810190601f1680156102465780820380516001836020036101000a031916815260200191505b509350505050604051809103906000f080158015610268573d6000803e3d6000fd5b50905060008190806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550507f1e04201a40eda32d3ee820d0b1020a699f346c1aec2e65c99cb219d4cb47221581336000805490506000604051808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018381526020018060200182810382528381815481526020019150805480156103e157602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610397575b50509550505050505060405180910390a15050565b60008181548110151561040557fe5b906000526020600020016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b606060008054806020026020016040519081016040528092919081815260200182805480156104b857602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001906001019080831161046e575b5050505050905090565b60405161039a806104d3833901905600608060405234801561001057600080fd5b5060405161039a38038061039a833981018060405281019080805190602001909291908051820192919050505060008273ffffffffffffffffffffffffffffffffffffffff16141561006157600080fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600190805190602001906100b79291906100bf565b505050610164565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061010057805160ff191683800117855561012e565b8280016001018555821561012e579182015b8281111561012d578251825591602001919060010190610112565b5b50905061013b919061013f565b5090565b61016191905b8082111561015d576000816000905550600101610145565b5090565b90565b610227806101736000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063c46d4ce4146100a8575b600080fd5b34801561005d57600080fd5b50610066610138565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100bd61015d565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100fd5780820151818401526020810190506100e2565b50505050905090810190601f16801561012a5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101f35780601f106101c8576101008083540402835291602001916101f3565b820191906000526020600020905b8154815290600101906020018083116101d657829003601f168201915b5050505050815600a165627a7a723058201916736b4aaf520d2ed2aa5093361d9870c35ef027894924b549f09d64600eb90029a165627a7a72305820918eccf440a01bbb269ca3906531c822a5ac438fc7dd7016bfb359208cf186b70029",
-  "deployedBytecode": "0x608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063057589f31461005c5780636b9ff6a2146100c5578063de8a840214610132575b600080fd5b34801561006857600080fd5b506100c3600480360381019080803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919291929050505061019e565b005b3480156100d157600080fd5b506100f0600480360381019080803590602001909291905050506103f6565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561013e57600080fd5b50610147610434565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b8381101561018a57808201518184015260208101905061016f565b505050509050019250505060405180910390f35b600033826101aa6104c2565b808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019080838360005b838110156102195780820151818401526020810190506101fe565b50505050905090810190601f1680156102465780820380516001836020036101000a031916815260200191505b509350505050604051809103906000f080158015610268573d6000803e3d6000fd5b50905060008190806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550507f1e04201a40eda32d3ee820d0b1020a699f346c1aec2e65c99cb219d4cb47221581336000805490506000604051808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018381526020018060200182810382528381815481526020019150805480156103e157602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610397575b50509550505050505060405180910390a15050565b60008181548110151561040557fe5b906000526020600020016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b606060008054806020026020016040519081016040528092919081815260200182805480156104b857602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001906001019080831161046e575b5050505050905090565b60405161039a806104d3833901905600608060405234801561001057600080fd5b5060405161039a38038061039a833981018060405281019080805190602001909291908051820192919050505060008273ffffffffffffffffffffffffffffffffffffffff16141561006157600080fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600190805190602001906100b79291906100bf565b505050610164565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061010057805160ff191683800117855561012e565b8280016001018555821561012e579182015b8281111561012d578251825591602001919060010190610112565b5b50905061013b919061013f565b5090565b61016191905b8082111561015d576000816000905550600101610145565b5090565b90565b610227806101736000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063c46d4ce4146100a8575b600080fd5b34801561005d57600080fd5b50610066610138565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100bd61015d565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100fd5780820151818401526020810190506100e2565b50505050905090810190601f16801561012a5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101f35780601f106101c8576101008083540402835291602001916101f3565b820191906000526020600020905b8154815290600101906020018083116101d657829003601f168201915b5050505050815600a165627a7a723058201916736b4aaf520d2ed2aa5093361d9870c35ef027894924b549f09d64600eb90029a165627a7a72305820918eccf440a01bbb269ca3906531c822a5ac438fc7dd7016bfb359208cf186b70029",
-  "sourceMap": "82:786:15:-;;;349:70;8:9:-1;5:2;;;30:1;27;20:12;5:2;349:70:15;82:786;;;;;;",
-  "deployedSourceMap": "82:786:15:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;425:317;;8:9:-1;5:2;;;30:1;27;20:12;5:2;425:317:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;116:38;;8:9:-1;5:2;;;30:1;27;20:12;5:2;116:38:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;748:115;;8:9:-1;5:2;;;30:1;27;20:12;5:2;748:115:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;748:115:15;;;;;;;;;;;;;;;;;425:317;492:28;540:10;552:14;523:44;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;523:44:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;523:44:15;492:75;;576:21;603:15;576:43;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;576:43:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;635:101;655:15;672:10;684:21;:28;;;;714:21;635:101;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;425:317;;:::o;116:38::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;748:115::-;809:9;836:21;829:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;748:115;:::o;82:786::-;;;;;;;;;;:::o",
+  "bytecode": "0x6060604052341561000f57600080fd5b6108d58061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063057589f31461005c5780636b9ff6a2146100b9578063de8a84021461011c575b600080fd5b341561006757600080fd5b6100b7600480803590602001908201803590602001908080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505091905050610186565b005b34156100c457600080fd5b6100da60048080359060200190919050506103d4565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012757600080fd5b61012f610413565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b83811015610172578082015181840152602081019050610157565b505050509050019250505060405180910390f35b600033826101926104a7565b808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019080838360005b838110156102015780820151818401526020810190506101e6565b50505050905090810190601f16801561022e5780820380516001836020036101000a031916815260200191505b509350505050604051809103906000f080151561024a57600080fd5b90506000805480600101828161026091906104b7565b9160005260206000209001600083909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550507f1e04201a40eda32d3ee820d0b1020a699f346c1aec2e65c99cb219d4cb47221581336000805490506000604051808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018381526020018060200182810382528381815481526020019150805480156103bf57602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610375575b50509550505050505060405180910390a15050565b6000818154811015156103e357fe5b90600052602060002090016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b61041b6104e3565b600080548060200260200160405190810160405280929190818152602001828054801561049d57602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610453575b5050505050905090565b60405161038d8061051d83390190565b8154818355818115116104de578183600052602060002091820191016104dd91906104f7565b5b505050565b602060405190810160405280600081525090565b61051991905b808211156105155760008160009055506001016104fd565b5090565b9056006060604052341561000f57600080fd5b60405161038d38038061038d8339810160405280805190602001909190805182019190505060008273ffffffffffffffffffffffffffffffffffffffff16141561005857600080fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600190805190602001906100ae9291906100b6565b50505061015b565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100f757805160ff1916838001178555610125565b82800160010185558215610125579182015b82811115610124578251825591602001919060010190610109565b5b5090506101329190610136565b5090565b61015891905b8082111561015457600081600090555060010161013c565b5090565b90565b6102238061016a6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063c46d4ce4146100a6575b600080fd5b341561005c57600080fd5b610064610134565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100b157600080fd5b6100b9610159565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100f95780820151818401526020810190506100de565b50505050905090810190601f1680156101265780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101ef5780601f106101c4576101008083540402835291602001916101ef565b820191906000526020600020905b8154815290600101906020018083116101d257829003601f168201915b5050505050815600a165627a7a72305820ed93d8a4fdaa4ba5cdb02b32cd342bc745aa408ea78d71dad3b3d77c871e2e4a0029a165627a7a7230582055151ffa69ff812ad790bbadecd6f2cea7ca4db6708d30e9dab7a849ca87250f0029",
+  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063057589f31461005c5780636b9ff6a2146100b9578063de8a84021461011c575b600080fd5b341561006757600080fd5b6100b7600480803590602001908201803590602001908080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505091905050610186565b005b34156100c457600080fd5b6100da60048080359060200190919050506103d4565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012757600080fd5b61012f610413565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b83811015610172578082015181840152602081019050610157565b505050509050019250505060405180910390f35b600033826101926104a7565b808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019080838360005b838110156102015780820151818401526020810190506101e6565b50505050905090810190601f16801561022e5780820380516001836020036101000a031916815260200191505b509350505050604051809103906000f080151561024a57600080fd5b90506000805480600101828161026091906104b7565b9160005260206000209001600083909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550507f1e04201a40eda32d3ee820d0b1020a699f346c1aec2e65c99cb219d4cb47221581336000805490506000604051808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018381526020018060200182810382528381815481526020019150805480156103bf57602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610375575b50509550505050505060405180910390a15050565b6000818154811015156103e357fe5b90600052602060002090016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b61041b6104e3565b600080548060200260200160405190810160405280929190818152602001828054801561049d57602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610453575b5050505050905090565b60405161038d8061051d83390190565b8154818355818115116104de578183600052602060002091820191016104dd91906104f7565b5b505050565b602060405190810160405280600081525090565b61051991905b808211156105155760008160009055506001016104fd565b5090565b9056006060604052341561000f57600080fd5b60405161038d38038061038d8339810160405280805190602001909190805182019190505060008273ffffffffffffffffffffffffffffffffffffffff16141561005857600080fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600190805190602001906100ae9291906100b6565b50505061015b565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100f757805160ff1916838001178555610125565b82800160010185558215610125579182015b82811115610124578251825591602001919060010190610109565b5b5090506101329190610136565b5090565b61015891905b8082111561015457600081600090555060010161013c565b5090565b90565b6102238061016a6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063c46d4ce4146100a6575b600080fd5b341561005c57600080fd5b610064610134565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100b157600080fd5b6100b9610159565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100f95780820151818401526020810190506100de565b50505050905090810190601f1680156101265780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101ef5780601f106101c4576101008083540402835291602001916101ef565b820191906000526020600020905b8154815290600101906020018083116101d257829003601f168201915b5050505050815600a165627a7a72305820ed93d8a4fdaa4ba5cdb02b32cd342bc745aa408ea78d71dad3b3d77c871e2e4a0029a165627a7a7230582055151ffa69ff812ad790bbadecd6f2cea7ca4db6708d30e9dab7a849ca87250f0029",
+  "sourceMap": "82:786:15:-;;;349:70;;;;;;;;82:786;;;;;;",
+  "deployedSourceMap": "82:786:15:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;425:317;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;116:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;748:115;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;748:115:15;;;;;;;;;;;;;;;;;425:317;492:28;540:10;552:14;523:44;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;523:44:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;492:75;;576:21;:43;;;;;;;;;;;:::i;:::-;;;;;;;;;;603:15;576:43;;;;;;;;;;;;;;;;;;;;;;;635:101;655:15;672:10;684:21;:28;;;;714:21;635:101;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;425:317;;:::o;116:38::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;748:115::-;809:9;;:::i;:::-;836:21;829:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;748:115;:::o;82:786::-;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
   "source": "pragma solidity ^0.4.21;\r\n\r\nimport { SmartVoucher } from './SmartVoucher.sol';\r\n\r\ncontract SmartVoucherFactory {\r\n  address[] public smartVoucherContracts; // Stores all instances of the Smart Coupon Contract\r\n\r\n  event SmartVoucherCreated(address smartVoucherContract, address owner, uint numSmartVoucher, address[] allSmartVoucherContracts);\r\n\r\n  function SmartVoucherFactory() public {\r\n    // Empty constructor\r\n  }\r\n\r\n  function createSmartVoucher(string _promotionName) public {\r\n      SmartVoucher newSmartVoucher = new SmartVoucher(msg.sender, _promotionName);\r\n      smartVoucherContracts.push(newSmartVoucher);\r\n\r\n      emit SmartVoucherCreated(newSmartVoucher, msg.sender, smartVoucherContracts.length, smartVoucherContracts);\r\n  }\r\n\r\n  function allSmartVoucherContracts() public constant returns (address[]) {\r\n      return smartVoucherContracts;\r\n  }\r\n\r\n}\r\n",
-  "sourcePath": "C:\\Users\\John\\EE-Proto\\blockchain-prototypes-framework\\contracts\\promotions\\SmartVoucherFactory.sol",
+  "sourcePath": "C:\\Users\\john.durrant\\EE-Prototype\\blockchain-prototypes-framework\\contracts\\promotions\\SmartVoucherFactory.sol",
   "ast": {
-    "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucherFactory.sol",
+    "absolutePath": "/C/Users/john.durrant/EE-Prototype/blockchain-prototypes-framework/contracts/promotions/SmartVoucherFactory.sol",
     "exportedSymbols": {
       "SmartVoucherFactory": [
-        2197
+        2316
       ]
     },
-    "id": 2198,
+    "id": 2317,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2137,
+        "id": 2256,
         "literals": [
           "solidity",
           "^",
@@ -110,16 +110,16 @@
         "src": "0:24:15"
       },
       {
-        "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
+        "absolutePath": "/C/Users/john.durrant/EE-Prototype/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
         "file": "./SmartVoucher.sol",
-        "id": 2139,
+        "id": 2258,
         "nodeType": "ImportDirective",
-        "scope": 2198,
-        "sourceUnit": 2136,
+        "scope": 2317,
+        "sourceUnit": 2255,
         "src": "28:50:15",
         "symbolAliases": [
           {
-            "foreign": 2138,
+            "foreign": 2257,
             "local": null
           }
         ],
@@ -128,34 +128,34 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          2135
+          2254
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2197,
+        "id": 2316,
         "linearizedBaseContracts": [
-          2197
+          2316
         ],
         "name": "SmartVoucherFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2142,
+            "id": 2261,
             "name": "smartVoucherContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 2197,
+            "scope": 2316,
             "src": "116:38:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
               "typeIdentifier": "t_array$_t_address_$dyn_storage",
-              "typeString": "address[]"
+              "typeString": "address[] storage ref"
             },
             "typeName": {
               "baseType": {
-                "id": 2140,
+                "id": 2259,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "116:7:15",
@@ -164,13 +164,13 @@
                   "typeString": "address"
                 }
               },
-              "id": 2141,
+              "id": 2260,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "116:9:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
-                "typeString": "address[]"
+                "typeString": "address[] storage pointer"
               }
             },
             "value": null,
@@ -179,20 +179,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2153,
+            "id": 2272,
             "name": "SmartVoucherCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2152,
+              "id": 2271,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2144,
+                  "id": 2263,
                   "indexed": false,
                   "name": "smartVoucherContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2153,
+                  "scope": 2272,
                   "src": "240:28:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -201,7 +201,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2143,
+                    "id": 2262,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "240:7:15",
@@ -215,11 +215,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2146,
+                  "id": 2265,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2153,
+                  "scope": 2272,
                   "src": "270:13:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -228,7 +228,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2145,
+                    "id": 2264,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "270:7:15",
@@ -242,11 +242,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2148,
+                  "id": 2267,
                   "indexed": false,
                   "name": "numSmartVoucher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2153,
+                  "scope": 2272,
                   "src": "285:20:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -255,7 +255,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2147,
+                    "id": 2266,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "285:4:15",
@@ -269,21 +269,21 @@
                 },
                 {
                   "constant": false,
-                  "id": 2151,
+                  "id": 2270,
                   "indexed": false,
                   "name": "allSmartVoucherContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2153,
+                  "scope": 2272,
                   "src": "307:34:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
-                    "typeString": "address[]"
+                    "typeString": "address[] memory"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2149,
+                      "id": 2268,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "307:7:15",
@@ -292,13 +292,13 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2150,
+                    "id": 2269,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "307:9:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
-                      "typeString": "address[]"
+                      "typeString": "address[] storage pointer"
                     }
                   },
                   "value": null,
@@ -311,13 +311,13 @@
           },
           {
             "body": {
-              "id": 2156,
+              "id": 2275,
               "nodeType": "Block",
               "src": "387:32:15",
               "statements": []
             },
             "documentation": null,
-            "id": 2157,
+            "id": 2276,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -325,19 +325,19 @@
             "name": "SmartVoucherFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2154,
+              "id": 2273,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "377:2:15"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2155,
+              "id": 2274,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "387:0:15"
             },
-            "scope": 2197,
+            "scope": 2316,
             "src": "349:70:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -345,37 +345,37 @@
           },
           {
             "body": {
-              "id": 2186,
+              "id": 2305,
               "nodeType": "Block",
               "src": "483:259:15",
               "statements": [
                 {
                   "assignments": [
-                    2163
+                    2282
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2163,
+                      "id": 2282,
                       "name": "newSmartVoucher",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2187,
+                      "scope": 2306,
                       "src": "492:28:15",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                        "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                         "typeString": "contract SmartVoucher"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2162,
+                        "id": 2281,
                         "name": "SmartVoucher",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2135,
+                        "referencedDeclaration": 2254,
                         "src": "492:12:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       },
@@ -383,7 +383,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2170,
+                  "id": 2289,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -391,18 +391,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2166,
+                          "id": 2285,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2212,
+                          "referencedDeclaration": 2329,
                           "src": "540:3:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2167,
+                        "id": 2286,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -418,11 +418,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2168,
+                        "id": 2287,
                         "name": "_promotionName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2159,
+                        "referencedDeclaration": 2278,
                         "src": "552:14:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -441,7 +441,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 2165,
+                      "id": 2284,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -449,23 +449,23 @@
                       "nodeType": "NewExpression",
                       "src": "523:16:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartVoucher_$2135_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartVoucher_$2254_$",
                         "typeString": "function (address,string memory) returns (contract SmartVoucher)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2164,
+                        "id": 2283,
                         "name": "SmartVoucher",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2135,
+                        "referencedDeclaration": 2254,
                         "src": "527:12:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       }
                     },
-                    "id": 2169,
+                    "id": 2288,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -475,7 +475,7 @@
                     "nodeType": "FunctionCall",
                     "src": "523:44:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                      "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                       "typeString": "contract SmartVoucher"
                     }
                   },
@@ -488,14 +488,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2174,
+                        "id": 2293,
                         "name": "newSmartVoucher",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2163,
+                        "referencedDeclaration": 2282,
                         "src": "603:15:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       }
@@ -503,24 +503,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2171,
+                        "id": 2290,
                         "name": "smartVoucherContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2142,
+                        "referencedDeclaration": 2261,
                         "src": "576:21:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2173,
+                      "id": 2292,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -534,7 +534,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 2175,
+                    "id": 2294,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -548,7 +548,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2176,
+                  "id": 2295,
                   "nodeType": "ExpressionStatement",
                   "src": "576:43:15"
                 },
@@ -558,14 +558,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2178,
+                        "id": 2297,
                         "name": "newSmartVoucher",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2163,
+                        "referencedDeclaration": 2282,
                         "src": "655:15:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       },
@@ -573,18 +573,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2179,
+                          "id": 2298,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2212,
+                          "referencedDeclaration": 2329,
                           "src": "672:3:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2180,
+                        "id": 2299,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -602,18 +602,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2181,
+                          "id": 2300,
                           "name": "smartVoucherContracts",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2142,
+                          "referencedDeclaration": 2261,
                           "src": "684:21:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 2182,
+                        "id": 2301,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -629,11 +629,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2183,
+                        "id": 2302,
                         "name": "smartVoucherContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2142,
+                        "referencedDeclaration": 2261,
                         "src": "714:21:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -644,7 +644,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         },
                         {
@@ -660,18 +660,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 2177,
+                      "id": 2296,
                       "name": "SmartVoucherCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2153,
+                      "referencedDeclaration": 2272,
                       "src": "635:19:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 2184,
+                    "id": 2303,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -685,14 +685,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2185,
+                  "id": 2304,
                   "nodeType": "EmitStatement",
                   "src": "630:106:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2187,
+            "id": 2306,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -700,30 +700,30 @@
             "name": "createSmartVoucher",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2160,
+              "id": 2279,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2159,
+                  "id": 2278,
                   "name": "_promotionName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2187,
+                  "scope": 2306,
                   "src": "453:21:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string"
+                    "typeString": "string memory"
                   },
                   "typeName": {
-                    "id": 2158,
+                    "id": 2277,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "453:6:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
+                      "typeString": "string storage pointer"
                     }
                   },
                   "value": null,
@@ -734,12 +734,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2161,
+              "id": 2280,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "483:0:15"
             },
-            "scope": 2197,
+            "scope": 2316,
             "src": "425:317:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -747,33 +747,33 @@
           },
           {
             "body": {
-              "id": 2195,
+              "id": 2314,
               "nodeType": "Block",
               "src": "820:43:15",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2193,
+                    "id": 2312,
                     "name": "smartVoucherContracts",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2142,
+                    "referencedDeclaration": 2261,
                     "src": "836:21:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 2192,
-                  "id": 2194,
+                  "functionReturnParameters": 2311,
+                  "id": 2313,
                   "nodeType": "Return",
                   "src": "829:28:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2196,
+            "id": 2315,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -781,32 +781,32 @@
             "name": "allSmartVoucherContracts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2188,
+              "id": 2307,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "781:2:15"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2192,
+              "id": 2311,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2191,
+                  "id": 2310,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2196,
+                  "scope": 2315,
                   "src": "809:9:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
-                    "typeString": "address[]"
+                    "typeString": "address[] memory"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2189,
+                      "id": 2308,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "809:7:15",
@@ -815,13 +815,13 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2190,
+                    "id": 2309,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "809:9:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
-                      "typeString": "address[]"
+                      "typeString": "address[] storage pointer"
                     }
                   },
                   "value": null,
@@ -830,31 +830,31 @@
               ],
               "src": "808:11:15"
             },
-            "scope": 2197,
+            "scope": 2316,
             "src": "748:115:15",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2198,
+        "scope": 2317,
         "src": "82:786:15"
       }
     ],
     "src": "0:870:15"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucherFactory.sol",
+    "absolutePath": "/C/Users/john.durrant/EE-Prototype/blockchain-prototypes-framework/contracts/promotions/SmartVoucherFactory.sol",
     "exportedSymbols": {
       "SmartVoucherFactory": [
-        2197
+        2316
       ]
     },
-    "id": 2198,
+    "id": 2317,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2137,
+        "id": 2256,
         "literals": [
           "solidity",
           "^",
@@ -865,16 +865,16 @@
         "src": "0:24:15"
       },
       {
-        "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
+        "absolutePath": "/C/Users/john.durrant/EE-Prototype/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
         "file": "./SmartVoucher.sol",
-        "id": 2139,
+        "id": 2258,
         "nodeType": "ImportDirective",
-        "scope": 2198,
-        "sourceUnit": 2136,
+        "scope": 2317,
+        "sourceUnit": 2255,
         "src": "28:50:15",
         "symbolAliases": [
           {
-            "foreign": 2138,
+            "foreign": 2257,
             "local": null
           }
         ],
@@ -883,34 +883,34 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          2135
+          2254
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2197,
+        "id": 2316,
         "linearizedBaseContracts": [
-          2197
+          2316
         ],
         "name": "SmartVoucherFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2142,
+            "id": 2261,
             "name": "smartVoucherContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 2197,
+            "scope": 2316,
             "src": "116:38:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
               "typeIdentifier": "t_array$_t_address_$dyn_storage",
-              "typeString": "address[]"
+              "typeString": "address[] storage ref"
             },
             "typeName": {
               "baseType": {
-                "id": 2140,
+                "id": 2259,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "116:7:15",
@@ -919,13 +919,13 @@
                   "typeString": "address"
                 }
               },
-              "id": 2141,
+              "id": 2260,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "116:9:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
-                "typeString": "address[]"
+                "typeString": "address[] storage pointer"
               }
             },
             "value": null,
@@ -934,20 +934,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2153,
+            "id": 2272,
             "name": "SmartVoucherCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2152,
+              "id": 2271,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2144,
+                  "id": 2263,
                   "indexed": false,
                   "name": "smartVoucherContract",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2153,
+                  "scope": 2272,
                   "src": "240:28:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -956,7 +956,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2143,
+                    "id": 2262,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "240:7:15",
@@ -970,11 +970,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2146,
+                  "id": 2265,
                   "indexed": false,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2153,
+                  "scope": 2272,
                   "src": "270:13:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -983,7 +983,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2145,
+                    "id": 2264,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "270:7:15",
@@ -997,11 +997,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2148,
+                  "id": 2267,
                   "indexed": false,
                   "name": "numSmartVoucher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2153,
+                  "scope": 2272,
                   "src": "285:20:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1010,7 +1010,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2147,
+                    "id": 2266,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "285:4:15",
@@ -1024,21 +1024,21 @@
                 },
                 {
                   "constant": false,
-                  "id": 2151,
+                  "id": 2270,
                   "indexed": false,
                   "name": "allSmartVoucherContracts",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2153,
+                  "scope": 2272,
                   "src": "307:34:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
-                    "typeString": "address[]"
+                    "typeString": "address[] memory"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2149,
+                      "id": 2268,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "307:7:15",
@@ -1047,13 +1047,13 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2150,
+                    "id": 2269,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "307:9:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
-                      "typeString": "address[]"
+                      "typeString": "address[] storage pointer"
                     }
                   },
                   "value": null,
@@ -1066,13 +1066,13 @@
           },
           {
             "body": {
-              "id": 2156,
+              "id": 2275,
               "nodeType": "Block",
               "src": "387:32:15",
               "statements": []
             },
             "documentation": null,
-            "id": 2157,
+            "id": 2276,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1080,19 +1080,19 @@
             "name": "SmartVoucherFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2154,
+              "id": 2273,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "377:2:15"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2155,
+              "id": 2274,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "387:0:15"
             },
-            "scope": 2197,
+            "scope": 2316,
             "src": "349:70:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1100,37 +1100,37 @@
           },
           {
             "body": {
-              "id": 2186,
+              "id": 2305,
               "nodeType": "Block",
               "src": "483:259:15",
               "statements": [
                 {
                   "assignments": [
-                    2163
+                    2282
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2163,
+                      "id": 2282,
                       "name": "newSmartVoucher",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2187,
+                      "scope": 2306,
                       "src": "492:28:15",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                        "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                         "typeString": "contract SmartVoucher"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2162,
+                        "id": 2281,
                         "name": "SmartVoucher",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2135,
+                        "referencedDeclaration": 2254,
                         "src": "492:12:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       },
@@ -1138,7 +1138,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2170,
+                  "id": 2289,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -1146,18 +1146,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2166,
+                          "id": 2285,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2212,
+                          "referencedDeclaration": 2329,
                           "src": "540:3:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2167,
+                        "id": 2286,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1173,11 +1173,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2168,
+                        "id": 2287,
                         "name": "_promotionName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2159,
+                        "referencedDeclaration": 2278,
                         "src": "552:14:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -1196,7 +1196,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 2165,
+                      "id": 2284,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1204,23 +1204,23 @@
                       "nodeType": "NewExpression",
                       "src": "523:16:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartVoucher_$2135_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_SmartVoucher_$2254_$",
                         "typeString": "function (address,string memory) returns (contract SmartVoucher)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2164,
+                        "id": 2283,
                         "name": "SmartVoucher",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2135,
+                        "referencedDeclaration": 2254,
                         "src": "527:12:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       }
                     },
-                    "id": 2169,
+                    "id": 2288,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1230,7 +1230,7 @@
                     "nodeType": "FunctionCall",
                     "src": "523:44:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                      "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                       "typeString": "contract SmartVoucher"
                     }
                   },
@@ -1243,14 +1243,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2174,
+                        "id": 2293,
                         "name": "newSmartVoucher",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2163,
+                        "referencedDeclaration": 2282,
                         "src": "603:15:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       }
@@ -1258,24 +1258,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2171,
+                        "id": 2290,
                         "name": "smartVoucherContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2142,
+                        "referencedDeclaration": 2261,
                         "src": "576:21:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2173,
+                      "id": 2292,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1289,7 +1289,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 2175,
+                    "id": 2294,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1303,7 +1303,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2176,
+                  "id": 2295,
                   "nodeType": "ExpressionStatement",
                   "src": "576:43:15"
                 },
@@ -1313,14 +1313,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2178,
+                        "id": 2297,
                         "name": "newSmartVoucher",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2163,
+                        "referencedDeclaration": 2282,
                         "src": "655:15:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         }
                       },
@@ -1328,18 +1328,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2179,
+                          "id": 2298,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2212,
+                          "referencedDeclaration": 2329,
                           "src": "672:3:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2180,
+                        "id": 2299,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1357,18 +1357,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2181,
+                          "id": 2300,
                           "name": "smartVoucherContracts",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2142,
+                          "referencedDeclaration": 2261,
                           "src": "684:21:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 2182,
+                        "id": 2301,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -1384,11 +1384,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2183,
+                        "id": 2302,
                         "name": "smartVoucherContracts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2142,
+                        "referencedDeclaration": 2261,
                         "src": "714:21:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
@@ -1399,7 +1399,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_SmartVoucher_$2135",
+                          "typeIdentifier": "t_contract$_SmartVoucher_$2254",
                           "typeString": "contract SmartVoucher"
                         },
                         {
@@ -1415,18 +1415,18 @@
                           "typeString": "address[] storage ref"
                         }
                       ],
-                      "id": 2177,
+                      "id": 2296,
                       "name": "SmartVoucherCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2153,
+                      "referencedDeclaration": 2272,
                       "src": "635:19:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address,uint256,address[] memory)"
                       }
                     },
-                    "id": 2184,
+                    "id": 2303,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1440,14 +1440,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2185,
+                  "id": 2304,
                   "nodeType": "EmitStatement",
                   "src": "630:106:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2187,
+            "id": 2306,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1455,30 +1455,30 @@
             "name": "createSmartVoucher",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2160,
+              "id": 2279,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2159,
+                  "id": 2278,
                   "name": "_promotionName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2187,
+                  "scope": 2306,
                   "src": "453:21:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string"
+                    "typeString": "string memory"
                   },
                   "typeName": {
-                    "id": 2158,
+                    "id": 2277,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "453:6:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
+                      "typeString": "string storage pointer"
                     }
                   },
                   "value": null,
@@ -1489,12 +1489,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2161,
+              "id": 2280,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "483:0:15"
             },
-            "scope": 2197,
+            "scope": 2316,
             "src": "425:317:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1502,33 +1502,33 @@
           },
           {
             "body": {
-              "id": 2195,
+              "id": 2314,
               "nodeType": "Block",
               "src": "820:43:15",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2193,
+                    "id": 2312,
                     "name": "smartVoucherContracts",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2142,
+                    "referencedDeclaration": 2261,
                     "src": "836:21:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 2192,
-                  "id": 2194,
+                  "functionReturnParameters": 2311,
+                  "id": 2313,
                   "nodeType": "Return",
                   "src": "829:28:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2196,
+            "id": 2315,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1536,32 +1536,32 @@
             "name": "allSmartVoucherContracts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2188,
+              "id": 2307,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "781:2:15"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2192,
+              "id": 2311,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2191,
+                  "id": 2310,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2196,
+                  "scope": 2315,
                   "src": "809:9:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
-                    "typeString": "address[]"
+                    "typeString": "address[] memory"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2189,
+                      "id": 2308,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "809:7:15",
@@ -1570,13 +1570,13 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2190,
+                    "id": 2309,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "809:9:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
-                      "typeString": "address[]"
+                      "typeString": "address[] storage pointer"
                     }
                   },
                   "value": null,
@@ -1585,14 +1585,14 @@
               ],
               "src": "808:11:15"
             },
-            "scope": 2197,
+            "scope": 2316,
             "src": "748:115:15",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2198,
+        "scope": 2317,
         "src": "82:786:15"
       }
     ],
@@ -1600,16 +1600,16 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+    "version": "0.4.21+commit.dfe3193c.Emscripten.clang"
   },
   "networks": {
     "5777": {
       "events": {},
       "links": {},
       "address": "0xa7c893c79e5fab65b4ea8dc89760972e030599f4",
-      "transactionHash": "0x621e0aa2f1491a9febbc08792fd71caf4b82bb9f43b0a438cce48fb402a4aba5"
+      "transactionHash": "0x34f85e6e5c6473cb6d2b915e325bd6e969f998928dd0b885cf8d822d1ae75897"
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-05T13:46:31.190Z"
+  "updatedAt": "2018-06-06T16:31:38.965Z"
 }
