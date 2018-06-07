@@ -316,7 +316,7 @@ export default {
       couponQualifyingProductSKUs: res.info.couponQualifyingProductSKUs,
       couponFixedDiscount: res.info.couponFixedDiscount,
       couponPercentDiscount: res.info.couponPercentDiscount,
-      couponQualifyingCurrencies: res.info.couponQualifyingCurrencies,
+      couponQualifyingCurrency: res.info.couponQualifyingCurrency,
       couponQualifyingSpend: res.info.couponQualifyingSpend,
       couponDiscountType: res.info.couponDiscountType,
       couponReusePolicy: res.info.couponReusePolicy,

@@ -46,10 +46,8 @@
                    </span>
                  </td>
                 <td class="text-xs-center">
-                 <span v-for="(currency, c) in props.item.couponQualifyingCurrencies"
-                   :key="c">
-                    {{ currencyListByAddress[currency].name }}<span v-show="(c + 1) < props.item.couponQualifyingCurrencies.length">, </span>
-                  </span>
+
+                    {{ currencyListByAddress[props.item.couponQualifyingCurrency].name }}
                 </td>
                 <td class="text-xs-center">{{ props.item.couponQualifyingSpend }}</td>
                 <td class="text-xs-center">{{ props.item.couponReusePolicy }}</td>
@@ -85,7 +83,7 @@ export default {
         { text: 'Status', value: 'status', sortable: false, align: 'center' },
         { text: 'Discount', value: 'discount', sortable: false, align: 'center' },
         { text: 'Products', value: 'couponQualifyingProductSKUs', sortable: false, align: 'center' },
-        { text: 'Currencies', value: 'couponQualifyingCurrencies', sortable: false, align: 'center' },
+        { text: 'Currency', value: 'couponQualifyingCurrency', sortable: false, align: 'center' },
         { text: 'Qualifying Spend', value: 'couponQualifyingSpend', sortable: false, align: 'center' },
         { text: 'Re-use Policy', value: 'couponReusePolicy', sortable: false, align: 'center' },
         { text: '3rd Party Promoters', value: 'promotionPolicy', sortable: false, align: 'center' },

@@ -13,7 +13,7 @@ export default {
       e.promotionName,
       e.couponQualifyingProductSKUs,
       e.couponPercentDiscount,
-      e.couponQualifyingCurrencies,
+      e.couponQualifyingCurrency,
       e.couponQualifyingSpend,
       e.couponReusePolicy,
       e.couponPromoterFee,
@@ -80,9 +80,9 @@ export default {
               contract.methods.getAllCouponQualifyingProductSKUs().call()
               .then(couponQualifyingProductSKUs => {
                 info.couponQualifyingProductSKUs = couponQualifyingProductSKUs
-                contract.methods.getAllCouponQualifyingCurrencies().call()
-                .then(couponQualifyingCurrencies => {
-                  info.couponQualifyingCurrencies = couponQualifyingCurrencies
+                contract.methods.couponQualifyingCurrency().call()
+                .then(couponQualifyingCurrency => {
+                  info.couponQualifyingCurrency = couponQualifyingCurrency
                   contract.methods.couponPercentDiscount().call()
                   .then(couponPercentDiscount=> {
                     info.couponPercentDiscount = couponPercentDiscount

@@ -7,7 +7,7 @@ contract SmartCoupon {
   string public promotionName;
   uint[] public couponQualifyingProductSKUs;
   uint public couponPercentDiscount;
-  address[] public couponQualifyingCurrencies; // addresses of the Currencies
+  address public couponQualifyingCurrency; // address of the Currency
   uint public couponQualifyingSpend;
   string public couponDiscountType = 'percentDiscount';
   string public couponReusePolicy; // perhaps this should be enum 'single' / 'multi'
@@ -32,7 +32,7 @@ contract SmartCoupon {
     string _promotionName,
     uint[] _couponQualifyingProductSKUs,
     uint _couponPercentDiscount,
-    address[] _couponQualifyingCurrencies,
+    address _couponQualifyingCurrency,
     uint _couponQualifyingSpend,
     string _couponReusePolicy,
     uint _couponPromoterFee,
@@ -45,7 +45,7 @@ contract SmartCoupon {
       promotionName = _promotionName;
       couponQualifyingProductSKUs = _couponQualifyingProductSKUs;
       couponPercentDiscount = _couponPercentDiscount;
-      couponQualifyingCurrencies = _couponQualifyingCurrencies;
+      couponQualifyingCurrency = _couponQualifyingCurrency;
       couponQualifyingSpend = _couponQualifyingSpend;
       couponReusePolicy = _couponReusePolicy;
       couponPromotersAllowed = _couponPromoterFee > 0;
@@ -55,10 +55,6 @@ contract SmartCoupon {
 
   function getAllCouponQualifyingProductSKUs () public view returns (uint[]) {
     return couponQualifyingProductSKUs;
-  }
-
-  function getAllCouponQualifyingCurrencies () public view returns (address[]) {
-    return couponQualifyingCurrencies;
   }
 
   function checkQualifyingProducts (uint[] _productSKUs) public returns (uint[]) {

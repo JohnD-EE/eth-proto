@@ -98,17 +98,16 @@
                           clearable
                         ></v-select>
 
-                        <span class="grey--text">Qualyfying Currencies:</span><br/>
+                        <span class="grey--text">Qualyfying Currency:</span><br/>
                         <v-select class="mt-3"
                           :items="currencyItems"
                           item-text='text'
                           item-value='value'
-                          v-model="couponQualifyingCurrencies"
-                          :rules="couponQualifyingCurrenciesRules"
+                          v-model="couponQualifyingCurrency"
+                          :rules="couponQualifyingCurrencyRules"
                           label="Select"
-                          multiple
                           chips
-                          hint="Which currecnies qualify for this promotion?"
+                          hint="Which currency qualifies for this promotion?"
                         ></v-select>
 
                         <span class="grey--text">Qualyfying Spend:</span><br/>
@@ -243,14 +242,14 @@ export default {
     couponQualifyingProducts: '',
     couponQualifyingProductSKUs: [],
     couponPercentDiscount: '',
-    couponQualifyingCurrencies: [],
+    couponQualifyingCurrency: [],
     couponQualifyingSpend: '',
     couponReusePolicy: '',
     couponPromoterFee: '',
     couponExpiryBlock: '',
     couponFixedDiscountRules: [],
     couponPercentDiscountRules: [],
-    couponQualifyingCurrenciesRules: [],
+    couponQualifyingCurrencyRules: [],
     couponQualifyingSpendRules: [],
     couponPromoterFeeRules: [],
     couponReusePolicyRules: [],
@@ -344,7 +343,7 @@ export default {
             promotionName: this.promotionName,
             couponQualifyingProductSKUs: this.couponQualifyingProductSKUs,
             couponPercentDiscount: Number(this.couponPercentDiscount),
-            couponQualifyingCurrencies: this.couponQualifyingCurrencies,
+            couponQualifyingCurrency: this.couponQualifyingCurrency,
             couponQualifyingSpend: Number(this.couponQualifyingSpend),
             couponReusePolicy: this.couponReusePolicy,
             couponPromoterFee: Number(this.couponPromoterFee),
