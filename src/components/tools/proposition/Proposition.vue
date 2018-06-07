@@ -86,7 +86,6 @@
                 </v-card-text>
               </v-card>
             </v-tab-item>
-
           </v-tabs>
 
         <div class="text-xs-center pb-4">

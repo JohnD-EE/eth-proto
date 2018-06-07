@@ -46,14 +46,16 @@
                    </span>
                  </td>
                 <td class="text-xs-center">
-
                     {{ currencyListByAddress[props.item.couponQualifyingCurrency].name }}
                 </td>
                 <td class="text-xs-center">{{ props.item.couponQualifyingSpend }}</td>
                 <td class="text-xs-center">{{ props.item.couponReusePolicy }}</td>
                 <td class="text-xs-center">{{ props.item.couponPromotersAllowed ? props.item.couponPromoterFee + '% Fee' : 'N/A' }}</td>
                 <td class="text-xs-center">{{ props.item.couponExpiryBlock }}</td>
-                <td class="text-xs-center">Actions</td>
+                <td class="text-xs-center">
+                  <v-btn small round color="green" dark @click="addToWallet(props.item.contractAddress)">Add to Wallet</v-btn>
+
+                </td>
               </template>
               <v-alert slot="no-results" :value="true" color="error" icon="warning">
                 Your search for "{{ search }}" found no results.
@@ -68,6 +70,7 @@
 
 <script>
 import smartCouponsHelper from '../../helpers/promotions/smartCoupon'
+import userAccounts from '../../helpers/userAccounts'
 import ProductsJSON from '../proxyData/products.json'
 
 export default {
@@ -143,6 +146,10 @@ export default {
     },
     clear () {
       this.$refs.form.reset()
+    },
+    addToWallet(couponAddress) {
+      console.log('Adding to Wallet', couponAddress)
+      userAccounts.addCouponToUserWallet(couponAddress)
     }
   }
 }

@@ -94,5 +94,20 @@ export default {
       allUsersEthAccounts[res.ethAccount] = res
     })
     return allUsersEthAccounts
+  },
+
+  addCouponToUserWallet (couponAddress) {
+    db.collection('users').doc(store.state.user.uid).get()
+    .then(doc => {
+      let coupons = doc.data().walletCoupons || []
+      coupons.push(couponAddress)
+      db.collection('users').doc(store.state.user.uid).update('walletCoupons', coupons)
+      .then(res => {
+        // Done
+        console.log('Added Coupon for: ', store.state.user.uid)
+        store.dispatch('registerAllUsers')
+      })
+    })
   }
+
 }
