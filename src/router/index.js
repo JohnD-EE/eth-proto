@@ -15,7 +15,8 @@ const routerOptions = [
   { path: '/brand-funded', component: 'demoBrandFunded/BrandFunded', meta: { requiresAuth: true } },
   { path: '/branded-currency', component: 'demoBrandedCurrency/BrandedCurrency', meta: { requiresAuth: true } },
   { path: '/morescenarios', component: 'demoScenarios/MoreScenarios', meta: { requiresAuth: true } },
-  { path: '/opportunity-analysis', component: 'tools/opportunityAnalysis/opportunityAnalysis', meta: { requiresAuth: true } }
+  { path: '/opportunity-analysis', component: 'tools/opportunityAnalysis/OpportunityAnalysis', meta: { requiresAuth: true } },
+  { path: '/proposition', component: 'tools/proposition/Proposition', meta: { requiresAuth: true } }
 ]
 
 const routes = routerOptions.map(route => {

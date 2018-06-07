@@ -185,7 +185,8 @@ export default {
       blockchainLoading: false,
       sidebar: false,
       tools: [
-        { title: 'Opportunity Analysis', path: '/opportunity-analysis', icon: 'lightbulb_outline' }
+        { title: 'Opportunity Analysis', path: '/opportunity-analysis', icon: 'lightbulb_outline' },
+        { title: 'Proposition', path: '/proposition', icon: 'announcement' }
       ],
       demos: [
         { title: 'Auction', path: '/auction', icon: 'gavel' },

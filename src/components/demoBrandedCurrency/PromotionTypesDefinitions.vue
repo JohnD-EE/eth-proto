@@ -101,7 +101,7 @@
 
           </v-tabs>
 
-        <div class="text-xs-center mt-3">
+        <div class="text-xs-center pb-4">
           <v-btn @click.native="next">Next</v-btn>
         </div>
       </div>

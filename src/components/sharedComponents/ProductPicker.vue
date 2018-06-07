@@ -61,17 +61,13 @@ export default {
       return matched
     },
     productSelection () {
-
       // emit an array of product SKUs
       let skus = []
       this.productsSelected.forEach((res, i) => {
-        console.log('res', i)
         skus.push(this.products[i].SKU)
       })
-      console.log('selection', skus)
       this.$emit('selected', {products: skus})
     }
-
   }
 }
 </script>

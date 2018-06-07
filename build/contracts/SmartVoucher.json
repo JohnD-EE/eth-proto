@@ -45,14 +45,14 @@
       "type": "constructor"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b60405161038d38038061038d8339810160405280805190602001909190805182019190505060008273ffffffffffffffffffffffffffffffffffffffff16141561005857600080fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600190805190602001906100ae9291906100b6565b50505061015b565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100f757805160ff1916838001178555610125565b82800160010185558215610125579182015b82811115610124578251825591602001919060010190610109565b5b5090506101329190610136565b5090565b61015891905b8082111561015457600081600090555060010161013c565b5090565b90565b6102238061016a6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063c46d4ce4146100a6575b600080fd5b341561005c57600080fd5b610064610134565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100b157600080fd5b6100b9610159565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100f95780820151818401526020810190506100de565b50505050905090810190601f1680156101265780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101ef5780601f106101c4576101008083540402835291602001916101ef565b820191906000526020600020905b8154815290600101906020018083116101d257829003601f168201915b5050505050815600a165627a7a72305820ed93d8a4fdaa4ba5cdb02b32cd342bc745aa408ea78d71dad3b3d77c871e2e4a0029",
-  "deployedBytecode": "0x60606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063c46d4ce4146100a6575b600080fd5b341561005c57600080fd5b610064610134565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100b157600080fd5b6100b9610159565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100f95780820151818401526020810190506100de565b50505050905090810190601f1680156101265780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101ef5780601f106101c4576101008083540402835291602001916101ef565b820191906000526020600020905b8154815290600101906020018083116101d257829003601f168201915b5050505050815600a165627a7a72305820ed93d8a4fdaa4ba5cdb02b32cd342bc745aa408ea78d71dad3b3d77c871e2e4a0029",
-  "sourceMap": "28:294:14:-;;;144:173;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;236:1;226:6;:11;;;222:25;;;239:8;;;222:25;266:6;258:5;;:14;;;;;;;;;;;;;;;;;;297;281:13;:30;;;;;;;;;;;;:::i;:::-;;144:173;;28:294;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
-  "deployedSourceMap": "28:294:14:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;70:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;95:27;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;95:27:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;70:20;;;;;;;;;;;;;:::o;95:27::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161039a38038061039a833981018060405281019080805190602001909291908051820192919050505060008273ffffffffffffffffffffffffffffffffffffffff16141561006157600080fd5b816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600190805190602001906100b79291906100bf565b505050610164565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061010057805160ff191683800117855561012e565b8280016001018555821561012e579182015b8281111561012d578251825591602001919060010190610112565b5b50905061013b919061013f565b5090565b61016191905b8082111561015d576000816000905550600101610145565b5090565b90565b610227806101736000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063c46d4ce4146100a8575b600080fd5b34801561005d57600080fd5b50610066610138565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100bd61015d565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100fd5780820151818401526020810190506100e2565b50505050905090810190601f16801561012a5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101f35780601f106101c8576101008083540402835291602001916101f3565b820191906000526020600020905b8154815290600101906020018083116101d657829003601f168201915b5050505050815600a165627a7a723058201916736b4aaf520d2ed2aa5093361d9870c35ef027894924b549f09d64600eb90029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063c46d4ce4146100a8575b600080fd5b34801561005d57600080fd5b50610066610138565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100bd61015d565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100fd5780820151818401526020810190506100e2565b50505050905090810190601f16801561012a5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101f35780601f106101c8576101008083540402835291602001916101f3565b820191906000526020600020905b8154815290600101906020018083116101d657829003601f168201915b5050505050815600a165627a7a723058201916736b4aaf520d2ed2aa5093361d9870c35ef027894924b549f09d64600eb90029",
+  "sourceMap": "28:294:14:-;;;144:173;8:9:-1;5:2;;;30:1;27;20:12;5:2;144:173:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;236:1;226:6;:11;;;222:25;;;239:8;;;222:25;266:6;258:5;;:14;;;;;;;;;;;;;;;;;;297;281:13;:30;;;;;;;;;;;;:::i;:::-;;144:173;;28:294;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "28:294:14:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;70:20;;8:9:-1;5:2;;;30:1;27;20:12;5:2;70:20:14;;;;;;;;;;;;;;;;;;;;;;;;;;;95:27;;8:9:-1;5:2;;;30:1;27;20:12;5:2;95:27:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;95:27:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;70:20;;;;;;;;;;;;;:::o;95:27::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
   "source": "pragma solidity ^0.4.21;\r\n\r\ncontract SmartVoucher {\r\n\r\n  // static\r\n  address public owner;\r\n  string public promotionName;\r\n\r\n  // states\r\n\r\n  function SmartVoucher (address _owner, string _promotionName) public {\r\n      if (_owner == 0) revert();\r\n\r\n      owner = _owner;\r\n      promotionName = _promotionName;\r\n  }\r\n\r\n}\r\n",
-  "sourcePath": "C:\\Users\\john.durrant\\EE-Prototype\\blockchain-prototypes-framework\\contracts\\promotions\\SmartVoucher.sol",
+  "sourcePath": "C:\\Users\\John\\EE-Proto\\blockchain-prototypes-framework\\contracts\\promotions\\SmartVoucher.sol",
   "ast": {
-    "absolutePath": "/C/Users/john.durrant/EE-Prototype/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
+    "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
     "exportedSymbols": {
       "SmartVoucher": [
         2254
@@ -122,7 +122,7 @@
             "storageLocation": "default",
             "typeDescriptions": {
               "typeIdentifier": "t_string_storage",
-              "typeString": "string storage ref"
+              "typeString": "string"
             },
             "typeName": {
               "id": 2229,
@@ -131,7 +131,7 @@
               "src": "95:6:14",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string storage pointer"
+                "typeString": "string"
               }
             },
             "value": null,
@@ -207,8 +207,11 @@
                         "id": 2240,
                         "name": "revert",
                         "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 2333,
+                        "overloadedDeclarations": [
+                          2336,
+                          2337
+                        ],
+                        "referencedDeclaration": 2336,
                         "src": "239:6:14",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$__$returns$__$",
@@ -377,7 +380,7 @@
                   "storageLocation": "default",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string memory"
+                    "typeString": "string"
                   },
                   "typeName": {
                     "id": 2233,
@@ -386,7 +389,7 @@
                     "src": "183:6:14",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
+                      "typeString": "string"
                     }
                   },
                   "value": null,
@@ -416,7 +419,7 @@
     "src": "0:324:14"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/john.durrant/EE-Prototype/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
+    "absolutePath": "/C/Users/John/EE-Proto/blockchain-prototypes-framework/contracts/promotions/SmartVoucher.sol",
     "exportedSymbols": {
       "SmartVoucher": [
         2254
@@ -486,7 +489,7 @@
             "storageLocation": "default",
             "typeDescriptions": {
               "typeIdentifier": "t_string_storage",
-              "typeString": "string storage ref"
+              "typeString": "string"
             },
             "typeName": {
               "id": 2229,
@@ -495,7 +498,7 @@
               "src": "95:6:14",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string storage pointer"
+                "typeString": "string"
               }
             },
             "value": null,
@@ -571,8 +574,11 @@
                         "id": 2240,
                         "name": "revert",
                         "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 2333,
+                        "overloadedDeclarations": [
+                          2336,
+                          2337
+                        ],
+                        "referencedDeclaration": 2336,
                         "src": "239:6:14",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_revert_pure$__$returns$__$",
@@ -741,7 +747,7 @@
                   "storageLocation": "default",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string memory"
+                    "typeString": "string"
                   },
                   "typeName": {
                     "id": 2233,
@@ -750,7 +756,7 @@
                     "src": "183:6:14",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
+                      "typeString": "string"
                     }
                   },
                   "value": null,
@@ -781,9 +787,9 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.21+commit.dfe3193c.Emscripten.clang"
+    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-06T16:31:38.962Z"
+  "updatedAt": "2018-06-07T06:51:00.689Z"
 }
