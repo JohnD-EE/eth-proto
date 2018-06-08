@@ -186,7 +186,8 @@ export default {
       sidebar: false,
       tools: [
         { title: 'Opportunity Analysis', path: '/opportunity-analysis', icon: 'lightbulb_outline' },
-        { title: 'Proposition', path: '/proposition', icon: 'announcement' }
+        { title: 'Proposition', path: '/proposition', icon: 'announcement' },
+        { title: 'Attacks and Rebuttals', path: '/attacksandrebuttals', icon: 'sentiment_dissatisfied' }
       ],
       demos: [
         { title: 'Auction', path: '/auction', icon: 'gavel' },

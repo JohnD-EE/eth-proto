@@ -1,30 +1,33 @@
 <template>
   <v-container grid-list-md class="mb-5">
   <v-layout row wrap>
-    <v-flex xs12 md10 offset-md1 py-4>
+    <v-flex xs12 md12 py-4>
       <v-card>
         <v-tabs
           v-model="active"
           color="primary lighten-2 white--text"
           dark
           slider-color="yellow"
+          show-arrows
+          prev-icon="arrow_back_ios"
+          next-icon="arrow_forward_ios"
           >
           <v-tab ripple>
-          1
+          1. Money as Technology
           </v-tab>
           <v-tab ripple>
-          2
+          2. Technology Evolves
           </v-tab>
           <v-tab ripple>
-          3
+          3. Cryptocurrency Paradigm
           </v-tab>
           <v-tab ripple>
-          4
+          4. Adoption
           </v-tab>
             <v-tab-item>
               <v-card flat>
                 <v-card-text>
-                  <h3>Money as Technology</h3>
+                  <h2>1. Money as Technology</h2>
                 </v-card-text>
                 <v-layout row wrap>
                   <v-flex xs12 md6>
@@ -49,7 +52,7 @@
             <v-tab-item>
               <v-card flat>
                 <v-card-text>
-                  <h3>Technology Evolves:</h3>
+                  <h2>2. Technology Evolves:</h2>
                 </v-card-text>
                 <v-layout row wrap>
                   <v-flex xs12 md6>
@@ -72,7 +75,7 @@
             <v-tab-item>
               <v-card flat>
                 <v-card-text>
-                  <h3>Cryptocurrency, a Paradigm Shift in Money?</h3>
+                  <h2>3. Cryptocurrency, a Paradigm Shift in Money?</h2>
                 </v-card-text>
                 <v-layout row wrap>
                   <v-flex xs12 md6>
@@ -99,7 +102,7 @@
               <v-card flat>
 
                 <v-card-text>
-                  <h3>Widespread Adoption?</h3>
+                  <h2>4. Widespread Adoption?</h2>
                 </v-card-text>
                 <v-layout row wrap>
                   <v-flex xs12 md6>
@@ -143,30 +146,10 @@
 export default {
   data () {
     return {
-      notifications: false,
-      fullScreen: true, // todo detect screen size here and make true for sm screens
-      active: null,
-      tabItems: [
-        { tabTitle: 'Intrinsic Offers', content: [{
-        }] },
-        { tabTitle: 'Vouchers', text: 'vouchers' },
-        { tabTitle: 'Coupons', text: 'coupons' }
-      ]
-    }
-  },
-  props: ['openDialog'],
-  components: {
-    //
-  },
-  computed: {
-    dialog () {
-      return this.openDialog
+      active: null
     }
   },
   methods: {
-    clickClose () {
-      this.$emit('close', {promotionTypesDialog: false})
-    },
     next () {
       const active = parseInt(this.active)
       this.active = (active < 3 ? active + 1 : 0).toString()
