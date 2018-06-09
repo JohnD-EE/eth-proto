@@ -66,7 +66,21 @@ export default {
     return {
       active: null,
       tabItems: [
-        { tabTitle: 'Regulation', image: 'prometheus.jpg', content: [
+        { tabTitle: 'Regulation', image: 'regulation.jpg', content: [
+          { subHeading: 'Attacks', bullets: [
+            'ICO (Initial Coin Offering) has come under much Scrutiny - e.g. SEC',
+            'Echanges are unregulated',
+            'If a cryptocurrency does not want to be regulated, it is difficult to enforce (Distriuted)'
+          ]},
+          { subHeading: 'Rebuttals', bullets: [
+          '2008 Financial Crisis, Sub-Prime Mortgages, repackaging and hiding risk into derivatives, run on the banks',
+          'Regulation did not stop the libor rate fiddling',
+          'Regulation did not stop the HSBC money laundering scandal',
+          'Fractional reserve banking gives commercial banks free reign to create money as debt. Under any other circumstance this would be called counterfeitting',
+          'Cryptocurrencies offer complete traceability, easier to build regulation into a cryptocurrency than with fiat currencies'
+          ]}
+        ]},
+        { tabTitle: 'Transaction Speed', image: 'transaction.jpg', content: [
           { subHeading: 'Attacks', bullets: [
             'bullet1', 'bullet2'
           ]},
@@ -74,7 +88,7 @@ export default {
           'bullet1', 'bullet2'
           ]}
         ]},
-        { tabTitle: 'Transaction Speed', image: 'prometheus.jpg', content: [
+        { tabTitle: 'Privacy', image: 'privacy.jpg', content: [
           { subHeading: 'Attacks', bullets: [
             'bullet1', 'bullet2'
           ]},
@@ -82,7 +96,7 @@ export default {
           'bullet1', 'bullet2'
           ]}
         ]},
-        { tabTitle: 'Privacy', image: 'prometheus.jpg', content: [
+        { tabTitle: 'Incumbent Resistance', image: 'banksUK.jpg', content: [
           { subHeading: 'Attacks', bullets: [
             'bullet1', 'bullet2'
           ]},
@@ -90,7 +104,20 @@ export default {
           'bullet1', 'bullet2'
           ]}
         ]},
-        { tabTitle: 'Incumbent Resistance', image: 'prometheus.jpg', content: [
+        { tabTitle: 'Crime', image: 'wannaCry.png', content: [
+          { subHeading: 'Attacks', bullets: [
+            'Money Laundering',
+            'Ransomware',
+            'Silk Road and Illegal Drugs'
+          ]},
+          { subHeading: 'Rebuttals', bullets: [
+          'Car deaths does not affect car usage',
+          'The Internet is used for crime, does not hinder legitimate usage',
+          'USD still the primary currecny of criminal activity',
+          'And the banks keep on counterfeitting - lending money into existence'
+          ]}
+        ]},
+        { tabTitle: 'Onboarding', image: 'onboarding.jpg', content: [
           { subHeading: 'Attacks', bullets: [
             'bullet1', 'bullet2'
           ]},
@@ -98,7 +125,29 @@ export default {
           'bullet1', 'bullet2'
           ]}
         ]},
-        { tabTitle: 'Crime', image: 'prometheus.jpg', content: [
+        { tabTitle: 'UX', image: 'mosaicBrowser.jpg', content: [
+          { subHeading: 'Attacks', bullets: [
+            'Hassle, too technical',
+            'bullet2'
+          ]},
+          { subHeading: 'Rebuttals', bullets: [
+          'Internet had a bad UX until the Mosaic browser abstracted away all the technical stuff',
+          'Cars had a bad UX when they were first invented',
+          'Cash and cheques had an awful UX, but we still used them',
+          'Vynil and cassette tapes didn\'t stop great music being made',
+          'Killer apps will emerge',
+          'Millenials used to the digital world won\'t care about poor UX'
+          ]}
+        ]},
+        { tabTitle: 'Security and Hacks', image: 'hacker.jpg', content: [
+          { subHeading: 'Attacks', bullets: [
+            'Bad programming of smart contracts introduces vulnerabilities', 'bullet2'
+          ]},
+          { subHeading: 'Rebuttals', bullets: [
+          'bullet1', 'bullet2'
+          ]}
+        ]},
+        { tabTitle: 'Price Volatility', image: 'priceVolatility.png', content: [
           { subHeading: 'Attacks', bullets: [
             'bullet1', 'bullet2'
           ]},
@@ -106,7 +155,7 @@ export default {
           'bullet1', 'bullet2'
           ]}
         ]},
-        { tabTitle: 'Onboarding', image: 'prometheus.jpg', content: [
+        { tabTitle: 'Scam / Ponzi', image: 'ponzi.jpg', content: [
           { subHeading: 'Attacks', bullets: [
             'bullet1', 'bullet2'
           ]},
@@ -114,23 +163,7 @@ export default {
           'bullet1', 'bullet2'
           ]}
         ]},
-        { tabTitle: 'UX', image: 'prometheus.jpg', content: [
-          { subHeading: 'Attacks', bullets: [
-            'bullet1', 'bullet2'
-          ]},
-          { subHeading: 'Rebuttals', bullets: [
-          'bullet1', 'bullet2'
-          ]}
-        ]},
-        { tabTitle: 'Security and Hacks', image: 'prometheus.jpg', content: [
-          { subHeading: 'Attacks', bullets: [
-            'bullet1', 'bullet2'
-          ]},
-          { subHeading: 'Rebuttals', bullets: [
-          'bullet1', 'bullet2'
-          ]}
-        ]},
-        { tabTitle: 'Price Volatility', image: 'prometheus.jpg', content: [
+        { tabTitle: 'Utopianism', image: 'utopia.jpg', content: [
           { subHeading: 'Attacks', bullets: [
             'bullet1', 'bullet2'
           ]},
