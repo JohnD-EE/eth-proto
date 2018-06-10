@@ -76,7 +76,8 @@ export default {
         db.collection('users').doc(firebaseUser.uid).get()
         .then(doc => {
           let ethAccount = doc.data().ethAccount
-          commit('setUserDetails', {ethAccount: ethAccount})
+          let walletCoupons = doc.data().walletCoupons || []
+          commit('setUserDetails', {ethAccount: ethAccount, walletCoupons: walletCoupons})
           window.web3.eth.getBalance(ethAccount).then(
             res => commit('setUserDetails', {ethBalance: res})
           )
@@ -102,8 +103,9 @@ export default {
     db.collection('users').doc(firebaseUser.uid).get()
     .then(doc => {
       let ethAccount = doc.data().ethAccount
+      let walletCoupons = doc.data().walletCoupons || []
       if (ethAccount) {
-        commit('setUserDetails', {ethAccount: ethAccount})
+        commit('setUserDetails', {ethAccount: ethAccount, walletCoupons: walletCoupons})
         window.web3.eth.getBalance(ethAccount).then(
           res => commit('setUserDetails', {ethBalance: res})
         )
@@ -117,7 +119,7 @@ export default {
   userSignOut ({commit}) {
     firebase.auth().signOut()
     commit('setUser', {loggedIn: false, displayName: null, email: null})
-    commit('setUserDetails', {displayName: null, ethAccount: null, ethBalance: null})
+    commit('setUserDetails', {displayName: null, ethAccount: null, ethBalance: null, walletCoupons: []})
     commit('setUserTxsBlockUpdate', 0)
     commit('setUserTxs', [])
     commit('resetAuctionContracts')
@@ -192,6 +194,14 @@ export default {
     } else {
       console.log('No Eth Account Registered')
     }
+  },
+
+  updateWallet ({commit}) {
+    db.collection('users').doc(this.state.user.uid).get()
+    .then(doc => {
+      let walletCoupons = doc.data().walletCoupons || []
+      commit('setUserDetails', {walletCoupons: walletCoupons})
+    })
   },
 
   accountSeeding ({commit}, payload) {

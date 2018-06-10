@@ -53,8 +53,8 @@
                 <td class="text-xs-center">{{ props.item.couponPromotersAllowed ? props.item.couponPromoterFee + '% Fee' : 'N/A' }}</td>
                 <td class="text-xs-center">{{ props.item.couponExpiryBlock }}</td>
                 <td class="text-xs-center">
-                  <v-btn small round color="green" dark @click="addToWallet(props.item.contractAddress)">Add to Wallet</v-btn>
-
+                  <v-chip v-if="isCouponInWallet(props.item.contractAddress)" small color="primary" text-color="white">IN WALLET</v-chip>
+                  <v-btn v-else small round color="green" dark @click="addToWallet(props.item.contractAddress)">Add to Wallet</v-btn>
                 </td>
               </template>
               <v-alert slot="no-results" :value="true" color="error" icon="warning">
@@ -141,14 +141,25 @@ export default {
       this.$store.dispatch('resetSmartCouponContracts')
       smartCouponsHelper.updateSmartCouponsData()
     },
+    isCouponInWallet (couponAddress) {
+      let coupons = this.$store.state.userDetails.walletCoupons || []
+      let matched = false
+      coupons.forEach(res => {
+        console.log(res, res)
+        console.log('couponAddress', couponAddress)
+        if (res === couponAddress) {
+          matched = true
+        }
+      })
+      return matched
+    },
     clickClose () {
       this.dialog = false
     },
     clear () {
       this.$refs.form.reset()
     },
-    addToWallet(couponAddress) {
-      console.log('Adding to Wallet', couponAddress)
+    addToWallet (couponAddress) {
       userAccounts.addCouponToUserWallet(couponAddress)
     }
   }

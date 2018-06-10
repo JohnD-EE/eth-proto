@@ -100,14 +100,21 @@ export default {
     db.collection('users').doc(store.state.user.uid).get()
     .then(doc => {
       let coupons = doc.data().walletCoupons || []
-      coupons.push(couponAddress)
-      db.collection('users').doc(store.state.user.uid).update('walletCoupons', coupons)
-      .then(res => {
-        // Done
-        console.log('Added Coupon for: ', store.state.user.uid)
-        store.dispatch('registerAllUsers')
+      let matched = false
+      coupons.forEach(res => {
+        if (res === couponAddress) {
+          matched = true
+        }
       })
+      if (!matched) {
+        coupons.push(couponAddress)
+        db.collection('users').doc(store.state.user.uid).update('walletCoupons', coupons)
+        .then(res => {
+          // Done
+          console.log('Added Coupon for: ', store.state.user.uid)
+          store.dispatch('updateWallet')
+        })
+      }
     })
   }
-
 }

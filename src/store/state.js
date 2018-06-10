@@ -16,7 +16,8 @@ export default {
   userDetails: {
     displayName: null,
     ethAccount: null,
-    ethBalance: null
+    ethBalance: null,
+    walletCoupons: []
   },
   web3: {
     host: null,

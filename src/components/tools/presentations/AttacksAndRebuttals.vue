@@ -106,6 +106,7 @@ export default {
         ]},
         { tabTitle: 'Crime', image: 'wannaCry.png', content: [
           { subHeading: 'Attacks', bullets: [
+            'Inherrent anonymity facilitates criminal use',
             'Money Laundering',
             'Ransomware',
             'Silk Road and Illegal Drugs'
