@@ -55,7 +55,7 @@
                     <v-container fluid>
                       <v-layout row wrap>
                         <v-flex xs12 sm6>
-                          <app-user-selector @selected="onUserSelect" selectLabel="Select Recipient"></app-user-selector>
+                          <app-user-selector @selected="onUserSelect" selectLabel="Select Recipient" userType="user"></app-user-selector>
                         </v-flex>
                       </v-layout>
                     </v-container>

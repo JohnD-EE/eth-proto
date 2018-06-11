@@ -44,14 +44,16 @@
         userSelector: []
       }
     },
-    props: ['selectLabel'],
+    props: ['selectLabel', 'userType'],
     computed: {
       users () {
         let selections = [
-          { header: 'Select User Account' }
+          { header:
+            'Select Account'
+          }
         ]
         this.$store.getters.allUsers(true).forEach(res => {
-          if (res.type === 'user') {
+          if (res.type === this.userType) {
             let path = '../../static/profile/'
             let filename = res.displayName
             filename = filename.split(' ').join('')

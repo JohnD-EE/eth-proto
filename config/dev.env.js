@@ -54,13 +54,13 @@ module.exports = merge(prodEnv, {
       {
         id: '2',
         name: '"RolaCola"',
-        type: '"user"',
+        type: '"brand"',
         email: '"rolacola@ee.proto"'
       },
       {
         id: '3',
         name: '"BettaBuys"',
-        type: '"user"',
+        type: '"retailer"',
         email: '"bettabuys@ee.proto"'
       },
       // Users - a List of initial users
@@ -99,6 +99,18 @@ module.exports = merge(prodEnv, {
         name: '"Charlie Chaplin"',
         type: '"user"',
         email: '"charlie@ee.proto"'
+      },
+      {
+        id: '10',
+        name: '"Tesco"',
+        type: '"retailer"',
+        email: '"tesco@ee.proto"'
+      },
+      {
+        id: '11',
+        name: '"Sainsburys"',
+        type: '"retailer"',
+        email: '"sainsburys@ee.proto"'
       },
     ]
   }

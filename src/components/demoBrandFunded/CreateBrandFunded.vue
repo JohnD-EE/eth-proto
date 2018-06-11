@@ -14,10 +14,10 @@
           <v-container grid-list-md>
             <v-layout row wrap>
               <v-flex xs12>
-                <app-brand-selector @selected="onBrandSelect" selectLabel="Select Brand"></app-brand-selector>
+                <app-brand-selector @selected="onBrandSelect" selectLabel="Select Brand" userType="brand"></app-brand-selector>
               </v-flex>
               <v-flex xs12>
-                <app-retailer-selector @selected="onRetailerSelect" selectLabel="Select Retailer"></app-retailer-selector>
+                <app-retailer-selector @selected="onRetailerSelect" selectLabel="Select Retailer" userType="retailer"></app-retailer-selector>
               </v-flex>
               <v-flex xs12>
                 <v-text-field

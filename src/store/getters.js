@@ -302,27 +302,26 @@ export default {
 
   allSmartCouponContracts: state => {
     let smartCouponItems = []
-    let allUsersByEthAccount = helperUsers.getUsersByAddress()
 
     state.smartCouponContracts.forEach(res => {
       let status = {text: '', color: ''}
       status.text = 'Active'
       status.color = 'green'
 
-    smartCouponItems.push({
-      contractAddress: res.contractAddress,
-      status: status,
-      promotionName: res.info.promotionName,
-      couponQualifyingProductSKUs: res.info.couponQualifyingProductSKUs,
-      couponFixedDiscount: res.info.couponFixedDiscount,
-      couponPercentDiscount: res.info.couponPercentDiscount,
-      couponQualifyingCurrency: res.info.couponQualifyingCurrency,
-      couponQualifyingSpend: res.info.couponQualifyingSpend,
-      couponDiscountType: res.info.couponDiscountType,
-      couponReusePolicy: res.info.couponReusePolicy,
-      couponPromotersAllowed: res.info.couponPromotersAllowed,
-      couponPromoterFee: res.info.couponPromoterFee,
-      couponExpiryBlock: res.info.couponExpiryBlock
+      smartCouponItems.push({
+        contractAddress: res.contractAddress,
+        status: status,
+        promotionName: res.info.promotionName,
+        couponQualifyingProductSKUs: res.info.couponQualifyingProductSKUs,
+        couponFixedDiscount: res.info.couponFixedDiscount,
+        couponPercentDiscount: res.info.couponPercentDiscount,
+        couponQualifyingCurrency: res.info.couponQualifyingCurrency,
+        couponQualifyingSpend: res.info.couponQualifyingSpend,
+        couponDiscountType: res.info.couponDiscountType,
+        couponReusePolicy: res.info.couponReusePolicy,
+        couponPromotersAllowed: res.info.couponPromotersAllowed,
+        couponPromoterFee: res.info.couponPromoterFee,
+        couponExpiryBlock: res.info.couponExpiryBlock
       })
     })
     return smartCouponItems

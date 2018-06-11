@@ -130,12 +130,6 @@ export default {
       return currencyList
     }
   },
-  components: {
-    //
-  },
-  watch: {
-    //
-  },
   methods: {
     viewCoupons () {
       this.$store.dispatch('resetSmartCouponContracts')
@@ -145,8 +139,6 @@ export default {
       let coupons = this.$store.state.userDetails.walletCoupons || []
       let matched = false
       coupons.forEach(res => {
-        console.log(res, res)
-        console.log('couponAddress', couponAddress)
         if (res === couponAddress) {
           matched = true
         }

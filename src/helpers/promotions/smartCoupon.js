@@ -1,6 +1,5 @@
 import {store} from './../../store'
 import SmartCouponJSON from '../../../build/contracts/SmartCoupon.json'
-import ContractsHelper from '../contracts'
 
 export default {
 
@@ -59,7 +58,6 @@ export default {
 
   updateSmartCouponsData () {
     let smartCouponAbi = SmartCouponJSON.abi
-    let userAddress = store.state.userDetails.ethAccount
     const SmartCouponFactory = store.state.contracts['SmartCouponFactory']
     if (SmartCouponFactory.length === 0) {
       return false
@@ -84,7 +82,7 @@ export default {
                 .then(couponQualifyingCurrency => {
                   info.couponQualifyingCurrency = couponQualifyingCurrency
                   contract.methods.couponPercentDiscount().call()
-                  .then(couponPercentDiscount=> {
+                  .then(couponPercentDiscount => {
                     info.couponPercentDiscount = couponPercentDiscount
                     contract.methods.couponQualifyingSpend().call()
                     .then(couponQualifyingSpend => {

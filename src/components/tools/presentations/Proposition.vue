@@ -153,7 +153,7 @@ export default {
     next () {
       const active = parseInt(this.active)
       this.active = (active < 3 ? active + 1 : 0).toString()
-      }
+    }
   }
 }
 </script>

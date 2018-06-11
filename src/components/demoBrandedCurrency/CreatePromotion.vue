@@ -256,7 +256,7 @@ export default {
     couponExpiryBlockRules: [],
     valid: true,
     rules: false,
-    couponPromotersAllowed: '',
+    couponPromotersAllowed: ''
   }),
   computed: {
     step1Rules () {

@@ -119,10 +119,18 @@ export default {
       fullScreen: true, // todo detect screen size here and make true for sm screens
       active: null,
       tabItems: [
-        { tabTitle: 'Intrinsic Offers', content: [{
-        }] },
-        { tabTitle: 'Vouchers', text: 'vouchers' },
-        { tabTitle: 'Coupons', text: 'coupons' }
+        {
+          tabTitle: 'Intrinsic Offers',
+          content: [{}]
+        },
+        {
+          tabTitle: 'Vouchers',
+          text: 'vouchers'
+        },
+        {
+          tabTitle: 'Coupons',
+          text: 'coupons'
+        }
       ]
     }
   },
@@ -142,7 +150,7 @@ export default {
     next () {
       const active = parseInt(this.active)
       this.active = (active < 2 ? active + 1 : 0).toString()
-      }
+    }
   }
 }
 </script>
