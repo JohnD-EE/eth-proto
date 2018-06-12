@@ -41,6 +41,19 @@
                   </td>
                   <td class="text-xs-center">{{ props.item.eth }}</td>
                   <td class="text-xs-center">{{ props.item.gbp }}</td>
+                  <td class="text-xs-center">
+                    <v-btn outline small fab color="primary" dark @click.native.stop="couponDialog = true">{{ couponsByIssuer(props.item.owner).length }}</v-btn>
+                    <v-dialog v-model="couponDialog" max-width="290">
+                      <v-card>
+                        <v-card-title class="headline">Coupons</v-card-title>
+                        <v-card-text>List of Coupons</v-card-text>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="primary" flat="flat" @click.native="couponDialog = false">Close</v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                  </td>
                   <td class="justify-center layout px-0">
                     <app-transaction-send
                     :currencyDetails="props.item"
@@ -73,12 +86,14 @@ import TransactionSend from './TransactionSend.vue'
 import TransactionsView from './TransactionsView.vue'
 import brandedCurrencyHelper from './../helpers/demoBrandedCurrency/brandedCurrency'
 import EthereumQRPlugin from 'ethereum-qr-code'
+import smartCouponsHelper from './../helpers/promotions/smartCoupon'
 import Utils from './../helpers/utils'
 import Axios from 'axios'
 
 export default {
   data () {
     return {
+      couponDialog: false,
       balance: null,
       fetchingEthAccount: true,
       fetchingBalance: false,
@@ -89,6 +104,7 @@ export default {
         { text: 'Balance', align: 'center', sortable: false, value: 'userBalance' },
         { text: 'ETH', align: 'center', sortable: false, value: 'eth' },
         { text: 'GBP', align: 'center', sortable: false, value: 'gbp' },
+        { text: 'Coupons', align: 'center', sortable: false, value: 'coupons' },
         { text: 'Actions', align: 'center', sortable: false, value: 'actions' }
       ]
     }
@@ -110,6 +126,9 @@ export default {
     currency () {
       return this.$store.state.currency
     },
+    coupons () {
+      return this.$store.state.userDetails.walletCoupons
+    },
     currencies () {
       let allCurrencies = []
       allCurrencies.push(
@@ -125,6 +144,7 @@ export default {
           userIsIssuer: false,
           isTransferable: true,
           contractAddress: null,
+          owner: '',
           symbol: 'ETH'
         })
       let eip20Currencies = this.$store.getters.allEIP20Contracts
@@ -145,6 +165,7 @@ export default {
             userIsIssuer: res.userIsIssuer,
             isTransferable: res.isTransferable,
             contractAddress: res.contractAddress,
+            owner: res.owner,
             symbol: res.symbol
           }
         )
@@ -175,6 +196,23 @@ export default {
     }
   },
   methods: {
+    couponsByIssuer (issuer) {
+      console.log('issuer', issuer)
+      let couponsByIssuer = []
+      let allCouponContracts = this.$store.getters.allSmartCouponContracts
+
+      console.log('allCouponContracts', allCouponContracts)
+
+      allCouponContracts.forEach(res => {
+        // couponsByIssuer[res.owner] = []
+        console.log('res res', res)
+        if (res.owner === issuer) {
+          couponsByIssuer.push(res)
+        }
+      })
+      console.log('couponsByIssuer', couponsByIssuer)
+      return couponsByIssuer
+    },
     convert (eth, conversionKey) {
       return this.$store.getters.currencyConverter(eth, conversionKey)
     },
@@ -227,6 +265,8 @@ export default {
     }
   },
   mounted: function () {
+    smartCouponsHelper.updateSmartCouponsData()
+
     this.fetchingBalance = true
     setTimeout(this.balanceUpdated, 1600)
     this.checkBalance()

@@ -102,12 +102,16 @@ export default {
                               contract.methods.couponExpiryBlock().call()
                               .then(couponExpiryBlock => {
                                 info.couponExpiryBlock = couponExpiryBlock
-                                console.log('Got Smart Coupon Contract: ', info)
-                                // store states
-                                store.dispatch('registerSmartCouponContracts', {
-                                  contractAddress: contractAddress,
-                                  contract: contract,
-                                  info: info
+                                contract.methods.owner().call()
+                                .then(owner => {
+                                  info.owner = owner
+                                  console.log('Got Smart Coupon Contract: ', info)
+                                  // store states
+                                  store.dispatch('registerSmartCouponContracts', {
+                                    contractAddress: contractAddress,
+                                    contract: contract,
+                                    info: info
+                                  })
                                 })
                               })
                             })

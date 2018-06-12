@@ -294,6 +294,7 @@ export default {
         userBalance: res.info.balance, // User's Balance
         userIsIssuer: userIsIssuer,
         issuer: issuer,
+        owner: res.info.issuer,
         isTransferable: res.info.isTransferable
       })
     })
@@ -308,6 +309,8 @@ export default {
       status.text = 'Active'
       status.color = 'green'
 
+      let userIsIssuer = res.info.owner === state.userDetails.ethAccount
+
       smartCouponItems.push({
         contractAddress: res.contractAddress,
         status: status,
@@ -321,9 +324,12 @@ export default {
         couponReusePolicy: res.info.couponReusePolicy,
         couponPromotersAllowed: res.info.couponPromotersAllowed,
         couponPromoterFee: res.info.couponPromoterFee,
-        couponExpiryBlock: res.info.couponExpiryBlock
+        couponExpiryBlock: res.info.couponExpiryBlock,
+        owner: res.info.owner,
+        userIsIssuer: userIsIssuer
       })
     })
     return smartCouponItems
   }
+
 }

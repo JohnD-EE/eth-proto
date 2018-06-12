@@ -53,7 +53,8 @@
                 <td class="text-xs-center">{{ props.item.couponPromotersAllowed ? props.item.couponPromoterFee + '% Fee' : 'N/A' }}</td>
                 <td class="text-xs-center">{{ props.item.couponExpiryBlock }}</td>
                 <td class="text-xs-center">
-                  <v-chip v-if="isCouponInWallet(props.item.contractAddress)" small color="primary" text-color="white">IN WALLET</v-chip>
+                  <span v-if="props.item.userIsIssuer">N/A</span>
+                  <v-chip v-else-if="isCouponInWallet(props.item.contractAddress)" small color="primary" text-color="white">IN WALLET</v-chip>
                   <v-btn v-else small round color="green" dark @click="addToWallet(props.item.contractAddress)">Add to Wallet</v-btn>
                 </td>
               </template>
