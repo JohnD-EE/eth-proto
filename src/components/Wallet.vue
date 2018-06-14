@@ -42,17 +42,17 @@
                   <td class="text-xs-center">{{ props.item.eth }}</td>
                   <td class="text-xs-center">{{ props.item.gbp }}</td>
                   <td class="text-xs-center">
-                    <v-btn outline small fab color="primary" dark @click.native.stop="couponDialog = true">{{ couponsByIssuer(props.item.owner).length }}</v-btn>
-                    <v-dialog v-model="couponDialog" max-width="290">
-                      <v-card>
-                        <v-card-title class="headline">Coupons</v-card-title>
-                        <v-card-text>List of Coupons</v-card-text>
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <v-btn color="primary" flat="flat" @click.native="couponDialog = false">Close</v-btn>
-                        </v-card-actions>
+                    <v-btn outline small fab color="primary" dark @click.native.stop="couponDialog[props.item.owner] = true">{{ couponsByIssuer(props.item.owner).length }}</v-btn>
+                      <v-dialog v-model="couponDialog[props.item.owner]" max-width="390">
+                        <v-card>
+                      <app-coupons-list :coupons="couponsByIssuer(props.item.owner)"></app-coupons-list>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="primary" flat="flat" @click.native="couponDialog[props.item.owner] = false">Close</v-btn>
+                      </v-card-actions>
                       </v-card>
                     </v-dialog>
+
                   </td>
                   <td class="justify-center layout px-0">
                     <app-transaction-send
@@ -84,6 +84,7 @@
 import { mapGetters } from 'vuex'
 import TransactionSend from './TransactionSend.vue'
 import TransactionsView from './TransactionsView.vue'
+import CouponsList from './sharedComponents/CouponsList.vue'
 import brandedCurrencyHelper from './../helpers/demoBrandedCurrency/brandedCurrency'
 import EthereumQRPlugin from 'ethereum-qr-code'
 import smartCouponsHelper from './../helpers/promotions/smartCoupon'
@@ -93,7 +94,7 @@ import Axios from 'axios'
 export default {
   data () {
     return {
-      couponDialog: false,
+      couponDialog: [],
       balance: null,
       fetchingEthAccount: true,
       fetchingBalance: false,
@@ -111,7 +112,8 @@ export default {
   },
   components: {
     'app-transaction-send': TransactionSend,
-    'app-transactions-view': TransactionsView
+    'app-transactions-view': TransactionsView,
+    'app-coupons-list': CouponsList
   },
   computed: {
     ...mapGetters({
@@ -126,7 +128,7 @@ export default {
     currency () {
       return this.$store.state.currency
     },
-    coupons () {
+    usersCoupons () {
       return this.$store.state.userDetails.walletCoupons
     },
     currencies () {
@@ -197,20 +199,20 @@ export default {
   },
   methods: {
     couponsByIssuer (issuer) {
-      console.log('issuer', issuer)
       let couponsByIssuer = []
       let allCouponContracts = this.$store.getters.allSmartCouponContracts
 
-      console.log('allCouponContracts', allCouponContracts)
-
       allCouponContracts.forEach(res => {
-        // couponsByIssuer[res.owner] = []
-        console.log('res res', res)
+
         if (res.owner === issuer) {
-          couponsByIssuer.push(res)
+          // Check user's wallet coupons against the issued coupons
+          this.usersCoupons.forEach(coupon => {
+            if (coupon === res.contractAddress) {
+              couponsByIssuer.push(res)
+            }
+          })
         }
       })
-      console.log('couponsByIssuer', couponsByIssuer)
       return couponsByIssuer
     },
     convert (eth, conversionKey) {
@@ -265,6 +267,7 @@ export default {
     }
   },
   mounted: function () {
+    this.$store.dispatch('resetSmartCouponContracts')
     smartCouponsHelper.updateSmartCouponsData()
 
     this.fetchingBalance = true
