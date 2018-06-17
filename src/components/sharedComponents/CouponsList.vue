@@ -33,7 +33,6 @@ export default {
   data () {
     return {
       couponChecked: []
-
     }
   },
   props: ['coupons'],
@@ -42,6 +41,7 @@ export default {
   },
   methods: {
     createQRCode (couponAddress) {
+
         const qr = new EthereumQRPlugin()
 
         const sendDetails = {

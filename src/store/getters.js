@@ -329,6 +329,7 @@ export default {
         userIsIssuer: userIsIssuer
       })
     })
+    console.log('smartCouponItems', smartCouponItems)
     return smartCouponItems
   }
 

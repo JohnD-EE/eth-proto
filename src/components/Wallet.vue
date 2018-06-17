@@ -42,16 +42,22 @@
                   <td class="text-xs-center">{{ props.item.eth }}</td>
                   <td class="text-xs-center">{{ props.item.gbp }}</td>
                   <td class="text-xs-center">
-                    <v-btn outline small fab color="primary" dark @click.native.stop="couponDialog[props.item.owner] = true">{{ couponsByIssuer(props.item.owner).length }}</v-btn>
-                      <v-dialog v-model="couponDialog[props.item.owner]" max-width="390">
+                    <span v-if="props.item.symbol !== 'ETH'">
+                    <v-btn outline small fab color="primary" dark @click.native.stop="couponDialog=true">{{ couponsByCurrency(props.item.contractAddress).length }}</v-btn>
+                      <v-dialog v-model="couponDialog" max-width="390">
                         <v-card>
-                      <app-coupons-list :coupons="couponsByIssuer(props.item.owner)"></app-coupons-list>
+                      <app-coupons-list :coupons="couponsByCurrency(props.item.contractAddress)"></app-coupons-list>
                       <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary" flat="flat" @click.native="couponDialog[props.item.owner] = false">Close</v-btn>
+                        <v-btn color="primary" flat="flat" @click.native="couponDialog=false">Close</v-btn>
                       </v-card-actions>
                       </v-card>
                     </v-dialog>
+                  </span>
+                    <span v-else>
+                      N/A
+                    </span>
+
 
                   </td>
                   <td class="justify-center layout px-0">
@@ -94,7 +100,7 @@ import Axios from 'axios'
 export default {
   data () {
     return {
-      couponDialog: [],
+      couponDialog: false,
       balance: null,
       fetchingEthAccount: true,
       fetchingBalance: false,
@@ -198,22 +204,22 @@ export default {
     }
   },
   methods: {
-    couponsByIssuer (issuer) {
-      let couponsByIssuer = []
+    couponsByCurrency (currency) {
+      let couponsByCurrency = []
       let allCouponContracts = this.$store.getters.allSmartCouponContracts
-
+      console.log('curency', currency)
       allCouponContracts.forEach(res => {
-
-        if (res.owner === issuer) {
+        if (res.couponQualifyingCurrency === currency) {
           // Check user's wallet coupons against the issued coupons
           this.usersCoupons.forEach(coupon => {
             if (coupon === res.contractAddress) {
-              couponsByIssuer.push(res)
+              couponsByCurrency.push(res)
             }
           })
         }
       })
-      return couponsByIssuer
+      console.log ('couponsByCurrency', couponsByCurrency)
+      return couponsByCurrency
     },
     convert (eth, conversionKey) {
       return this.$store.getters.currencyConverter(eth, conversionKey)
@@ -267,14 +273,13 @@ export default {
     }
   },
   mounted: function () {
-    this.$store.dispatch('resetSmartCouponContracts')
-    smartCouponsHelper.updateSmartCouponsData()
-
     this.fetchingBalance = true
     setTimeout(this.balanceUpdated, 1600)
     this.checkBalance()
     brandedCurrencyHelper.updateEIP20Data()
     this.getEthereumPrice()
+
+    smartCouponsHelper.updateSmartCouponsData()
   }
 }
 </script>

@@ -133,7 +133,6 @@ export default {
   },
   methods: {
     viewCoupons () {
-      this.$store.dispatch('resetSmartCouponContracts')
       smartCouponsHelper.updateSmartCouponsData()
     },
     isCouponInWallet (couponAddress) {
