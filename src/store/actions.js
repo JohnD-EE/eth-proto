@@ -439,7 +439,7 @@ export default {
 
   registerSmartCouponContracts ({commit}, payload) {
     let smartCouponContracts = this.state.smartCouponContracts
-    // see if EIP20 address already exists 
+    // see if EIP20 address already exists
     let index = false
     let matchFound = false
     smartCouponContracts.forEach(function (res, i) {

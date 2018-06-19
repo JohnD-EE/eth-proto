@@ -305,9 +305,17 @@ export default {
     let smartCouponItems = []
 
     state.smartCouponContracts.forEach(res => {
-      let status = {text: '', color: ''}
-      status.text = 'Active'
-      status.color = 'green'
+      let latestBlock = state.web3.latestBlock.number
+      let status = {code: '', text: '', color: ''}
+      if (res.info.couponExpiryBlock <= latestBlock) {
+        status.code = 'active'
+        status.text = 'Active'
+        status.color = 'green'
+      } else {
+        status.code = 'expired'
+        status.text = 'Expired'
+        status.color = 'orange'
+      }
 
       let userIsIssuer = res.info.owner === state.userDetails.ethAccount
 
@@ -329,7 +337,6 @@ export default {
         userIsIssuer: userIsIssuer
       })
     })
-    console.log('smartCouponItems', smartCouponItems)
     return smartCouponItems
   }
 

@@ -43,21 +43,17 @@
                   <td class="text-xs-center">{{ props.item.gbp }}</td>
                   <td class="text-xs-center">
                     <span v-if="props.item.symbol !== 'ETH'">
-                    <v-btn outline small fab color="primary" dark @click.native.stop="couponDialog=true">{{ couponsByCurrency(props.item.contractAddress).length }}</v-btn>
-                      <v-dialog v-model="couponDialog" max-width="390">
-                        <v-card>
-                      <app-coupons-list :coupons="couponsByCurrency(props.item.contractAddress)"></app-coupons-list>
-                      <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="primary" flat="flat" @click.native="couponDialog=false">Close</v-btn>
-                      </v-card-actions>
-                      </v-card>
-                    </v-dialog>
-                  </span>
+
+                      <app-coupons-list
+                        :coupons="couponsByCurrency(props.item.contractAddress)"
+                        :currencySymbol="props.item.symbol"
+                        :checkable="false">
+                      </app-coupons-list>
+
+                    </span>
                     <span v-else>
                       N/A
                     </span>
-
 
                   </td>
                   <td class="justify-center layout px-0">
@@ -100,7 +96,6 @@ import Axios from 'axios'
 export default {
   data () {
     return {
-      couponDialog: false,
       balance: null,
       fetchingEthAccount: true,
       fetchingBalance: false,
@@ -125,6 +120,10 @@ export default {
     ...mapGetters({
       balanceToEther: 'balanceToEther'
     }),
+
+    couponDialog () {
+      return []
+    },
     user () {
       return this.$store.state.user
     },
@@ -207,7 +206,7 @@ export default {
     couponsByCurrency (currency) {
       let couponsByCurrency = []
       let allCouponContracts = this.$store.getters.allSmartCouponContracts
-      console.log('curency', currency)
+
       allCouponContracts.forEach(res => {
         if (res.couponQualifyingCurrency === currency) {
           // Check user's wallet coupons against the issued coupons
@@ -218,7 +217,6 @@ export default {
           })
         }
       })
-      console.log ('couponsByCurrency', couponsByCurrency)
       return couponsByCurrency
     },
     convert (eth, conversionKey) {
