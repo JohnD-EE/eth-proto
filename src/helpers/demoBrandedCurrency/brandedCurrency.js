@@ -56,7 +56,6 @@ export default {
     }
     EIP20Factory.methods.allEIP20Contracts().call()
     .then(res => {
-      console.log('All EIP20 Contracts: ', res)
       res.forEach(contractAddress => {
         // create an instance of the EIP contract based on the reference
         let contract = new window.web3.eth.Contract(eip20Abi, contractAddress)
@@ -91,7 +90,6 @@ export default {
                             contract.methods.balances(userAddress).call()
                             .then(balance => {
                               info.balance = balance
-                              console.log('Got EIP20 Contract: ', info)
                               // store states
                               store.dispatch('registerEIP20Contracts', {
                                 contractAddress: contractAddress,

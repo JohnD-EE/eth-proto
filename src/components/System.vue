@@ -92,6 +92,14 @@
                     <v-progress-circular indeterminate color="green" v-show="accountSeedingLoading"></v-progress-circular>
                   </v-list-tile-action>
                 </v-list-tile>
+                <v-list-tile>
+                  <v-list-tile-content>
+                    <v-btn color="warning" @click="deleteAllUserWalletData">
+                      <v-icon left>refresh</v-icon>
+                      Clear All User Wallet Data
+                    </v-btn>
+                  </v-list-tile-content>
+                </v-list-tile>
               </v-list>
             </v-card-text>
           </v-card>
@@ -136,6 +144,9 @@ export default {
     },
     seedUserAccountsData () {
       userAccounts.createUsersDetailsFromConfig()
+    },
+    deleteAllUserWalletData () {
+      userAccounts.deleteAllUserWalletDetails()
     }
   },
   computed: {

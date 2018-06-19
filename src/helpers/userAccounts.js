@@ -32,6 +32,24 @@ export default {
     })
   },
 
+  deleteAllUserWalletDetails () {
+    db.collection('users').get().then(res => {
+      res.docs.forEach(doc => {
+        let user = db.collection('users').doc(doc.id)
+        if (user.walletCoupons !== 'undefined') {
+          user.update({
+            walletCoupons: firebase.firestore.FieldValue.delete()
+          }).then(del => {
+            store.dispatch('updateAllUsers')
+            console.log('Document ' + doc.id + ': Successfully cleared Wallet Coupons')
+          }).catch(err => {
+            console.error('Error removing Wallet Coupons: Document: ' + doc.id, err)
+          })
+        }
+      })
+    })
+  },
+
   // note: unsecure, for prototyping only
   createUsersDetailsFromConfig () {
     // Iterate through seed accounts list and add them to users
