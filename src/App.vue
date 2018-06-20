@@ -50,9 +50,29 @@
             @click=""
           >
           <v-list-tile-action>
-            <v-icon v-text=" tool.icon"></v-icon>
+            <v-icon v-text="tool.icon"></v-icon>
           </v-list-tile-action>
-            <v-list-tile-title v-text=" tool.title"></v-list-tile-title>
+            <v-list-tile-title v-text="tool.title"></v-list-tile-title>
+          </v-list-tile>
+        </v-list-group>
+
+        <v-list-group v-if="isAuthenticated"
+          sub-group
+          no-action
+        >
+          <v-list-tile slot="activator">
+            <v-list-tile-title>Go Shopping</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile
+            v-for="shop in shops"
+            :key="shop.title"
+            :to="shop.path"
+            @click=""
+          >
+          <v-list-tile-action>
+            <v-icon v-text="shop.icon"></v-icon>
+          </v-list-tile-action>
+            <v-list-tile-title v-text="shop.title"></v-list-tile-title>
           </v-list-tile>
         </v-list-group>
 
@@ -95,6 +115,17 @@
           <v-list>
             <v-list-tile v-for="tool in tools" :key="tool.title" :to="tool.path" @click="">
               <v-list-tile-title><v-icon left>{{ tool.icon }}</v-icon> {{ tool.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+
+        <v-menu v-if="isAuthenticated">
+          <v-btn flat  dark slot="activator">Go Shopping
+            <v-icon dark>arrow_drop_down</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile v-for="shop in shops" :key="shop.title" :to="shop.path" @click="">
+              <v-list-tile-title><v-icon left>{{ shop.icon }}</v-icon> {{ shop.title }}</v-list-tile-title>
             </v-list-tile>
           </v-list>
         </v-menu>
@@ -209,6 +240,16 @@ export default {
     },
     isAuthenticated () {
       return this.$store.getters.isAuthenticated
+    },
+    shops () {
+      let allRetailers = this.$store.getters.allRetailers
+      let shops = []
+      allRetailers.forEach(res => {
+        shops.push(
+          {title: res.displayName, path: '/wallet', icon: 'shopping_cart'}
+        )
+      })
+      return shops
     },
     menuItems () {
       if (this.isAuthenticated) {

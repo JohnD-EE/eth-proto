@@ -27,6 +27,13 @@ export default {
     }
     return allUsers
   },
+
+  allRetailers:  state => {
+    let allUsers = state.allUsers
+    let retailUsers = allUsers.filter(x => x.type === 'retailer')
+    return retailUsers
+  },
+
   userTxs: state => {
     // arrange allUsers by addresses
     let usersByAccount = []
@@ -74,6 +81,7 @@ export default {
   currencyConverter: (state) => (inputValue, conversionKey) => {
     return (Number(state.currencyConversionRates[conversionKey]) * Number(inputValue)).toString()
   },
+
   allAuctionContracts: state => {
     let auctionItems = []
     let allUsersByEthAccount = helperUsers.getUsersByAddress()
