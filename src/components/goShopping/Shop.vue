@@ -23,6 +23,39 @@
           <v-card-text>
             <p class="text-xs-center">Look at these wonderful goodies on sale today..</p>
           </v-card-text>
+          <v-card-text>
+            <p class="text-xs-center">Products Selected: {{ basket.length }}</p>
+
+            <v-layout row justify-center>
+              <v-dialog v-model="shopDialog" persistent max-width="500px">
+                <v-btn color="success" dark slot="activator">
+                  <v-icon left>add</v-icon>Choose Products
+                </v-btn>
+                <v-card>
+                  <v-form v-model="productsValid" ref="form" lazy-validation>
+                    <v-card-title>
+                      <span class="headline">Fill your basket</span>
+                    </v-card-title>
+                    <v-card-text>
+                      <v-card color="grey lighten-3" class="mb-5">
+                        <v-flex xs12>
+                          <app-product-picker @selected="onSelectProducts"></app-product-picker>
+                        </v-flex>
+                      </v-card>
+                    </v-card-text>
+                  </v-form>
+
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="primary darken-1" flat @click.native="close">Close</v-btn>
+                    <v-btn color="primary darken-1" flat @click.native="submit">Save</v-btn>
+                  </v-card-actions>
+
+                </v-card>
+
+              </v-dialog>
+            </v-layout>
+          </v-card-text>
         </v-container>
       </v-card>
     </v-flex>
@@ -32,6 +65,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import ProductPicker from '../sharedComponents/ProductPicker.vue'
 import CouponsList from './../sharedComponents/CouponsList.vue'
 import brandedCurrencyHelper from './../../helpers/demoBrandedCurrency/brandedCurrency'
 import smartCouponsHelper from './../../helpers/promotions/smartCoupon'
@@ -39,13 +73,17 @@ import smartCouponsHelper from './../../helpers/promotions/smartCoupon'
 export default {
   data () {
     return {
+      shopDialog: false,
       balance: null,
       fetchingEthAccount: true,
       fetchingBalance: false,
+      basket: [],
+      productsValid: true
     }
   },
   components: {
-    'app-coupons-list': CouponsList
+    'app-coupons-list': CouponsList,
+    'app-product-picker': ProductPicker
   },
   computed: {
     ...mapGetters({
@@ -92,6 +130,16 @@ export default {
     }
   },
   methods: {
+    onSelectProducts (value) {
+      if (value.products) {
+        this.basket = []
+        value.products.forEach(res => {
+          this.basket.push(res)
+        })
+      } else {
+        console.log('No Products Selected')
+      }
+    },
     convert (eth, conversionKey) {
       return this.$store.getters.currencyConverter(eth, conversionKey)
     },
@@ -101,6 +149,16 @@ export default {
     },
     checkBalance () {
       this.$store.dispatch('updateAccount')
+    },
+    close () {
+      this.clear()
+      this.shopDialog = false
+    },
+    clear () {
+      this.$refs.form.reset()
+    },
+    submit () {
+      this.close()
     }
   },
   mounted: function () {

@@ -1,12 +1,12 @@
 <template>
   <v-layout row>
     <v-flex xs12>
-      <v-card>
+      <v-card class="px-4 py-4">
         <v-flex xs12>
           <v-select
           :items="prodcutCategories"
           v-model="categoriesFiltered"
-          label="Select"
+          label="Select Product Category:"
           multiple
           hint="Filter the product list"
           persistent-hint
