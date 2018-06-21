@@ -9,6 +9,7 @@ const routerOptions = [
   { path: '/wallet', component: 'Wallet', meta: { requiresAuth: true } },
   { path: '/home', redirect: '/wallet' },
   { path: '/system', component: 'System' },
+  { path: '/shop/:retailerAc', component: 'goShopping/Shop', meta: { requiresAuth: true } },
   { path: '*', component: 'NotFound' },
   { path: '/auction', component: 'demoAuction/Auction', meta: { requiresAuth: true } },
   { path: '/escrow', component: 'demoEscrow/Escrow', meta: { requiresAuth: true } },

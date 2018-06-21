@@ -246,7 +246,7 @@ export default {
       let shops = []
       allRetailers.forEach(res => {
         shops.push(
-          {title: res.displayName, path: '/wallet', icon: 'shopping_cart'}
+          {title: res.displayName, path: '/shop/' + res.ethAccount, icon: 'shopping_cart'}
         )
       })
       return shops

@@ -34,6 +34,12 @@ export default {
     return retailUsers
   },
 
+  retailer: (state) => (retailerAc) => {
+    let allUsers = state.allUsers
+    let retailer = allUsers.filter(x => x.ethAccount === retailerAc) //should only return one account
+    return retailer[0]
+  },
+
   userTxs: state => {
     // arrange allUsers by addresses
     let usersByAccount = []

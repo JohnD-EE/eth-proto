@@ -120,10 +120,6 @@ export default {
     ...mapGetters({
       balanceToEther: 'balanceToEther'
     }),
-
-    couponDialog () {
-      return []
-    },
     user () {
       return this.$store.state.user
     },
