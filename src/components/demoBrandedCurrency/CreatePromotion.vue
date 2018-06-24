@@ -174,7 +174,7 @@
                   <v-card color="grey lighten-3" class="mb-5">
 
                     <v-flex xs12>
-                      <app-product-picker @selected="onSelectProducts" v-if="couponQualifyingProducts === 'specificProducts'"></app-product-picker>
+                      <app-product-picker @selected="onSelectProducts" :mode="promoCreate" v-if="couponQualifyingProducts === 'specificProducts'"></app-product-picker>
                       <span v-else-if="couponQualifyingProducts === 'productCategories'">
                         <v-container>
                           @todo - Show a Product Category picker

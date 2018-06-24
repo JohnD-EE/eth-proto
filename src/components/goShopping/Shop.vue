@@ -27,7 +27,7 @@
             <p class="text-xs-center">Products Selected: {{ basket.length }}</p>
 
             <v-layout row justify-center>
-              <v-dialog v-model="shopDialog" persistent max-width="500px">
+              <v-dialog v-model="shopDialog" persistent max-width="580px">
                 <v-btn color="success" dark slot="activator">
                   <v-icon left>add</v-icon>Choose Products
                 </v-btn>
@@ -39,7 +39,7 @@
                     <v-card-text>
                       <v-card color="grey lighten-3" class="mb-5">
                         <v-flex xs12>
-                          <app-product-picker @selected="onSelectProducts"></app-product-picker>
+                          <app-product-picker @selected="onSelectProducts" :currencies="currenciesAvailable" mode="shopping" padded="true"></app-product-picker>
                         </v-flex>
                       </v-card>
                     </v-card-text>
@@ -78,7 +78,8 @@ export default {
       fetchingEthAccount: true,
       fetchingBalance: false,
       basket: [],
-      productsValid: true
+      productsValid: true,
+      retailerAc: this.$route.params.retailerAc
     }
   },
   components: {
@@ -89,8 +90,19 @@ export default {
     ...mapGetters({
       balanceToEther: 'balanceToEther'
     }),
+    currenciesAvailable () {
+      let allEIP20 = this.$store.getters.allEIP20Contracts
+      let items = []
+      let retailerAc = this.retailerAc
+      allEIP20.forEach(res => {
+        if (res.owner === retailerAc) {
+          items.push({text: res.name, symbol: res.symbol, value: res.contractAddress})
+        }
+      })
+      return items
+    },
     retailer () {
-      let retailerAc = this.$route.params.retailerAc
+      let retailerAc = this.retailerAc
       let retailer = this.$store.getters.retailer(retailerAc)
       return retailer
     },
