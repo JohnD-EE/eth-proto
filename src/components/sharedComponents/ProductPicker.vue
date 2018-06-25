@@ -17,13 +17,14 @@
             <img :src="'../../../static/products/' + product.image" onerror="this.src='../../../static/profile/noImage.jpg'" width="76" class="mr-4">
             <v-list-tile-content @click="">
               <v-list-tile-title>{{ product.title }} - {{ product.attributes.size }}</v-list-tile-title>
-              <v-list-tile-sub-title>£{{ (product.priceInPence / 100).toFixed(2) }}</v-list-tile-sub-title>
+              <v-list-tile-sub-title>&pound;{{ (product.priceInPence / 100).toFixed(2) }}</v-list-tile-sub-title>
               <v-list-tile-sub-title v-if="mode==='promoCreate'">
                 <span class="caption" v-for="(category, c) in product.categories" :key="c">{{ category }}<span v-show="c < (product.categories.length -1)">, </span></span>
               </v-list-tile-sub-title>
               <v-list-tile-sub-title v-else-if="mode==='shopping'">
-                16 SBYC | 48 TSC
-                {{ currencies }}
+                <span v-for="(currencyPrice, cp) in convertPrice(product.priceInPence)" :key="cp">
+                  {{ currencyPrice.price }} {{ currencyPrice.symbol }}<span v-if="(cp + 1) < convertPrice(product.priceInPence).length">, </span>
+                </span>
               </v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action >
@@ -60,32 +61,36 @@ export default {
     products () {
       return ProductsJSON
     },
-    currencies () {
-      let allCurrencies = []
+    currencyContracts () {
+      let contracts = []
+      this.currencies.forEach(res => {
+        contracts.push(res.contractAddress)
+      })
+      return contracts
+    },
+    retailerCurrencies () {
+      let retailerCurrencies = []
       let eip20Currencies = this.$store.getters.allEIP20Contracts
       eip20Currencies.forEach(res => {
-        let eth = 0
-        eth = Number((res.userBalance * res.exchangeRateToEth).toFixed(8))
-        // let balance = res.userBalance
-        allCurrencies.push(
-          {
-            value: false,
-            name: res.name,
-            userBalance: res.userBalance,
-            eth: res.isPointsOnly ? '-' : eth,
-            gbp: res.isPointsOnly ? '-' : '£' + Utils.currencyFormat(this.convert(eth, 'ethgbp')),
-            actions: '',
-            isToken: res.isToken,
-            isPointsOnly: res.isPointsOnly,
-            userIsIssuer: res.userIsIssuer,
-            isTransferable: res.isTransferable,
-            contractAddress: res.contractAddress,
-            owner: res.owner,
-            symbol: res.symbol
-          }
-        )
+        console.log('currencyContracts', this.currencyContracts)
+        console.log('res', res.contractAddress)
+        if (this.currencyContracts.includes(res.contractAddress)) {
+          retailerCurrencies.push(
+            {
+              name: res.name,
+              userBalance: res.userBalance,
+              isToken: res.isToken,
+              isPointsOnly: res.isPointsOnly,
+              userIsIssuer: res.userIsIssuer,
+              isTransferable: res.isTransferable,
+              contractAddress: res.contractAddress,
+              owner: res.owner,
+              symbol: res.symbol
+            }
+          )
+        }
       })
-      return allCurrencies
+      return retailerCurrencies
     }
   },
   methods: {
@@ -107,8 +112,18 @@ export default {
       })
       this.$emit('selected', {products: skus})
     },
+    convertPrice(priceInPence) {
+      // itereate through each currency and return an object of converted prices
+      let convertedPrices = []
+      console.log('retailerCurrencies', this.retailerCurrencies)
+      this.retailerCurrencies.forEach(res => {
+        let convertedPrice = ''
+        convertedPrices.push({ 'symbol': res.symbol, price: convertedPrice })
+      })
+      return convertedPrices
+    },
     convert (eth, conversionKey) {
-      return this.$store.getters.currencyConverter(eth, conversionKey)
+      return this.$store.getters.currencyConverter(eth, conversionKey, true)
     }
   }
 }

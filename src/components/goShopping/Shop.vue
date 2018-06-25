@@ -96,7 +96,7 @@ export default {
       let retailerAc = this.retailerAc
       allEIP20.forEach(res => {
         if (res.owner === retailerAc) {
-          items.push({text: res.name, symbol: res.symbol, value: res.contractAddress})
+          items.push({text: res.name, symbol: res.symbol, contractAddress: res.contractAddress})
         }
       })
       return items

@@ -84,8 +84,14 @@ export default {
   userOpportunities: state => {
     return state.userOpportunities
   },
-  currencyConverter: (state) => (inputValue, conversionKey) => {
-    return (Number(state.currencyConversionRates[conversionKey]) * Number(inputValue)).toString()
+  currencyConverter: (state) => (inputValue, conversionKey, reversedConversion = false) => {
+    let conversion = ''
+    if (reversedConversion) {
+      conversion = (1 / Number(state.currencyConversionRates[conversionKey])) * Number(inputValue)
+    } else {
+      conversion = Number(state.currencyConversionRates[conversionKey]) * Number(inputValue)
+    }
+    return conversion.toString()
   },
 
   allAuctionContracts: state => {
