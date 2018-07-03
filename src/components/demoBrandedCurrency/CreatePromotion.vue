@@ -1,6 +1,6 @@
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="dialog" persistent max-width="500px">
+    <v-dialog v-model="dialog" persistent max-width="570px">
       <v-btn color="success" dark slot="activator">
         <v-icon left>add</v-icon>Create Promotion
       </v-btn>
@@ -174,7 +174,11 @@
                   <v-card color="grey lighten-3" class="mb-5">
 
                     <v-flex xs12>
-                      <app-product-picker @selected="onSelectProducts" :mode="promoCreate" v-if="couponQualifyingProducts === 'specificProducts'"></app-product-picker>
+                      <app-product-picker
+                        @selected="onSelectProducts"
+                        productMode="promoCreate"
+                        padded="true"
+                        v-if="couponQualifyingProducts === 'specificProducts'"></app-product-picker>
                       <span v-else-if="couponQualifyingProducts === 'productCategories'">
                         <v-container>
                           @todo - Show a Product Category picker

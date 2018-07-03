@@ -39,7 +39,7 @@
                     <v-card-text>
                       <v-card color="grey lighten-3" class="mb-5">
                         <v-flex xs12>
-                          <app-product-picker @selected="onSelectProducts" :currencies="currenciesAvailable" mode="shopping" padded="true"></app-product-picker>
+                          <app-product-picker @selected="onSelectProducts" :currencies="currenciesAvailable" productMode="shopping" padded="true"></app-product-picker>
                         </v-flex>
                       </v-card>
                     </v-card-text>
