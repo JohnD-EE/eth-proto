@@ -143,7 +143,7 @@ export default {
       console.log('retailerCurrencies', this.retailerCurrencies)
       this.retailerCurrencies.forEach(res => {
         console.log('res.exchangeRateToEth', res.exchangeRateToEth)
-        let priceInEth = this.convertPenceToEth(priceInPence / 100)
+        let priceInEth = this.convertPenceToEth(priceInPence / 100) //GBP to Eth
         let convertedPrice = (res.exchangeRateToEth * priceInEth).toFixed(4)
         convertedPrices.push({ 'symbol': res.symbol, 'price': convertedPrice })
       })
