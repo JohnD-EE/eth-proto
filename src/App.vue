@@ -88,7 +88,7 @@
       <v-toolbar-title>
         <router-link to="/home" tag="span" style="cursor: pointer">
           <v-toolbar-items>
-          <img src="./assets/eeLogo.png" height="36" class="pr-2">
+          <img src="./assets/logo.png" height="36" class="pr-2">
           <span>
            {{ appTitle }}
           </span>
@@ -169,7 +169,7 @@
 
       <v-spacer></v-spacer>
       <div>
-        <span class="primary--text"><h3>#PurpleInnovation</h3></span>
+        <span class="primary--text"><h3>#Ethereum Use Cases</h3></span>
       </div>
     </v-footer>
 

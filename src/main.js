@@ -13,8 +13,8 @@ import 'firebase/firestore'
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#461d57',
-    secondary: '#72328b'
+    primary: '#F44336',
+    secondary: '#E57373'
   }
 })
 

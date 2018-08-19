@@ -1,14 +1,4 @@
-# EE Blockchain Prototype
-
-## Project Overviews
-* [Main Project](https://eagleeye.atlassian.net/wiki/spaces/blockchain/overview)
-* [Prototyping](https://eagleeye.atlassian.net/wiki/spaces/blockchain/pages/301203733/Blockchain+Prototyping)
-
-## Todo
-- [x] Create a vue.js front end with user authentication via firebase.
-- [x] Install the Truffle eco-system for smart contract development, compiling, deployment to blockchain and migrations to new version of contracts. Requires learning time...
-- [x] Install Web3.js in as npm package to interact with Smart Contracts from the front-end
-- [ ] Create a 'Systems' page to check system health, load/reset accounts etc.
+# Ethereum Prototype
 
 ## Build Setup
 

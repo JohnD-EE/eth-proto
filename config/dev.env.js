@@ -28,11 +28,11 @@ module.exports = merge(prodEnv, {
   // use these settings to start ganache with a consistent set of accounts
   ganache: {
     // option to seed accounts/mnemonic - ganache-cli -s "MyArbitrarySeed"
-    seed: '"EagleEye"',
+    seed: '"SeedPhraseHere"',
     // mnemonic option (also used in Metamask) - ganache-cli -m "... ... ..."
-    mnemonic: '"blur until matter salad soup cake cruel middle knee skin various example"',
+    mnemonic: '"MnemonicHere"',
     // the number of accounts to create - ganache-cli -a 10
-    initAccounts: '10'
+    initAccounts: '20'
   },
 
   // Users to be initialised upon request and assigned an ethereum address
